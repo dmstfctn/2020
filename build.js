@@ -50,6 +50,7 @@ const createRelatedMattersList = ( related_matters ) => {
       line.contents.push({
         name: sub_item.name,
         date: item.name,
+        pagetype: 'relatedmatter',
         slug: createSlug( sub_item.name ),
         url: (sub_item.data.link) ? sub_item.data.link : createURLPath( sub_item.name, 'related matters' ),
         is_external: !!sub_item.data.link,
@@ -78,6 +79,7 @@ const createFocusGroupsList = ( focus_groups ) => {
           {
             name: sub_item.name,
             date: item.name,
+            pagetype: 'focusgroup',
             slug: createSlug( sub_item.name ),
             url: (sub_item.data.link) ? sub_item.data.link : createURLPath( sub_item.name, 'focus groups' ),
             is_external: !!sub_item.data.link,
@@ -106,6 +108,30 @@ const createDisseminationList = ( dissemination ) => {
   }
 };
 
+const renderPage = ( pageData, index, partnerPages ) => {
+  if( pageData.is_external ){
+    return false;
+  }
+  pageData.prev = partnerPages[index-1];
+  pageData.next = partnerPages[index+1];
+  if( index < 1 ){
+    pageData.prev = partnerPages[ partnerPages.length - 1 ];
+  }
+  if( index >= partnerPages.length - 1 ){
+    pageData.next = partnerPages[0];
+  }
+  let p = path.join( F_PUBLIC, pageData.url );
+  let filePath = path.join( p, 'index.html' );
+  let rendered_project = Templates.project( pageData );
+  let render = {
+    title: pageData.name,
+    pagetype: pageData.pagetype,
+    navigation: rendered_navigation,
+    content: rendered_project
+  };
+  fs.mkdirSync( p, {recursive: true});
+  fs.writeFileSync( filePath, Templates.main( render ) );
+};
 
 const F_PUBLIC = path.join( __dirname, 'public' );
 const F_PUBLIC_DATA = path.join( __dirname, 'public', 'data' );
@@ -143,40 +169,31 @@ let rendered_navigation = Templates.navigation( {navigation: navigation} );
 /* home page */
 let render = {
   title: 'Home',
+  pagetype: 'home',
   navigation: rendered_navigation,
   content: ''
 };
 fs.writeFileSync( path.join( F_PUBLIC, 'index.html' ), Templates.main( render ) );
 
-const pages = relatedMattersList.contents.concat( focusGroupsList.contents )
+let relatedMattersPages = relatedMattersList.contents
   .map( (e) => {
     return e.contents;
-  }).flat();
- 
-pages.forEach( ( pageData, index ) => {
-  if( pageData.is_external ){
-    return false;
-  }
-  pageData.prev = pages[index-1];
-  pageData.next = pages[index+1];
-  if( index < 1 ){
-    pageData.prev = pages[ pages.length - 1 ];
-  }
-  if( index >= pages.length - 1 ){
-    pageData.next = pages[0];
-  }
-  let p = path.join( F_PUBLIC, pageData.url );
-  let filePath = path.join( p, 'index.html' );
-  let rendered_project = Templates.project( pageData );
-  let render = {
-    title: pageData.name,
-    navigation: rendered_navigation,
-    content: rendered_project
-  };
-  fs.mkdirSync( p, {recursive: true});
-  fs.writeFileSync( filePath, Templates.main( render ) );
+  })
+  .flat();
+
+relatedMattersPages.forEach( ( pageData, index ) => {
+  renderPage( pageData, index, relatedMattersPages );
 });
 
+let focusGroupsPages = focusGroupsList.contents
+  .map( (e) => {
+    return e.contents;
+  })
+  .flat();
+
+focusGroupsPages.forEach( ( pageData, index ) => {
+  renderPage( pageData, index, focusGroupsPages );
+});
 
 fs.copySync('assets', 'public/assets');
 

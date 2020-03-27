@@ -109,6 +109,13 @@ a{
       content: '';
     }
 
+.dc-navigation-item{
+  display: none;
+}
+  html.dc-pagetype--home .dc-navigation-item#related-matters{
+    display: block;
+  }
+
 .dc-work{
   font-size: 3.111rem;
   line-height: 1.142em;
