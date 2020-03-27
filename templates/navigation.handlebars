@@ -1,0 +1,8 @@
+<nav class="dc-sitenav">
+  {{#each navigation}}
+    <a href="#{{this.slug}}">{{this.name}}</a>
+  {{/each}} 
+</nav>
+{{#each navigation}}
+  {{> (lookup . 'template') }}
+{{/each }}  

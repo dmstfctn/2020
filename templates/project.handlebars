@@ -1,0 +1,30 @@
+<article class="dc-item">
+  <section class="dc-media">
+    <ol class="dc-media--list">
+    </ol>
+    <nav class="dc-media--nav">
+      <ol>            
+      </ol>
+    </nav>
+  </section>
+</article>
+<nav class="dc-sitenav dc-worknav">
+  <a 
+    href="{{#unless prev.is_external}}/{{/unless}}{{prev.url}}"
+    {{#if prev.is_external}}target="_blank"{{/if}}
+  >
+    <span class="dctxt--date">{{prev.date}}</span>
+    {{prev.name}}
+  </a>
+  <a href="{{#unless is_external}}/{{/unless}}{{url}}" class="current">
+    <span class="dctxt--date">{{date}}</span>
+    {{name}}
+  </a>
+  <a 
+    href="{{#unless next.is_external}}/{{/unless}}{{next.url}}" 
+    {{#if next.is_external}}target="_blank"{{/if}}
+  >
+    <span class="dctxt--date">{{next.date}}</span>
+    {{next.name}}
+  </a>
+</nav>

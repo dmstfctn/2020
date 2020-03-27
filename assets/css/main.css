@@ -1,0 +1,446 @@
+/*
+small type is 18pt w/line height 25pt -> 1.389em
+large type is 28pt (was 30pt) -> 1.556rem w/ line height 40pt -> 1.429em 
+massive type is 56pt -> 3.111rem w/line height 64pt -> 1.142em
+*/
+
+html, body{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.dc-cursor{
+  display: none;
+  position: fixed;
+  margin-left: -14px;
+  margin-top: -8px;
+  font-size: 1.556rem;
+  width: 40px;
+  height: 40px;
+  //border: 1px solid white;
+  z-index: 99;
+  pointer-events: none;
+  background-image: url('../images/cursor1.png');
+  background-size: 17px;
+  background-repeat: no-repeat;
+}
+  body.dc-cursor--active .dc-cursor{
+    display: block;
+  }
+
+html{
+  font-family: "Adobe Myungjo Std", serif;
+  font-weight: 100;
+  /* font-size: 17px;
+  font-size: 1.405vw; */
+  font-size: 16px;
+  font-size: 1.322vw;
+  line-height: 1.389em;
+  letter-spacing: -.1em;
+  background: #000000;
+  color: #FFFFFF;
+}
+body{
+  padding: .3em 1em .3em .8em;
+  min-height: 100%;
+}
+
+ul, ol, dl, p, h1, h2, h3, h4, h5, h6{
+  margin:0;
+  padding: 0;
+}
+a{
+  text-decoration: none;
+  color: inherit;  
+}
+  a:hover{
+    color: #FF0000;
+  }
+
+  .dctxt--date{
+    //font-family: "Oriya MN";
+    //letter-spacing: -.145em;
+    font-family: 'Antique Olive Std', sans-serif;
+    font-size: 0.85em;
+    font-weight: normal;        
+  }
+  .dctxt--worktype{
+    text-transform: lowercase;
+  }
+  .dctxt--at{
+    transform: scaleX(0.6);
+    display: inline-block;
+    margin-left: -0.18em;
+    margin-right: -0.2em;
+  }
+
+
+.dc-sitenav{
+  position: relative;
+  z-index: 1;
+  font-size: 1.556rem;
+  line-height: 1.429em;
+  display: flex;
+  justify-content: space-between;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+.dc-sitenav::before {
+  content: '';
+  background: #000;
+  display: block;
+  position: absolute;
+  width: 100vw;
+  height: 2.6rem;
+  z-index: -1;
+  top: -0.3rem;
+}
+  .dc-sitenav a:after{
+    content: ',';
+  }
+    .dc-sitenav a:last-child:after{
+      content: '';
+    }
+
+.dc-work{
+  font-size: 3.111rem;
+  line-height: 1.142em;
+  padding: 0;
+  list-style-type: none;
+  margin: 5.6rem 0 0 0;
+
+}
+  .dc-work--year{
+    display: flex;
+    justify-content: flex-start;    
+  }
+  .dc-work--year h2{
+    position: relative;
+    font-size: 3.111rem;
+    top: .2rem;
+    /* font-family: "Oriya MN";
+    font-weight: normal;
+    letter-spacing: -.145em; */
+    font-family: 'Antique Olive Std', sans-serif;
+    font-size: 0.85em;
+    font-weight: normal; 
+    display: inline;
+    margin: 0;
+    color: #FF0000;
+  }
+  .dc-work--year .dc-work--items{
+    flex-grow: 2;
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+  }
+    .dc-work--year .dc-work--items > *{
+      text-align: justify;
+      text-align-last: justify;
+      
+    }
+    .dc-work--year .dc-work--items > *:only-child{
+      flex-grow: 2;
+    }
+    .dc-work--year .dc-work--items > *:after{
+      content: ',';
+    }
+    .dc-work--year .dc-work--items > *:last-child:after{
+      content: '';  
+    }
+    .dc-external-link{
+      position: relative;
+      padding-right: .4em;
+    }
+    .dc-external-link:before{
+      content: '↗';
+      position: absolute;
+      font-size: 0.5em;
+      top: -.4em;
+      right: 0;
+    }
+    .dc-external-link:after{
+      position: absolute;
+      left: 100%;
+    }
+
+  .dc-now{
+    position: absolute;
+    top: auto;
+    bottom: 0;
+  }
+  .dc-now .dc-work--items{    
+    text-transform: unset;
+    display: flex;
+    white-space: nowrap;    
+  }
+  .dc-now .dc-work--items a{
+    text-align-last: justify;
+  
+  }
+  .dc-now .dc-work--items > *{
+    text-align: left;
+  }
+  .dc-now .dc-work--items > *:after{
+    content: '';
+  }
+
+.dc-item{
+  height: calc( 100% - 1.667rem );
+}
+
+.dc-worknav{
+  bottom: 0;
+  position: absolute;
+  left: .8rem;
+  right: 1rem;
+  text-transform: uppercase;
+}
+  .dc-worknav .current{
+    color: #FF0000;
+  }
+
+.dc-media{
+  height: calc(100% - 1.5rem);  
+}
+  .dc-media--list{
+    height: calc(100% - 5rem);
+    overflow: hidden;
+    position: relative;
+  }
+  .dc-media--list li{
+    height: 100%;
+    position: absolute;
+    background: #000000;
+    width: 100%;
+    top: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .dc-media--list li.active{
+    opacity: 1;
+    pointer-events: all;
+  }
+  .dc-media--list img{
+    width: 100%;
+    height: 100%;    
+    object-fit: contain;
+  }
+  .dc-media--list .info{
+    display: flex;
+    align-items: center;
+  }
+  .dc-media--list .info .info--text{
+    display: flex;
+    columns: 3;
+    column-gap: 1.8em;
+  }
+  .dc-media--list .info p{
+    break-after: always;
+    text-align: justify;
+  }
+
+  .dc-media--nav{
+    margin-top: 1.8rem;
+  }
+  .dc-media--nav ol{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+  }
+  .dc-media--nav ol li:hover,
+  .dc-media--nav ol li.active{
+    color: #FF0000;
+  }
+  .dc-media--nav ol li:after{
+    font-size: 1rem;
+    white-space: unset;
+    content: ',';
+  }
+  .dc-media--nav ol li:last-child:after{
+    content: '';
+  }
+  .dc-media--play,
+  .dc-media--link{
+    cursor: pointer;
+  }
+  .dc-media--play{
+    font-size: 0;
+    width: 2rem;
+  }
+    .dc-media--play:before{
+      position: absolute;
+      font-size: 1rem;
+      content: 'play';
+    }
+    .dc-media--play.playing:before{
+      content: 'pause';
+    }
+
+    @keyframes mediaplay{
+      0%{
+        opacity: 1;
+      }
+      50%{
+        opacity: 0;
+      }
+      100%{
+        opacity: 1;
+      }
+    }
+
+    .dc-media--play.playing{
+      color: #FF0000;
+      animation: mediaplay 1.6s infinite step-start;
+    }
+    .dc-media--play.playing:hover{
+      animation-play-state: paused;
+      opacity: 1 !important;
+    }
+
+  .dc-info{
+    font-size: 1.556rem; 
+    line-height: 1.429em;
+    overflow: hidden;
+    padding-bottom: 3.999em;    
+  }
+
+
+  .dc-bio{
+    text-align: justify;
+    text-align-last: justify;   
+    background:#000;
+    padding-bottom: 1.429em; 
+    position: relative;
+    z-index: 1;
+  }
+
+  .dc-cv{
+    width: 100%; 
+    margin-top: 0; /*1.429em;*/
+    overflow: scroll;    
+  }
+    .dc-cv.quantisedScroller{
+      height: auto;
+      overflow: hidden; 
+      position: relative;
+      cursor: none;
+    }
+    .dc-cv.quantisedScroller a{
+      cursor: none;
+    }
+    .dc-cv.quantisedScroller dl{
+      overflow: hidden;
+      position: relative;
+    }
+  .dc-cv--now{
+    color: #FF0000;
+  }
+  .dc-cv--title{ 
+    width: 20%;
+    float: left;
+    clear: both;
+    height: 1.429em;
+  }
+  .dc-cv--entry{
+    height: 1.429em;
+    text-align: justify;
+    text-align-last: justify;
+    padding: 0;
+    margin: 0;
+    width: 80%;    
+    display: flex;
+    justify-content: space-between;
+    float: right;
+    overflow: hidden;
+    position: relative;
+  }
+  .dc-cv--entry > a{
+    flex-grow: 2;
+    display: flex;
+    justify-content: space-between;
+  }
+  .dc-cv--entry:before{
+    position: absolute;    
+    content: '';
+    border-bottom: .12em dotted;
+    bottom: .27em;
+    left: 2rem;
+    right: 2rem;
+  }
+  .dc-cv--name{    
+    background: #000000;
+    z-index: 1;
+    padding-right: .2em;
+  }
+  
+  .dc-cv--location{
+    position: relative;
+    background: #000000;
+    z-index: 1;
+    padding-left: .2em;
+  }
+
+@keyframes outFrames{
+  0%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+
+.out1{
+  animation: outFrames 0 step-start forwards;
+}
+.out2{
+  animation: outFrames .5s .5s step-start forwards;
+}
+.out3{
+  animation: outFrames .5s .8s step-start forwards;
+}
+
+@media (max-width: 640px){
+  html, body{
+    padding: 0;
+  }
+  html{
+    //font-size: 12px;
+    font-size: 6px;
+  }
+
+  .dc-work{
+    
+  }
+  .dc-work--year{
+    display: block;
+  }
+  .dc-work--year .dc-work--items{
+    flex-direction: column;
+  }
+  .dc-now{
+    position: relative;
+  }
+
+  .dc-item,
+  .dc-media{
+    height: 100%;
+  }
+
+  .dc-sitenav{
+    display: none;
+  }
+  .dc-worknav{
+    display: block;
+  }
+  .dc-worknav a:not(.current){
+    display: none;
+  }
+}

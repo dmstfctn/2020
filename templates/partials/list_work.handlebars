@@ -1,0 +1,22 @@
+<ol class="dc-biglist dc-work" id="{{slug}}">
+{{#each contents}}
+  <li class="dc-biglist--item dc-work--year">
+    <h2>
+      {{this.name}}
+    </h2>
+    <div class="dc-work--items">
+    {{#each this.contents}}
+      <a 
+        href="{{#unless this.is_external }}/{{/unless}}{{this.url}}" 
+        {{#if this.is_external }}
+          target="_blank"
+          class="dc-external-link"
+        {{/if}}
+      >
+        {{this.name}}
+      </a>
+    {{/each}}
+    </div>
+  </li>
+{{/each}}
+</ol>
