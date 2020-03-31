@@ -1,0 +1,91 @@
+<article class="dc-item dc-item__{{pagetype}} dc-main-wrap" id="{{slug}}">
+  <section class="dc-item--info">
+    {{{data.info}}}
+  </section>
+  {{#each data.slideshows}}
+    <section class="dc-media dc-media__{{@key}}">
+      <ol class="dc-media--list">
+        {{#each slides}}  
+          {{#dc_isslideimage this}}
+            <li class="dc-media__image{{#if @first}} active{{/if}}">
+              {{#if @first}} 
+                <img src="{{this.content}}" data-src="{{this.content}}">
+              {{else}}
+                <img data-src="{{this.content}}">
+              {{/if}}
+            </li>
+          {{/dc_isslideimage}}
+          {{#dc_isslidetext this}}
+            <li class="dc-media__text{{#if @first}} active{{/if}}">
+              <div class="text">
+                {{{content}}}
+              </div>
+            </li>
+          {{/dc_isslidetext}}
+          {{#dc_isslideembed this}}
+            <li class="dc-media__embed{{#if @first}} active{{/if}}">
+              {{{content}}}
+            </li>
+          {{/dc_isslideembed}}
+          {{#dc_isslideaudio this}}
+            <li class="dc-media__audio{{#if @first}} active{{/if}}">
+              <audio src="{{content}}"></audio>
+            </li>
+          {{/dc_isslideaudio}}
+          {{#dc_isslidevideo this}}
+            <li class="dc-media__video{{#if @first}} active{{/if}}"></li>
+              <video src="{{content}}"></video>
+            </li>
+          {{/dc_isslidevideo}}       
+        {{/each}}
+        <li class="info">
+          <div class="text">
+            {{{../data.info}}}
+          </div>
+        </li>
+      </ol>
+      <nav class="dc-media--nav">
+        <ol>      
+          {{#each slides }}   
+          {{#dc_isslideimage this}}
+            <li {{#if @first}}class="active"{{/if}}></li>
+          {{/dc_isslideimage}}
+          {{#dc_isslidetext this}}
+            <li {{#if @first}}class="active"{{/if}}></li>
+          {{/dc_isslidetext}}
+          {{#dc_isslideembed this}}
+            <li {{#if @first}}class="active"{{/if}}></li>
+          {{/dc_isslideembed}}
+          {{#dc_isslideaudio this}}
+            <li class="dc-media__audio{{#if @first}} active{{/if}}">play</li>
+          {{/dc_isslideaudio}}
+          {{#dc_isslidevideo this}}
+            <li {{#if @first}}class="active"{{/if}}></li>
+          {{/dc_isslidevideo}}       
+          {{/each}}  
+          <li class="info">info</li>    
+        </ol>
+      </nav>
+    </section>
+  {{/each}}
+</article>
+<nav class="dc-sitenav dc-worknav"><!--
+--><a 
+    href="{{#unless prev.is_external}}/{{/unless}}{{prev.url}}"
+    {{#if prev.is_external}}target="_blank"{{/if}}
+  ><!--
+ --><span class="dctxt--date">{{prev.date}}</span><!--
+ -->{{prev.name}}<!--
+ --></a><!--
+--><a href="{{#unless is_external}}/{{/unless}}{{url}}" class="current"><!--
+ --><span class="dctxt--date">{{date}}</span><!--
+ -->{{name}}<!--
+--></a><!--
+--><a 
+    href="{{#unless next.is_external}}/{{/unless}}{{next.url}}" 
+    {{#if next.is_external}}target="_blank"{{/if}}
+  ><!--
+ --><span class="dctxt--date">{{next.date}}</span><!--
+ -->{{next.name}}<!--
+--></a><!--
+--></nav>

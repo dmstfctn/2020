@@ -1,6 +1,6 @@
 const chokidar = require('chokidar');
 const fs = require('fs');
-const http = require('http');
+const express = require('express');
 const path = require('path');
 const cp = require('child_process');
 
@@ -10,21 +10,9 @@ console.log( ' ---------------- SETUP ---------------- ')
 console.log( '1 - run build script at:', buildScript );
 console.log( '2 - run static server from', publicDir );
 
-const app = http.createServer((req,res) => {
-  res.writeHead( 200 );  
-  if (req.url === '/') req.url = '/index.html';
-  if( path.extname( req.url ) === '' ){
-    // assume directory
-    req.url += '/index.html';
-  }
-  let p = path.join( publicDir, req.url );  
-  const stream = fs.createReadStream( p );
-  stream.pipe(res);  
-  stream.on('error', () => {
-    console.log( 'SERVER:', p, 'does not exist');
-  });
-});
-app.listen( 8000 );
+const app = express();
+app.use(express.static('public'));
+app.listen( 8000, () => console.log('Dev Server on localhost:8000') );
 
 console.log( ' ---------------- SETUP ---------------- ')
 
@@ -48,6 +36,7 @@ chokidar.watch(
     './content',
     './assets',
     './templates',
+    './modules',
     './build.js',
     './package.json'
   ], 

@@ -2,6 +2,7 @@
   {{#each navigation}}
     <a href="#{{this.slug}}">{{this.name}}</a>
   {{/each}} 
+  <a href="/">info</a>
 </nav>
 {{#each navigation}}
   {{> (lookup . 'template') }}

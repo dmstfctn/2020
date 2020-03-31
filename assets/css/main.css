@@ -48,7 +48,7 @@ html{
   color: #FFFFFF;
 }
 body{
-  padding: .3em 1em .3em .8em;
+  /* padding: .3em 1em .3em .8em; */
   min-height: 100%;
 }
 
@@ -91,6 +91,7 @@ a{
   justify-content: space-between;
   line-height: 1;
   margin-bottom: 0.25rem;
+  padding: .3rem 1rem .3rem .8rem;
 }
 .dc-sitenav::before {
   content: '';
@@ -110,19 +111,29 @@ a{
     }
 
 .dc-navigation-item{
+  position: absolute;
+  width: 100%;
+  background: #000000;
+  z-index: 10;
   display: none;
+  padding: 0 1rem .3rem .8rem;
 }
-  html.dc-pagetype--home .dc-navigation-item#related-matters{
+  /* html.dc-pagetype--home .dc-navigation-item#related-matters{
     display: block;
-  }
+  } */
+
+.dc-main-wrap{
+  padding: 0 1rem .3rem .8rem;
+}
 
 .dc-work{
   font-size: 3.111rem;
   line-height: 1.142em;
-  padding: 0;
+  padding-top: 5.6rem;
   list-style-type: none;
-  margin: 5.6rem 0 0 0;
-
+  margin: 0 0 0 0;
+  height: calc(100% - 2.2rem);
+  box-sizing: border-box;
 }
   .dc-work--year{
     display: flex;
@@ -131,10 +142,7 @@ a{
   .dc-work--year h2{
     position: relative;
     font-size: 3.111rem;
-    top: .2rem;
-    /* font-family: "Oriya MN";
-    font-weight: normal;
-    letter-spacing: -.145em; */
+    top: .2rem;    
     font-family: 'Antique Olive Std', sans-serif;
     font-size: 0.85em;
     font-weight: normal; 
@@ -178,25 +186,19 @@ a{
       left: 100%;
     }
 
-  .dc-now{
+  .dc-biglist--now{
     position: absolute;
+    width: 98%;
     top: auto;
     bottom: 0;
-  }
-  .dc-now .dc-work--items{    
-    text-transform: unset;
-    display: flex;
-    white-space: nowrap;    
-  }
-  .dc-now .dc-work--items a{
+    text-align: justify;
     text-align-last: justify;
-  
+    white-space: nowrap;
   }
-  .dc-now .dc-work--items > *{
-    text-align: left;
-  }
-  .dc-now .dc-work--items > *:after{
-    content: '';
+  .dc-biglist--now a{
+    display: block;
+    width:100%;
+    box-sizing: border-box;
   }
 
 .dc-item{
@@ -206,19 +208,30 @@ a{
 .dc-worknav{
   bottom: 0;
   position: absolute;
-  left: .8rem;
-  right: 1rem;
+  
+  padding-left: 0;
+  padding-right: 0;
+  left: 1rem;
+  right: 0.8rem;
+  box-sizing: border-box;
   text-transform: uppercase;
+  display: flex;
 }
+  .dc-worknav a{
+    white-space: nowrap;
+    flex-shrink: 2;
+    text-overflow: clip;
+  }
   .dc-worknav .current{
     color: #FF0000;
   }
 
 .dc-media{
   height: calc(100% - 1.5rem);  
+  display: none;
 }
   .dc-media--list{
-    height: calc(100% - 5rem);
+    height: calc(100% - 6.8rem);
     overflow: hidden;
     position: relative;
   }
@@ -240,12 +253,14 @@ a{
     height: 100%;    
     object-fit: contain;
   }
-  .dc-media--list .info{
+  .dc-media--list .info,
+  .dc-media--list .dc-media__text{
     display: flex;
     align-items: center;
   }
-  .dc-media--list .info .info--text{
-    display: flex;
+  .dc-media--list .info .text,
+  .dc-media--list .dc-media__text .text{
+    width: 100%;
     columns: 3;
     column-gap: 1.8em;
   }
@@ -255,22 +270,30 @@ a{
   }
 
   .dc-media--nav{
-    margin-top: 1.8rem;
+    margin-top: 2rem;
   }
   .dc-media--nav ol{
-    list-style-type: none;
+    padding-left: 1.4rem;
+    list-style-type: upper-alpha;
     display: flex;
     justify-content: space-between;
+  }
+  .dc-media--nav ol li{
+    
+  }
+  .dc-media--nav ol li.info,
+  .dc-media--nav ol li.dc-media__audio{
+    list-style-type: none;
   }
   .dc-media--nav ol li:hover,
   .dc-media--nav ol li.active{
     color: #FF0000;
   }
-  .dc-media--nav ol li:after{
+  /* .dc-media--nav ol li:after{
     font-size: 1rem;
     white-space: unset;
     content: ',';
-  }
+  } */
   .dc-media--nav ol li:last-child:after{
     content: '';
   }
@@ -311,6 +334,32 @@ a{
       animation-play-state: paused;
       opacity: 1 !important;
     }
+
+  .dc-media__portrait{
+    display: block;
+  }
+  @media (orientation: landscape){
+    .dc-media__portrait{
+      display: none;
+    }
+    .dc-media__landscape{
+      display: block;
+    }
+  }
+
+    @media (min-width: 900px){
+      .dc-item--info{
+        display: none;
+      }
+      .dc-media__portrait,
+      .dc-media__landscape{
+        display: none;
+      }
+      .dc-media__main{
+        display: block;
+      }
+    }
+
 
   .dc-info{
     font-size: 1.556rem; 
@@ -414,7 +463,7 @@ a{
   animation: outFrames .5s .8s step-start forwards;
 }
 
-@media (max-width: 640px){
+@media (max-width: 900px){
   html, body{
     padding: 0;
   }

@@ -1,6 +1,8 @@
 const path = require('path')
 const fs = require('fs');
 
+const Config = require('../Config.js');
+
 const frontmatter = require('@github-docs/frontmatter')
 const markdown = require( 'markdown-it' )( 'commonmark', {
   html: true,
@@ -21,9 +23,9 @@ const H = {
       json = JSON.parse( json );
     } catch ( e ){
       if( e.errno === -2 ){
-        console.log( 'No json present at ', path );
+        Config.log( 'No json present at ', path );
       } else {
-        console.log( e );
+        Config.log( e );
       }
     }
     return json;
@@ -148,7 +150,7 @@ const H = {
             let slideshow = files.map( (item) => {
               return H.constructSlide( item, p, captions );
             });
-            projectData.slideshows[item] = slideshow;
+            projectData.slideshows[item] = {slides: slideshow};
           }             
         });
         data.contents[year].contents[project] = projectData;
@@ -159,9 +161,25 @@ const H = {
   }
 }
 
+const renderMarkdownAndProcess = ( md ) => {  
+  let rendered = markdown.render( md );
+  
+  /* TODO: need to wrap @ symbols like so:
+    
+      <span class="dctxt--at">@</span>
+
+    But avoid the ones in mailto: links for example
+    (i.e. only wrap ones that shoud appear in the text)
+    May need a DOM parser for this?
+
+    Maybe can use a plugin for markdown-it? 
+    https://github.com/markdown-it/markdown-it/blob/master/docs/architecture.md
+  */
+  return rendered;
+};
 
 
-let cv = require('./info/cv.js');
+const cv = require('./info/cv.js');
 let dissemination = []
 for( i in cv.entries ){
   let entry = cv.entries[i];
@@ -171,10 +189,8 @@ for( i in cv.entries ){
   }
 }
 
-
-
 module.exports = {
-  bio: markdown.render( fs.readFileSync( path.join( __dirname, 'info', 'bio.md') ).toString() ),
+  bio: renderMarkdownAndProcess( fs.readFileSync( path.join( __dirname, 'info', 'bio.md') ).toString() ),
   cv: cv,
   dissemination: dissemination,
   related_matters: H.readFolder( './related matters' ),
