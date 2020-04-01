@@ -27,10 +27,15 @@
           </dt>
           {{~#each this.contents~}}
           <!-- entries. entry: {{title}} -->
-          <dd class="dc-cv--entry{{#if now}} dc-cv--now{{/if}} dc-cv-type__{{type}}">
+          <dd class="dc-cv--entry{{#if now}} dc-cv--now{{/if}} dc-cv-type__{{type}}{{#if image}} dc-list-hoverimg{{/if}}">
             {{#if now}}<a href="{{url}}" class="dc-external-link" target="_blank">{{/if}}
               <div class="dc-cv--name">{{title}}</div>
               <div class="dc-cv--location">{{situation}}, {{location}}</div>
+              {{#unless now}}
+              {{#if image}}
+                <img src="{{lowRes}}" data-src="{{image}}"/>
+              {{/if}}       
+              {{/unless}}       
             {{#if now}}</a>{{/if}}
           </dd>
           {{/each}}

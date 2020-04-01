@@ -40,7 +40,7 @@ module.exports = {
       "situation": "BERGHAIN",        
       "location": "berlin",                 // not used by dissemination
       "url": "",                            // only used if now is true
-      "image": "",
+      "image": "echo-fx-berghain.jpg",
       "related": "ECHO FX"
     },
     {

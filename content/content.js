@@ -182,8 +182,10 @@ const renderMarkdownAndProcess = ( md ) => {
 const cv = require('./info/cv.js');
 let dissemination = []
 for( i in cv.entries ){
-  let entry = cv.entries[i];
-  entry.image = path.join( __dirname, 'info', 'img', entry.image );
+  let entry = cv.entries[i]
+  if( entry.image && entry.image !== "" ){
+    entry.image = path.join( __dirname, 'info', 'images', entry.image );
+  }
   if( entry.type === 'dissemination' ){
     dissemination.push( entry );
   }

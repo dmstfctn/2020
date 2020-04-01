@@ -26,7 +26,7 @@ const navigation = [
 /* render the template for the navigation, for use in other pages */
 const rendered_navigation = Templates.navigation( {navigation: navigation} );
 /* render the cv/bio for use on the home page */
-const rendered_info = Templates.info( infoSection );
+const rendered_info = Rendering.renderInfo( infoSection );
 
 /* home page / info page*/
 let render = {

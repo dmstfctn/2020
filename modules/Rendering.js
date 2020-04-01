@@ -79,6 +79,44 @@ const renderPage = ( pageData, index, partnerPages, rendered_navigation ) => {
   fs.writeFileSync( filePath, Templates.main( render ) );
 };
 
+const moveCvContent = ( cv ) => {
+  console.log( 'moveCVVONTENT()( ) () )(EGINOIGN$% $% $ $^ $^ $^ %^');
+  console.log( cv );
+  const cvContentDestination = path.join( Config.paths.public, 'info', 'content' );
+  const newSrcPath = path.join( 'info', 'content' );
+  /* ensure the destination exists */
+  fs.mkdirSync( cvContentDestination, {recursive: true} );
+  cv.forEach( ( year ) => {
+    for( let i in year.contents ){
+      let type = year.contents[i];
+      for( j in type.contents ){
+        let entry = type.contents[j];
+        if( !entry.image ){
+          return;
+        }
+        const originalFilePath = entry.image;
+        const filename = path.basename( entry.image );    
+        const newFilePath = path.join( cvContentDestination, filename );
+        const newSrcAttr = path.join( newSrcPath, filename );
+        const lowResFilename = 'tiny.' + filename;
+        const lowResSrcAttr = path.join( newSrcPath, lowResFilename );
+        const lowResPath = path.join( cvContentDestination, lowResFilename );
+        createLowResAndSave( originalFilePath, lowResPath );  
+        /* copy the file */
+        fs.copyFileSync( originalFilePath, newFilePath );
+        entry.lowRes = lowResSrcAttr;
+        entry.image = newSrcAttr;
+      }
+    }
+  });
+}
+
+const renderInfo = ( data ) => {
+  moveCvContent( data.contents.cv );
+  return Templates.info( data );
+}
+
 module.exports = {
-  renderPage
+  renderPage,
+  renderInfo
 }

@@ -86,6 +86,19 @@ $mediaNav.forEach(( $n, index ) => {
   }
 });
 
+/* hover items in CV & dissemination */
+let $hoverImages = document.querySelectorAll( '.dc-list-hoverimg' );
+$hoverImages.forEach( ( $hoverImg ) => {
+  $hoverImg.addEventListener( 'mouseover', ( e ) => {
+    let $img = $hoverImg.querySelector('img');
+    $img.addEventListener('load', () => {
+      $img.classList.add('loaded');
+    }, {once: true});
+    $img.src = $img.getAttribute( 'data-src' );
+  });
+});
+
+/* top menu 'dropdowns' */
 let $sitenavDropdownLinks = document.querySelectorAll('.dc-sitenav a[href^="#"]');
 let $sitenavDropdowns = document.querySelectorAll('.dc-navigation-item');
 $sitenavDropdownLinks.forEach( ($link ) => {
@@ -93,9 +106,20 @@ $sitenavDropdownLinks.forEach( ($link ) => {
     e.preventDefault();
     let target = $link.getAttribute('href');
     let $menu = document.querySelector( target );
+    let deactivate = false;
+    if( $link.classList.contains('active') ){
+      deactivate = true;
+    }
+    $link.classList.add( 'active' );
+    $sitenavDropdownLinks.forEach( ( $dropdownLink ) => {
+      $dropdownLink.classList.remove( 'active' );
+    });
     $sitenavDropdowns.forEach( ( $dropdown ) => {
       $dropdown.style.display = 'none';
     });
-    $menu.style.display = 'block';
+    if( !deactivate ){
+      $link.classList.add( 'active' );
+      $menu.style.display = 'block';
+    }
   });
 });
