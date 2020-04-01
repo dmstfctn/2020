@@ -1,0 +1,33 @@
+<div class="dc-biglist dc-work dc-navigation-item" id="{{slug}}">
+<ol>
+{{#each contents}}
+  <li class="dc-biglist--item dc-work--year">
+    <h2>
+      {{this.name}}
+    </h2>
+    <div class="dc-work--items">
+    {{#each this.contents}}
+      <a 
+        href="{{#unless this.is_external }}/{{/unless}}{{this.url}}" 
+        {{#if this.is_external }}
+          target="_blank"
+          class="dc-external-link"
+        {{/if}}
+      >
+        {{~this.name~}}
+      </a>
+    {{/each}}
+    </div>
+  </li>
+{{/each}}
+</ol>
+{{#if now}}
+  <div class="dc-biglist--now dc-work--year">
+    <a href="{{now.url}}" class="dc-external-link" target="_blank">
+      <h2 class="dctxt--date dc-cv--now">now</h2><!--
+   -->({{now.type}} <span class="dctxt--date">{{now.date}}</span>)
+      {{now.title}} {{now.situation}}, {{now.location}}
+    </a>
+  </div>
+{{/if}}
+</div>

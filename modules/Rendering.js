@@ -79,9 +79,7 @@ const renderPage = ( pageData, index, partnerPages, rendered_navigation ) => {
   fs.writeFileSync( filePath, Templates.main( render ) );
 };
 
-const moveCvContent = ( cv ) => {
-  console.log( 'moveCVVONTENT()( ) () )(EGINOIGN$% $% $ $^ $^ $^ %^');
-  console.log( cv );
+const moveCvContent = ( cv ) => {  
   const cvContentDestination = path.join( Config.paths.public, 'info', 'content' );
   const newSrcPath = path.join( 'info', 'content' );
   /* ensure the destination exists */
@@ -91,8 +89,8 @@ const moveCvContent = ( cv ) => {
       let type = year.contents[i];
       for( j in type.contents ){
         let entry = type.contents[j];
-        if( !entry.image ){
-          return;
+        if( !entry.image ){          
+          continue;
         }
         const originalFilePath = entry.image;
         const filename = path.basename( entry.image );    

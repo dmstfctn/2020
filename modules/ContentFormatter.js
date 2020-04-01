@@ -93,7 +93,7 @@ const createDissemination = ( dissemination ) => {
     name: 'dissemination',
     slug: createSlug('Dissemination'),
     template: 'list_dissemination',
-    contents: list
+    contents: dissemination
   }
 };
 
@@ -112,28 +112,21 @@ const structureCV = ( cv ) => {
   years.forEach( ( year ) => {
     const entries = cv.entries.filter( e => e.year === year );
     let contents = {};    
-    entries.forEach( (entry) => {
+    entries.forEach( (entry) => {      
       if( !contents[entry.type] ){
-        if( entry.type !== 'dissemination'  ){
-          typeNotDissemination = entry.type;
-        }
         contents[entry.type] = {
-          type: typeNotDissemination,
+          type: entry.type,
           contents: []
         };
-        
       }
-  
-    //contents[entry.type].type = typeNotDissemination;
       contents[entry.type].contents.push( entry );
-    })
+    });
     structure.push({
       'year': year,
       'contents': contents
     });
   });
-  console.log( 'CV: ' )
-  console.log( JSON.stringify(structure, null, ' ') );
+
   return structure;
 }
 

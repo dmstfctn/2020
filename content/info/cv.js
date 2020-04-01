@@ -36,7 +36,7 @@ module.exports = {
       "year": "2020",
       "type": "live",                       // solo, group, live, screening, talk, dissemination
       "date": "29.1",
-      "title": "CTM LIMINAL x TRANSMEDIALE 2020",       
+      "title": "CTM LIMINAL x TRANSMEDIALE 2020",
       "situation": "BERGHAIN",        
       "location": "berlin",                 // not used by dissemination
       "url": "",                            // only used if now is true
@@ -158,5 +158,17 @@ module.exports = {
     },
     /* ** 2019 ** talk ************** */
     /* ** 2019 ** dissemination ***** */
+    {
+      "now": false,
+      "year": "2019",
+      "type": "dissemination",
+      "date": "",
+      "title": "Flash Demons",
+      "situation": "MILLE PLATEAUX",
+      "location": "",
+      "url": "https://forceincmilleplateaux.bandcamp.com/album/flash-demons",
+      "image": "flash-demons.jpg",
+      "related": ["FLASH", "Demons"]
+    }
  ] 
 };
