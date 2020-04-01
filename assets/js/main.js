@@ -57,6 +57,9 @@ $mediaNav.forEach(( $n, index ) => {
       } else {
         /* this should be the one that is linked to the hovered item */        
         if( $img ){
+          $img.addEventListener('load', () => {
+            $img.classList.add('loaded');
+          }, {once: true});
           $img.src = $img.getAttribute( 'data-src' );
         }
         if( $video && $video.muted ){

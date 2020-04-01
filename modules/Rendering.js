@@ -1,26 +1,51 @@
 const fs = require('fs-extra');
 const path = require('path');
 
+const Jimp = require('jimp');
+
 const Config = require('../Config.js');
 
 const Templates = require('./Templating.js')();
 
+const createLowResAndSave = (imagePath, savePath) => {  
+  Jimp.read( imagePath).then( img => {
+    img
+      .scaleToFit(100,100)
+      //.blur( 1 )
+      //.resize( 200, Jimp.AUTO ) //alt
+      .write( savePath );
+
+  })
+  .catch( err => {
+    Config.log( 'Error Loading Image in CreateLowResAndSave() in Rendering.js ', err );
+  })
+};
+
 const moveSlideshowContent = ( pagePath, pageData ) => {
+  const subdirName = 'content';
   for( let name in pageData.data.slideshows){
     let slideshow = pageData.data.slideshows[ name ];
     slideshow.slides.forEach( (slide) => {
       if( slide.type === 'image' || slide.type === 'video' || slide.type === 'audio' ){
-        let originalFilePath = slide.content;
-        let filename = path.basename( slide.content );
-        let newDirPath = path.join( pagePath, 'images', name ); 
-        let newFilePath = path.join( newDirPath, filename );
-        let newSrcAttr = path.join( 'images', name, filename );
+        const originalFilePath = slide.content;
+        const filename = path.basename( slide.content );
+        const newDirPath = path.join( pagePath, subdirName, name ); 
+        const newFilePath = path.join( newDirPath, filename );
+        const newSrcAttr = path.join( subdirName, name, filename );
         /* ensure the new path exists */
         fs.mkdirSync( newDirPath, {recursive: true} );
         /* copy the file */
         fs.copyFileSync( originalFilePath, newFilePath );
         /* update the 'content' -> this becomes the src of the img/audio/video element*/
         slide.content = newSrcAttr;
+        if( slide.type === 'image' ){
+          const lowResFilename = 'tiny.' + filename;
+          const lowResPath = path.join( newDirPath, lowResFilename );
+          const lowResSrcAttr = path.join( subdirName, name, lowResFilename )
+          createLowResAndSave( originalFilePath, lowResPath );
+          slide.lowRes = lowResSrcAttr;
+          slide.isImage = true;
+        }        
       }
     });
   }

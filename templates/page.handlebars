@@ -9,9 +9,9 @@
           {{#dc_isslideimage this}}
             <li class="dc-media__image{{#if @first}} active{{/if}}">
               {{#if @first}} 
-                <img src="{{this.content}}" data-src="{{this.content}}">
+                <img src="{{this.content}}" data-src="{{this.content}}" class="loaded">
               {{else}}
-                <img data-src="{{this.content}}">
+                <img src="{{this.lowRes}}" data-src="{{this.content}}">
               {{/if}}
             </li>
           {{/dc_isslideimage}}

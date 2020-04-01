@@ -242,12 +242,20 @@ a{
     width: 100%;
     top: 0;
     opacity: 0;
-    pointer-events: none;
+    pointer-events: none;    
   }
+  .dc-media--list li img{
+    transform: translateZ(0);
+    filter: blur( 5px );
+  }
+    .dc-media--list li img.loaded{
+      filter: blur(0px);
+    }
   .dc-media--list li.active{
     opacity: 1;
     pointer-events: all;
   }
+  
   .dc-media--list img{
     width: 100%;
     height: 100%;    
