@@ -4,7 +4,7 @@ let $body = document.body;
 /* list page links transition */
 let $sitenav = document.querySelector( '.dc-sitenav' );
 let $dcNow = document.querySelector( '.dc-now' );
-let $workLinks = document.querySelectorAll('.dc-work--items a');
+let $workLinks = document.querySelectorAll('.dc-work--items a:not(.dc-external-link)');
 let $workDates = document.querySelectorAll('.dc-work--year h2');
 
 $workLinks.forEach( ( $link, index ) => {

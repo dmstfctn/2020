@@ -203,6 +203,34 @@ a{
     box-sizing: border-box;
   }
 
+.dc-dissemination{
+
+}
+  .dc-dissemination--info{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+  }
+  .dc-dissemination--info:before{
+    position: absolute;    
+    content: '';
+    border-bottom: .1em dotted;
+    bottom: 0.17em;
+    left: 2rem;
+    right: 2rem;
+  }
+  .dc-dissemination--name,
+  .dc-dissemination--location{
+    background: #000000;
+    z-index: 1;
+  } 
+    .dc-dissemination--name{
+      padding-right: .2em;
+    }
+    .dc-dissemination--location{
+      padding-left: .2em;
+    }
+
 .dc-item{
   height: calc( 100% - 1.667rem );
 }
@@ -456,23 +484,28 @@ a{
     z-index: 1;
     padding-left: .2em;
   }
-  .dc-cv--entry img{
-    position: absolute;
-    pointer-events: none;
-    left: 50%;
-    top: 0;
-    transform: translateX( -50% );
-    width: 33%;
-    opacity: 0;
-    z-index: 10;
+
+
+.dc-list-hoverimg{
+  position: relative;
+}
+.dc-list-hoverimg img{
+  position: absolute;
+  pointer-events: none;
+  left: 50%;
+  top: -2rem;
+  transform: translateX( -50% );
+  width: 40%;
+  opacity: 0;
+  z-index: 10;
+}
+  .dc-list-hoverimg:hover{
+    overflow: visible;
+    z-index: 99;
   }
-    .dc-cv--entry:hover{
-      overflow: visible;
-      z-index: 99;
+  .dc-list-hoverimg:hover img{
+      opacity: 1;
     }
-      .dc-cv--entry:hover img{
-        opacity: 1;
-      }
 
 @keyframes outFrames{
   0%{
