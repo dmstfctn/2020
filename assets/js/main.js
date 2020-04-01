@@ -1,4 +1,4 @@
-const BREAKPOINT = 640;
+const BREAKPOINT = 900;
 let $body = document.body;
 
 /* list page links transition */
@@ -28,10 +28,25 @@ $workLinks.forEach( ( $link, index ) => {
 });
 
 /* hover items in project page */
+const loadSlideImage = function( $slide ){
+  const $img = $slide.querySelector('img');
+  if( $img ){
+    $img.addEventListener('load', () => {
+      $img.classList.add('loaded');
+    }, {once: true});
+    $img.src = $img.getAttribute( 'data-src' );
+  }
+}
 let $mediaNav = document.querySelectorAll('.dc-media--nav li:not(.dc-media--link)');
 let $mediaList = document.querySelectorAll('.dc-media--list li');
 
 let $mediaPlay = document.querySelectorAll('.dc-media--nav .dc-media--play');
+
+if( window.innerWidth > BREAKPOINT ){
+  $mediaList.forEach(( $m, mediaIndex ) => {
+    loadSlideImage( $m );
+  });
+}
 
 $mediaNav.forEach(( $n, index ) => {
   $n.addEventListener( 'mouseover', () => {
@@ -56,12 +71,7 @@ $mediaNav.forEach(( $n, index ) => {
         }
       } else {
         /* this should be the one that is linked to the hovered item */        
-        if( $img ){
-          $img.addEventListener('load', () => {
-            $img.classList.add('loaded');
-          }, {once: true});
-          $img.src = $img.getAttribute( 'data-src' );
-        }
+        loadSlideImage( $m );
         if( $video && $video.muted ){
           $video.play();
         }
