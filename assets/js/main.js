@@ -1,13 +1,20 @@
 const BREAKPOINT = 900;
 let $body = document.body;
 
+const INIT_PAGETYPE = document.querySelector('html').getAttribute('data-dc-pagetype');
+let prev_pagetype = INIT_PAGETYPE;
+
 /* list page links transition */
 let $sitenav = document.querySelector( '.dc-sitenav' );
-let $dcNow = document.querySelector( '.dc-now' );
-let $workLinks = document.querySelectorAll('.dc-work--items a:not(.dc-external-link)');
+let $dcNow = document.querySelector( '.dc-biglist--now' );
+let $workLinks = document.querySelectorAll('.dc-work--items a');
 let $workDates = document.querySelectorAll('.dc-work--year h2');
 
 $workLinks.forEach( ( $link, index ) => {
+  const is_external = $link.classList.contains('dc-external-link');
+  if( is_external ){
+    return;
+  }
   $link.dataset.href = $link.href;
   $link.href = '';
   $link.addEventListener('click', (e) => {
@@ -111,12 +118,15 @@ $hoverImages.forEach( ( $hoverImg ) => {
 /* top menu 'dropdowns' */
 let $sitenavDropdownLinks = document.querySelectorAll('.dc-sitenav a[href^="#"]');
 let $sitenavDropdowns = document.querySelectorAll('.dc-navigation-item');
+
+
 $sitenavDropdownLinks.forEach( ($link ) => {
   $link.addEventListener('click', (e) => {
     e.preventDefault();
     let target = $link.getAttribute('href');
     let $menu = document.querySelector( target );
     let deactivate = false;
+    let pagetype = $menu.getAttribute('data-pagetype');
     if( $link.classList.contains('active') ){
       deactivate = true;
     }
@@ -128,8 +138,11 @@ $sitenavDropdownLinks.forEach( ($link ) => {
       $dropdown.style.display = 'none';
     });
     if( !deactivate ){
+      document.querySelector('html').setAttribute('data-dc-pagetype', pagetype );
       $link.classList.add( 'active' );
       $menu.style.display = 'block';
+    } else {
+      document.querySelector('html').setAttribute('data-dc-pagetype', INIT_PAGETYPE );
     }
   });
 });

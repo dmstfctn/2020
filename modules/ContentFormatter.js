@@ -51,6 +51,7 @@ const createRelatedMatters = ( related_matters, cv ) => {
     name: 'related matters',
     slug: createSlug('Related Matters'),
     template: 'list_work',
+    pagetype: 'relatedmatter',
     contents: list,
     now: now
   };
@@ -82,6 +83,7 @@ const createFocusGroups = ( focus_groups ) => {
   return {
     name: 'focus groups',
     slug: createSlug('Focus Groups'),
+    pagetype: 'focusgroup',
     template: 'list_work',
     contents: list
   };
@@ -93,6 +95,7 @@ const createDissemination = ( dissemination ) => {
     name: 'dissemination',
     slug: createSlug('Dissemination'),
     template: 'list_dissemination',
+    pagetype: 'dissemination',
     contents: dissemination
   }
 };

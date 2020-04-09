@@ -120,7 +120,7 @@ a{
   display: none;
   padding: 0 1rem .3rem .8rem;
 }
-  /* html.dc-pagetype--home .dc-navigation-item#related-matters{
+  /*html[data-dc-pagetype="home" .dc-navigation-item#related-matters{
     display: block;
   } */
 
@@ -525,6 +525,56 @@ a{
 .out3{
   animation: outFrames .5s .8s step-start forwards;
 }
+
+/* FOCUS GROUPS */
+/*
+  html[data-dc-pagetype="focusgroup"]
+    set by the template
+  
+  html.dc-pagetype--focusgroup
+    set by the dropdown menu selection
+
+  .dc-navigation-item#focus-groups
+    conditional styling within the dropdown menu
+*/
+
+html[data-dc-pagetype="focusgroup"],
+.dc-navigation-item#focus-groups{
+  background: #FF0000;
+  color: #000000;
+}
+html[data-dc-pagetype="focusgroup"] .dc-sitenav{
+  color: #000000;
+}
+  html[data-dc-pagetype="focusgroup"] .dc-sitenav a.active{
+    color: #FFFFFF;
+  }
+html[data-dc-pagetype="focusgroup"] .dc-sitenav::before{
+  background: #FF0000;
+}
+html[data-dc-pagetype="focusgroup"] .dc-work--year h2,
+.dc-navigation-item#focus-groups .dc-work--year h2{
+  color: #FFFFFF;
+}
+html[data-dc-pagetype="focusgroup"] a:hover,
+.dc-navigation-item#focus-groups a:hover{
+  color: #FFFFFF
+}
+
+html[data-dc-pagetype="focusgroup"] .dc-worknav .current,
+.dc-navigation-item#focus-groups .dc-worknav .current{
+  color: #FFFFFF;
+}
+html[data-dc-pagetype="focusgroup"] .dc-media--list li{
+  background: #FF0000;
+}
+html[data-dc-pagetype="focusgroup"] .dc-media--nav ol li:hover,
+html[data-dc-pagetype="focusgroup"] .dc-media--nav ol li.active{
+  color: #FFFFFF;
+}
+
+
+/* SMALL SITE */
 
 @media (max-width: 900px){
   html, body{
