@@ -530,12 +530,10 @@ a{
 CONDITIONAL THINGS
 ************************************** */
 
-/* CV dissemination */
-@media (min-width: 901px){
-  .dc-cv-type__dissemination,
-  .dc-cv--title__dissemination{
-    display: none;
-  }
+/* CV DISSEMINATION */
+.dc-cv-type__dissemination,
+.dc-cv--title__dissemination{
+  display: none;
 }
 
 /* FOCUS GROUPS */
@@ -587,7 +585,6 @@ html[data-dc-pagetype="focusgroup"] .dc-media--nav ol li.active{
 
 
 /* SMALL SITE */
-
 @media (max-width: 900px){
   html, body{
     padding: 0;
@@ -623,5 +620,10 @@ html[data-dc-pagetype="focusgroup"] .dc-media--nav ol li.active{
   }
   .dc-worknav a:not(.current){
     display: none;
+  }
+
+  .dc-cv-type__dissemination,
+  .dc-cv--title__dissemination{
+    display: initial;
   }
 }
