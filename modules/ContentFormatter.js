@@ -205,7 +205,7 @@ const createDissemination = ( dissemination ) => {
 const structureCV = ( cv ) => {
   /* paths / src for moving images */
   const destinationPath = path.join( Config.paths.public, 'info', 'content' );
-  const src = path.join( 'info', 'content' );
+  const src =  path.join( 'info', 'content' );
 
   let structure = [];
   const years = cv.entries
