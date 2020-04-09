@@ -526,6 +526,18 @@ a{
   animation: outFrames .5s .8s step-start forwards;
 }
 
+/* ************************************* 
+CONDITIONAL THINGS
+************************************** */
+
+/* CV dissemination */
+@media (min-width: 901px){
+  .dc-cv-type__dissemination,
+  .dc-cv--title__dissemination{
+    display: none;
+  }
+}
+
 /* FOCUS GROUPS */
 /*
   html[data-dc-pagetype="focusgroup"]

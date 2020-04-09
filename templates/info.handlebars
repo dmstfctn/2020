@@ -8,7 +8,7 @@
       <!-- years. year: {{@key}} -->
         {{~#each this.contents~}}
         <!-- types. type: {{@key}} -->
-          <dt class="dc-cv--title{{#if this.contents.[0].now}} dc-cv--now{{/if}}">            
+          <dt class="dc-cv--title{{#if this.contents.[0].now}} dc-cv--now{{/if}} dc-cv--title__{{type}}">            
             {{~#unless @index~}}
               <span class="dctxt--date">{{../year}}</span>            
             {{/unless}}
