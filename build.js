@@ -5,12 +5,15 @@ const Config = require('./Config.js');
 const Templates = require('./modules/Templating.js')();
 const Formatter = require('./modules/ContentFormatter.js');
 const Rendering = require('./modules/Rendering.js');
+/* get the content. ContentCollector collates & formats from the '/content' directory */
+const ContentCollector = require('./modules/ContentCollector.js')
+const Content = ContentCollector( path.join( __dirname, 'content' ) );
 
 /* set up our output structure */
 fs.mkdirSync( Config.paths.public_data, {recursive: true} );
 
-/* get the content. content.js collates & formats from the '/content' directory */
-const Content = require('./content/content.js');
+
+
 const relatedMatters = Formatter.createRelatedMatters( Content.related_matters, Content.cv );
 const focusGroups = Formatter.createFocusGroups( Content.focus_groups );
 const dissemination = Formatter.createDissemination( Content.dissemination );
