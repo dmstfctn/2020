@@ -33,7 +33,7 @@
               <div class="dc-cv--location">{{situation}}{{~#if location~}}, {{/if}}{{location}}</div>
               {{#unless now}}
               {{#if image}}
-                <img src="{{lowRes}}" data-src="{{image}}"/>
+                <img src="{{image.lowSrc}}" data-src="{{image.src}}"/>
               {{/if}}       
               {{/unless}}       
             {{#if now}}</a>{{/if}}

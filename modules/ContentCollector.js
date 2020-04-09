@@ -206,11 +206,3 @@ const ContentCollector = function( contentPath ){
 }
 
 module.exports = ContentCollector;
-
-// {
-//   bio: renderMarkdownAndProcess( fs.readFileSync( path.join( __dirname, '..', '', 'info', 'bio.md' ) ).toString() ),
-//   cv: cv,
-//   dissemination: dissemination,
-//   related_matters: H.readFolder( '../content/related matters' ),
-//   focus_groups: H.readFolder( '../content/focus groups' )
-// };

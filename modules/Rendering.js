@@ -21,30 +21,17 @@ const createLowResAndSave = (imagePath, savePath) => {
   })
 };
 
-const moveSlideshowContent = ( pagePath, pageData ) => {
-  const subdirName = 'content';
-  for( let name in pageData.data.slideshows){
-    let slideshow = pageData.data.slideshows[ name ];
+const moveSlideshowContent = ( slideshows ) => {
+  for( let name in slideshows){
+    let slideshow = slideshows[ name ];
     slideshow.slides.forEach( (slide) => {
       if( slide.type === 'image' || slide.type === 'video' || slide.type === 'audio' ){
-        const originalFilePath = slide.content;
-        const filename = path.basename( slide.content );
-        const newDirPath = path.join( pagePath, subdirName, name ); 
-        const newFilePath = path.join( newDirPath, filename );
-        const newSrcAttr = path.join( subdirName, name, filename );
-        /* ensure the new path exists */
-        fs.mkdirSync( newDirPath, {recursive: true} );
+        /* endure the destination exists */
+        fs.mkdirSync( path.dirname(slide.content.newPath), {recursive: true} );
         /* copy the file */
-        fs.copyFileSync( originalFilePath, newFilePath );
-        /* update the 'content' -> this becomes the src of the img/audio/video element*/
-        slide.content = newSrcAttr;
-        if( slide.type === 'image' ){
-          const lowResFilename = 'tiny.' + filename;
-          const lowResPath = path.join( newDirPath, lowResFilename );
-          const lowResSrcAttr = path.join( subdirName, name, lowResFilename )
-          createLowResAndSave( originalFilePath, lowResPath );
-          slide.lowRes = lowResSrcAttr;
-          slide.isImage = true;
+        fs.copyFileSync( slide.content.originalPath, slide.content.newPath );
+        if( slide.type === 'image' ){         
+          createLowResAndSave( slide.content.originalPath, slide.content.lowPath );          
         }        
       }
     });
@@ -64,7 +51,7 @@ const renderPage = ( pageData, index, partnerPages, rendered_navigation ) => {
     pageData.next = partnerPages[0];
   }
   let p = path.join( Config.paths.public, pageData.url );  
-  moveSlideshowContent( p, pageData );
+  moveSlideshowContent( pageData.data.slideshows );
 
   let rendered_project = Templates.page( pageData );
   let filePath = path.join( p, 'index.html' );
@@ -92,18 +79,9 @@ const moveCvContent = ( cv ) => {
         if( !entry.image ){          
           continue;
         }
-        const originalFilePath = entry.image;
-        const filename = path.basename( entry.image );    
-        const newFilePath = path.join( cvContentDestination, filename );
-        const newSrcAttr = path.join( newSrcPath, filename );
-        const lowResFilename = 'tiny.' + filename;
-        const lowResSrcAttr = path.join( newSrcPath, lowResFilename );
-        const lowResPath = path.join( cvContentDestination, lowResFilename );
-        createLowResAndSave( originalFilePath, lowResPath );  
-        /* copy the file */
-        fs.copyFileSync( originalFilePath, newFilePath );
-        entry.lowRes = lowResSrcAttr;
-        entry.image = newSrcAttr;
+
+        fs.copyFileSync( entry.image.originalPath, entry.image.newPath );
+        createLowResAndSave( entry.image.originalPath, entry.image.lowPath );
       }
     }
   });

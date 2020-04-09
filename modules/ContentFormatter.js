@@ -1,6 +1,6 @@
 const fs = require('fs-extra');
 const path = require('path');
-
+const Config = require('../Config.js');
 
 const createSlug = ( name ) => {
   return name.toLowerCase().replace( /[^\w\d]/g, '-' );
@@ -16,21 +16,109 @@ const createURLPath = ( name, section ) => {
   return url;
 }
 
+/*
+  prepareFile( originalPath, destinationPath, src ):
+      from a source path, e.g 'content/related matters/1.2019/1.ECHO FX/landscape/1.image.jpg' 
+      and a destination path e.g. 'public/related-matters/echo-fx/content/landscape/'
+      create: 
+        {
+          originalPath: 'content/related matters/1.2019/1.ECHO FX/landscape/1.image.jpg',
+          newPath: 'public/related-matters/echo-fx/content/landscape/1.image.jpg',
+          src: 'content/landscape/1.image.jpg'
+        }
+    */
+
+const prepareFile = (  original, destinationPath, src ) => {
+  const filename = path.basename( original );
+  const prepared = {
+    originalPath: original,
+    newPath: path.join( destinationPath, filename ),
+    src: path.join( src, filename ),
+    processed: false
+  };
+  return prepared;
+}
+
+/* 
+  prepareImage( originalPath, destinationPath, destinationSrc ):
+      from a source path, e.g 'content/related matters/1.2019/1.ECHO FX/landscape/1.image.jpg' 
+      and a destination path e.g. 'public/related-matters/echo-fx/content/landscape/'
+      create: 
+        {
+          originalPath: 'content/related matters/1.2019/1.ECHO FX/landscape/1.image.jpg',
+          newPath: 'public/related-matters/echo-fx/content/landscape/1.image.jpg',
+          src: 'content/landscape/1.image.jpg',
+          lowPath: 'public/related-matters/echo-fx/content/landscape/tiny.1.image.jpg',
+          lowSrc: 'content/landscape/tiny.1.image.jpg'.
+          isImage: true,
+          processed: false /// set to true once file has been moved, sized, etc
+        }
+    */
+const prepareImage = ( original, destinationPath, src ) => {
+  if( typeof original === 'object' ){
+    return original;
+  }
+  const filename = path.basename( original );
+  const lowFilename = 'tiny.' + filename;
+  const prepared = {
+    originalPath: original,
+    newPath: path.join( destinationPath, filename ),
+    src: path.join( src, filename ),
+    lowPath: path.join( destinationPath, lowFilename ),
+    lowSrc: path.join( src, lowFilename ),
+    isImage: true,
+    processed: false
+  };
+  return prepared;
+}
+
+const prepareSlide = ( slide, pageName, slideshowName, section ) => {
+  const destinationPath = path.join( Config.paths.public, section, pageName, 'content', slideshowName );
+  const src = path.join( 'content', slideshowName );
+  if( slide.type === 'image' ){    
+    // move and resize
+    slide.content = prepareImage( slide.content, destinationPath, src );
+    return slide;
+  }
+  if( slide.type === 'video' || slide.type === 'audio' ){
+    // just move
+    slide.content = prepareFile( slide.content, destinationPath, src );
+    return slide;
+  }      
+  return slide;
+}
+
+const prepareSlideshow = ( slideshow, pageName, slideshowName, section ) => {
+  for( let i in slideshow.slides ){
+    slideshow.slides[i] = prepareSlide( slideshow.slides[i], pageName, slideshowName, section );
+  }
+  return slideshow;
+}
+
+
+
 const createRelatedMatters = ( related_matters, cv ) => {
+  const section_name = 'related matters';
+  const section_slug = createSlug('Related Matters');
+
   let list = [];
   let now = false;
-  for( i in related_matters.contents ){
+  for( let i in related_matters.contents ){
     let item = related_matters.contents[i];
     let line = {
       name: item.name,
       contents: []
     };
-    for( j in item.contents ){
-      let sub_item = item.contents[j];
+    for( let j in item.contents ){
+      let sub_item = item.contents[j];           
+      for( slideshowName in sub_item.slideshows ){
+        let slideshow = sub_item.slideshows[ slideshowName ];
+        sub_item.slideshows[ slideshowName ] = prepareSlideshow( slideshow, createSlug(sub_item.name), createSlug(slideshowName), section_slug  );
+      }
       line.contents.push({
         name: sub_item.name,
         date: item.name,
-        pagetype: 'relatedmatter',
+        pagetype: 'relatedmatter',        
         slug: createSlug( sub_item.name ),
         url: (sub_item.data.link) ? sub_item.data.link : createURLPath( sub_item.name, 'related matters' ),
         is_external: !!sub_item.data.link,
@@ -48,8 +136,8 @@ const createRelatedMatters = ( related_matters, cv ) => {
   }
 
   return {
-    name: 'related matters',
-    slug: createSlug('Related Matters'),
+    name: section_name,
+    slug: section_slug,
     template: 'list_work',
     pagetype: 'relatedmatter',
     contents: list,
@@ -58,11 +146,18 @@ const createRelatedMatters = ( related_matters, cv ) => {
 }
 
 const createFocusGroups = ( focus_groups ) => {
+  const section_name = 'focus groups';
+  const section_slug = createSlug('Focus Groups');
+
   let list = [];
-  for( i in focus_groups.contents ){
+  for( let i in focus_groups.contents ){
     let item = focus_groups.contents[i];
-    for( j in item.contents ){
+    for( let j in item.contents ){
       let sub_item = item.contents[j];
+      for( slideshowName in sub_item.slideshows ){
+        let slideshow = sub_item.slideshows[ slideshowName ];
+        sub_item.slideshows[ slideshowName ] = prepareSlideshow( slideshow, createSlug(sub_item.name), createSlug(slideshowName), section_slug  );
+      }
       let line = {
         name: item.name,
         contents: [
@@ -81,8 +176,8 @@ const createFocusGroups = ( focus_groups ) => {
     }
   }
   return {
-    name: 'focus groups',
-    slug: createSlug('Focus Groups'),
+    name: section_name,
+    slug: section_slug,
     pagetype: 'focusgroup',
     template: 'list_work',
     contents: list
@@ -90,10 +185,17 @@ const createFocusGroups = ( focus_groups ) => {
 };
 
 const createDissemination = ( dissemination ) => {
+  const section_name = 'dissemination';
+  const section_slug =  createSlug( 'Dissemination' );
+  const destinationPath = path.join( Config.paths.public, 'info', 'content' );
+  const src = path.join( 'info', 'content' );
+  for( let i in dissemination ){    
+    dissemination[i].image = prepareImage( dissemination[i].image, destinationPath, src );    
+  }
   let list = [];  
   return {
-    name: 'dissemination',
-    slug: createSlug('Dissemination'),
+    name: section_name,
+    slug: section_slug,
     template: 'list_dissemination',
     pagetype: 'dissemination',
     contents: dissemination
@@ -101,6 +203,10 @@ const createDissemination = ( dissemination ) => {
 };
 
 const structureCV = ( cv ) => {
+  /* paths / src for moving images */
+  const destinationPath = path.join( Config.paths.public, 'info', 'content' );
+  const src = path.join( 'info', 'content' );
+
   let structure = [];
   const years = cv.entries
     .map( e => e.year )
@@ -122,6 +228,9 @@ const structureCV = ( cv ) => {
           contents: []
         };
       }
+      if( !!entry.image ){
+        entry.image = prepareImage( entry.image, destinationPath, src );    
+      }
       contents[entry.type].contents.push( entry );
     });
     structure.push({
@@ -134,9 +243,12 @@ const structureCV = ( cv ) => {
 }
 
 const createInfo = ( bio, cv ) => {
+  const section_name = 'info';
+  const section_slug = createSlug( 'Info' );
+
   return {
-    name: 'info',
-    slug: createSlug( 'Info' ),
+    name: section_name,
+    slug: section_slug,
     template: 'list_info',
     url: createURLPath( 'Info', '' ),
     contents: {
