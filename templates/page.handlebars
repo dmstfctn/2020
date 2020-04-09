@@ -72,7 +72,7 @@
 <nav class="dc-sitenav dc-worknav"><!--
 --><a 
     href="{{#unless prev.is_external}}/{{/unless}}{{prev.url}}"
-    {{#if prev.is_external}}target="_blank"{{/if}}
+    {{#if prev.is_external}}target="_blank" rel="noopener"{{/if}}
   ><!--
  --><span class="dctxt--date">{{prev.date}}</span><!--
  -->{{prev.name}}<!--
@@ -83,7 +83,7 @@
 --></a><!--
 --><a 
     href="{{#unless next.is_external}}/{{/unless}}{{next.url}}" 
-    {{#if next.is_external}}target="_blank"{{/if}}
+    {{#if next.is_external}}target="_blank" rel="noopener"{{/if}}
   ><!--
  --><span class="dctxt--date">{{next.date}}</span><!--
  -->{{next.name}}<!--
