@@ -3,6 +3,7 @@ const fs = require('fs');
 
 const Config = require( '../Config.js' );
 
+const cheerio = require('cheerio');
 const frontmatter = require('@github-docs/frontmatter')
 const markdown = require( 'markdown-it' )( 'commonmark', {
   html: true,
@@ -160,18 +161,21 @@ const readFolder = ( folderPath ) => {
 
 const renderMarkdownAndProcess = ( md ) => {  
   let rendered = markdown.render( md );
-  
-  /* TODO: need to wrap @ symbols like so:
-    
-      <span class="dctxt--at">@</span>
 
-    But avoid the ones in mailto: links for example
-    (i.e. only wrap ones that shoud appear in the text)
-    May need a DOM parser for this?
-
-    Maybe can use a plugin for markdown-it? 
-    https://github.com/markdown-it/markdown-it/blob/master/docs/architecture.md
+  /* wrap @ symbols like so:
+    <span class="dctxt--at">@</span>
   */
+  const $ = cheerio.load( rendered )
+  $('body *').each(function( i, ele ){
+    const $this = $(this);
+    if( $this.children().length <= 0 ){
+      let text = $this.text();
+      let replaced = text.replace( '@', '<span class="dctxt--at">@</span>' );
+      $this.html( replaced );
+    }
+  });
+  rendered = $('body').html();
+
   return rendered;
 };
 
