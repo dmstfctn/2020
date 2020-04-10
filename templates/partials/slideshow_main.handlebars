@@ -1,0 +1,62 @@
+<ol class="dc-media--list">
+  {{#each slideshow.slides}}  
+    {{#dc_isslideimage this}}
+      <li class="dc-media__image{{#if @first}} active{{/if}}">
+        {{#if @first}} 
+          <img src="{{content.src}}" data-src="{{content.src}}" class="loaded">
+        {{else}}
+          <img src="{{content.lowSrc}}" data-src="{{content.src}}">
+        {{/if}}
+      </li>
+    {{/dc_isslideimage}}
+    {{#dc_isslidetext this}}
+      <li class="dc-media__text{{#if @first}} active{{/if}}">
+        <div class="text">
+          {{{content}}}
+        </div>
+      </li>
+    {{/dc_isslidetext}}
+    {{#dc_isslideembed this}}
+      <li class="dc-media__embed{{#if @first}} active{{/if}}">
+        {{{content}}}
+      </li>
+    {{/dc_isslideembed}}
+    {{#dc_isslideaudio this}}
+      <li class="dc-media__audio{{#if @first}} active{{/if}}">
+        <audio src="{{content.src}}"></audio>
+      </li>
+    {{/dc_isslideaudio}}
+    {{#dc_isslidevideo this}}
+      <li class="dc-media__video{{#if @first}} active{{/if}}"></li>
+        <video src="{{content.src}}"></video>
+      </li>
+    {{/dc_isslidevideo}}       
+  {{/each}}
+  <li class="info">
+    <div class="text">
+      {{{../data.info}}}
+    </div>
+  </li>
+</ol>
+<nav class="dc-media--nav">
+  <ol>      
+    {{#each slideshow.slides }}   
+    {{#dc_isslideimage this}}
+      <li {{#if @first}}class="active"{{/if}}></li>
+    {{/dc_isslideimage}}
+    {{#dc_isslidetext this}}
+      <li {{#if @first}}class="active"{{/if}}></li>
+    {{/dc_isslidetext}}
+    {{#dc_isslideembed this}}
+      <li {{#if @first}}class="active"{{/if}}></li>
+    {{/dc_isslideembed}}
+    {{#dc_isslideaudio this}}
+      <li class="dc-media__audio{{#if @first}} active{{/if}}">play</li>
+    {{/dc_isslideaudio}}
+    {{#dc_isslidevideo this}}
+      <li {{#if @first}}class="active"{{/if}}></li>
+    {{/dc_isslidevideo}}       
+    {{/each}}  
+    <li class="info">info</li>    
+  </ol>
+</nav>

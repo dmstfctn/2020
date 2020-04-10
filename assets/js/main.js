@@ -44,30 +44,29 @@ const loadSlideImage = function( $slide ){
     $img.src = $img.getAttribute( 'data-src' );
   }
 }
-let $mediaNav = document.querySelectorAll('.dc-media__main .dc-media--nav li:not(.dc-media--link)');
-let $mediaList = document.querySelectorAll('.dc-media__main .dc-media--list li');
-
-let $mediaPlay = document.querySelectorAll('.dc-media__main .dc-media--nav .dc-media--play');
-
-if( window.innerWidth > BREAKPOINT ){
-  $mediaList.forEach(( $m, mediaIndex ) => {
+const loadSlideImages = function( $slides ){
+  $slides.forEach(( $m, mediaIndex ) => {
     loadSlideImage( $m );
   });
 }
+let $mediaNavMain = document.querySelectorAll('.dc-media__main .dc-media--nav li:not(.dc-media--link)');
+let $mediaListMain = document.querySelectorAll('.dc-media__main .dc-media--list li');
 
-$mediaNav.forEach(( $n, index ) => {
+let $mediaPlay = document.querySelectorAll('.dc-media__main .dc-media--nav .dc-media--play');
+
+$mediaNavMain.forEach(( $n, index ) => {
   $n.addEventListener( 'mouseover', () => {
     if( $n.classList.contains('dc-media--play')){
       return false;
     }
     /* remove active state from all nav elements */
-    $mediaNav.forEach(($n) => {
+    $mediaNavMain.forEach(($n) => {
       $n.classList.remove('active');  
     })
     /* set the one hovered to active */
     $n.classList.add('active');
     /* loop over all related media items */
-    $mediaList.forEach(( $m, mediaIndex ) => {
+    $mediaListMain.forEach(( $m, mediaIndex ) => {
       const $video = $m.querySelector('video');
       const $img = $m.querySelector('img');
       if( mediaIndex !== index ){
@@ -147,15 +146,37 @@ $sitenavDropdownLinks.forEach( ($link ) => {
 });
 
 
+const mqPortrait = window.matchMedia( '(orientation: portrait)' );
+const mqLandscape = window.matchMedia( '(orientation: landscape)' );
+const mqSmall = window.matchMedia( `(max-width: ${BREAKPOINT}px)` );
+
+let DC = {
+  env: {
+    size: 'large',
+    orientation: 'landscape'
+  }
+};
+
 let dcSmall = {
   $ele: document.querySelector('.dc-mobile-nav'),
   index: 0,
-  items: document.querySelectorAll('.dc-item--info, .dc-media__portrait .dc-media--list li')
+  items: {
+    portrait: [...document.querySelectorAll('.dc-item--info, .dc-media__portrait .dc-media--list li')],
+    landscape: [...document.querySelectorAll('.dc-item--info, .dc-media__landscape .dc-media--list li')]
+  },
+  media: {
+    portrait: document.querySelectorAll('.dc-media__portrait .dc-media--list li'),
+    landscape: document.querySelectorAll('.dc-media__landscape .dc-media--list li')
+  }
 };
 
 console.log(dcSmall.items)
 
 dcSmall.$ele.addEventListener( 'click', ( e ) => {
+  let orientation = 'portrait';
+  if( mqLandscape.matches ){
+    orientation = 'landscape';
+  }
   if( e.pageX >= window.innerWidth / 2 ){
     dcSmall.index++;
   } else {
@@ -164,14 +185,56 @@ dcSmall.$ele.addEventListener( 'click', ( e ) => {
   if( dcSmall.index < 0 ){
     dcSmall.index = 0;
   }
-  if( dcSmall.index >= dcSmall.items.length ){
+  if( dcSmall.index >= dcSmall.items[orientation].length ){
     window.location.href = 'http://example.com'
   }
 
-  dcSmall.items.forEach( ( item ) => {
-    item.classList.remove('active');
-  });
+  dcSmall.items.portrait
+    .concat( dcSmall.items.landscape )
+    .forEach( ( item ) => {
+      item.classList.remove('active');
+    });
   
-  dcSmall.items[ dcSmall.index ].classList.add('active');
-  loadSlideImage( dcSmall.items[ dcSmall.index ] );
+  dcSmall.items.portrait[ dcSmall.index ].classList.add('active');
+  dcSmall.items.landscape[ dcSmall.index ].classList.add('active');
+  loadSlideImage( dcSmall.items.portrait[ dcSmall.index ] );
+  loadSlideImage( dcSmall.items.landscape[ dcSmall.index ] );
 });
+
+
+/* image loading */
+const mqHandler = function( mq ){
+  if( mqLandscape.matches ){
+    DC.env.orientation = 'landscape';
+  }
+  if( mqPortrait.matches ){
+    DC.env.orientation = 'portrait';
+  }
+  if( mqSmall.matches ){
+    DC.env.size = 'small';
+  } else {
+    DC.env.size = 'large';
+  }
+  if( mq.media === `(max-width: ${BREAKPOINT}px)` ){
+    if( mq.matches ){
+      loadSlideImages( dcSmall.media.portrait );
+      loadSlideImages( dcSmall.media.landscape );
+    } else {
+      loadSlideImages( $mediaListMain );     
+    }
+  }
+}
+
+mqLandscape.addListener( mqHandler );
+mqPortrait.addListener( mqHandler );
+mqSmall.addListener( mqHandler );
+
+mqHandler( mqSmall );
+
+/*
+
+load large images if large
+  $mediaListMain.forEach(( $m, mediaIndex ) => {
+    loadSlideImage( $m );
+  });
+*/
