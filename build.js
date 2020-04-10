@@ -19,6 +19,8 @@ const focusGroups = Formatter.createFocusGroups( Content.focus_groups );
 const dissemination = Formatter.createDissemination( Content.dissemination );
 const infoSection = Formatter.createInfo( Content.bio, Content.cv );
 
+const smallSiteData = Formatter.createSmallSite( Content );
+
 /* the structure for the 'menu' */
 const navigation = [
   relatedMatters,
@@ -30,26 +32,30 @@ const navigation = [
 const rendered_navigation = Templates.navigation( {navigation: navigation} );
 /* render the cv/bio for use on the home page */
 const rendered_info = Rendering.renderInfo( infoSection );
+/* turn small site into JSON for printing to script ele */
+const rendered_small_site = Templates.small( {json: JSON.stringify( smallSiteData ) } );
+
 
 /* home page / info page*/
 let render = {
   title: 'Home',
   pagetype: 'home',
   navigation: rendered_navigation,
-  content: rendered_info  
+  content: rendered_info,
+  small_site: rendered_small_site
 };
 fs.writeFileSync( path.join( Config.paths.public, 'index.html' ), Templates.main( render ) );
 
 /* Related Matters */
 const relatedMattersPages = Formatter.createPageList( relatedMatters.contents );
 relatedMattersPages.forEach( ( pageData, index ) => {
-  Rendering.renderPage( pageData, index, relatedMattersPages, rendered_navigation );
+  Rendering.renderPage( pageData, index, relatedMattersPages, rendered_navigation, rendered_small_site );
 });
 
 /* Focus Groups */
 const focusGroupsPages = Formatter.createPageList( focusGroups.contents );
 focusGroupsPages.forEach( ( pageData, index ) => {
-  Rendering.renderPage( pageData, index, focusGroupsPages, rendered_navigation );
+  Rendering.renderPage( pageData, index, focusGroupsPages, rendered_navigation, rendered_small_site );
 });
 
 /* copy css/js/asset images into public */

@@ -38,7 +38,7 @@ const moveSlideshowContent = ( slideshows ) => {
   }
 };
 
-const renderPage = ( pageData, index, partnerPages, rendered_navigation ) => {
+const renderPage = ( pageData, index, partnerPages, rendered_navigation, rendered_small_site ) => {
   if( pageData.is_external ){
     return false;
   }
@@ -60,7 +60,8 @@ const renderPage = ( pageData, index, partnerPages, rendered_navigation ) => {
     title: pageData.name,
     pagetype: pageData.pagetype,
     navigation: rendered_navigation,
-    content: rendered_project
+    content: rendered_project,
+    small_site: rendered_small_site
   };
   fs.mkdirSync( p, {recursive: true});
   fs.writeFileSync( filePath, Templates.main( render ) );

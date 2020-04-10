@@ -269,10 +269,58 @@ const createPageList = ( from ) => {
   .reverse();
 }
 
+const yearNameToNumeric = ( name )=>{
+  return name.match( /([0-9]+)/g )
+    .map( ( y ) => {
+      if( y.length < 4 ){ return parseInt( '20' + y ); }
+      return parseInt( y );
+    })
+    .sort( ( a, b ) => {
+      return a - b; // pick lowest - i.e. start year
+    })[0];
+};
+
+const createSmallSite = ( content ) => {
+  let pages = [];
+  for( let i in content.related_matters.contents ){
+    let year = content.related_matters.contents[i];
+    let yearNumeric = yearNameToNumeric( year.name );
+     
+    for( let j in year.contents ){
+      let item = year.contents[j];
+      if( !item.data.link ){
+        pages.push({
+          year: yearNumeric,
+          url: createURLPath( item.name, 'related matters' ),
+          //data: item
+        });
+      }
+    }
+  }
+  for( let i in  content.focus_groups.contents ){
+    let year = content.focus_groups.contents[i];
+    let yearNumeric = yearNameToNumeric( year.name );
+
+    for( let j in year.contents ){
+      let item = year.contents[j];
+      if( !item.data.link ){
+        pages.push({
+          year: yearNumeric,
+          url: createURLPath( item.name, 'focus groups' ),
+          //data: item
+        });
+      }
+    }
+  }
+  pages = pages.sort( (a, b) => b.year - a.year );
+  return pages;
+};
+
 module.exports = {
   createRelatedMatters, 
   createFocusGroups, 
   createDissemination,
   createInfo,
-  createPageList
+  createPageList,
+  createSmallSite
 };
