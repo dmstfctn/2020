@@ -7,7 +7,11 @@ const Config = require('../Config.js');
 
 const Templates = require('./Templating.js')();
 
-const createLowResAndSave = (imagePath, savePath) => {  
+const createLowResAndSave = (imagePath, savePath) => { 
+  if( !Config.resizeImages ){
+    fs.copyFileSync( imagePath, savePath );
+    return;
+  } 
   Jimp.read( imagePath).then( img => {
     img
       .scaleToFit(100,100)
