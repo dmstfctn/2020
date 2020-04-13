@@ -157,6 +157,15 @@ let DC = {
   }
 };
 
+const trailingSlash = ( on ) => {
+  return on.endsWith( '/' ) ? on : on + '/';
+}
+
+const loadPage = ( path ) => {
+  let load = ( path.startsWith( '/' ) ) ? path : '/' + path;
+  window.location.href = load;
+}
+
 const getPageIndexFor = ( path ) => {
   if( !path.endsWith( '/' ) ){ path += '/'; }
   if( !path.startsWith( '/' ) ){ path = '/' + path; }
@@ -170,6 +179,7 @@ const getPageIndexFor = ( path ) => {
   return index;
 }
 
+
 let dcSmall = {
   $ele: document.querySelector('.dc-mobile-nav'),
   slideIndex: 0,
@@ -182,6 +192,7 @@ let dcSmall = {
     portrait: document.querySelectorAll('.dc-media__portrait .dc-media--list li'),
     landscape: document.querySelectorAll('.dc-media__landscape .dc-media--list li')
   },
+  showreelActive: (trailingSlash( document.referrer ) !== trailingSlash( window.location.origin ))
 };
 
 
@@ -202,7 +213,7 @@ dcSmall.$ele.addEventListener( 'click', ( e ) => {
   if( dcSmall.slideIndex >= dcSmall.items[orientation].length - 1 ){
     let nextPageIndex = dcSmall.pageIndex + 1;
     if( window.DCSMALL[ nextPageIndex ] ){
-      window.location.href = '/' + window.DCSMALL[ nextPageIndex ].url;
+      loadPage( window.DCSMALL[ nextPageIndex ].url );
     }
   }
 
