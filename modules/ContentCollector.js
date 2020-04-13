@@ -159,6 +159,32 @@ const readFolder = ( folderPath ) => {
   return data;
 };
 
+const readShowreel = ( showreelPath ) => {
+  let showreelData = {
+    name: 'showreel',
+    slideshows: {}
+  };
+  const contents = fs.readdirSync( showreelPath ).filter( removeDotFiles );
+  contents.forEach( ( item ) => {
+    //a folder that contains content 
+    const p = path.join( showreelPath, item );
+    // find the captions file
+    const captions = readJSON( path.join(p, 'captions.json') ) || {};
+
+    let files = fs.readdirSync( p )
+                   .filter( removeDotFiles )         
+                   .filter( f => f !== 'captions.json' );
+
+    let slideshow = files.map( (item) => {
+      return constructSlide( item, p, captions );
+    });
+    showreelData.slideshows[item] = { slides: slideshow };
+  });
+
+  return showreelData;
+
+}
+
 const renderMarkdownAndProcess = ( md ) => {  
   let rendered = markdown.render( md );
 
@@ -196,8 +222,10 @@ const cvToDissemination = function( cv, contentPath ){
 const ContentCollector = function( contentPath ){
   const cv = require( path.join( contentPath, 'info', 'cv.js') );
   const dissemination = cvToDissemination( cv, contentPath );
+  const showreel = readShowreel( path.join( contentPath, 'showreel' ) );
   return {
     bio: renderMarkdownAndProcess( fs.readFileSync( path.join( contentPath, 'info', 'bio.md' ) ).toString() ),
+    showreel: showreel,
     cv: cv,
     dissemination: dissemination,
     related_matters: readFolder( path.join( contentPath, 'related matters') ),

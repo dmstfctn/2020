@@ -169,7 +169,7 @@ const loadPage = ( path ) => {
 const getPageIndexFor = ( path ) => {
   if( !path.endsWith( '/' ) ){ path += '/'; }
   if( !path.startsWith( '/' ) ){ path = '/' + path; }
-  let index = window.DCSMALL
+  let index = window.DCSMALL.pages
     .findIndex( (item) => { 
       let url = item.url;
       if( !url.endsWith('/') ){ url += '/';}
@@ -212,8 +212,8 @@ dcSmall.$ele.addEventListener( 'click', ( e ) => {
   }
   if( dcSmall.slideIndex >= dcSmall.items[orientation].length - 1 ){
     let nextPageIndex = dcSmall.pageIndex + 1;
-    if( window.DCSMALL[ nextPageIndex ] ){
-      loadPage( window.DCSMALL[ nextPageIndex ].url );
+    if( window.DCSMALL.pages[ nextPageIndex ] ){
+      loadPage( window.DCSMALL.pages[ nextPageIndex ].url );
     }
   }
 

@@ -281,7 +281,10 @@ const yearNameToNumeric = ( name )=>{
 };
 
 const createSmallSite = ( content ) => {
-  let pages = [];
+  let site = {
+    pages: [],
+    showreel: content.showreel
+  };
   for( let i in content.related_matters.contents ){
     let year = content.related_matters.contents[i];
     let yearNumeric = yearNameToNumeric( year.name );
@@ -289,7 +292,7 @@ const createSmallSite = ( content ) => {
     for( let j in year.contents ){
       let item = year.contents[j];
       if( !item.data.link ){
-        pages.push({
+        site.pages.push({
           year: yearNumeric,
           url: createURLPath( item.name, 'related matters' ),
           //data: item
@@ -304,7 +307,7 @@ const createSmallSite = ( content ) => {
     for( let j in year.contents ){
       let item = year.contents[j];
       if( !item.data.link ){
-        pages.push({
+        site.pages.push({
           year: yearNumeric,
           url: createURLPath( item.name, 'focus groups' ),
           //data: item
@@ -312,8 +315,8 @@ const createSmallSite = ( content ) => {
       }
     }
   }
-  pages = pages.sort( (a, b) => b.year - a.year );
-  return pages;
+  site.pages = site.pages.sort( (a, b) => b.year - a.year );
+  return site;
 };
 
 module.exports = {
