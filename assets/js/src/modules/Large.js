@@ -139,4 +139,8 @@ Large.prototype.loadImages = function(){
   F.loadSlideImages( $mediaListMain ); 
 }
 
+Large.prototype.activate = function(){
+  this.loadImages();
+}
+
 module.exports = Large;
