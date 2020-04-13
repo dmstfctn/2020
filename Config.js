@@ -1,7 +1,8 @@
 const path = require('path');
 
 let Config = {
-  debug: false,  
+  debug: false,
+  minify: true, 
   paths: {
     public: path.join( __dirname, 'public' ),
     public_data: path.join( __dirname, 'public', 'data' ),

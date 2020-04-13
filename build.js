@@ -9,9 +9,17 @@ const Rendering = require('./modules/Rendering.js');
 const ContentCollector = require('./modules/ContentCollector.js')
 const Content = ContentCollector( path.join( __dirname, 'content' ) );
 
+const Assets = require('./modules/AssetProcessor.js');
+
 /* set up our output structure */
 fs.mkdirSync( Config.paths.public_data, {recursive: true} );
 
+/* copy css/js/asset images into public */
+fs.copySync('assets', Config.paths.public_assets );
+Assets.js( 
+  path.join( Config.paths.public_assets, 'js', 'src', 'main.js' ), // from
+  path.join( Config.paths.public_assets, 'js', 'dist', 'main.js' ) // to
+);
 
 
 const relatedMatters = Formatter.createRelatedMatters( Content.related_matters, Content.cv );
@@ -57,9 +65,6 @@ const focusGroupsPages = Formatter.createPageList( focusGroups.contents );
 focusGroupsPages.forEach( ( pageData, index ) => {
   Rendering.renderPage( pageData, index, focusGroupsPages, rendered_navigation, rendered_small_site );
 });
-
-/* copy css/js/asset images into public */
-fs.copySync('assets', Config.paths.public_assets );
 
 /* save the data to data.json */
 fs.writeFileSync( 'data.json', JSON.stringify( Content, false, '  ' ) );
