@@ -40,8 +40,9 @@ const navigation = [
 const rendered_navigation = Templates.navigation( {navigation: navigation} );
 /* render the cv/bio for use on the home page */
 const rendered_info = Rendering.renderInfo( infoSection );
+
 /* turn small site into JSON for printing to script ele */
-const rendered_small_site = Templates.small( {json: JSON.stringify( smallSiteData ) } );
+const rendered_small_site = Rendering.renderSmall( smallSiteData ); 
 
 
 /* home page / info page*/

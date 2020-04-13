@@ -72,9 +72,14 @@ const prepareImage = ( original, destinationPath, src ) => {
   return prepared;
 }
 
-const prepareSlide = ( slide, pageName, slideshowName, section ) => {
+const prepareSlide = ( slide, pageName, slideshowName, section, addSectionToSrc ) => {
+  const sectionToSrc = !!addSectionToSrc;
   const destinationPath = path.join( Config.paths.public, section, pageName, 'content', slideshowName );
-  const src = path.join( 'content', slideshowName );
+  
+  const src = ( sectionToSrc ) ? 
+                path.join( section, 'content', slideshowName ) 
+                : path.join( 'content', slideshowName );
+
   if( slide.type === 'image' ){    
     // move and resize
     slide.content = prepareImage( slide.content, destinationPath, src );
@@ -88,9 +93,9 @@ const prepareSlide = ( slide, pageName, slideshowName, section ) => {
   return slide;
 }
 
-const prepareSlideshow = ( slideshow, pageName, slideshowName, section ) => {
+const prepareSlideshow = ( slideshow, pageName, slideshowName, section, addSectionToSrc  ) => {
   for( let i in slideshow.slides ){
-    slideshow.slides[i] = prepareSlide( slideshow.slides[i], pageName, slideshowName, section );
+    slideshow.slides[i] = prepareSlide( slideshow.slides[i], pageName, slideshowName, section, addSectionToSrc );
   }
   return slideshow;
 }
@@ -280,10 +285,18 @@ const yearNameToNumeric = ( name )=>{
     })[0];
 };
 
+const prepareShowreel = ( showreel ) => {
+  for( let i in showreel.slideshows ){
+    let orientation = i;
+    showreel.slideshows[i] = prepareSlideshow( showreel.slideshows[i], '', orientation, 'showreel', true );
+  }
+  return showreel;
+}
+
 const createSmallSite = ( content ) => {
   let site = {
     pages: [],
-    showreel: content.showreel
+    showreel: prepareShowreel( content.showreel )
   };
   for( let i in content.related_matters.contents ){
     let year = content.related_matters.contents[i];

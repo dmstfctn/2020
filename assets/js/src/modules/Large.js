@@ -143,4 +143,4 @@ Large.prototype.activate = function(){
   this.loadImages();
 }
 
-module.exports = Large;
+module.exports = new Large();

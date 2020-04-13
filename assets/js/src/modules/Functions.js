@@ -14,21 +14,27 @@ const Functions = {
       Functions.loadSlideImage( $m );
     });
   },
-  trailingSlash: ( on ) => {
-    return on.endsWith( '/' ) ? on : on + '/';
+  slashStart: ( str ) => {
+    return str.startsWith( '/' ) ? str : '/' + str;
+  },
+  slashEnd: ( str ) => {
+    return str.endsWith( '/' ) ? str : str + '/';
+  },
+  slashBoth: ( str ) => {
+    let result = Functions.slashStart( str );
+    result = Functions.slashEnd( result );
+    return result;
   },
   loadPage: ( path ) => {
     let load = ( path.startsWith( '/' ) ) ? path : '/' + path;
     window.location.href = load;
   },
   getPageIndexFor: ( path ) => {
-    if( !path.endsWith( '/' ) ){ path += '/'; }
-    if( !path.startsWith( '/' ) ){ path = '/' + path; }
+    path = Functions.slashBoth( path );  
+  
     let index = window.DCSMALL.pages
       .findIndex( (item) => { 
-        let url = item.url;
-        if( !url.endsWith('/') ){ url += '/';}
-        if( !url.startsWith( '/' ) ){ url = '/' + url; }
+        let url = Functions.slashBoth( item.url );        
         return url === path;  
       });
     return index;

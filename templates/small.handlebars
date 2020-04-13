@@ -1,3 +1,11 @@
+<div class="dc-showreels">
+  <div class="dc-showreel dc-showreel__portrait">
+    {{> slideshow_showreel slideshow = showreel.slideshows.portrait}}
+  </div>
+  <div class="dc-showreel dc-showreel__landscape">
+    {{> slideshow_showreel slideshow = showreel.slideshows.landscape}}
+  </div>
+</div>
 <script>
   window.DCSMALL = {{{ json }}};
 </script>

@@ -97,7 +97,16 @@ const renderInfo = ( data ) => {
   return Templates.info( data );
 }
 
+const renderSmall = ( small ) => {
+ moveSlideshowContent( small.showreel.slideshows )
+  return Templates.small({
+    json: JSON.stringify( small ),
+    showreel: small.showreel
+  });
+}
+
 module.exports = {
   renderPage,
-  renderInfo
+  renderInfo,
+  renderSmall
 }
