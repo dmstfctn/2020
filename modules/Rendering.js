@@ -42,7 +42,7 @@ const moveSlideshowContent = ( slideshows ) => {
   }
 };
 
-const renderPage = ( pageData, index, partnerPages, rendered_navigation, rendered_small_site ) => {
+const renderPage = ( pageData, index, partnerPages, rendered ) => {
   if( pageData.is_external ){
     return false;
   }
@@ -63,9 +63,10 @@ const renderPage = ( pageData, index, partnerPages, rendered_navigation, rendere
   let render = {
     title: pageData.name,
     pagetype: pageData.pagetype,
-    navigation: rendered_navigation,
+    navigation: rendered.navigation,
     content: rendered_project,
-    small_site: rendered_small_site
+    info: rendered.info,
+    small_site: rendered.small_site
   };
   fs.mkdirSync( p, {recursive: true});
   fs.writeFileSync( filePath, Templates.main( render ) );
@@ -100,7 +101,7 @@ const renderInfo = ( data ) => {
 const renderSmall = ( small ) => {
  moveSlideshowContent( small.showreel.slideshows )
   return Templates.small({
-    json: JSON.stringify( small ),
+    json: JSON.stringify( {pages:small.pages} ),
     showreel: small.showreel
   });
 }

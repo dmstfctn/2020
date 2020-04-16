@@ -50,7 +50,8 @@ let render = {
   title: 'Home',
   pagetype: 'home',
   navigation: rendered_navigation,
-  content: rendered_info,
+  content: null,
+  info: rendered_info,
   small_site: rendered_small_site
 };
 fs.writeFileSync( path.join( Config.paths.public, 'index.html' ), Templates.main( render ) );
@@ -58,13 +59,23 @@ fs.writeFileSync( path.join( Config.paths.public, 'index.html' ), Templates.main
 /* Related Matters */
 const relatedMattersPages = Formatter.createPageList( relatedMatters.contents );
 relatedMattersPages.forEach( ( pageData, index ) => {
-  Rendering.renderPage( pageData, index, relatedMattersPages, rendered_navigation, rendered_small_site );
+  const rendered = {
+    navigation: rendered_navigation,
+    small_site: rendered_small_site,
+    info: rendered_info
+  };
+  Rendering.renderPage( pageData, index, relatedMattersPages, rendered );
 });
 
 /* Focus Groups */
 const focusGroupsPages = Formatter.createPageList( focusGroups.contents );
 focusGroupsPages.forEach( ( pageData, index ) => {
-  Rendering.renderPage( pageData, index, focusGroupsPages, rendered_navigation, rendered_small_site );
+  const rendered = {
+    navigation: rendered_navigation,
+    small_site: rendered_small_site,
+    info: rendered_info
+  };
+  Rendering.renderPage( pageData, index, focusGroupsPages, rendered );
 });
 
 /* save the data to data.json */

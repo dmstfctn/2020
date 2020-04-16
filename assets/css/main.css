@@ -120,9 +120,9 @@ a{
   display: none;
   padding: 0 1rem .3rem .8rem;
 }
-  /*html[data-dc-pagetype="home" .dc-navigation-item#related-matters{
+  html[data-dc-pagetype="home"] .dc-navigation-item#related-matters{
     display: block;
-  } */
+  }
 
 .dc-main-wrap{
   padding: 0 1rem .3rem .8rem;
@@ -404,10 +404,16 @@ a{
 
 
   .dc-info{
+    padding: 0 1rem .3rem .8rem;
     font-size: 1.556rem; 
     line-height: 1.429em;
     overflow: hidden;
     padding-bottom: 3.999em;    
+    padding-top: 2.6rem;
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
 
