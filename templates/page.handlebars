@@ -14,18 +14,18 @@
 </article>
 <nav class="dc-sitenav dc-worknav"><!--
 --><a 
-    href="{{#unless prev.is_external}}/{{/unless}}{{prev.url}}"
+    href="{{#unless prev.is_external}}{{dc_urlpath prev.url}}{{/unless}}{{#if prev.is_external}}{{prev.url}}{{/if}}"
     {{#if prev.is_external}}target="_blank" rel="noopener"{{/if}}
   ><!--
  --><span class="dctxt--date">{{prev.date}}</span><!--
  -->{{prev.name}}<!--
  --></a><!--
---><a href="{{#unless is_external}}/{{/unless}}{{url}}" class="current"><!--
+--><a href="{{#unless is_external}}{{dc_urlpath url}}{{/unless}}{{#if is_external}}{{url}}{{/if}}" class="current"><!--
  --><span class="dctxt--date">{{date}}</span><!--
  -->{{name}}<!--
 --></a><!--
 --><a 
-    href="{{#unless next.is_external}}/{{/unless}}{{next.url}}" 
+    href="{{#unless next.is_external}}{{dc_urlpath next.url}}{{/unless}}{{#if next.is_external}}{{next.url}}{{/if}}" 
     {{#if next.is_external}}target="_blank" rel="noopener"{{/if}}
   ><!--
  --><span class="dctxt--date">{{next.date}}</span><!--

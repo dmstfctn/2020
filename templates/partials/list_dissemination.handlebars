@@ -12,7 +12,7 @@
           <div class="dc-dissemination--location">{{situation}}</div>
         </div>
         {{~#if image~}}
-        <img src="/{{image.lowSrc}}" data-src="/{{image.src}}">
+        <img src="{{dc_urlpath image.lowSrc}}" data-src="{{dc_urlpath image.src}}">
         {{/if}}
       </a>
     </div>

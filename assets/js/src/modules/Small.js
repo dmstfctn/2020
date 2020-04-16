@@ -58,7 +58,9 @@ Small.prototype.setupInteraction = function(){
     if( this.slideIndex >= this.items[ this.orientation ].length - 1 ){
       let nextPageIndex = this.pageIndex + 1;
       if( this.data.pages[ nextPageIndex ] ){
+        console.log('load next page: ', this.data.pages[ nextPageIndex ] );
         F.loadPage( this.data.pages[ nextPageIndex ].url );
+        return;
       }
     }
 

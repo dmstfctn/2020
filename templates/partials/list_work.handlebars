@@ -8,7 +8,7 @@
     <div class="dc-work--items">
     {{#each this.contents}}
       <a 
-        href="{{#unless this.is_external }}/{{/unless}}{{this.url}}" 
+        href="{{#unless this.is_external }}{{dc_urlpath this.url}}{{/unless}}{{#if this.is_external}}{{this.url}}{{/if}}" 
         {{#if this.is_external }}
           target="_blank"
           rel="noopener"

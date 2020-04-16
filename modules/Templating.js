@@ -2,6 +2,8 @@ const fs = require('fs-extra');
 const path = require('path');
 const Handlebars = require('handlebars');
 
+const Config = require('../Config.js');
+
 let Templating = () => {
   Templating.registerPartials();
   Templating.registerHelpers();
@@ -19,6 +21,9 @@ Templating.registerPartials = () => {
 };
 
 Templating.registerHelpers = () => {
+  Handlebars.registerHelper('dc_urlpath', (url_path, options) => {
+      return '/' + path.join( Config.url_root, url_path );
+  });
   Handlebars.registerHelper('dc_isslideimage', (slide, options) => {
     if( slide.type === 'image' ){
       return options.fn(slide);

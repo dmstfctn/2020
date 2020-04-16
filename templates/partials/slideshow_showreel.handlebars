@@ -2,7 +2,7 @@
   {{#each slideshow.slides}}  
     {{#dc_isslideimage this}}
       <li class="dc-media__image">        
-        <img src="" data-src="/{{content.src}}">
+        <img src="" data-src="{{dc_urlpath content.src}}">
       </li>
     {{/dc_isslideimage}}
     {{#dc_isslidetext this}}
@@ -19,12 +19,12 @@
     {{/dc_isslideembed}}
     {{#dc_isslideaudio this}}
       <li class="dc-media__audio">
-        <audio src="/{{content.src}}"></audio>
+        <audio src="{{dc_urlpath content.src}}"></audio>
       </li>
     {{/dc_isslideaudio}}
     {{#dc_isslidevideo this}}
       <li class="dc-media__video"></li>
-        <video src="/{{content.src}}"></video>
+        <video src="{{dc_urlpath content.src}}"></video>
       </li>
     {{/dc_isslidevideo}}       
   {{/each}}
