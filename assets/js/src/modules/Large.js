@@ -101,7 +101,7 @@ $hoverImages.forEach( ( $hoverImg ) => {
 
 /* top menu 'dropdowns' */
 let $sitenavDropdownLinks = document.querySelectorAll('.dc-sitenav a[href^="#"]');
-let $sitenavDropdowns = document.querySelectorAll('.dc-navigation-item');
+let $sitenavDropdowns = document.querySelectorAll('.dc-navigation-item, #dc-info');
 
 $sitenavDropdownLinks.forEach( ($link ) => {
   $link.addEventListener('click', (e) => {
