@@ -6,7 +6,10 @@ const Showreel = function(){
 }
 
 Showreel.prototype.getSlides = function( orientation ){
-  return [...this.$wrapper.querySelectorAll(`.dc-showreel__${orientation} li`)];
+  const images = [...this.$wrapper.querySelectorAll(`.dc-showreel__${orientation} li`)];
+  const info = [...document.querySelectorAll('.dc-info')];
+  console.log('showreel slides: ', info.concat( images ) );
+  return info.concat( images );
 }
 
 module.exports = Showreel;

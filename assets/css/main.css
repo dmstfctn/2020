@@ -83,7 +83,7 @@ a{
 
 .dc-sitenav{
   position: relative;
-  z-index: 1;
+  z-index: 2;
   font-size: 1.556rem;
   line-height: 1.429em;
   display: flex;
@@ -239,7 +239,7 @@ a{
 .dc-worknav{
   bottom: 0;
   position: absolute;
-  
+  z-index: 1;
   padding-left: 0;
   padding-right: 0;
   left: 1rem;
@@ -411,10 +411,11 @@ a{
     overflow: hidden;
     padding-bottom: 3.999em;    
     padding-top: 2.6rem;
-    z-index: 0;
+    z-index: 1;
     position: absolute;
     top: 0;
     left: 0;
+    min-height: 100%;
     display: none;
     background: #000000;
   }
@@ -610,7 +611,13 @@ html[data-dc-pagetype="focusgroup"] .dc-media--nav ol li.active{
     //font-size: 12px;
     font-size: 6px;
   }
-
+  html[data-dc-pagetype="home"] .dc-navigation-item#related-matters{
+    display: none;
+  }
+  html[data-dc-pagetype="home"] .dc-info,
+  .dc-info.active{
+    display: block;
+  }
   .dc-work{
     
   }
