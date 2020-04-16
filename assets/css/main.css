@@ -98,9 +98,10 @@ a{
   display: block;
   position: absolute;
   width: 100vw;
-  height: 2.6rem;
+  height: 2.8rem;
   z-index: -1;
   top: -0.3rem;
+  left:0;
 }
   .dc-sitenav a:after{
     content: ',';
@@ -414,6 +415,8 @@ a{
     position: absolute;
     top: 0;
     left: 0;
+    display: none;
+    background: #000000;
   }
 
 
