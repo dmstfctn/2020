@@ -90,12 +90,46 @@ const prepareSlide = ( slide, pageName, slideshowName, section, addSectionToSrc 
     slide.content = prepareFile( slide.content, destinationPath, src );
     return slide;
   }      
+
   return slide;
 }
 
+const slideshowNav = ( slideshow ) => {
+  let labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+  let nav = [];  
+  for( let i = 0; i < slideshow.slides.length; i++ ){
+    if( i === 0 ){
+      nav.push( {
+        left: { label: 'info', active: false}, 
+        right: { label: labels[i], active: true} 
+      } );
+    } else if( i === slideshow.slides.length - 1 ){
+      nav.push( {
+        left: { label: labels[i], active: true}, 
+        right: { label: 'end', active: false} 
+      } );
+    } else {
+      if( i % 2 !== 0 ){
+        nav.push( {
+          left: { label: labels[i], active: true}, 
+          right: { label: labels[i+1], active: false} 
+        });
+      } else {
+        nav.push( {
+          left: { label: labels[i-1], active: false}, 
+          right: { label: labels[i], active: true} 
+        });
+      }
+    }
+  }
+  return nav;
+};
+
 const prepareSlideshow = ( slideshow, pageName, slideshowName, section, addSectionToSrc  ) => {
+  let nav = slideshowNav( slideshow );
   for( let i in slideshow.slides ){
     slideshow.slides[i] = prepareSlide( slideshow.slides[i], pageName, slideshowName, section, addSectionToSrc );
+    slideshow.slides[i].nav = nav[i];
   }
   return slideshow;
 }
