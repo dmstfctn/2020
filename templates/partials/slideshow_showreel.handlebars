@@ -3,28 +3,48 @@
     {{#dc_isslideimage this}}
       <li class="dc-media__image">        
         <img src="" data-src="{{dc_urlpath content.src}}">
+        <nav class="dc-media--smallnav dc-smallnav">
+          <span class="dc-smallnav--prev{{#if nav.left.active}} active{{/if}}">{{nav.left.label}}</span>
+          <span class="dc-smallnav--next{{#if nav.right.active}} active{{/if}}">{{nav.right.label}}</span>
+        </nav>
       </li>
     {{/dc_isslideimage}}
     {{#dc_isslidetext this}}
       <li class="dc-media__text">
         <div class="text">
           {{{content}}}
+          <nav class="dc-media--smallnav dc-smallnav">
+            <span class="dc-smallnav--prev{{#if nav.left.active}} active{{/if}}">{{nav.left.label}}</span>
+            <span class="dc-smallnav--next{{#if nav.right.active}} active{{/if}}">{{nav.right.label}}</span>
+          </nav>
         </div>
       </li>
     {{/dc_isslidetext}}
     {{#dc_isslideembed this}}
       <li class="dc-media__embed">
         {{{content}}}
+        <nav class="dc-media--smallnav dc-smallnav">
+          <span class="dc-smallnav--prev{{#if nav.left.active}} active{{/if}}">{{nav.left.label}}</span>
+          <span class="dc-smallnav--next{{#if nav.right.active}} active{{/if}}">{{nav.right.label}}</span>
+        </nav>
       </li>
     {{/dc_isslideembed}}
     {{#dc_isslideaudio this}}
       <li class="dc-media__audio">
         <audio src="{{dc_urlpath content.src}}"></audio>
+        <nav class="dc-media--smallnav dc-smallnav">
+          <span class="dc-smallnav--prev{{#if nav.left.active}} active{{/if}}">{{nav.left.label}}</span>
+          <span class="dc-smallnav--next{{#if nav.right.active}} active{{/if}}">{{nav.right.label}}</span>
+        </nav>
       </li>
     {{/dc_isslideaudio}}
     {{#dc_isslidevideo this}}
       <li class="dc-media__video"></li>
         <video src="{{dc_urlpath content.src}}"></video>
+        <nav class="dc-media--smallnav dc-smallnav">
+          <span class="dc-smallnav--prev{{#if nav.left.active}} active{{/if}}">{{nav.left.label}}</span>
+          <span class="dc-smallnav--next{{#if nav.right.active}} active{{/if}}">{{nav.right.label}}</span>
+        </nav>
       </li>
     {{/dc_isslidevideo}}       
   {{/each}}

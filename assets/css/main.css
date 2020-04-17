@@ -679,6 +679,7 @@ html[data-dc-pagetype="focusgroup"] .dc-media--nav ol li.active{
       justify-content: space-between;
       padding: 0 1rem;
       box-sizing: border-box;
+      z-index: 1;
     }
       .dc-smallnav span{
         color: #FFFFFF;
