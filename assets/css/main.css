@@ -420,6 +420,8 @@ a{
     min-height: 100%;
     display: none;
     background: #000000;
+    max-height: 100%;
+    box-sizing: border-box;
   }
 
 
