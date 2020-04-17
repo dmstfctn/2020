@@ -104,21 +104,33 @@ Small.prototype.deactivate = function(){
 
 }
 
+const sizeRoot = () => {
+  //fuck safari (ios)
+  document.querySelectorAll('html, body').forEach( ( $e ) => {
+    setTimeout(function(){
+      $e.style.height = window.innerHeight + 'px';
+    }, 500 )    
+  });
+}
 
 const mqPortrait = window.matchMedia( '(orientation: portrait)' );
 const mqLandscape = window.matchMedia( '(orientation: landscape)' );
 
 const mqHandler = () => {
   if( mqLandscape.matches ){
-    Small.orientation = 'landscape';
+    Small.orientation = 'landscape';    
   }
   if( mqPortrait.matches ){
     Small.orientation = 'portrait';
   }
+  sizeRoot();
 }
 mqLandscape.addListener( mqHandler );
 mqPortrait.addListener( mqHandler );
 mqHandler( mqLandscape );
 mqHandler( mqPortrait );
+
+sizeRoot();
+
 
 module.exports = new Small();
