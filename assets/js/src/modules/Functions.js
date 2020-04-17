@@ -37,6 +37,7 @@ const Functions = {
         let url = Functions.slashBoth( item.url );        
         return url === path;  
       });
+
     return index;
   }
 }

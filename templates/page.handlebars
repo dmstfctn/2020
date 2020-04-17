@@ -1,16 +1,20 @@
 <article class="dc-item dc-item__{{pagetype}} dc-main-wrap" id="{{slug}}">
   <section class="dc-item--info active">
     {{{data.info}}}
+    <nav class="dc-media--smallnav dc-smallnav">
+      <span class="dc-smallnav--prev">info.</span>
+      <span class="dc-smallnav--next">A.</span>
+    </nav>
   </section> 
-    <section class="dc-media dc-media__main">
-      {{> slideshow_main slideshow=data.slideshows.main }}
-    </section>
-     <section class="dc-media dc-media__portrait">
-      {{> slideshow_small slideshow=data.slideshows.portrait }}
-    </section>
-     <section class="dc-media dc-media__landscape">
-      {{> slideshow_small slideshow=data.slideshows.landscape }}
-    </section>
+  <section class="dc-media dc-media__main">
+    {{> slideshow_main slideshow=data.slideshows.main }}
+  </section>
+    <section class="dc-media dc-media__portrait">
+    {{> slideshow_small slideshow=data.slideshows.portrait }}
+  </section>
+    <section class="dc-media dc-media__landscape">
+    {{> slideshow_small slideshow=data.slideshows.landscape }}
+  </section>
 </article>
 <nav class="dc-sitenav dc-worknav"><!--
 --><a 

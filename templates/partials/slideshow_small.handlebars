@@ -7,6 +7,10 @@
         {{else}}
           <img src="{{content.lowSrc}}" data-src="{{content.src}}">
         {{/if}}
+        <nav class="dc-media--smallnav dc-smallnav">
+          <span class="dc-smallnav--prev">info.</span>
+          <span class="dc-smallnav--next">A.</span>
+        </nav>
       </li>
     {{/dc_isslideimage}}
     {{#dc_isslidetext this}}
@@ -14,21 +18,37 @@
         <div class="text">
           {{{content}}}
         </div>
+         <nav class="dc-media--smallnav dc-smallnav">
+          <span class="dc-smallnav--prev">info.</span>
+          <span class="dc-smallnav--next">A.</span>
+        </nav>
       </li>
     {{/dc_isslidetext}}
     {{#dc_isslideembed this}}
       <li class="dc-media__embed{{#if @first}} active{{/if}}">
         {{{content}}}
+         <nav class="dc-media--smallnav dc-smallnav">
+          <span class="dc-smallnav--prev">info.</span>
+          <span class="dc-smallnav--next">A.</span>
+        </nav>
       </li>
     {{/dc_isslideembed}}
     {{#dc_isslideaudio this}}
       <li class="dc-media__audio{{#if @first}} active{{/if}}">
         <audio src="{{content.src}}"></audio>
+         <nav class="dc-media--smallnav dc-smallnav">
+          <span class="dc-smallnav--prev">info.</span>
+          <span class="dc-smallnav--next">A.</span>
+        </nav>
       </li>
     {{/dc_isslideaudio}}
     {{#dc_isslidevideo this}}
       <li class="dc-media__video{{#if @first}} active{{/if}}"></li>
         <video src="{{content.src}}"></video>
+         <nav class="dc-media--smallnav dc-smallnav">
+          <span class="dc-smallnav--prev">info.</span>
+          <span class="dc-smallnav--next">A.</span>
+        </nav>
       </li>
     {{/dc_isslidevideo}}       
   {{/each}}

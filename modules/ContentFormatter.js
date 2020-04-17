@@ -307,7 +307,7 @@ const createSmallSite = ( content ) => {
       if( !item.data.link ){
         site.pages.push({
           year: yearNumeric,
-          url: createURLPath( item.name, 'related matters' ),
+          url: Config.url_root + '/' + createURLPath( item.name, 'related matters' ),
           //data: item
         });
       }
@@ -322,7 +322,7 @@ const createSmallSite = ( content ) => {
       if( !item.data.link ){
         site.pages.push({
           year: yearNumeric,
-          url: createURLPath( item.name, 'focus groups' ),
+          url: Config.url_root + '/' + createURLPath( item.name, 'focus groups' ),
           //data: item
         });
       }

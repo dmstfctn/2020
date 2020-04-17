@@ -402,7 +402,9 @@ a{
         display: block;
       }
     }
-
+  .dc-smallnav{
+    display: none;
+  }
 
   .dc-info{
     padding: 0 1rem .3rem .8rem;
@@ -667,6 +669,24 @@ html[data-dc-pagetype="focusgroup"] .dc-media--nav ol li.active{
       top: 0;
       left: 0;
     }
+
+    .dc-smallnav{
+      position: absolute;
+      left: 0;
+      bottom: 3rem;
+      width: 100vw;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 1rem;
+      box-sizing: border-box;
+    }
+      .dc-smallnav span{
+        color: #FFFFFF;
+      }
+      .dc-smallnav .current{
+        color: #FF0000;
+        text-shadow: red;
+      }
 
   .dc-sitenav{
     display: none;
