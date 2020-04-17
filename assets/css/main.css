@@ -683,7 +683,7 @@ html[data-dc-pagetype="focusgroup"] .dc-media--nav ol li.active{
       .dc-smallnav span{
         color: #FFFFFF;
       }
-      .dc-smallnav .current{
+      .dc-smallnav .active{
         color: #FF0000;
         text-shadow: red;
       }
