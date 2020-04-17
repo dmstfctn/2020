@@ -728,6 +728,11 @@ html[data-dc-pagetype="focusgroup"] .dc-media--nav ol li.active{
     height: 100vh;
     z-index: 99;
     display: block;
-    //background: rgba(0,255,0,0.5);
   }
+    .dc-mobile-nav.opaque{
+      background: #000000;
+    }
+    html[data-dc-pagetype="focusgroup"] .dc-mobile-nav.opaque{
+      background: #FF0000;
+    }
 }

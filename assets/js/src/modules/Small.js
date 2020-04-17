@@ -45,14 +45,31 @@ Small.prototype.loadImages = function(){
   F.loadSlideImages( this.items.portrait );
 };
 
+Small.prototype.isCurrentlyOnCV = function(){
+  return this.items[ this.orientation ][ this.slideIndex ].classList.contains('dc-info');
+}
+
+Small.prototype.triggerNoFurtherAnimation = function(){
+  clearTimeout( this.triggerNoFurtherAnimationTimeout );
+  this.$interactionEle.classList.add('opaque');
+  this.triggerNoFurtherAnimationTimeout =  setTimeout( () => {
+    this.$interactionEle.classList.remove('opaque');
+  }, 300 );
+};
+
 Small.prototype.setupInteraction = function(){
   this.$interactionEle.addEventListener( 'click', ( e ) => {
     if( e.pageX >= window.innerWidth / 2 ){
       this.slideIndex++;
     } else {
+      if( this.isCurrentlyOnCV() ){
+        this.triggerNoFurtherAnimation();
+        return;
+      }
       this.slideIndex--;
     }
     if( this.slideIndex < 0 ){
+      this.triggerNoFurtherAnimation();
       this.slideIndex = 0;
     }
     if( this.slideIndex >= this.items[ this.orientation ].length - 1 ){
