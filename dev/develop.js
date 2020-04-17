@@ -4,31 +4,38 @@ const express = require('express');
 const path = require('path');
 const cp = require('child_process');
 
+const Config = require('../Config.js');
+
 const buildScript = path.join( __dirname, '..', 'build.js' );
 const publicDir = path.join( __dirname, '..', 'public' );
 console.log( ' ---------------- SETUP ---------------- ')
 console.log( '1 - run build script at:', buildScript );
 console.log( '2 - run static server from', publicDir );
 
+
 const app = express();
 app.use(express.static('public'));
-app.listen( 8000, () => console.log('Dev Server on localhost:8000') );
+app.listen( Config.dev.local_port, () => {
+  console.log('  - Local Addr: http://localhost:' + Config.dev.local_port) 
+  console.log();
+  console.log();
+});
 
-console.log( ' ---------------- SETUP ---------------- ')
-
+console.log( ' ----------- SETUP COMPLETE ------------ ')
+ 
 
 
 let buildWait; 
 const runBuild = () => {
   clearTimeout( buildWait );
   buildWait = setTimeout( ()=>{
-    console.log( " ---------- BUILD BUILD BUILD ---------- ")
+    console.log( " ------------ BUILDING SITE ------------ ")
     cp.exec('node build.js', {}, ( err, stdout )=>{
       if( err ) throw new Error( err );
       console.log( stdout );
-      console.log( " -------------- COMPLETE --------------- ")
+      console.log( " ----------- BUILD COMPLETE ------------ ")
     });    
-  }, 100 );
+  }, 250 );
 }
 
 chokidar.watch( 
@@ -61,5 +68,4 @@ chokidar.watch(
 console.log();
 console.log();
 console.log( ' --------- WATCHING FOR CHANGES --------' );
-console.log();
-console.log();
+

@@ -3,6 +3,9 @@ const path = require('path');
 const url_root = 'mmittee';
 
 let Config = {
+  dev:{
+    local_port: 8080
+  },
   debug: false,
   minify: false,
   resizeImages: false, 
