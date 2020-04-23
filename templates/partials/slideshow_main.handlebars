@@ -1,5 +1,5 @@
 <ol class="dc-media--list">
-  {{#each slideshow.slides}}  
+  {{#each page.slideshows.main.slides}}  
     {{#dc_isslideimage this}}
       <li class="dc-media__image{{#if @first}} active{{/if}}">
         {{#if @first}} 
@@ -34,13 +34,13 @@
   {{/each}}
   <li class="info">
     <div class="text">
-      {{{../data.info}}}
+      {{{page.info}}}
     </div>
   </li>
 </ol>
 <nav class="dc-media--nav">
   <ol>      
-    {{#each slideshow.slides }}   
+    {{#each page.slideshows.main.slides }}   
     {{#dc_isslideimage this}}
       <li {{#if @first}}class="active"{{/if}}></li>
     {{/dc_isslideimage}}

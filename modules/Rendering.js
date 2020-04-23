@@ -42,10 +42,15 @@ const moveSlideshowContent = ( slideshows ) => {
   }
 };
 
+let ind = 0;
 const renderPage = ( pageData, index, partnerPages, rendered ) => {
   if( pageData.is_external ){
     return false;
   }
+  if( ind === 0 ){
+    console.log('Rendering.js - renderPage(): pageData:', pageData );
+  }
+  ind++;
   pageData.prev = partnerPages[index-1];
   pageData.next = partnerPages[index+1];
   if( index < 1 ){
