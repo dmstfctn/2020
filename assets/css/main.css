@@ -618,6 +618,7 @@ html[data-dc-pagetype="focusgroup"] .dc-media--nav ol li.active{
   }
   html{
     font-size: 9.5px;
+    line-height: 1.2;
     position: relative;
   }
   html[data-dc-pagetype="home"] .dc-navigation-item#related-matters{
@@ -628,8 +629,17 @@ html[data-dc-pagetype="focusgroup"] .dc-media--nav ol li.active{
     display: block;
   }
   .dc-info{
-    font-size: 1rem;
+    padding-top: .7em;
+    font-size: 1rem;   
+    line-height: 1.2em;
   }
+    .dc-bio p:first-child:before{      
+      font-family: 'Antique Olive Std', sans-serif;
+      font-size: 0.85em;     
+      font-weight: normal; 
+      color: #FF0000;
+      content: 'now ';
+    }
   .dc-work{
     
   }
