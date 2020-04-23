@@ -694,6 +694,16 @@ html[data-dc-pagetype="focusgroup"] .dc-media--nav ol li.active{
       left: 0;
     }
 
+    .dc-item--info p,
+    .dc-item--info ul,
+    .dc-item--info ol,
+    .dc-item--info blockquote,
+    .dc-item--info h1,
+    .dc-item--info h2,
+    .dc-item--info h3,
+    .dc-item--info h4{
+      margin-bottom: 1rem;
+    }
     .dc-smallnav{
       position: absolute;
       left: 0;
