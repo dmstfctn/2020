@@ -668,6 +668,9 @@ html[data-dc-pagetype="focusgroup"] .dc-media--nav ol li.active{
       z-index: 1;
       display: none;      
     }
+      .dc-item__focusgroup .dc-item--info{
+        background: #FF0000;
+      }
       .dc-item--info.active{
         display: block;
       }
