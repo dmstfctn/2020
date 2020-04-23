@@ -304,9 +304,14 @@ a{
     columns: 3;
     column-gap: 1.8em;
   }
-  .dc-media--list .info p{
+  .dc-media--list .info p,
+  .dc-media--list .dc-media__text p{
     break-after: always;
-    text-align: justify;
+    text-align: justify;    
+  } 
+  .dc-media--list .info p:before,
+  .dc-media--list .dc-media__text p:before{
+    /*content: '(...) ';   */
   }
 
   .dc-media--nav{
