@@ -2,3 +2,5 @@
 node_modules
 public/**/*
 data.json
+assets/fonts/*
+!assets/fonts/.gitkeep

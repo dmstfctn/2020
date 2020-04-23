@@ -3,12 +3,12 @@
   <!-- years. year: {{@key}} -->
     {{~#each this.contents~}}
     <!-- types. type: {{@key}} -->
-      <dt class="dc-cv--title{{#if this.contents.[0].now}} dc-cv--now{{/if}} dc-cv--title__{{type}}">            
+      <dt class="dc-cv--title{{#if this.contents.[0].now}} dc-cv--now{{/if}} dc-cv--title__{{type}}{{#unless @index}} dc-cv--title__includesyear{{/unless}}">            
         {{~#unless @index~}}
           <span class="dctxt--date">{{../year}}</span>            
         {{/unless}}
         {{~#if type~}}
-        (<!--
+        <span class="dc-cv--bracket">(</span><!--
         --><span class="dc-cv--type">
             {{~type~}}
           </span><!--
@@ -17,7 +17,7 @@
       --><span class="dctxt--date">{{this.contents.[0].date}}</span><!--
         {{/if}}
         {{~#if type~}}
-      -->)
+      --> <span class="dc-cv--bracket">)</span>
         {{/if}}
       </dt>
       {{~#each this.contents~}}
