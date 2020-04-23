@@ -1,14 +1,12 @@
 const fs = require('fs-extra');
 const path = require('path');
 const Config = require('../Config.js');
+const H = require('./Helpers.js');
 
-const createSlug = ( name ) => {
-  return name.toLowerCase().replace( /[^\w\d]/g, '-' );
-}
 
 const createURLPath = ( name, section ) => {
-  const slug = createSlug( name );  
-  const section_slug = createSlug( section );
+  const slug = H.createSlug( name );  
+  const section_slug = H.createSlug( section );
   let url = section_slug + '/' + slug;
   // if( url[0] !== '/' ){
   //   url = '/' + url;
@@ -138,7 +136,7 @@ const prepareSlideshow = ( slideshow, pageName, slideshowName, section, addSecti
 
 const createRelatedMatters = ( related_matters, cv ) => {
   const section_name = 'related matters';
-  const section_slug = createSlug('Related Matters');
+  const section_slug = H.createSlug('Related Matters');
 
   let list = [];
   let now = false;
@@ -152,13 +150,14 @@ const createRelatedMatters = ( related_matters, cv ) => {
       let sub_item = item.contents[j];           
       for( slideshowName in sub_item.slideshows ){
         let slideshow = sub_item.slideshows[ slideshowName ];
-        sub_item.slideshows[ slideshowName ] = prepareSlideshow( slideshow, createSlug(sub_item.name), createSlug(slideshowName), section_slug  );
+        sub_item.slideshows[ slideshowName ] = prepareSlideshow( slideshow, H.createSlug(sub_item.name), H.createSlug(slideshowName), section_slug  );
       }
+      sub_item.cv = structureCV( sub_item.cv );
       line.contents.push({
         name: sub_item.name,
         date: item.name,
         pagetype: 'relatedmatter',        
-        slug: createSlug( sub_item.name ),
+        slug: H.createSlug( sub_item.name ),
         url: (sub_item.data.link) ? sub_item.data.link : createURLPath( sub_item.name, 'related matters' ),
         is_external: !!sub_item.data.link,
         data: sub_item
@@ -186,7 +185,7 @@ const createRelatedMatters = ( related_matters, cv ) => {
 
 const createFocusGroups = ( focus_groups ) => {
   const section_name = 'focus groups';
-  const section_slug = createSlug('Focus Groups');
+  const section_slug = H.createSlug('Focus Groups');
 
   let list = [];
   for( let i in focus_groups.contents ){
@@ -195,8 +194,9 @@ const createFocusGroups = ( focus_groups ) => {
       let sub_item = item.contents[j];
       for( slideshowName in sub_item.slideshows ){
         let slideshow = sub_item.slideshows[ slideshowName ];
-        sub_item.slideshows[ slideshowName ] = prepareSlideshow( slideshow, createSlug(sub_item.name), createSlug(slideshowName), section_slug  );
+        sub_item.slideshows[ slideshowName ] = prepareSlideshow( slideshow, H.createSlug(sub_item.name), H.createSlug(slideshowName), section_slug  );
       }
+      sub_item.cv = structureCV( sub_item.cv );
       let line = {
         name: item.name,
         contents: [
@@ -204,7 +204,7 @@ const createFocusGroups = ( focus_groups ) => {
             name: sub_item.name,
             date: item.name,
             pagetype: 'focusgroup',
-            slug: createSlug( sub_item.name ),
+            slug: H.createSlug( sub_item.name ),
             url: (sub_item.data.link) ? sub_item.data.link : createURLPath( sub_item.name, 'focus groups' ),
             is_external: !!sub_item.data.link,
             data: sub_item
@@ -225,7 +225,7 @@ const createFocusGroups = ( focus_groups ) => {
 
 const createDissemination = ( dissemination ) => {
   const section_name = 'dissemination';
-  const section_slug =  createSlug( 'Dissemination' );
+  const section_slug =  H.createSlug( 'Dissemination' );
   const destinationPath = path.join( Config.paths.public, 'info', 'content' );
   const src = path.join( 'info', 'content' );
   for( let i in dissemination ){    
@@ -283,7 +283,7 @@ const structureCV = ( cv ) => {
 
 const createInfo = ( bio, cv ) => {
   const section_name = 'info';
-  const section_slug = createSlug( 'Info' );
+  const section_slug = H.createSlug( 'Info' );
 
   return {
     name: section_name,

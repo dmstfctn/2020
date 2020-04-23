@@ -2,6 +2,7 @@ const path = require('path')
 const fs = require('fs');
 
 const Config = require( '../Config.js' );
+const H = require('./Helpers.js');
 
 const cheerio = require('cheerio');
 const frontmatter = require('@github-docs/frontmatter')
@@ -10,7 +11,6 @@ const markdown = require( 'markdown-it' )( 'commonmark', {
   breaks: true,
   linkify: true
 });
-
 
 const removeDotFiles = ( f ) => {
   return f.indexOf('.') !== 0;
@@ -29,9 +29,29 @@ const readJSON = ( path ) => {
   }
   return json;
 }; 
+
 const removeOrderFromFilename = ( filename ) => {
   return filename.replace(/(^[0-9]+\.)/gm, '' );
 };
+
+const getProjectCvItems = ( title, cv ) => {
+  const slug = H.createSlug( title );
+  let relatedCv = cv.entries.filter( function( entry ){
+    if( Array.isArray( entry.related ) ){
+      for( let i = 0; i < entry.related.length; i++ ){
+        if( H.createSlug( entry.related[i] ) === slug ){
+          return true;
+        }
+      }
+    } else if( typeof entry.related === 'string' ){
+      if( H.createSlug( entry.related ) === slug ){
+        return true;
+      }
+    }
+    return false;
+  });
+  return relatedCv;
+}
 /* 
   constructSlide( filename, p, captions )
   ------------------
@@ -103,7 +123,7 @@ const constructSlide = ( filename, p, captions ) => {
     'contents': an object containing the folder's children
                 the keys are the folder's name
 */
-const readFolder = ( folderPath ) => {
+const readFolder = ( folderPath, cv ) => {
   let name = path.basename( folderPath );
   let data = {
     name: removeOrderFromFilename( name ),
@@ -120,13 +140,16 @@ const readFolder = ( folderPath ) => {
       contents: {}
     };
     projects.forEach( (project ) => {
+      const name = removeOrderFromFilename( project );
       const p = path.join( root, year, project );
       const contents = fs.readdirSync( p ).filter( removeDotFiles );
+      const relatedCv = getProjectCvItems( name, cv );
       let projectData = {
-        name: removeOrderFromFilename( project ),
+        name: name,
         slideshows: {},
         data: {},
         info: '',
+        cv: { entries: relatedCv }
       };
       contents.forEach( ( item ) => {
         const itemPath = path.join( p, item );
@@ -228,8 +251,8 @@ const ContentCollector = function( contentPath ){
     showreel: showreel,
     cv: cv,
     dissemination: dissemination,
-    related_matters: readFolder( path.join( contentPath, 'related matters') ),
-    focus_groups: readFolder( path.join( contentPath, 'focus groups') )
+    related_matters: readFolder( path.join( contentPath, 'related matters'), cv ),
+    focus_groups: readFolder( path.join( contentPath, 'focus groups'), cv )
   }
 }
 

@@ -3,45 +3,7 @@
       {{{contents.bio}}}
   </section>
   <div class="dc-cv">
-    <dl>
-      {{~#each contents.cv~}}
-      <!-- years. year: {{@key}} -->
-        {{~#each this.contents~}}
-        <!-- types. type: {{@key}} -->
-          <dt class="dc-cv--title{{#if this.contents.[0].now}} dc-cv--now{{/if}} dc-cv--title__{{type}}">            
-            {{~#unless @index~}}
-              <span class="dctxt--date">{{../year}}</span>            
-            {{/unless}}
-            {{~#if type~}}
-            (<!--
-           --><span class="dc-cv--type">
-                {{~type~}}
-              </span><!--
-            {{/if}}
-            {{~#if this.contents.[0].now~}}
-          --><span class="dctxt--date">{{this.contents.[0].date}}</span><!--
-            {{/if}}
-            {{~#if type~}}
-         -->)
-            {{/if}}
-          </dt>
-          {{~#each this.contents~}}
-          <!-- entries. entry: {{title}} -->
-          <dd class="dc-cv--entry{{#if now}} dc-cv--now{{/if}} dc-cv-type__{{type}}{{#if image}}{{#unless now}} dc-list-hoverimg{{/unless}}{{/if}}">
-            {{#if now}}<a href="{{url}}" class="dc-external-link" target="_blank" rel="noopener">{{/if}}
-              <div class="dc-cv--name">{{title}}</div>
-              <div class="dc-cv--location">{{situation}}{{~#if location~}}, {{/if}}{{location}}</div>
-              {{#unless now}}
-              {{#if image}}
-                <img src="{{image.lowSrc}}" data-src="{{image.src}}"/>
-              {{/if}}       
-              {{/unless}}       
-            {{#if now}}</a>{{/if}}
-          </dd>
-          {{/each}}
-        {{/each}}
-      {{/each}}
-    </dl>
+    {{> cv cv=contents.cv}}
   </div>
   <nav class="dc-info--smallnav dc-smallnav">
     <span class="dc-smallnav--prev active">info.</span>
