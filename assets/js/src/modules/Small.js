@@ -106,7 +106,7 @@ Small.prototype.deactivate = function(){
 
 const sizeRoot = () => {
   //fuck safari (ios)
-  document.querySelectorAll('html, body').forEach( ( $e ) => {
+  document.querySelectorAll('html, body, .dc-mobile-nav').forEach( ( $e ) => {
     setTimeout(function(){
       $e.style.height = window.innerHeight + 'px';
     }, 500 )    
