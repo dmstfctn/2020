@@ -617,8 +617,7 @@ html[data-dc-pagetype="focusgroup"] .dc-media--nav ol li.active{
     padding: 0;
   }
   html{
-    //font-size: 12px;
-    font-size: 6px;
+    font-size: 9.5px;
     position: relative;
   }
   html[data-dc-pagetype="home"] .dc-navigation-item#related-matters{
