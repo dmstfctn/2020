@@ -276,6 +276,9 @@ a{
   .dc-worknav .current{
     color: #FF0000;
   }
+  .dc-worknav--furtherlink{
+    display: none;
+  }
 
 .dc-media{
   height: calc(100% - 1.5rem);  

@@ -51,14 +51,12 @@ const renderPage = ( pageData, index, partnerPages, rendered ) => {
     console.log('Rendering.js - renderPage(): pageData:', pageData );
   }
   ind++;
-  pageData.prev = partnerPages[index-1];
-  pageData.next = partnerPages[index+1];
-  if( index < 1 ){
-    pageData.prev = partnerPages[ partnerPages.length - 1 ];
-  }
-  if( index >= partnerPages.length - 1 ){
-    pageData.next = partnerPages[0];
-  }
+
+  pageData.prev = (index - 1 >= 0 ) ? partnerPages[index-1] : partnerPages[ partnerPages.length + (index-1) ];
+  pageData.prev_prev = (index - 2 >= 0 ) ? partnerPages[index-2] : partnerPages[ partnerPages.length + (index-2) ]
+  pageData.next = (index + 1 < partnerPages.length ) ? partnerPages[index+1] : partnerPages[ (index+1) - partnerPages.length ];
+  pageData.next_next = (index + 2 < partnerPages.length ) ? partnerPages[index+2] : partnerPages[ (index+2) - partnerPages.length ];
+
   let p = path.join( Config.paths.public, pageData.url );  
   moveSlideshowContent( pageData.data.slideshows );
 

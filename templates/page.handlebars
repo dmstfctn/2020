@@ -21,8 +21,17 @@
 </article>
 <nav class="dc-sitenav dc-worknav"><!--
 --><a 
+    href="{{#unless prev_prev.is_external}}{{dc_urlpath prev_prev.url}}{{/unless}}{{#if prev_prev.is_external}}{{prev_prev.url}}{{/if}}"
+    {{#if prev_prev.is_external}}target="_blank" rel="noopener"{{/if}}
+    class="dc-worknav--furtherlink dc-worknav--link__prev-prev{{#if prev_prev.is_external}} dc-external-link{{/if}}"
+  ><!--
+ --><span class="dctxt--date">{{prev_prev.date}}</span><!--
+ -->{{prev_prev.name}}<!--
+ --></a><!--
+--><a 
     href="{{#unless prev.is_external}}{{dc_urlpath prev.url}}{{/unless}}{{#if prev.is_external}}{{prev.url}}{{/if}}"
     {{#if prev.is_external}}target="_blank" rel="noopener"{{/if}}
+    class="dc-worknav--link__prev{{#if prev.is_external}} dc-external-link{{/if}}"
   ><!--
  --><span class="dctxt--date">{{prev.date}}</span><!--
  -->{{prev.name}}<!--
@@ -34,8 +43,17 @@
 --><a 
     href="{{#unless next.is_external}}{{dc_urlpath next.url}}{{/unless}}{{#if next.is_external}}{{next.url}}{{/if}}" 
     {{#if next.is_external}}target="_blank" rel="noopener"{{/if}}
+    class="dc-worknav--link__next{{#if next.is_external}} dc-external-link{{/if}}"
   ><!--
  --><span class="dctxt--date">{{next.date}}</span><!--
  -->{{next.name}}<!--
+--></a><!--
+--><a 
+    href="{{#unless next_next.is_external}}{{dc_urlpath next_next.url}}{{/unless}}{{#if next_next.is_external}}{{next_next.url}}{{/if}}" 
+    {{#if next_next.is_external}}target="_blank" rel="noopener"{{/if}}
+    class="dc-worknav--furtherlink dc-worknav--link__next-next{{#if next_next.is_external}} dc-external-link{{/if}}"
+  ><!--
+ --><span class="dctxt--date">{{next_next.date}}</span><!--
+ -->{{next_next.name}}<!--
 --></a><!--
 --></nav>

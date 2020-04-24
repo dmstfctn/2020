@@ -130,6 +130,29 @@ $sitenavDropdownLinks.forEach( ($link ) => {
   });
 });
 
+/*next/prev work links in project page*/
+const $nextprevLinks = document.querySelectorAll('.dc-worknav a');
+
+$nextprevLinks.forEach( ($link) => {
+  $link.addEventListener('click', ( e ) => {
+    if( $link.classList.contains('dc-external-link') ){
+      const next = $link.classList.contains('dc-worknav--link__next');
+      const prev = $link.classList.contains('dc-worknav--link__prev');
+      if( next ){
+        const $nextNext = document.querySelector('.dc-worknav a.dc-worknav--link__next-next');e
+        window.location.href = $nextNext.getAttribute('href');
+        return;
+      }
+      if( prev ){
+        const $prevPrev = document.querySelector('.dc-worknav a.dc-worknav--link__prev-prev');
+        window.location.href = $prevPrev.getAttribute('href');
+        return;
+      }
+    }
+  });
+  
+});
+
 
 const Large = function(){
   console.log('new Large()');

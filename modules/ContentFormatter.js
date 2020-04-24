@@ -302,9 +302,9 @@ const createPageList = ( from ) => {
     return e.contents;
   })
   .flat()
-  .filter( (p) => {
-    return !p.is_external;
-  })
+  // .filter( (p) => {
+  //   return !p.is_external;
+  // })
   .reverse();
 }
 

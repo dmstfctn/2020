@@ -59,6 +59,9 @@ fs.writeFileSync( path.join( Config.paths.public, 'index.html' ), Templates.main
 /* Related Matters */
 const relatedMattersPages = Formatter.createPageList( relatedMatters.contents );
 relatedMattersPages.forEach( ( pageData, index ) => {
+  if( pageData.is_external ){   
+    return;
+  }
   const rendered = {
     navigation: rendered_navigation,
     small_site: rendered_small_site,
