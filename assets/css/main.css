@@ -267,6 +267,7 @@ a{
   box-sizing: border-box;
   text-transform: uppercase;
   display: flex;
+  flex-direction: row-reverse;
 }
   .dc-worknav a{
     white-space: nowrap;
