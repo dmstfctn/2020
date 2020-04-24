@@ -72,7 +72,7 @@ Small.prototype.setupInteraction = function(){
       this.triggerNoFurtherAnimation();
       this.slideIndex = 0;
     }
-    if( this.slideIndex >= this.items[ this.orientation ].length - 1 ){
+    if( this.slideIndex >= this.items[ this.orientation ].length ){
       let nextPageIndex = this.pageIndex + 1;
       if( this.data.pages[ nextPageIndex ] ){
         console.log('load next page: ', this.data.pages[ nextPageIndex ] );
