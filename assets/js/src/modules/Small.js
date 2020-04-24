@@ -21,6 +21,8 @@ const Small = function(){
   this.showreel = ( shouldShowreel() ) ? new Showreel() : false;
   this.$interactionEle = document.querySelector('.dc-mobile-nav');  
  
+  this.forwardInteractionHintTimeout = null;
+
   this.items = {
     portrait: this.getSlideList('portrait'),
     landscape: this.getSlideList('landscape'),
@@ -67,8 +69,18 @@ Small.prototype.triggerNoFurtherAnimation = function(){
   }, 10 );
 };
 
+Small.prototype.readyForwardHint = function(){
+  clearTimeout( this.forwardInteractionHintTimeout );
+  this.forwardInteractionHintTimeout = setTimeout(() => {
+    this.$interactionEle.classList.add('go-further');
+  }, 3000 );
+}
+
 Small.prototype.setupInteraction = function(){
   this.$interactionEle.addEventListener( 'click', ( e ) => {
+    
+    clearTimeout( this.forwardInteractionHintTimeout );
+    
     if( e.pageX >= window.innerWidth / 2 ){
       this.slideIndex++;
     } else {
@@ -110,14 +122,16 @@ Small.prototype.setupInteraction = function(){
 };
 
 
+
 Small.prototype.activate = function(){
   console.log( 'activate small() ' );
   this.setupInteraction();
+  this.readyForwardHint();
   this.preloadImages( 2 );
 }
 
 Small.prototype.deactivate = function(){
-  
+  clearTimeout( this.forwardInteractionHintTimeout );
 }
 
 let sizeRootTimeout;

@@ -835,23 +835,44 @@ html[data-dc-pagetype="focusgroup"] .dc-media--nav ol li.active{
     z-index: 99;
     display: block;
   }
+  .dc-mobile-nav::before,
+  .dc-mobile-nav::after{
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;      
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;    
+    pointer-events: none;
+  }
     .dc-mobile-nav::before{
-      content: '';
-      display: block;
-      height: 100%;
-      width: 100%;      
-      position: absolute;
-      left: 0;
-      top: 0;
-      z-index: 0;
       background: linear-gradient(90deg, rgba(255,0,0,0.7) 0%, rgba(255,0,0,0) 50%);
       opacity: 0;
-      transition: opacity .5s ease-in;
-      pointer-events: none  ;
+      transition: opacity .5s ease-in;      
+    }
+    .dc-mobile-nav::after{
+      transform: translateX(50%);
+      background: linear-gradient(90deg, rgba(255,0,0,0) 80%, rgba(255,0,0,0.7) 100%);
     }
     .dc-mobile-nav.no-further::before{
       opacity: 1;
       transition: opacity 0s linear;
+    }
+    @keyframes go-further{
+      0%{
+        transform: translateX(50%);
+      }
+      50%{
+        transform: translateX(0);
+      }
+      100%{
+        transform: translateX(50%);
+      }
+    }
+    .dc-mobile-nav.go-further::after{
+      animation: go-further 6s ease-in-out; 
     }
     html[data-dc-pagetype="focusgroup"] .dc-mobile-nav.opaque{
       background: #FF0000;
