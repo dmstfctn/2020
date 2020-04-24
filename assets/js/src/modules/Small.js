@@ -61,10 +61,10 @@ Small.prototype.isCurrentlyOnCV = function(){
 
 Small.prototype.triggerNoFurtherAnimation = function(){
   clearTimeout( this.triggerNoFurtherAnimationTimeout );
-  this.$interactionEle.classList.add('opaque');
+  this.$interactionEle.classList.add('no-further');
   this.triggerNoFurtherAnimationTimeout =  setTimeout( () => {
-    this.$interactionEle.classList.remove('opaque');
-  }, 300 );
+    this.$interactionEle.classList.remove('no-further');
+  }, 10 );
 };
 
 Small.prototype.setupInteraction = function(){

@@ -383,7 +383,7 @@ a{
       content: 'pause';
     }
 
-    @keyframes mediaplay{
+    @keyframes flick-in-out{
       0%{
         opacity: 1;
       }
@@ -397,7 +397,7 @@ a{
 
     .dc-media--play.playing{
       color: #FF0000;
-      animation: mediaplay 1.6s infinite step-start;
+      animation: flick-in-out 1.6s infinite step-start;
     }
     .dc-media--play.playing:hover{
       animation-play-state: paused;
@@ -759,6 +759,7 @@ html[data-dc-pagetype="focusgroup"] .dc-media--nav ol li.active{
       .dc-smallnav .active{
         color: #FF0000;
         text-shadow: red;
+        animation: flick-in-out 1.6s infinite step-start;
       }
 
   .dc-sitenav{
@@ -834,8 +835,23 @@ html[data-dc-pagetype="focusgroup"] .dc-media--nav ol li.active{
     z-index: 99;
     display: block;
   }
-    .dc-mobile-nav.opaque{
-      background: #000000;
+    .dc-mobile-nav::before{
+      content: '';
+      display: block;
+      height: 100%;
+      width: 100%;      
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 0;
+      background: linear-gradient(90deg, rgba(255,0,0,0.7) 0%, rgba(255,0,0,0) 50%);
+      opacity: 0;
+      transition: opacity .5s ease-in;
+      pointer-events: none  ;
+    }
+    .dc-mobile-nav.no-further::before{
+      opacity: 1;
+      transition: opacity 0s linear;
     }
     html[data-dc-pagetype="focusgroup"] .dc-mobile-nav.opaque{
       background: #FF0000;
