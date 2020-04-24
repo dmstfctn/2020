@@ -216,9 +216,12 @@ a{
     white-space: nowrap;
   }
   .dc-biglist--now a{
-    display: block;
+    display: flex;
     width:100%;
     box-sizing: border-box;
+  }
+  .dc-biglist--now .dc-cv--entry::before{
+    bottom: 0.45em;
   }
 
 .dc-dissemination{
@@ -503,11 +506,11 @@ a{
     display: flex;
     justify-content: space-between;
   }
-  .dc-cv--entry:before{
+  .dc-cv--entry::before{
     position: absolute;    
     content: '';
     border-bottom: .12em dotted;
-    bottom: .27em;
+    bottom: .32em;
     left: 2rem;
     right: 2rem;
   }
@@ -642,6 +645,13 @@ html[data-dc-pagetype="focusgroup"] .dc-media--nav ol li.active{
     line-height: 1.2;
     position: relative;
   }
+  .dc-external-link{
+    padding-right: 0;
+  }
+  .dc-external-link:before{
+    content: '';
+  }
+
   html[data-dc-pagetype="home"] .dc-navigation-item#related-matters{
     display: none;
   }
