@@ -872,7 +872,7 @@ html[data-dc-pagetype="focusgroup"] .dc-media--nav ol li.active{
       }
     }
     .dc-mobile-nav.go-further::after{
-      animation: go-further 6s ease-in-out; 
+      animation: go-further 4.5s ease-in-out; 
     }
     html[data-dc-pagetype="focusgroup"] .dc-mobile-nav.opaque{
       background: #FF0000;

@@ -78,16 +78,15 @@ Small.prototype.readyForwardHint = function(){
 
 Small.prototype.setupInteraction = function(){
   this.$interactionEle.addEventListener( 'click', ( e ) => {
-    
-    clearTimeout( this.forwardInteractionHintTimeout );
-    
     if( e.pageX >= window.innerWidth / 2 ){
-      this.slideIndex++;
+      this.slideIndex++;    
+      clearTimeout( this.forwardInteractionHintTimeout );
     } else {
       if( this.isCurrentlyOnCV() ){
         this.triggerNoFurtherAnimation();
         return;
-      }
+      } 
+      clearTimeout( this.forwardInteractionHintTimeout );
       this.slideIndex--;
     }
     if( this.slideIndex < 0 ){
