@@ -39,36 +39,47 @@ let $mediaListMain = document.querySelectorAll('.dc-media__main .dc-media--list 
 
 let $mediaPlay = document.querySelectorAll('.dc-media__main .dc-media--nav .dc-media--play');
 
+const activateSlide = function( $n, index ){
+  if( $n.classList.contains('dc-media--play')){
+    return false;
+  }
+  /* remove active state from all nav elements */
+  $mediaNavMain.forEach(($n) => {
+    $n.classList.remove('active');  
+  })
+  /* set the one hovered to active */
+  $n.classList.add('active');
+  /* loop over all related media items */
+  $mediaListMain.forEach(( $m, mediaIndex ) => {
+    const $video = $m.querySelector('video');
+    const $img = $m.querySelector('img');
+    if( mediaIndex !== index ){
+      /* if they don't share an index, deactivate them */
+      $m.classList.remove('active');
+      if( $video ){
+        $video.pause();
+      }
+    } else {
+      /* this should be the one that is linked to the hovered item */        
+      F.loadSlideImage( $m );
+      if( $video && $video.muted ){
+        $video.play();
+      }
+      $m.classList.add('active');
+    }
+  });
+}
+
+$mediaListMain.forEach( ( $m, index ) => {
+  $m.addEventListener('click', () => {
+    let nextIndex = ( index + 1 < $mediaNavMain.length ) ? index + 1 : 0;
+    activateSlide( $mediaNavMain[nextIndex], nextIndex );
+  });
+});
+
 $mediaNavMain.forEach(( $n, index ) => {
   $n.addEventListener( 'mouseover', () => {
-    if( $n.classList.contains('dc-media--play')){
-      return false;
-    }
-    /* remove active state from all nav elements */
-    $mediaNavMain.forEach(($n) => {
-      $n.classList.remove('active');  
-    })
-    /* set the one hovered to active */
-    $n.classList.add('active');
-    /* loop over all related media items */
-    $mediaListMain.forEach(( $m, mediaIndex ) => {
-      const $video = $m.querySelector('video');
-      const $img = $m.querySelector('img');
-      if( mediaIndex !== index ){
-        /* if they don't share an index, deactivate them */
-        $m.classList.remove('active');
-        if( $video ){
-          $video.pause();
-        }
-      } else {
-        /* this should be the one that is linked to the hovered item */        
-        F.loadSlideImage( $m );
-        if( $video && $video.muted ){
-          $video.play();
-        }
-        $m.classList.add('active');
-      }
-    });
+    activateSlide( $n, index );
   });
   if( $n.classList.contains('dc-media--play') ){
     let isPlaying = false;
