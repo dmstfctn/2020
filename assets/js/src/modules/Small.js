@@ -40,9 +40,17 @@ Small.prototype.getSlideList = function( orientation ){
   return slides;
 }
 
-Small.prototype.loadImages = function(){
-  F.loadSlideImages( this.items.landscape );
-  F.loadSlideImages( this.items.portrait );
+Small.prototype.preloadImages = function( _preloadCount ){
+  let preloadCount = _preloadCount | 2;
+  for( let i = 1; i < 1 + preloadCount; i++ ){
+    let index = this.slideIndex + i;
+    for( let orientation of ['portrait', 'landscape'] ){
+      //console.log( 'preload image: ', i + this)
+      if( this.items[ orientation ][ index ] ){
+        F.loadSlideImage( this.items[ orientation ][ index ] )
+      }
+    }
+  } 
 };
 
 Small.prototype.isCurrentlyOnCV = function(){
@@ -89,15 +97,14 @@ Small.prototype.setupInteraction = function(){
     
     this.items.portrait[ this.slideIndex ].classList.add('active');
     this.items.landscape[ this.slideIndex ].classList.add('active');
-    F.loadSlideImage( this.items.portrait[ this.slideIndex ] );
-    F.loadSlideImage( this.items.landscape[ this.slideIndex ] );
+    this.preloadImages( 2 );
   });
 };
 
 Small.prototype.activate = function(){
   console.log( 'activate small() ' );
   this.setupInteraction();
-  this.loadImages();
+  this.preloadImages( 2 );
 }
 
 Small.prototype.deactivate = function(){

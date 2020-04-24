@@ -2,7 +2,7 @@ const Functions = {
   /* hover items in project page */
   loadSlideImage: function( $slide ){
     const $img = $slide.querySelector('img');
-    if( $img ){
+    if( $img && !$img.classList.contains('loaded') ){
       $img.addEventListener('load', () => {
         $img.classList.add('loaded');
       }, {once: true});
