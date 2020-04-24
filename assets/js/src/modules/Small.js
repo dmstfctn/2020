@@ -41,12 +41,14 @@ Small.prototype.getSlideList = function( orientation ){
 }
 
 Small.prototype.preloadImages = function( _preloadCount ){
+  
   let preloadCount = _preloadCount | 2;
+  console.log('preload', preloadCount, 'images' );
   for( let i = 1; i < 1 + preloadCount; i++ ){
     let index = this.slideIndex + i;
     for( let orientation of ['portrait', 'landscape'] ){
-      //console.log( 'preload image: ', i + this)
       if( this.items[ orientation ][ index ] ){
+        console.log( 'preload image: ', index, ' for ', orientation );
         F.loadSlideImage( this.items[ orientation ][ index ] )
       }
     }
@@ -95,8 +97,12 @@ Small.prototype.setupInteraction = function(){
         item.classList.remove('active');
       });
     
-    this.items.portrait[ this.slideIndex ].classList.add('active');
-    this.items.landscape[ this.slideIndex ].classList.add('active');
+    if( this.items.portrait[ this.slideIndex ] ){
+      this.items.portrait[ this.slideIndex ].classList.add('active');
+    }
+    if(this.items.landscape[ this.slideIndex ]){
+      this.items.landscape[ this.slideIndex ].classList.add('active');
+    }
     this.preloadImages( 2 );
   });
 };
