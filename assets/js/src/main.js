@@ -24,6 +24,7 @@ const mqSmallHandler = function( mq ){
     DC.small.activate();
   } else {
     console.log( 'large site' );
+    DC.small.deactivate();
     DC.large.activate();
   }
 };

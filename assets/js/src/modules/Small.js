@@ -104,8 +104,11 @@ Small.prototype.setupInteraction = function(){
       this.items.landscape[ this.slideIndex ].classList.add('active');
     }
     this.preloadImages( 2 );
+
+    sizeRoot();
   });
 };
+
 
 Small.prototype.activate = function(){
   console.log( 'activate small() ' );
@@ -114,16 +117,18 @@ Small.prototype.activate = function(){
 }
 
 Small.prototype.deactivate = function(){
-
+  
 }
 
+let sizeRootTimeout;
 const sizeRoot = () => {
   //fuck safari (ios)
-  document.querySelectorAll('html, body, .dc-mobile-nav').forEach( ( $e ) => {
-    setTimeout(function(){
-      $e.style.height = window.innerHeight + 'px';
-    }, 500 )    
-  });
+  clearTimeout(sizeRootTimeout);
+  sizeRootTimeout = setTimeout(function(){
+    document.querySelectorAll('html, body, .dc-mobile-nav').forEach( ( $e ) => {
+      $e.style.height = window.innerHeight + 'px';   
+    });
+  }, 300 );
 }
 
 const mqPortrait = window.matchMedia( '(orientation: portrait)' );
