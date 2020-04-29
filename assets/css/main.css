@@ -15,6 +15,9 @@ html, body{
   -moz-osx-font-smoothing: grayscale;
 }
 
+  .wf-loading *{
+    opacity: 0;
+  }
 
 .dc-cursor{
   display: none;
