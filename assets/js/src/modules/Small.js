@@ -73,7 +73,7 @@ Small.prototype.readyForwardHint = function(){
   clearTimeout( this.forwardInteractionHintTimeout );
   this.forwardInteractionHintTimeout = setTimeout(() => {
     this.$interactionEle.classList.add('go-further');
-  }, 3000 );
+  }, 7000 );
 }
 
 Small.prototype.setupInteraction = function(){
