@@ -5,9 +5,9 @@ html{
   font-size: 16px;
   font-size: 1.322vw;
   line-height: 1.389em;
-  letter-spacing: -.1em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.03em;
 }
 
 .wf-loading *{
@@ -34,10 +34,12 @@ html{
   font-size: 1.556rem;
   line-height: 1.429em;
   line-height: 1;
+  letter-spacing: -.1em;
 }
   .dc-work{
     font-size: 3.111rem;
     line-height: 1.142em;
+    letter-spacing: -.03em;
   }
 
   .dc-work--year h2{
@@ -74,6 +76,7 @@ html{
 .dc-info{
   font-size: 1.556rem; 
   line-height: 1.429em;
+  letter-spacing: -.1em;
 }
 .dc-bio{
   text-align: justify;
