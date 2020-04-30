@@ -97,25 +97,26 @@ const slideshowNav = ( slideshow ) => {
   let nav = [];  
   for( let i = 0; i < slideshow.slides.length; i++ ){
     if( i === 0 ){
+      console.log('LABEL: ', 'info' + Config.letterSeparator );
       nav.push( {
-        left: { label: 'info.', active: false}, 
-        right: { label: labels[i] + '.', active: true} 
+        left: { label: 'info' + Config.letterSeparator, active: false}, 
+        right: { label: labels[i] + Config.letterSeparator, active: true} 
       } );
     } else if( i === slideshow.slides.length - 1 ){
       nav.push( {
-        left: { label: labels[i] + '.', active: true}, 
+        left: { label: labels[i] + Config.letterSeparator, active: true}, 
         right: { label: '(end)', active: false} 
       } );
     } else {
       if( i % 2 !== 0 ){
         nav.push( {
-          left: { label: labels[i] + '.', active: true}, 
-          right: { label: labels[i+1] + '.', active: false} 
+          left: { label: labels[i] + Config.letterSeparator, active: true}, 
+          right: { label: labels[i+1] + Config.letterSeparator, active: false} 
         });
       } else {
         nav.push( {
-          left: { label: labels[i-1] + '.', active: false}, 
-          right: { label: labels[i] + '.', active: true} 
+          left: { label: labels[i-1] + Config.letterSeparator, active: false}, 
+          right: { label: labels[i] + Config.letterSeparator, active: true} 
         });
       }
     }

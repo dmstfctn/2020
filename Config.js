@@ -14,7 +14,8 @@ let Config = {
     public: path.join( __dirname, 'public', url_root ),
     public_data: path.join( __dirname, 'public', url_root, 'data' ),
     public_assets: path.join( __dirname, 'public', url_root, 'assets' )
-  }  
+  },
+  letterSeparator: ','
 };
 
 Config.log = () => {
