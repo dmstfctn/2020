@@ -76,11 +76,16 @@ Small.prototype.readyForwardHint = function(){
   }, 7000 );
 }
 
+Small.prototype.cancelForwardHint = function(){
+  clearTimeout( this.forwardInteractionHintTimeout );
+  document.querySelector('html').classList.add('dc-has-gone-further');
+}
+
 Small.prototype.setupInteraction = function(){
   this.$interactionEle.addEventListener( 'click', ( e ) => {
     if( e.pageX >= window.innerWidth / 2 ){
       this.slideIndex++;    
-      clearTimeout( this.forwardInteractionHintTimeout );
+      this.cancelForwardHint();
     } else {
       if( this.isCurrentlyOnCV() ){
         this.triggerNoFurtherAnimation();

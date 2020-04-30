@@ -227,6 +227,8 @@
         background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%);
       }
     .dc-mobile-nav::after{
+      opacity: 1;
+      transition: opacity .25s ease-out;
       transform: translateX(50%);
       background: linear-gradient(90deg, rgba(255,0,0,0) 80%, rgba(255,0,0,0.7) 100%);
     }
@@ -238,11 +240,15 @@
       opacity: 1;
       transition: opacity 0s linear;
     }
-    .dc-mobile-nav.go-further::after{
+    .dc-mobile-nav.go-further::after{            
       animation: go-further 4.5s ease-in-out; 
     }
     html[data-dc-pagetype="focusgroup"] .dc-mobile-nav.opaque{
       background: #FF0000;
+    }
+
+    html.dc-has-gone-further .dc-mobile-nav::after{
+      opacity: 0;
     }
 
   /* ios / notch overrides */
