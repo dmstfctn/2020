@@ -1,0 +1,122 @@
+/* the menu across the top of large site */
+.dc-sitenav{
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+  padding: .3rem 1rem .3rem .8rem;
+}
+  .dc-sitenav::before {
+    content: '';
+    background: #000;
+    display: block;
+    position: absolute;
+    width: 100vw;
+    height: 2.8rem;
+    z-index: -1;
+    top: -0.3rem;
+    left:0;
+  }
+    .dc-sitenav a:after{
+      content: ',';
+    }
+      .dc-sitenav a:last-child:after{
+        content: '';
+      }
+      .dc-sitenav a.active{
+        color: #FF0000;
+      }
+
+/* the dropdowns / lists */
+.dc-navigation-item{
+  position: absolute;
+  width: 100%;
+  background: #000000;
+  z-index: 10;
+  display: none;
+  padding: 0 1rem .3rem .8rem;
+}
+  html[data-dc-pagetype="home"] .dc-navigation-item#related-matters{
+    display: block;
+  }
+
+/* work lists */
+.dc-work{  
+  list-style-type: none;
+  padding-top: 5.6rem;  
+  margin: 0 0 0 0;
+  height: calc(100% - 2.2rem);
+  box-sizing: border-box;
+}
+  .dc-work--year{
+    display: flex;
+    justify-content: flex-start;   
+    align-items: end; 
+  }
+  .dc-work--year h2{
+    position: relative;
+    top: .2rem;
+    margin: 0 .075em 0 0;
+    color: #FF0000;
+  }
+  .dc-work--year .dc-work--items{
+    flex-grow: 2;
+    display: flex;
+    justify-content: space-between;    
+  }   
+    .dc-work--year .dc-work--items > *:only-child{
+      flex-grow: 2;
+    }    
+
+/* related matters */
+/* now */
+.dc-biglist--now{
+  position: absolute;
+  width: 98%;
+  top: auto;
+  bottom: 0;
+}
+  .dc-biglist--now a{
+    display: flex;
+    width:100%;
+    box-sizing: border-box;
+    align-items: baseline; 
+  }
+  .dc-biglist--now h2{
+    position: relative;
+    margin-bottom: .1em;
+  }
+  .dc-biglist--now .dc-cv--entry{
+    height: 1.07em;
+    line-height: 1;
+  }
+    .dc-biglist--now .dc-cv--entry::before{
+      bottom: 0.45em;
+    }
+
+/* dissemination */
+.dc-dissemination--info{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+  .dc-dissemination--info:before{
+    position: absolute;    
+    content: '';
+    border-bottom: .1em dotted;
+    bottom: 0.17em;
+    left: 2rem;
+    right: 2rem;
+  }
+.dc-dissemination--name,
+.dc-dissemination--location{
+  background: #000000;
+  z-index: 1;
+} 
+  .dc-dissemination--name{
+    padding-right: .2em;
+  }
+  .dc-dissemination--location{
+    padding-left: .2em;
+  }

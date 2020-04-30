@@ -1,0 +1,32 @@
+@keyframes flick-in-out{
+  0%{
+    opacity: 1;
+  }
+  50%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+@keyframes outFrames{
+  0%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+
+@keyframes go-further{
+  0%{
+    transform: translateX(50%);
+  }
+  50%{
+    transform: translateX(0);
+  }
+  100%{
+    transform: translateX(50%);
+  }
+}

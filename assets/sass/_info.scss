@@ -1,0 +1,94 @@
+.dc-info{ 
+  padding: 0 1rem .3rem .8rem;
+  overflow: hidden;
+  padding-bottom: 3.999em;    
+  padding-top: 2.6rem;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  background: #000000;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.dc-bio{  
+  background:#000;
+  padding-bottom: 1.429em; 
+  position: relative;
+  z-index: 1;
+}
+
+.dc-cv{
+  position: relative;
+  z-index: 2;
+  width: 100%; 
+  margin-top: 0; /*1.429em;*/
+  overflow: scroll;    
+}
+  .dc-cv.quantisedScroller{
+    height: auto;
+    overflow: hidden; 
+    position: relative;
+    cursor: none;
+  }
+  .dc-cv.quantisedScroller a{
+    cursor: none;
+  }
+  .dc-cv.quantisedScroller dl{
+    overflow: hidden;
+    position: relative;
+  }
+  .dc-cv--now{
+    color: #FF0000;
+  }
+  .dc-cv--title{ 
+    width: 20%;
+    float: left;
+    clear: both;
+    height: 1.429em;
+  }
+  .dc-cv--entry{
+    height: 1.429em;
+    text-align: justify;
+    text-align-last: justify;
+    padding: 0;
+    margin: 0;
+    width: 80%;    
+    display: flex;
+    justify-content: space-between;
+    float: right;
+    overflow: hidden;
+    position: relative;
+  }
+  .dc-cv--entry > a{
+    flex-grow: 2;
+    display: flex;
+    justify-content: space-between;
+  }
+  .dc-cv--entry::before{
+    position: absolute;    
+    content: '';
+    border-bottom: .12em dotted;
+    bottom: .32em;
+    left: 2rem;
+    right: 2rem;
+  }
+  .dc-cv--name{    
+    background: #000000;
+    z-index: 1;
+    padding-right: .2em;
+  }
+
+  .dc-cv .dctxt--date{
+    color: #FF0000;
+  }
+
+  .dc-cv--location{
+    position: relative;
+    background: #000000;
+    z-index: 1;
+    padding-left: .2em;
+  }

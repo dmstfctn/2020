@@ -1,0 +1,36 @@
+html, body{  
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+  html{
+    background: #000000;
+    color: #FFFFFF;
+  }
+  body{   
+    min-height: 100%;
+  }
+  .dc-main-wrap{
+    padding: 0 1rem .3rem .8rem;
+  }
+
+  a:hover{
+    color: #FF0000;
+  }
+
+    .dc-external-link{
+      position: relative;
+      padding-right: .4em;
+    }
+    .dc-external-link:before{
+      content: '↗';
+      position: absolute;
+      font-size: 0.5em;
+      top: -.4em;
+      right: 0;
+    }
+    .dc-external-link:after{
+      position: absolute;
+      left: 100%;
+    }

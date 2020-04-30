@@ -1,0 +1,38 @@
+html[data-dc-pagetype="focusgroup"],
+.dc-navigation-item#focus-groups{
+  background: #FF0000;
+  color: #000000;
+}
+html[data-dc-pagetype="focusgroup"] .dc-sitenav{
+  color: #000000;
+}
+  html[data-dc-pagetype="focusgroup"] .dc-sitenav a.active{
+    color: #FFFFFF;
+  }
+html[data-dc-pagetype="focusgroup"] .dc-sitenav::before{
+  background: #FF0000;
+}
+html[data-dc-pagetype="focusgroup"] .dc-work--year h2,
+.dc-navigation-item#focus-groups .dc-work--year h2{
+  color: #FFFFFF;
+}
+html[data-dc-pagetype="focusgroup"] a:hover,
+.dc-navigation-item#focus-groups a:hover{
+  color: #FFFFFF
+}
+
+html[data-dc-pagetype="focusgroup"] .dc-worknav .current,
+.dc-navigation-item#focus-groups .dc-worknav .current{
+  color: #FFFFFF;
+}
+html[data-dc-pagetype="focusgroup"] .dc-media--list li{
+  background: #FF0000;
+}
+html[data-dc-pagetype="focusgroup"] .dc-media--nav ol li:hover,
+html[data-dc-pagetype="focusgroup"] .dc-media--nav ol li.active{
+  color: #FFFFFF;
+}
+html[data-dc-pagetype="focusgroup"] .dc-media--nav ol li:hover:after,
+html[data-dc-pagetype="focusgroup"] .dc-media--nav ol li.active:after{
+  color: #000000;
+}

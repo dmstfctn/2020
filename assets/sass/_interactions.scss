@@ -1,0 +1,55 @@
+/* big list -> page transition */
+.out1{
+  animation: outFrames 0 step-start forwards;
+}
+.out2{
+  animation: outFrames .5s .5s step-start forwards;
+}
+.out3{
+  animation: outFrames .5s .8s step-start forwards;
+}
+
+
+/* hover images in CV + dissemination */
+.dc-list-hoverimg{
+  position: relative;
+}
+.dc-list-hoverimg img{
+  position: absolute;
+  pointer-events: none;
+  left: 50%;
+  top: -2rem;
+  transform: translateX( -50% );
+  width: 40%;
+  opacity: 0;
+  z-index: 10;
+}
+  .dc-list-hoverimg:hover{
+    overflow: visible;
+    z-index: 99;
+  }
+  .dc-list-hoverimg:hover img{
+      opacity: 1;
+    }
+
+/* play / pause */
+.dc-media--play{
+  font-size: 0;   
+}
+  .dc-media--play:before{
+    position: absolute;
+    font-size: 1rem;
+    content: 'play';
+  }
+  .dc-media--play.playing:before{
+    content: 'pause';
+  }
+
+  .dc-media--play.playing{
+    color: #FF0000;
+    animation: flick-in-out 1.6s infinite step-start;
+  }
+  .dc-media--play.playing:hover{
+    animation-play-state: paused;
+    opacity: 1 !important;
+  }

@@ -1,0 +1,123 @@
+html{
+  font-family: adobe-myungjo-std, serif;
+  font-style: normal;
+  font-weight: 500;      
+  font-size: 16px;
+  font-size: 1.322vw;
+  line-height: 1.389em;
+  letter-spacing: -.1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.wf-loading *{
+  opacity: 0; 
+}
+
+.dctxt--date{    
+  font-family: antique-olive-nord, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1em;
+  font-size: 0.85em;
+  font-weight: normal;        
+}
+
+.dctxt--at{
+  transform: scaleX(0.6);
+  display: inline-block;
+  margin-left: -0.18em;
+  margin-right: -0.2em;
+}
+
+.dc-sitenav{
+  font-size: 1.556rem;
+  line-height: 1.429em;
+  line-height: 1;
+}
+  .dc-work{
+    font-size: 3.111rem;
+    line-height: 1.142em;
+  }
+
+  .dc-work--year h2{
+    font-size: 3.111rem;
+    font-family: antique-olive-nord, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    font-size: 0.85em;
+    font-weight: normal; 
+    display: inline;
+  }
+  .dc-work--year .dc-work--items{
+    line-height: 1;
+    text-transform: uppercase;
+  }
+    .dc-work--year .dc-work--items > *{
+      text-align: justify;
+      text-align-last: justify;
+      &:after{
+        content: ',';
+      } 
+      &:last-child:after{
+        content: '';  
+      }
+    }
+    
+.dc-biglist--now{
+  text-align: justify;
+  text-align-last: justify;
+  white-space: nowrap;
+}
+
+.dc-info{
+  font-size: 1.556rem; 
+  line-height: 1.429em;
+}
+.dc-bio{
+  text-align: justify;
+  text-align-last: justify;
+}
+
+.dc-worknav{
+  text-transform: uppercase;
+}
+  .dc-worknav a{
+    white-space: nowrap;
+    flex-shrink: 2;
+    text-overflow: clip;
+  }
+
+.dc-media--list .info .text,
+.dc-media--list .dc-media__text .text{
+  columns: 3;
+  column-gap: 1.8em;
+}
+.dc-media--list .info p,
+.dc-media--list .dc-media__text p{
+  break-after: always;
+  text-align: justify;    
+} 
+
+
+.dc-media--nav ol{
+  counter-reset: medianav;
+}
+  .dc-media--nav ol li{
+    list-style-type: none;
+  }
+    .dc-media--nav ol li:before{
+      counter-increment: medianav;
+      content: counter(medianav, upper-alpha);
+    }
+    .dc-media--nav ol li:after{
+      content: ',';
+    }
+  .dc-media--nav ol li.info:before,
+  .dc-media--nav ol li.dc-media__audio:before{
+    content: '';
+  }
+  .dc-media--nav ol li:last-child:after{
+    content: '';
+  }
