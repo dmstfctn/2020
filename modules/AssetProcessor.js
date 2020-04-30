@@ -2,6 +2,8 @@ const path = require('path');
 const fs = require('fs-extra');
 const Browserify = require('browserify');
 
+const NodeSass = require('node-sass');
+
 const Config = require( '../Config.js' );
 
 const js = ( src, dist ) => {  
@@ -16,8 +18,23 @@ const js = ( src, dist ) => {
     .pipe( out );
 };
 
+const sass = ( src, dist ) => {
+  // ensure dist exists
+  fs.mkdirSync( path.dirname(dist), {recursive: true} );
+  NodeSass.render({
+    file: src,
+    outputStyle: ( Config.minify ) ? 'compressed' : 'nested'
+  }, ( err, result ) => {
+    if( err ){
+      throw new Error(err);
+    }
+    fs.writeFile( dist, result.css );
+  });
+}
+
 const AssetProcessor = {
-  js
+  js,
+  sass
 }
 
 module.exports = AssetProcessor;

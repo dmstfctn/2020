@@ -20,7 +20,10 @@ Assets.js(
   path.join( Config.paths.public_assets, 'js', 'src', 'main.js' ), // from
   path.join( Config.paths.public_assets, 'js', 'dist', 'main.js' ) // to
 );
-
+Assets.sass(
+  path.join( Config.paths.public_assets, 'sass', 'main.scss' ), // from
+  path.join( Config.paths.public_assets, 'css', 'main.css' ) // to
+);
 
 const relatedMatters = Formatter.createRelatedMatters( Content.related_matters, Content.cv );
 const focusGroups = Formatter.createFocusGroups( Content.focus_groups );
