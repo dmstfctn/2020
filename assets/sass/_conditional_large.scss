@@ -31,3 +31,16 @@
 .dc-showreels{
   display: none;
 }
+
+
+@media (min-width: 900px){
+  .dc-sitenav{    
+    letter-spacing: -.1em;
+  }
+  .dc-work{
+    letter-spacing: -.03em;
+  }
+  .dc-info{
+    letter-spacing: -.1em;
+  }
+}

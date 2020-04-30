@@ -6,7 +6,7 @@ html{
   font-size: 1.322vw;
   line-height: 1.389em;
   letter-spacing: -0.03em;
-  
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; 
 }
@@ -24,7 +24,7 @@ html{
 }
 
 .dctxt--at{
-  transform: scaleX(0.6);
+  transform: scaleX(0.65) scaleY(0.9) translateY(0.04em);
   display: inline-block;
   margin-left: -0.18em;
   margin-right: -0.2em;
@@ -34,12 +34,10 @@ html{
   font-size: 1.556rem;
   line-height: 1.429em;
   line-height: 1;
-  letter-spacing: -.1em;
 }
   .dc-work{
     font-size: 3.111rem;
     line-height: 1.142em;
-    letter-spacing: -.03em;
   }
 
   .dc-work--year h2{
@@ -75,10 +73,12 @@ html{
 .dc-info{
   font-size: 1.556rem; 
   line-height: 1.429em;
-  letter-spacing: -.1em;
 }
 .dc-bio{
   text-align: justify;
+  text-align-last: justify;
+}
+.dc-bio p{
   text-align-last: justify;
 }
 
