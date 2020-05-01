@@ -68,27 +68,36 @@
     display: flex;
     justify-content: space-between;
   }
-  .dc-cv--entry::before{
-    position: absolute;    
-    content: '';
-    border-bottom: .12em dotted;
-    bottom: .32em;
-    left: 2rem;
-    right: 2rem;
-  }
+    .dc-cv--entry.dc-cv--now > a::after,
+    .dc-cv--entry::after{
+      content: '................................................................................................................................................';
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: clip;
+      flex-grow: 2;
+      order: 2;
+      width: 0;
+      position: relative;
+      left: auto;
+    }
+    .dc-cv--entry.dc-cv--now::after{
+      display: none;
+    }
+
   .dc-cv--name{    
-    background: #000000;
-    z-index: 1;
-    padding-right: .2em;
+    order: 1;
+    flex-shrink: 0;
+    flex-basis: content;
+    padding-right: .1em;
+  }
+
+  .dc-cv--location{
+    order: 3;
+    flex-shrink: 0;
+    flex-basis: content;
+    padding-left: .1em;
   }
 
   .dc-cv .dctxt--date{
     color: #FF0000;
-  }
-
-  .dc-cv--location{
-    position: relative;
-    background: #000000;
-    z-index: 1;
-    padding-left: .2em;
   }
