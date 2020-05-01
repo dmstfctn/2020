@@ -1,3 +1,5 @@
+const $html = document.querySelector('html');
+
 const Functions = {
   /* hover items in project page */
   loadSlideImage: function( $slide ){
@@ -39,6 +41,9 @@ const Functions = {
       });
 
     return index;
+  },
+  isHome: () => {
+    return $html.getAttribute('data-dc-pagetype') === 'home';
   }
 }
 

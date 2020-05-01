@@ -112,7 +112,7 @@ $hoverImages.forEach( ( $hoverImg ) => {
 
 /* top menu 'dropdowns' */
 let $sitenavDropdownLinks = document.querySelectorAll('.dc-sitenav a[href^="#"]');
-let $sitenavDropdowns = document.querySelectorAll('.dc-navigation-item, #dc-info');
+let $sitenavDropdowns = document.querySelectorAll('.dc-navigation-item, .dc-info');
 
 $sitenavDropdownLinks.forEach( ($link ) => {
   $link.addEventListener('click', (e) => {
@@ -121,6 +121,7 @@ $sitenavDropdownLinks.forEach( ($link ) => {
     let $menu = document.querySelector( target );
     let deactivate = false;
     let pagetype = $menu.getAttribute('data-pagetype');
+  
     if( $link.classList.contains('active') ){
       deactivate = true;
     }
@@ -131,12 +132,12 @@ $sitenavDropdownLinks.forEach( ($link ) => {
     $sitenavDropdowns.forEach( ( $dropdown ) => {
       $dropdown.style.display = 'none';
     });
-    if( !deactivate ){
+    if( deactivate && INIT_PAGETYPE !== 'home') {
+      document.querySelector('html').setAttribute('data-dc-pagetype', INIT_PAGETYPE );      
+    } else {
       document.querySelector('html').setAttribute('data-dc-pagetype', pagetype );
       $link.classList.add( 'active' );
       $menu.style.display = 'block';
-    } else {
-      document.querySelector('html').setAttribute('data-dc-pagetype', INIT_PAGETYPE );
     }
   });
 });

@@ -27,6 +27,10 @@
       .dc-sitenav a.active{
         color: #FF0000;
       }
+      html[data-dc-pagetype="home"] .dc-sitenav a[href="#related-matters"]{
+        color: #FF0000;
+        pointer-events: none;
+      }
 
 /* the dropdowns / lists */
 .dc-navigation-item{
