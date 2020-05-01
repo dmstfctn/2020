@@ -68,7 +68,15 @@
   }   
     .dc-work--year .dc-work--items > *:only-child{
       flex-grow: 2;
+      /* related to safari no justify last line fix*/
+      margin-bottom: -1em;
     }    
+    /* fix safari no justify last line */
+    .dc-work--year .dc-work--items > *:only-child:after {
+      content: "";
+      display: inline-block;
+      width: 100%;
+    }
 
 /* related matters */
 /* now */
