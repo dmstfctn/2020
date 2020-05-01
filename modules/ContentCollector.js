@@ -4,6 +4,8 @@ const fs = require('fs');
 const Config = require( '../Config.js' );
 const H = require('./Helpers.js');
 
+const YAML = require('yaml');
+
 const cheerio = require('cheerio');
 const frontmatter = require('@github-docs/frontmatter')
 const markdown = require( 'markdown-it' )( 'commonmark', {
@@ -208,6 +210,13 @@ const readShowreel = ( showreelPath ) => {
 
 }
 
+const loadCV = ( file ) => {
+  const cvYaml = fs.readFileSync( file );
+  return {
+    entries: YAML.parse( cvYaml.toString() )
+  };
+}
+
 const renderMarkdownAndProcess = ( md ) => {  
   let rendered = markdown.render( md );
 
@@ -243,7 +252,7 @@ const cvToDissemination = function( cv, contentPath ){
 };
 
 const ContentCollector = function( contentPath ){
-  const cv = require( path.join( contentPath, 'info', 'cv.js') );
+  const cv = loadCV( path.join( contentPath, 'info', 'cv.yaml' ) );
   const dissemination = cvToDissemination( cv, contentPath );
   const showreel = readShowreel( path.join( contentPath, 'showreel' ) );
   return {
