@@ -77,6 +77,10 @@
       display: inline-block;
       width: 100%;
     }
+      /* and undo it on dissemination because it goes weird there in other browsers */
+     .dc-work--year .dc-work--items.dc-dissemination-item > *:only-child{
+       margin-bottom: 0;
+     }
 
 /* related matters */
 /* now */
@@ -109,23 +113,5 @@
   position: relative;
   display: flex;
   justify-content: space-between;
+  height: 1em;
 }
-  .dc-dissemination--info:before{
-    position: absolute;    
-    content: '';
-    border-bottom: .1em dotted;
-    bottom: 0.17em;
-    left: 2rem;
-    right: 2rem;
-  }
-.dc-dissemination--name,
-.dc-dissemination--location{
-  background: #000000;
-  z-index: 1;
-} 
-  .dc-dissemination--name{
-    padding-right: .2em;
-  }
-  .dc-dissemination--location{
-    padding-left: .2em;
-  }

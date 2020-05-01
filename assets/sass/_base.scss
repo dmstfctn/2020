@@ -34,3 +34,58 @@ html, body{
       position: absolute;
       left: 100%;
     }
+
+/* dotted line, title-subtitle */
+/* in CV and dissemination */
+.dc-cv--entry.dc-cv--now > a::after,
+.dc-cv--entry::after,
+.dc-dissemination--info::after{
+  content: '................................................................................................................................................';
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+  flex-grow: 2;
+  order: 2;
+  width: 0;
+  position: relative;
+  left: auto;
+}
+  .dc-cv--entry.dc-cv--now::after{
+    display: none;
+  }
+
+.dc-cv--name,
+.dc-dissemination--name{    
+  order: 1;
+  flex-shrink: 0;
+  flex-basis: content;
+  padding-right: .1em;
+}
+
+.dc-cv--location,
+.dc-dissemination--location{
+  order: 3;
+  flex-shrink: 0;
+  flex-basis: content;
+  padding-left: .1em;
+}
+
+    // .dc-dissemination--info:before{
+  //   position: absolute;    
+  //   content: '';
+  //   border-bottom: .1em dotted;
+  //   bottom: 0.17em;
+  //   left: 2rem;
+  //   right: 2rem;
+  // }
+// .dc-dissemination--name,
+// .dc-dissemination--location{
+//   background: #000000;
+//   z-index: 1;
+// } 
+//   .dc-dissemination--name{
+//     padding-right: .2em;
+//   }
+//   .dc-dissemination--location{
+//     padding-left: .2em;
+//   }
