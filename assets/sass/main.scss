@@ -14,3 +14,22 @@
 @import "_conditional_small.scss";
 
 @import "_interactions.scss";
+
+::-moz-selection { 
+  color: #FF0000; 
+}
+::selection { 
+  color: #FF0000; 
+}
+[data-dc-pagetype="focusgroup"] ::-moz-selection{
+  color: #FFFFFF;
+}
+[data-dc-pagetype="focusgroup"] ::selection{
+  color: #FFFFFF;
+}
+[data-dc-pagetype="focusgroup"] a::selection{
+  color: #FFFFFF;
+}  
+[data-dc-pagetype="focusgroup"] a::-moz-selection{
+  color: #FFFFFF;
+}

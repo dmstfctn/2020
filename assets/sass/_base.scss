@@ -12,26 +12,6 @@ html, body{
     min-height: 100%;
   }
 
-  ::-moz-selection { 
-    color: #FF0000; 
-  }
-  ::selection { 
-    color: #FF0000; 
-  }
-  [data-dc-pagetype="focusgroup"] ::-moz-selection{
-    color: #FFFFFF;
-    & a::after{
-      color: #FFFFFF;
-    }
-  }
-  [data-dc-pagetype="focusgroup"] ::selection{
-    color: #FFFFFF;
-    & a::after{
-      color: #FFFFFF;
-    }
-  }
-
-
   .dc-main-wrap{
     padding: 0 1rem .3rem .8rem;
   }
