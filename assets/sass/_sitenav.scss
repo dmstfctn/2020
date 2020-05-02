@@ -56,14 +56,14 @@
   .dc-work--year{
     display: flex;
     justify-content: flex-start;   
-    align-items: end; 
+    align-items: baseline; 
   }
   .dc-work--year h2{
     position: relative;
     top: .13rem;
     margin: 0 .075em 0 0;
     color: #FF0000;
-    white-space: nowrap;
+    white-space: nowrap;    
   }
   .dc-work--year .dc-work--items{
     flex-grow: 2;

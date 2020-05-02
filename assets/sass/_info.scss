@@ -44,14 +44,16 @@
   .dc-cv--now{
     color: #FF0000;
   }
+  .dc-cv--title,
+  .dc-cv--entry{
+    height: 1.25em;
+  }
   .dc-cv--title{ 
     width: 20%;
     float: left;
     clear: both;
-    height: 1.429em;
   }
-  .dc-cv--entry{
-    height: 1.429em;
+  .dc-cv--entry{    
     text-align: justify;
     text-align-last: justify;
     padding: 0;
@@ -71,4 +73,9 @@
 
   .dc-cv .dctxt--date{
     color: #FF0000;
+  }
+
+  .dc-cv--type__screening,
+  .dc-cv--type__solo{
+    margin-left: -0.05em;
   }

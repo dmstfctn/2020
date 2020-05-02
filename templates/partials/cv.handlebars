@@ -9,15 +9,15 @@
         {{/unless}}
         {{~#if type~}}
         <span class="dc-cv--bracket">(</span><!--
-        --><span class="dc-cv--type">
+        --><span class="dc-cv--type dc-cv--type__{{~type~}}">
             {{~type~}}
           </span><!--
         {{/if}}
         {{~#if this.contents.[0].now~}}
-      --><span class="dctxt--date">{{this.contents.[0].date}}</span><!--
+      --> <span class="dctxt--date">{{this.contents.[0].date}}</span><!--
         {{/if}}
         {{~#if type~}}
-      --> <span class="dc-cv--bracket">)</span>
+      --><span class="dc-cv--bracket">)</span>
         {{/if}}
       </dt>
       {{~#each this.contents~}}

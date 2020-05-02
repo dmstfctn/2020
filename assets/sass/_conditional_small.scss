@@ -6,10 +6,17 @@
     //font-size: 9.5px;
     font-size: 3vw;
     line-height: 1.2;
-    letter-spacing: -0.05em;
     position: relative;
     -webkit-text-size-adjust: none;
   }
+  html,
+  .dc-sitenav,
+  .dc-info{
+    letter-spacing: -0.05em;
+  }
+
+
+
   .dc-external-link{
     padding-right: 0;
   }
