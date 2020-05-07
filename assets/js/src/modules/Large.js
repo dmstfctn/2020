@@ -1,6 +1,8 @@
 const CFG = require('./Config.js' );
 const F = require( './Functions.js' );
 
+const VisualQuantiser = require( './VisualQuantiser.js' );
+
 const INIT_PAGETYPE = document.querySelector('html').getAttribute('data-dc-pagetype');
 let prev_pagetype = INIT_PAGETYPE;
 
@@ -171,9 +173,22 @@ $nextprevLinks.forEach( ($link) => {
   
 });
 
+const onResize = function(){
+  VisualQuantiser( 
+    document.querySelector('#related-matters ol'),
+    document.querySelectorAll('#related-matters ol li'),
+    document.querySelector('.dc-biglist--now')
+  );
+  // VisualQuantiser( 
+  //   document.querySelector('#focus-groups ol'),
+  //   document.querySelectorAll('#focus-groups ol li'),
+  //   document.querySelector('.dc-biglist--now')
+  // );
+}
 
 const Large = function(){
   console.log('new Large()');
+
 };
 
 Large.prototype.loadImages = function(){
@@ -182,6 +197,10 @@ Large.prototype.loadImages = function(){
 
 Large.prototype.activate = function(){
   this.loadImages();
+  window.addEventListener('resize', onResize );
+}
+Large.prototype.deactivate = function(){
+  window.removeEventListener('resize', onResize );
 }
 
 module.exports = new Large();
