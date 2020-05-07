@@ -20,19 +20,26 @@ html, body{
     color: #FF0000;
   }
 
-    .dc-external-link{
+    .dc-external-link,
+    a[href^="mailto:"],
+    a[href^="http"]{
       position: relative;
-      padding-right: .4em;
+      padding-right: 0.5em;      
+      line-height: inherit;
     }
-    .dc-external-link::before{
+    .dc-external-link::before,
+    a[href^="mailto:"]::before,
+    a[href^="http"]::before{
       content: '↗';
       position: absolute;
       font-size: 0.5em;
-      top: .2em;
       right: 0;
+      bottom: 0.75em;
+      height: 1em;
+      line-height: 1;
     }
       .dc-biglist--now .dc-external-link::before{
-        top: -0.3em;
+        bottom: 1em;
       }
     .dc-external-link:after{
       position: absolute;
