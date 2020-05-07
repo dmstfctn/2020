@@ -73,6 +73,7 @@ const activateSlide = function( $n, index ){
 }
 
 $mediaListMain.forEach( ( $m, index ) => {
+  if( $m.classList.contains('info') ){ return; }
   $m.addEventListener('click', () => {
     let nextIndex = ( index + 1 < $mediaNavMain.length ) ? index + 1 : 0;
     activateSlide( $mediaNavMain[nextIndex], nextIndex );
