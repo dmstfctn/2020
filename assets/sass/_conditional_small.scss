@@ -17,6 +17,7 @@
 
 
 
+
   .dc-external-link{
     padding-right: 0;
   }
@@ -35,6 +36,12 @@
     padding-top: .7em;
     font-size: 1rem;       
   }
+    .dc-line-break-small{
+      display: block;
+    }
+    .dc-line-break-large{
+      display: none;
+    }
     .dc-bio{      
       line-height: 1.25em;
     }    
