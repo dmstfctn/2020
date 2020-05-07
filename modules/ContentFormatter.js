@@ -133,7 +133,12 @@ const prepareSlideshow = ( slideshow, pageName, slideshowName, section, addSecti
   return slideshow;
 }
 
-
+const dateToHTML = ( date ) => {
+  console.log( date );
+  var rp = date.replace( '-', '<span class="dctxt--date--hyphen">-</span>' );
+  console.log( rp );
+  return rp;
+}
 
 const createRelatedMatters = ( related_matters, cv ) => {
   const section_name = 'related matters';
@@ -145,6 +150,7 @@ const createRelatedMatters = ( related_matters, cv ) => {
     let item = related_matters.contents[i];
     let line = {
       name: item.name,
+      name_html: dateToHTML( item.name ),
       contents: []
     };
     for( let j in item.contents ){
@@ -200,6 +206,7 @@ const createFocusGroups = ( focus_groups ) => {
       sub_item.cv = structureCV( sub_item.cv );
       let line = {
         name: item.name,
+        name_html: dateToHTML( item.name ),
         contents: [
           {
             name: sub_item.name,
