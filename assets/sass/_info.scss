@@ -20,6 +20,11 @@
   position: relative;
   z-index: 1;
 }
+  .dc-bio a[href^="mailto"],
+  .dc-bio a[href="https://twitter.com/dmstfctn"],
+  .dc-bio a[href="https://instagram.com/dmstfctn"]{
+    white-space: nowrap;
+  }
 
 .dc-cv{
   position: relative;
