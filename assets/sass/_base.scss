@@ -51,13 +51,17 @@ html, body{
 .dc-cv--entry.dc-cv--now > a::after,
 .dc-cv--entry::after,
 .dc-dissemination--info::after{
-  content: '................................................................................................................................................';
-  white-space: nowrap;
+  content: '................................................................................................................................................................................................................................................................................................................................';
+  //white-space: nowrap;
+  display: inline-block;
   overflow: hidden;
-  text-overflow: clip;
+  overflow-wrap: anywhere;
+  word-break: break-word;
   flex-grow: 2;
+  height: 1.2em;
   order: 2;
   width: 0;
+  min-width: 1%;
   position: relative;
   left: auto;
 }
