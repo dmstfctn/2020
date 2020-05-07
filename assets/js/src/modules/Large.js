@@ -123,7 +123,7 @@ $sitenavDropdownLinks.forEach( ($link ) => {
     let $menu = document.querySelector( target );
     let deactivate = false;
     let pagetype = $menu.getAttribute('data-pagetype');
-  
+    let id = $menu.id;    
     if( $link.classList.contains('active') ){
       deactivate = true;
     }
@@ -140,6 +140,8 @@ $sitenavDropdownLinks.forEach( ($link ) => {
       document.querySelector('html').setAttribute('data-dc-pagetype', pagetype );
       $link.classList.add( 'active' );
       $menu.style.display = 'block';
+      //run the 'visual quantiser' 
+      vcList[ id ]();
     }
   });
 });
@@ -173,17 +175,28 @@ $nextprevLinks.forEach( ($link) => {
   
 });
 
-const onResize = function(){
-  VisualQuantiser( 
+let vcList = {
+  'related-matters': VisualQuantiser( 
     document.querySelector('#related-matters ol'),
     document.querySelectorAll('#related-matters ol li'),
-    document.querySelector('.dc-biglist--now')
-  );
-  // VisualQuantiser( 
-  //   document.querySelector('#focus-groups ol'),
-  //   document.querySelectorAll('#focus-groups ol li'),
-  //   document.querySelector('.dc-biglist--now')
-  // );
+    document.querySelector('#related-matters .dc-biglist--now')
+  ),
+  'focus-groups': VisualQuantiser( 
+    document.querySelector('#focus-groups ol'),
+    document.querySelectorAll('#focus-groups ol li'),
+    document.querySelector('#focus-groups .dc-biglist--now')
+  ),
+  'dissemination': VisualQuantiser(
+    document.querySelector('#dissemination ol'),
+    document.querySelectorAll('#dissemination ol li'),
+    document.querySelector('#dissemination .dc-biglist--now')
+  )
+};
+
+const quantise = function(){
+  for( i in vcList ){
+    vcList[i]();
+  }
 }
 
 const Large = function(){
@@ -197,10 +210,11 @@ Large.prototype.loadImages = function(){
 
 Large.prototype.activate = function(){
   this.loadImages();
-  window.addEventListener('resize', onResize );
+  quantise();
+  window.addEventListener('resize', quantise );
 }
 Large.prototype.deactivate = function(){
-  window.removeEventListener('resize', onResize );
+  window.removeEventListener('resize', quantise );
 }
 
 module.exports = new Large();
