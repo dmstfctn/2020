@@ -203,8 +203,8 @@
   type: group shows
   date: 
   title: Projected.Capital
-  situation: Roehrs & Boetsch
-  location: Zurich
+  situation: ROEHRS & BOETSCH
+  location: zurich
   url: 
   image: 
   related: 
@@ -215,7 +215,7 @@
   date: 
   title: 4th Istanbul Design Biennale
   situation: ARTER
-  location: Istanbul
+  location: istanbul
   url: 
   image: 
   related:
@@ -225,8 +225,8 @@
   type: group shows
   date: 
   title: Situations/Infrastructure
-  situation: Fotomuseum Winterthur
-  location: Winterthur
+  situation: FOTOMUSEUM WINTERTHUR
+  location: winterthur
   url: 
   image: 
   related: 
@@ -236,8 +236,8 @@
   type: group shows
   date: 
   title: transmediale face value
-  situation: Haus der Kulturen der Welt
-  location: Berlin
+  situation: HAUS DER KULTUREN DER WELT
+  location: berlin
   url: 
   image: 
   related: 
@@ -250,7 +250,7 @@
   date: 
   title: Radical Networks
   situation: SPEKTRUM
-  location: Berlin
+  location: berlin
   url: 
   image: 
   related: 
@@ -260,8 +260,8 @@
   type: live
   date: 
   title: Alt-Age
-  situation: Design Museum
-  location: London
+  situation: DESIGN MUSEUM
+  location: london
   url: 
   image: 
   related: 
@@ -271,8 +271,8 @@
   type: live
   date: 
   title: Borderline Festival
-  situation: Onassis Cultural Centre
-  location: Athens
+  situation: ONASSIS CULTURAL CENTER
+  location: athens
   url: 
   image: 
   related: 
@@ -282,8 +282,8 @@
   type: live
   date: 
   title: transmediale face value
-  situation: Haus der Kulturen der Welt
-  location: Berlin
+  situation: HAUS DER KULTUREN DER WELT
+  location: berlin
   url: 
   image: 
   related: 
@@ -294,8 +294,8 @@
   type: talk
   date: 
   title: "IMPAKT Festival: Algorithmic Superstructures"
-  situation: Het Huis Utrecht
-  location: Utrecht
+  situation: HET HUIS
+  location: utrecht
   url: 
   image: 
   related:
@@ -305,8 +305,8 @@
   type: talk
   date: 
   title: Automated Lanscapes
-  situation: Het Nieuwe Instituut
-  location: Rotterdam
+  situation: HET NIEUWE INSTITUUT
+  location: rotterdam
   url: 
   image: 
   related: 
@@ -316,8 +316,8 @@
   type: talk
   date: 
   title: Alt-Age
-  situation: Design Museum
-  location: London
+  situation: DESIGN MUSEUM
+  location: london
   url: 
   image: 
   related: 
@@ -327,8 +327,8 @@
   type: talk
   date: 
   title: Something or Other. Practicing Platforms.
-  situation: London College of Communication
-  location: London
+  situation: LCC
+  location: london
   url: 
   image: 
   related: 
@@ -338,8 +338,8 @@
   type: talk
   date: 
   title: transmediale face value
-  situation: Haus der Kulturen der Welt
-  location: Berlin
+  situation: HAUS DER KULTUREN DER WELT
+  location: berlin
   url: 
   image: 
   related: 
@@ -349,8 +349,8 @@
   type: talk
   date: 
   title: "MoneyLab #4"
-  situation: Somerset House
-  location: London
+  situation: SOMERSET HOUSE
+  location: london
   url: 
   image: 
   related: 
@@ -397,8 +397,8 @@
   type: group shows
   date: 
   title: the influencers
-  situation: Centre de Cultura Contemporània de Barcelona
-  location: Barcelona
+  situation: CENTRE DE CULTURA CONTEMPORÀNIA DE BARCELONA
+  location: barcelona
   url:
   image:
   related:
@@ -408,8 +408,8 @@
   type: group shows
   date: 
   title: Rundgang 2017
-  situation: Universität der Künste
-  location: Berlin
+  situation: UNIVERSITÄT DER KÜNSTE
+  location: berlin
   url:
   image:
   related:
@@ -422,23 +422,12 @@
   date: 
   title: transmediale vorspiel
   situation: NON
-  location: Berlin
+  location: berlin
   url:
   image:
   related:
 
 # ## 2017 ## talk ############## #
-- now: false
-  year: 2017
-  type: live
-  date: 
-  title: MA GMD guest practitioner series
-  situation: London College of Communication
-  location: London
-  url:
-  image:
-  related:
-  
 # ## 2017 ## dissemination ##### #
 - now: false
   year: 2017
