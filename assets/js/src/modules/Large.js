@@ -143,7 +143,7 @@ $sitenavDropdownLinks.forEach( ($link ) => {
       $link.classList.add( 'active' );
       $menu.style.display = 'block';
       //run the 'visual quantiser' 
-      vcList[ id ]();
+      vcList[ id ].run();
     }
   });
 });
