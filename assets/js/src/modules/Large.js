@@ -197,7 +197,7 @@ let vcList = {
 
 const quantise = function(){
   for( i in vcList ){
-    vcList[i]();
+    vcList[i].run();
   }
 }
 
