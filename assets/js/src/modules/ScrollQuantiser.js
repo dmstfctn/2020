@@ -39,13 +39,11 @@ ScrollQuantiser.prototype = {
     if( this.scroll.original > this.maxScroll ){
       this.scroll.original = this.maxScroll;
     }    
-    console.log( 'update(): ', 'scroll', this.scroll );
     this.scroll.quantised = Math.floor( this.scroll.original / this.lineH ) * this.lineH;
     this.height.quantised = Math.floor( (this.height.original - this.lineH) /  this.lineH ) * this.lineH;
   },
   render: function(){
     this.$wrapper.style.height = this.height.quantised + 'px';
-    console.log( 'render(): ', `translateY(${ -this.scroll.quantised }px)` );
     this.$scrollable.style.transform = `translateY(${ -this.scroll.quantised }px)`;
   },
   onScroll: function(){ /* ... override ... */ },
@@ -60,8 +58,6 @@ ScrollQuantiser.prototype = {
     this.lineH = this.$line.getBoundingClientRect().height;
     this.height.original = this.$ele.getBoundingClientRect().height;
     this.maxScroll = this.$scrollable.getBoundingClientRect().height - this.height.original;
-  
-    console.log('measure(): lineH ', this.lineH, 'height.original', this.height.original, 'maxScroll', this.maxScroll );
   },
   recalculate: function(){
     this._onScroll( 0 );
