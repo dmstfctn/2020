@@ -2,6 +2,7 @@ const CFG = require('./Config.js' );
 const F = require( './Functions.js' );
 
 const VisualQuantiser = require( './VisualQuantiser.js' );
+const ScrollQuantiser = require( './ScrollQuantiser.js' );
 
 const INIT_PAGETYPE = document.querySelector('html').getAttribute('data-dc-pagetype');
 let prev_pagetype = INIT_PAGETYPE;
@@ -143,7 +144,12 @@ $sitenavDropdownLinks.forEach( ($link ) => {
       $link.classList.add( 'active' );
       $menu.style.display = 'block';
       //run the 'visual quantiser' 
-      vcList[ id ].run();
+      if( vcList[ id ] ){
+        vcList[ id ].run();
+      }
+      if( id === 'info' ){
+        cvScroller.recalculate();
+      }
     }
   });
 });
@@ -195,16 +201,22 @@ let vcList = {
   )
 };
 
-const quantise = function(){
+let cvScroller = new ScrollQuantiser( 
+  document.querySelector('#info .dc-cv'), 
+  document.querySelector('#info .dc-cv--entry')
+);
+
+
+const Large = function(){
+  console.log('new Large()');  
+};
+
+Large.prototype.quantise = function(){
   for( i in vcList ){
     vcList[i].run();
   }
+  cvScroller.recalculate();
 }
-
-const Large = function(){
-  console.log('new Large()');
-
-};
 
 Large.prototype.loadImages = function(){
   F.loadSlideImages( $mediaListMain ); 
@@ -212,8 +224,10 @@ Large.prototype.loadImages = function(){
 
 Large.prototype.activate = function(){
   this.loadImages();
-  quantise();
-  window.addEventListener('resize', quantise );
+  this.quantise();
+  window.addEventListener('resize', () => {
+    this.quantise() 
+  });
 }
 Large.prototype.deactivate = function(){
   window.removeEventListener('resize', quantise );

@@ -1,7 +1,7 @@
 .dc-info{ 
   padding: 0 1rem .3rem .8rem;
   overflow: hidden;
-  padding-bottom: 3.999em;    
+  //padding-bottom: 2.6em;    
   padding-top: 2.6rem;
   z-index: 1;
   position: absolute;
@@ -13,6 +13,11 @@
   height: 100%;
   box-sizing: border-box;
 }
+  .dc-info--contents{
+    display: flex;  
+    flex-direction: column;
+    height: 100%;
+  }
 
 .dc-bio{  
   background:#000;
@@ -33,16 +38,18 @@
   margin-top: 0; /*1.429em;*/
   overflow: scroll;    
 }
-  .dc-cv.quantisedScroller{
-    height: auto;
+  .dc-cv.quantised-scroller{
     overflow: hidden; 
     position: relative;
-    cursor: none;
+    flex-grow: 0;
+    flex-shrink: 2;
+    height: 100%;
   }
-  .dc-cv.quantisedScroller a{
-    cursor: none;
-  }
-  .dc-cv.quantisedScroller dl{
+    .quantised-scroller--wrapper{
+      overflow: hidden;
+    }
+  
+  .dc-cv.quantised-scroller dl{
     overflow: hidden;
     position: relative;
   }

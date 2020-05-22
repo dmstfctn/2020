@@ -1,12 +1,14 @@
 <article class="dc-info" id="info">
-  <section class="dc-bio">
-      {{{contents.bio}}}
-  </section>
-  <div class="dc-cv">
-    {{> cv cv=contents.cv}}
+  <div class="dc-info--contents">
+    <section class="dc-bio">
+        {{{contents.bio}}}
+    </section>
+    <div class="dc-cv">
+      {{> cv cv=contents.cv}}
+    </div>
+    <nav class="dc-info--smallnav dc-smallnav">
+      <span class="dc-smallnav--prev active">info,</span>
+      <span class="dc-smallnav--next">A,</span>
+    </nav>
   </div>
-  <nav class="dc-info--smallnav dc-smallnav">
-    <span class="dc-smallnav--prev active">info,</span>
-    <span class="dc-smallnav--next">A,</span>
-  </nav>
 </article>
