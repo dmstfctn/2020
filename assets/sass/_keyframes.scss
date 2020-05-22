@@ -10,15 +10,6 @@
   }
 }
 
-@keyframes outFrames{
-  0%{
-    opacity: 1;
-  }
-  100%{
-    opacity: 0;
-  }
-}
-
 @keyframes go-further{
   0%{
     transform: translateX(50%);

@@ -1,6 +1,6 @@
 /* big list -> page transition */
 .out1{
-  animation: outFrames 0 step-start forwards;
+  opacity: 0;
 }
   .dc-biglist--item .transition-target{
     color: #FF0000;
