@@ -40,7 +40,7 @@ ScrollQuantiser.prototype = {
       this.scroll.original = this.maxScroll;
     }    
     this.scroll.quantised = Math.floor( this.scroll.original / this.lineH ) * this.lineH;
-    this.height.quantised = Math.floor( (this.height.original - this.lineH) /  this.lineH ) * this.lineH;
+    
   },
   render: function(){
     this.$wrapper.style.height = this.height.quantised + 'px';
@@ -57,7 +57,8 @@ ScrollQuantiser.prototype = {
   measure: function(){    
     this.lineH = this.$line.getBoundingClientRect().height;
     this.height.original = this.$ele.getBoundingClientRect().height;
-    this.maxScroll = this.$scrollable.getBoundingClientRect().height - this.height.original;
+    this.height.quantised = Math.floor( (this.height.original - this.lineH) /  this.lineH ) * this.lineH;
+    this.maxScroll = this.$scrollable.getBoundingClientRect().height - this.height.quantised;
   },
   recalculate: function(){
     this._onScroll( 0 );
