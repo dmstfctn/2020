@@ -80,6 +80,9 @@
   image: interface-chaos-nero.jpg
   related: INTERFACE CHAOS
 
+# ############################## #
+# ############################## #
+
 # ## 2019 ###################### #
 # ## 2019 ## solo ############## #
 - now: false
@@ -188,12 +191,170 @@
     - FLASH
     - Demons
 
+# ############################## #
+# ############################## #
+
 # ## 2018 ###################### #
 # ## 2018 ## solo ############## #
 # ## 2018 ## group shows ####### #
+
+- now: false
+  year: 2018
+  type: group shows
+  date: 
+  title: Projected.Capital
+  situation: Roehrs & Boetsch
+  location: Zurich
+  url: 
+  image: 
+  related: 
+
+- now: false
+  year: 2018
+  type: group shows
+  date: 
+  title: 4th Istanbul Design Biennale
+  situation: ARTER
+  location: Istanbul
+  url: 
+  image: 
+  related:
+
+- now: false
+  year: 2018
+  type: group shows
+  date: 
+  title: Situations/Infrastructure
+  situation: Fotomuseum Winterthur
+  location: Winterthur
+  url: 
+  image: 
+  related: 
+
+- now: false
+  year: 2018
+  type: group shows
+  date: 
+  title: transmediale face value
+  situation: Haus der Kulturen der Welt
+  location: Berlin
+  url: 
+  image: 
+  related: 
+
 # ## 2018 ## screenings ######## #
 # ## 2018 ## live ############## #
+- now: false
+  year: 2018
+  type: live
+  date: 
+  title: Radical Networks
+  situation: SPEKTRUM
+  location: Berlin
+  url: 
+  image: 
+  related: 
+
+- now: false
+  year: 2018
+  type: live
+  date: 
+  title: Alt-Age
+  situation: Design Museum
+  location: London
+  url: 
+  image: 
+  related: 
+
+- now: false
+  year: 2018
+  type: live
+  date: 
+  title: Borderline Festival
+  situation: Onassis Cultural Centre
+  location: Athens
+  url: 
+  image: 
+  related: 
+
+- now: false
+  year: 2018
+  type: live
+  date: 
+  title: transmediale face value
+  situation: Haus der Kulturen der Welt
+  location: Berlin
+  url: 
+  image: 
+  related: 
+
 # ## 2018 ## talk ############## #
+- now: false
+  year: 2018
+  type: talk
+  date: 
+  title: "IMPAKT Festival: Algorithmic Superstructures"
+  situation: Het Huis Utrecht
+  location: Utrecht
+  url: 
+  image: 
+  related:
+
+- now: false
+  year: 2018
+  type: talk
+  date: 
+  title: Automated Lanscapes
+  situation: Het Nieuwe Instituut
+  location: Rotterdam
+  url: 
+  image: 
+  related: 
+
+- now: false
+  year: 2018
+  type: talk
+  date: 
+  title: Alt-Age
+  situation: Design Museum
+  location: London
+  url: 
+  image: 
+  related: 
+
+- now: false
+  year: 2018
+  type: talk
+  date: 
+  title: Something or Other. Practicing Platforms.
+  situation: London College of Communication
+  location: London
+  url: 
+  image: 
+  related: 
+
+- now: false
+  year: 2018
+  type: talk
+  date: 
+  title: transmediale face value
+  situation: Haus der Kulturen der Welt
+  location: Berlin
+  url: 
+  image: 
+  related: 
+
+- now: false
+  year: 2018
+  type: talk
+  date: 
+  title: "MoneyLab #4"
+  situation: Somerset House
+  location: London
+  url: 
+  image: 
+  related: 
+
 # ## 2018 ## dissemination ##### #
 - now: false
   year: 2018
@@ -231,9 +392,53 @@
 # ## 2017 ###################### #
 # ## 2017 ## solo ############## #
 # ## 2017 ## group shows ####### #
+- now: false
+  year: 2017
+  type: group shows
+  date: 
+  title: the influencers
+  situation: Centre de Cultura Contemporània de Barcelona
+  location: Barcelona
+  url:
+  image:
+  related:
+
+- now: false
+  year: 2017
+  type: group shows
+  date: 
+  title: Rundgang 2017
+  situation: Universität der Künste
+  location: Berlin
+  url:
+  image:
+  related:
+
 # ## 2017 ## screenings ######## #
 # ## 2017 ## live ############## #
+- now: false
+  year: 2017
+  type: live
+  date: 
+  title: transmediale vorspiel
+  situation: NON
+  location: Berlin
+  url:
+  image:
+  related:
+
 # ## 2017 ## talk ############## #
+- now: false
+  year: 2017
+  type: live
+  date: 
+  title: MA GMD guest practitioner series
+  situation: London College of Communication
+  location: London
+  url:
+  image:
+  related:
+  
 # ## 2017 ## dissemination ##### #
 - now: false
   year: 2017
