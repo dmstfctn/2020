@@ -40,12 +40,12 @@ ScrollQuantiser.prototype = {
       this.scroll.original = this.maxScroll;
     }    
     console.log( 'update(): ', 'scroll', this.scroll );
-    this.scroll.quantised = Math.floor( this.scroll.original / this.lineH) * this.lineH;
-    this.height.quantised = Math.floor( (this.height.original - this.lineH )/ Math.floor( this.lineH ) ) * Math.round( this.lineH );
+    this.scroll.quantised = Math.floor( this.scroll.original / this.lineH ) * this.lineH;
+    this.height.quantised = Math.floor( (this.height.original - this.lineH) /  this.lineH ) * this.lineH;
   },
   render: function(){
     this.$wrapper.style.height = this.height.quantised + 'px';
-    console.log('render(): ', `translateY(${ -this.scroll.quantised }px)` );
+    console.log( 'render(): ', `translateY(${ -this.scroll.quantised }px)` );
     this.$scrollable.style.transform = `translateY(${ -this.scroll.quantised }px)`;
   },
   onScroll: function(){ /* ... override ... */ },
