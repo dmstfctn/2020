@@ -2,14 +2,12 @@
 .out1{
   animation: outFrames 0 step-start forwards;
 }
-.out2{
-  animation: outFrames .5s .5s step-start forwards;
-}
-.out3{
-  animation: outFrames .5s .8s step-start forwards;
-}
-
-
+  .dc-biglist--item .transition-target{
+    color: #FF0000;
+  }
+  #focus-groups .dc-biglist--item .transition-target{
+    color: #FFFFFF;
+  }
 /* hover images in CV + dissemination */
 .dc-list-hoverimg{
   position: relative;
