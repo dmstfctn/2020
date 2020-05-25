@@ -125,6 +125,7 @@ html{
     .dc-media--nav ol li:before{
       counter-increment: medianav;
       content: counter(medianav, upper-alpha);
+      display: none;
     }
     .dc-media--nav ol li:after{
       content: ',';

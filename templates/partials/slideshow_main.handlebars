@@ -42,19 +42,19 @@
   <ol>      
     {{#each page.slideshows.main.slides }}   
     {{#dc_isslideimage this}}
-      <li {{#if @first}}class="active"{{/if}}></li>
+      <li {{#if @first}}class="active"{{/if}}>{{ nav.self.label }}</li>
     {{/dc_isslideimage}}
     {{#dc_isslidetext this}}
-      <li {{#if @first}}class="active"{{/if}}></li>
+      <li {{#if @first}}class="active"{{/if}}>{{ nav.self.label }}</li>
     {{/dc_isslidetext}}
     {{#dc_isslideembed this}}
-      <li {{#if @first}}class="active"{{/if}}></li>
+      <li {{#if @first}}class="active"{{/if}}>{{ nav.self.label }}</li>
     {{/dc_isslideembed}}
     {{#dc_isslideaudio this}}
       <li class="dc-media__audio{{#if @first}} active{{/if}}">play</li>
     {{/dc_isslideaudio}}
     {{#dc_isslidevideo this}}
-      <li {{#if @first}}class="active"{{/if}}></li>
+      <li {{#if @first}}class="active"{{/if}}>{{ nav.self.label }}</li>
     {{/dc_isslidevideo}}       
     {{/each}}  
     <li class="info">info</li>    
