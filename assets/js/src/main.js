@@ -21,6 +21,7 @@ const mqSmallHandler = function( mq ){
   DC.env.size = (mqSmall.matches) ? 'small' : 'large';
   if( mqSmall.matches ){
     console.log( 'small site' );
+    DC.large.deactivate();
     DC.small.activate();
   } else {
     console.log( 'large site' );
