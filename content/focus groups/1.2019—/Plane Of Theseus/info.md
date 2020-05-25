@@ -3,8 +3,4 @@ year: 2019
 title: Plane of Theseus
 ---
 
-Plane of Theseus Lorem ipsum dolor sit amet consectetur adipisicing elit. At corporis consequuntur error atque sed maxime, nam consectetur illo ipsam expedita accusamus repellendus dolore culpa, dicta eveniet vel dolores officia! Nostrum?
-
-Plane of Theseus Lorem ipsum dolor sit amet consectetur adipisicing elit. At corporis consequuntur error atque sed maxime, nam consectetur illo ipsam expedita accusamus repellendus dolore culpa, dicta eveniet vel dolores officia! Nostrum?
-
-Plane of Theseus Lorem ipsum dolor sit amet consectetur adipisicing elit. At corporis consequuntur error atque sed maxime, nam consectetur illo ipsam expedita accusamus repellendus dolore culpa, dicta eveniet vel dolores officia! Nostrum?
+PLANE OF THESEUS is a focus group taking boeing's 737 max crisis as a starting point to discuss system thinking, software virtualisation and financialisation; the focus group asks when and how a plane ceases to be a plane, analysing it as a system able to impact its actions through virtualisation, and as the result of a system able to impact its value through financialisation; participants explore the topic producing screen-based work; since 2019, PLANE OF THESEUS has been held at Weißensee Kunsthochschule and Ravensbourne University London

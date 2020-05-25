@@ -3,6 +3,4 @@ year: yyyy
 title: Project Title
 ---
 
-Offshore Offshore Offshore Spring Spring Spring Summer Summer Summer 2 2 2 2 0 0 0 0 1 1 1 1 8 8 8 8 
-
-Lorem ipsum dolor sit amet consectetur adipisicing elit. At corporis consequuntur error atque sed maxime, nam consectetur illo ipsam expedita accusamus repellendus dolore culpa, dicta eveniet vel dolores officia! Nostrum?
+OFFSHORE SS18 is a beachwear collection consisting of three swimsuits, two pairs of swim shorts and a beach-towel; the apparel was produced in an edition of 90 total items and sold through an international corporate structure set up by the DEMYSTIFICATION COMMITTEE to model offshore corporate financial practices; any customer purchasing beachwear from an online store triggered a tax evasion scheme whereby the revenue from the sale would be moved offshore in order to evade corporate tax; the resulting savings were distributed back to members of the public who had originally invested in the collection by purchasing shares of the corporate structure producing it; the tax evasion scheme is documented through diagrams printed on the apparel
