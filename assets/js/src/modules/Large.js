@@ -239,7 +239,9 @@ Large.prototype.activate = function(){
   });
 }
 Large.prototype.deactivate = function(){
-  window.removeEventListener('resize', quantise );
+  window.removeEventListener('resize', () => {
+    this.quantise() 
+  });
 }
 
 module.exports = new Large();

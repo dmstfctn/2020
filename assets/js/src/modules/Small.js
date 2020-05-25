@@ -27,6 +27,9 @@ const Small = function(){
     portrait: this.getSlideList('portrait'),
     landscape: this.getSlideList('landscape'),
   };
+
+  this.mqPortrait = window.matchMedia( '(orientation: portrait)' );
+  this.mqLandscape = window.matchMedia( '(orientation: landscape)' );
 };
 
 Small.prototype.getSlideList = function( orientation ){
@@ -125,16 +128,59 @@ Small.prototype.setupInteraction = function(){
   });
 };
 
+Small.prototype.clearRootSize = function(){
+  clearTimeout(this.sizeRootTimeout);
+  this.sizeRootTimeout = setTimeout(function(){
+    document.querySelectorAll('html, body, .dc-mobile-nav').forEach( ( $e ) => {
+      $e.style.height = '';
+    });
+  }, 300 );
+}
 
+Small.prototype.sizeRoot = function(){
+  clearTimeout(this.sizeRootTimeout);
+  this.sizeRootTimeout = setTimeout(function(){
+    document.querySelectorAll('html, body, .dc-mobile-nav').forEach( ( $e ) => {
+      $e.style.height = window.innerHeight + 'px';   
+    });
+  }, 300 );
+}
+
+Small.prototype.handleMq = function(){
+  console.log( 'handle mq' );
+  if( this.mqLandscape.matches ){
+    this.orientation = 'landscape';    
+  }
+  if( this.mqPortrait.matches ){
+    this.orientation = 'portrait';
+  }
+  this.sizeRoot();
+};
+
+Small.prototype.setupMq = function(){
+  this.mqLandscape.addListener( () => { this.handleMq() } );
+  this.mqPortrait.addListener( () => { this.handleMq() } );
+  
+  this.handleMq();
+  this.sizeRoot();
+};
+
+Small.prototype.clearMq = function(){
+  this.mqLandscape.removeListener( () => { this.handleMq() } );
+  this.mqPortrait.removeListener( () => { this.handleMq() } );
+  this.clearRootSize();
+}
 
 Small.prototype.activate = function(){
   console.log( 'activate small() ' );
+  this.setupMq();
   this.setupInteraction();
-  this.readyForwardHint();
+  this.readyForwardHint();  
   this.preloadImages( 2 );
 }
 
 Small.prototype.deactivate = function(){
+  this.clearMq();
   clearTimeout( this.forwardInteractionHintTimeout );
 }
 
@@ -148,25 +194,5 @@ const sizeRoot = () => {
     });
   }, 300 );
 }
-
-const mqPortrait = window.matchMedia( '(orientation: portrait)' );
-const mqLandscape = window.matchMedia( '(orientation: landscape)' );
-
-const mqHandler = () => {
-  if( mqLandscape.matches ){
-    Small.orientation = 'landscape';    
-  }
-  if( mqPortrait.matches ){
-    Small.orientation = 'portrait';
-  }
-  sizeRoot();
-}
-mqLandscape.addListener( mqHandler );
-mqPortrait.addListener( mqHandler );
-mqHandler( mqLandscape );
-mqHandler( mqPortrait );
-
-sizeRoot();
-
 
 module.exports = new Small();
