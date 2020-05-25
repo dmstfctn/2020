@@ -107,6 +107,9 @@
     display: flex;
     justify-content: space-between;    
   }   
+    .dc-work--year .dc-work--items > *::after{
+      color: #FFFFFF;
+    }
     .dc-work--year .dc-work--items > *:only-child{
       flex-grow: 2;
       /* related to safari no justify last line fix*/
