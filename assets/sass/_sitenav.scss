@@ -28,16 +28,24 @@
       .dc-sitenav a.active{
         color: #FF0000;
       }
-      html[data-dc-pagetype="home"][data-dc-homeactive="related-matters"] .dc-sitenav a[href="/mmittee/related-matters"],
+      html[data-dc-pagetype="home"][data-dc-homeactive="related-matters"] .dc-sitenav a[href="/mmittee"],
+      html[data-dc-pagetype="home"][data-dc-homeactive="dissemination"] .dc-sitenav a[href="/mmittee/dissemination"],
+      html[data-dc-pagetype="home"][data-dc-homeactive="info"] .dc-sitenav a[href="/mmittee/info"],
+      html[data-dc-pagetype="relatedmatter"] .dc-sitenav a[href="/mmittee"],
+      html[data-dc-pagetype="dissemination"] .dc-sitenav a[href="/mmittee/dissemination"],
+      html[data-dc-pagetype="null"] .dc-sitenav a[href="/mmittee/info"]{
+        color: #FF0000;
+      }
+      html[data-dc-pagetype="home"][data-dc-homeactive="focus-groups"] .dc-sitenav a[href="/mmittee/focus-groups"],
+      html[data-dc-pagetype="focusgroup"] .dc-sitenav a[href="/mmittee/focus-groups"]{
+        color: #FFFFFF;        
+      }      
+      html[data-dc-pagetype="home"][data-dc-homeactive="focus-groups"] .dc-sitenav a[href="/mmittee/focus-groups"],
+      html[data-dc-pagetype="home"][data-dc-homeactive="related-matters"] .dc-sitenav a[href="/mmittee"],
       html[data-dc-pagetype="home"][data-dc-homeactive="dissemination"] .dc-sitenav a[href="/mmittee/dissemination"],
       html[data-dc-pagetype="home"][data-dc-homeactive="info"] .dc-sitenav a[href="/mmittee/info"]{
-        color: #FF0000;
         pointer-events: none;
       }
-      html[data-dc-pagetype="home"][data-dc-homeactive="focus-groups"] .dc-sitenav a[href="/mmittee/focus-groups"]{
-        color: #FFFFFF;
-        pointer-events: none;
-      }      
 
 
 /* the dropdowns / lists */
