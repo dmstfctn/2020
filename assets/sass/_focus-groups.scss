@@ -1,6 +1,9 @@
 html[data-dc-pagetype="focusgroup"]{
   background: #FF0000;
   color: #000000;
+  a:hover{
+    color: #FFFFFF;
+  }
   .dc-sitenav{
     color: #000000;
   }
