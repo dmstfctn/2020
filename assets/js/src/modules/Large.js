@@ -203,7 +203,8 @@ let vcList = {
 
 let cvScroller = new ScrollQuantiser( 
   document.querySelector('#info .dc-cv'), 
-  document.querySelector('#info .dc-cv--entry')
+  document.querySelector('#info .dc-cv--entry'),
+  0.5 //speed
 );
 
 

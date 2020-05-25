@@ -1,8 +1,8 @@
-const ScrollQuantiser = function( _$ele, _$line ){
+const ScrollQuantiser = function( _$ele, _$line, _speed ){
   this.$ele = _$ele;
   this.$scrollable = this.$ele.querySelector(':first-child');
   this.$line = _$line;
-
+  this.speed = _speed || 1;
   this.scroll = {
     original: 0,
     quantised: 0
@@ -33,7 +33,7 @@ ScrollQuantiser.prototype = {
   },
   update: function( deltaY ){
     console.log('DELTAY: ', deltaY );
-    this.scroll.original += deltaY;
+    this.scroll.original += deltaY * this.speed;
     if( this.scroll.original < 0 ){
       this.scroll.original = 0;
     }
