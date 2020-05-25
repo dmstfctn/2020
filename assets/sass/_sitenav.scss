@@ -22,9 +22,6 @@
       content: ',';
       color: #FFFFFF;
     }
-    html[data-dc-pagetype="focusgroup"] .dc-sitenav a::after{
-      color: #000000;
-    }
       .dc-sitenav a:last-child::after{
         content: '';
       }
