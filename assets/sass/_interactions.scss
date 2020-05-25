@@ -47,6 +47,9 @@
     color: #FF0000;
     animation: flick-in-out 1.6s infinite step-start;
   }
+    [dc-pagetype="focusgroup"] .dc-media--play.playing{
+      color: #FFFFFF;
+    }
   .dc-media--play.playing:hover{
     animation-play-state: paused;
     opacity: 1 !important;
