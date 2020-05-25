@@ -3,8 +3,4 @@ year: 2016—2019
 title: Network Ensemble
 ---
 
-(the NETWORK ENSEMBLE) is a crashcore sound project using custom-built hardware and software to translate data captured from communication and financial networks into audiovisual signals;
-
-(the NETWORK ENSEMBLE) is a crashcore sound project using custom-built hardware and software to translate data captured from communication and financial networks into audiovisual signals;
-
-(the NETWORK ENSEMBLE) is a crashcore sound project using custom-built hardware and software to translate data captured from communication and financial networks into audiovisual signals;
+the NETWORK ENSEMBLE is a crashcore sound project using network data as a medium; the NETWORK ENSEMBLE consists of four machines able to translate data packets captured from local wireless networks into sonic signals, and a piece of custom software able to further modulate these signals; through these tools and under the moniker of NETWORK ENSEMBLE, a number of sound performances have been carried out, exploring the activity of local wireless networks
