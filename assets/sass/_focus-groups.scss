@@ -1,46 +1,75 @@
-html[data-dc-pagetype="focusgroup"],
+html[data-dc-pagetype="focusgroup"]{
+  background: #FF0000;
+  color: #000000;
+  .dc-sitenav{
+    color: #000000;
+  }
+  .dc-sitenav a:hover{
+    color: #FFFFFF
+  }
+  .dc-sitenav a.active{
+    color: #FFFFFF;
+  }
+  .dc-sitenav a::after{
+    color: #000000;
+  }
+  .dc-sitenav::before{
+    background: #FF0000;
+  }
+  .dc-work--year h2{
+    color: #FFFFFF;
+  }
+  .dc-external-link::before,
+  a[href^="mailto:"]::before,
+  a[href^="http"]::before{
+    color: #000000;
+  }
+  .dc-worknav .current{
+    color: #FFFFFF;
+  }
+  .dc-media--list li{
+    background: #FF0000;
+  }
+  .dc-media--nav ol li:hover,
+  .dc-media--nav ol li.active{
+    color: #FFFFFF;
+  }
+  .dc-media--nav ol li:hover:after,
+  .dc-media--nav ol li.active:after{
+    color: #000000;
+  }
+}
+
+html[data-dc-homeactive="focus-groups"]{
+  background: #FF0000;
+  .dc-sitenav{
+    color: #000000;
+  }
+  .dc-sitenav a:hover{
+    color: #FFFFFF
+  }
+  .dc-sitenav a.active{
+    color: #FFFFFF;
+  }
+  .dc-sitenav a::after{
+    color: #000000;
+  }
+  .dc-sitenav::before{
+    background: #FF0000;
+  }
+}
+
+
 .dc-navigation-item#focus-groups{
   background: #FF0000;
   color: #000000;
-}
-html[data-dc-pagetype="focusgroup"] .dc-sitenav{
-  color: #000000;
-}
-  html[data-dc-pagetype="focusgroup"] .dc-sitenav a.active{
+  .dc-work--year h2{
     color: #FFFFFF;
   }
-  html[data-dc-pagetype="focusgroup"] .dc-sitenav a::after{
-    color: #000000;
+  a:hover{
+    color: #FFFFFF
   }
-html[data-dc-pagetype="focusgroup"] .dc-sitenav::before{
-  background: #FF0000;
-}
-html[data-dc-pagetype="focusgroup"] .dc-work--year h2,
-.dc-navigation-item#focus-groups .dc-work--year h2{
-  color: #FFFFFF;
-}
-html[data-dc-pagetype="focusgroup"] a:hover,
-.dc-navigation-item#focus-groups a:hover{
-  color: #FFFFFF
-}
-html[data-dc-pagetype="focusgroup"] .dc-external-link::before,
-html[data-dc-pagetype="focusgroup"] a[href^="mailto:"]::before,
-html[data-dc-pagetype="focusgroup"] a[href^="http"]::before{
-  color: #000000;
-}
-
-html[data-dc-pagetype="focusgroup"] .dc-worknav .current,
-.dc-navigation-item#focus-groups .dc-worknav .current{
-  color: #FFFFFF;
-}
-html[data-dc-pagetype="focusgroup"] .dc-media--list li{
-  background: #FF0000;
-}
-html[data-dc-pagetype="focusgroup"] .dc-media--nav ol li:hover,
-html[data-dc-pagetype="focusgroup"] .dc-media--nav ol li.active{
-  color: #FFFFFF;
-}
-html[data-dc-pagetype="focusgroup"] .dc-media--nav ol li:hover:after,
-html[data-dc-pagetype="focusgroup"] .dc-media--nav ol li.active:after{
-  color: #000000;
+  .dc-worknav .current{
+    color: #FFFFFF;
+  }
 }

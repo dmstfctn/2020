@@ -1,8 +1,13 @@
 <nav class="dc-sitenav">
   {{#each navigation}}
-    <a href="#{{this.slug}}">{{this.name}}</a>
+    {{#if @first}}
+    <a href="{{dc_urlpath "" }}" data-dc-localtarget="#{{this.slug}}">{{this.name}}</a>
+    {{/if}}
+    {{#unless @first}}
+    <a href="{{dc_urlpath this.slug }}" data-dc-localtarget="#{{this.slug}}">{{this.name}}</a>
+    {{/unless}}
   {{/each}} 
-  <a href="#info">record</a>
+  <a href="{{dc_urlpath "info"}}" data-dc-localtarget="#info">record</a>
 </nav>
 {{#each navigation}}
   {{> (lookup . 'template') }}

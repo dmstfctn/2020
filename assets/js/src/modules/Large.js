@@ -116,17 +116,23 @@ $hoverImages.forEach( ( $hoverImg ) => {
 });
 
 /* top menu 'dropdowns' */
-let $sitenavDropdownLinks = document.querySelectorAll('.dc-sitenav a[href^="#"]');
+let $sitenavDropdownLinks = document.querySelectorAll('.dc-sitenav a');
 let $sitenavDropdowns = document.querySelectorAll('.dc-navigation-item, .dc-info');
 
 $sitenavDropdownLinks.forEach( ($link ) => {
   $link.addEventListener('click', (e) => {
     e.preventDefault();
-    let target = $link.getAttribute('href');
+    let target = $link.getAttribute('data-dc-localtarget');
     let $menu = document.querySelector( target );
     let deactivate = false;
     let pagetype = $menu.getAttribute('data-pagetype');
     let id = $menu.id;    
+    let page = (target === '#related-matters') ? '' : target.replace('#','');
+    // clear data-dc-homeactive attribute used to show correct menu on load
+    document.querySelector('html').setAttribute('data-dc-homeactive', '');
+
+    history.replaceState(null,null,'/mmittee/' + page );
+
     if( $link.classList.contains('active') ){
       deactivate = true;
     }
@@ -151,6 +157,7 @@ $sitenavDropdownLinks.forEach( ($link ) => {
         cvScroller.recalculate();
       }
     }
+    return false;
   });
 });
 

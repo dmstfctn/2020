@@ -30,6 +30,8 @@ const focusGroups = Formatter.createFocusGroups( Content.focus_groups );
 const dissemination = Formatter.createDissemination( Content.dissemination );
 const infoSection = Formatter.createInfo( Content.bio, Content.cv );
 
+fs.mkdirSync( path.join( Config.paths.public, dissemination.slug ), {recursive: true} );
+
 const smallSiteData = Formatter.createSmallSite( Content );
 
 /* the structure for the 'menu' */
@@ -49,15 +51,16 @@ const rendered_small_site = Rendering.renderSmall( smallSiteData );
 
 
 /* home page / info page*/
-let render = {
+let renderHome = {
   title: 'Home',
   pagetype: 'home',
+  homeactive: 'related-matters',
   navigation: rendered_navigation,
   content: null,
   info: rendered_info,
   small_site: rendered_small_site
 };
-fs.writeFileSync( path.join( Config.paths.public, 'index.html' ), Templates.main( render ) );
+fs.writeFileSync( path.join( Config.paths.public, 'index.html' ), Templates.main( renderHome ) );
 
 /* Related Matters */
 const relatedMattersPages = Formatter.createPageList( relatedMatters.contents );
@@ -83,6 +86,50 @@ focusGroupsPages.forEach( ( pageData, index ) => {
   };
   Rendering.renderPage( pageData, index, focusGroupsPages, rendered );
 });
+
+/* focus groups 'home' at /mmittee/focus-groups/ */
+let renderHomeFocusGroups = {
+  title: 'Home',
+  pagetype: 'home',
+  homeactive: 'focus-groups',
+  navigation: rendered_navigation,
+  content: null,
+  info: rendered_info,
+  small_site: rendered_small_site
+};
+fs.writeFileSync( 
+  path.join( Config.paths.public, focusGroups.slug, 'index.html' ),  
+  Templates.main( renderHomeFocusGroups ) 
+);
+/* Info 'home' at /mmittee/info/ */
+let renderHomeInfo = {
+  title: 'Home',
+  pagetype: 'home',
+  homeactive: 'info',
+  navigation: rendered_navigation,
+  content: null,
+  info: rendered_info,
+  small_site: rendered_small_site
+};
+fs.writeFileSync( 
+  path.join( Config.paths.public, infoSection.slug, 'index.html' ),  
+  Templates.main( renderHomeInfo ) 
+);
+
+/* focus groups 'home' at /mmittee/dissemination/ */
+let renderHomeDissemination = {
+  title: 'Home',
+  pagetype: 'home',
+  homeactive: 'dissemination',
+  navigation: rendered_navigation,
+  content: null,
+  info: rendered_info,
+  small_site: rendered_small_site
+};
+fs.writeFileSync( 
+  path.join( Config.paths.public, dissemination.slug, 'index.html' ),  
+  Templates.main( renderHomeDissemination ) 
+);
 
 /* save the data to data.json */
 fs.writeFileSync( 'data.json', JSON.stringify( Content, false, '  ' ) );

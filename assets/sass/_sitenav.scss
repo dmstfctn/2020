@@ -28,10 +28,17 @@
       .dc-sitenav a.active{
         color: #FF0000;
       }
-      html[data-dc-pagetype="home"] .dc-sitenav a[href="#related-matters"]{
+      html[data-dc-pagetype="home"][data-dc-homeactive="related-matters"] .dc-sitenav a[href="/mmittee/related-matters"],
+      html[data-dc-pagetype="home"][data-dc-homeactive="dissemination"] .dc-sitenav a[href="/mmittee/dissemination"],
+      html[data-dc-pagetype="home"][data-dc-homeactive="info"] .dc-sitenav a[href="/mmittee/info"]{
         color: #FF0000;
         pointer-events: none;
       }
+      html[data-dc-pagetype="home"][data-dc-homeactive="focus-groups"] .dc-sitenav a[href="/mmittee/focus-groups"]{
+        color: #FFFFFF;
+        pointer-events: none;
+      }      
+
 
 /* the dropdowns / lists */
 .dc-navigation-item{
@@ -42,8 +49,30 @@
   display: none;
   padding: 0 1rem .3rem .8rem;
 }
-  html[data-dc-pagetype="home"] .dc-navigation-item#related-matters{
-    display: block;
+  html[data-dc-pagetype="home"],
+  html[data-dc-pagetype="home"][data-dc-homeactive="related-matters"]{
+    .dc-navigation-item#related-matters{
+      display: block;
+    }
+  }
+  html[data-dc-pagetype="home"][data-dc-homeactive="focus-groups"]{ 
+
+    .dc-navigation-item#focus-groups{
+      display: block;
+    }
+  }
+  html[data-dc-pagetype="home"][data-dc-homeactive="dissemination"]{ 
+    .dc-navigation-item#dissemination{
+      display: block;
+    }
+  }
+  html[data-dc-pagetype="home"][data-dc-homeactive="info"]{
+    .dc-navigation-item#related-matters{
+      display: none;
+    }
+    #info{
+      display: block;
+    }
   }
 
 /* work lists */
