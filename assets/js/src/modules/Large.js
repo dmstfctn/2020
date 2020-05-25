@@ -25,7 +25,7 @@ $workLinks.forEach( ( $link, index ) => {
     let $thisYear = $link.parentElement.parentElement.querySelector('h2');
     let $others = [...$workLinks].filter( ($ele, eleIndex) => { return index !== eleIndex } ); 
     $link.classList.add('transition-target');
-    $sitenav.classList.add('out1');
+    //$sitenav.classList.add('out1');
     $others.forEach( ( $other ) => { $other.classList.add('out1') });
     $workDates.forEach( ( $other ) => { $other.classList.add('out1') });
     $thisYear.classList.remove('out1');
