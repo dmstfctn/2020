@@ -23,6 +23,11 @@ html[data-dc-pagetype="focusgroup"] a:hover,
 .dc-navigation-item#focus-groups a:hover{
   color: #FFFFFF
 }
+html[data-dc-pagetype="focusgroup"] .dc-external-link::before,
+html[data-dc-pagetype="focusgroup"] a[href^="mailto:"]::before,
+html[data-dc-pagetype="focusgroup"] a[href^="http"]::before{
+  color: #000000;
+}
 
 html[data-dc-pagetype="focusgroup"] .dc-worknav .current,
 .dc-navigation-item#focus-groups .dc-worknav .current{
