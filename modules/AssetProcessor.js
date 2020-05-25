@@ -23,7 +23,8 @@ const sass = ( src, dist ) => {
   fs.mkdirSync( path.dirname(dist), {recursive: true} );
   NodeSass.render({
     file: src,
-    outputStyle: ( Config.minify ) ? 'compressed' : 'nested'
+    outputStyle: ( Config.minify ) ? 'compressed' : 'nested',
+    sourceComments: ( Config.minify ) ? false : true
   }, ( err, result ) => {
     if( err ){
       throw new Error(err);
