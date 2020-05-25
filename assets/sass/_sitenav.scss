@@ -18,10 +18,14 @@
     top: -0.3rem;
     left:0;
   }
-    .dc-sitenav a:after{
+    .dc-sitenav a::after{
       content: ',';
+      color: #FFFFFF;
     }
-      .dc-sitenav a:last-child:after{
+    html[data-dc-pagetype="focusgroup"] .dc-sitenav a::after{
+      color: #000000;
+    }
+      .dc-sitenav a:last-child::after{
         content: '';
       }
       .dc-sitenav a.active{
