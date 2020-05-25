@@ -135,6 +135,7 @@ $sitenavDropdownLinks.forEach( ($link ) => {
 
     if( $link.classList.contains('active') ){
       deactivate = true;
+      return false;
     }
     $link.classList.add( 'active' );
     $sitenavDropdownLinks.forEach( ( $dropdownLink ) => {
