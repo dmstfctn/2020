@@ -32,6 +32,21 @@ const readJSON = ( path ) => {
   return json;
 }; 
 
+const readYAML = ( path ) => {
+  let yaml = false; 
+  try{
+    yaml = fs.readFileSync( path )   
+    yaml = YAML.parse( yaml.toString() );
+  } catch ( e ){
+    if( e.errno === -2 ){
+      Config.log( 'No yaml present at ', path );
+    } else {
+      Config.log( e );
+    }
+  }
+  return yaml;
+}; 
+
 const removeOrderFromFilename = ( filename ) => {
   return filename.replace(/(^[0-9]+\.)/gm, '' );
 };
@@ -89,7 +104,7 @@ const constructSlide = ( filename, p, captions ) => {
   let slide = {
     caption: caption
   };
-  if( filename === 'captions.json' ){
+  if( filename === 'captions.yaml' ){
     return;
   } 
   if( ext === '.md' ){
@@ -165,11 +180,11 @@ const readFolder = ( folderPath, cv ) => {
           //a folder that contains content 
           const p = path.join( root, year, project, item );
           // find the captions file
-          const captions = readJSON( path.join(p, 'captions.json') ) || {};
+          const captions = readYAML( path.join(p, 'captions.yaml') ) || {};
 
           let files = fs.readdirSync( p )
                         .filter( removeDotFiles )         
-                        .filter( f => f !== 'captions.json' );
+                        .filter( f => f !== 'captions.yaml' );
 
           let slideshow = files.map( (item) => {
             return constructSlide( item, p, captions );
@@ -194,11 +209,11 @@ const readShowreel = ( showreelPath ) => {
     //a folder that contains content 
     const p = path.join( showreelPath, item );
     // find the captions file
-    const captions = readJSON( path.join(p, 'captions.json') ) || {};
+    const captions = readYAML( path.join(p, 'captions.yaml') ) || {};
 
     let files = fs.readdirSync( p )
                    .filter( removeDotFiles )         
-                   .filter( f => f !== 'captions.json' );
+                   .filter( f => f !== 'captions.yaml' );
 
     let slideshow = files.map( (item) => {
       return constructSlide( item, p, captions );

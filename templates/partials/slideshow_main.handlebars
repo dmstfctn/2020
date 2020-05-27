@@ -2,15 +2,20 @@
   {{#each page.slideshows.main.slides}}  
     {{#dc_isslideimage this}}
       <li class="dc-media__image{{#if @first}} active{{/if}}">
+        <figure>
         {{#if @first}} 
           <img src="{{content.src}}" data-src="{{content.src}}" class="loaded">
         {{else}}
           <img src="{{content.lowSrc}}" data-src="{{content.src}}">
         {{/if}}
+          <figcaption>
+            {{caption}}
+          </figcaption>
+        </figure>
       </li>
     {{/dc_isslideimage}}
     {{#dc_isslidetext this}}
-      <li class="dc-media__text{{#if @first}} active{{/if}}">
+      <li class="dc-media__text{{#if @first}} active{{/if}}">        
         <div class="text">
           {{{content}}}
         </div>
@@ -18,7 +23,12 @@
     {{/dc_isslidetext}}
     {{#dc_isslideembed this}}
       <li class="dc-media__embed{{#if @first}} active{{/if}}">
-        {{{content}}}
+        <figure>
+          {{{content}}}
+          <figcaption>
+            {{caption}}
+          </figcaption>
+        </figure>
       </li>
     {{/dc_isslideembed}}
     {{#dc_isslideaudio this}}
@@ -27,8 +37,13 @@
       </li>
     {{/dc_isslideaudio}}
     {{#dc_isslidevideo this}}
-      <li class="dc-media__video{{#if @first}} active{{/if}}"></li>
-        <video src="{{content.src}}"></video>
+      <li class="dc-media__video{{#if @first}} active{{/if}}">
+        <figure>
+          <video src="{{content.src}}"></video>
+          <figcaption>
+            {{caption}}
+          </figcaption>
+        </figure>
       </li>
     {{/dc_isslidevideo}}       
   {{/each}}
