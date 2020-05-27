@@ -76,6 +76,7 @@
     float: right;
     overflow: hidden;
     position: relative;
+    white-space: nowrap;
   }
   .dc-cv--entry > a{
     flex-grow: 2;
