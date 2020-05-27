@@ -32,15 +32,13 @@ ScrollQuantiser.prototype = {
     });
   },
   update: function( deltaY ){
-    console.log('DELTAY: ', deltaY );
-    this.scroll.original += deltaY * this.speed;
+    this.scroll.original += deltaY * this.speed;   
     if( this.scroll.original < 0 ){
       this.scroll.original = 0;
     }
-    if( this.scroll.original >= this.maxScroll ){
+    if( this.scroll.original > this.maxScroll ){
       this.scroll.original = this.maxScroll;
-    }    
-    console.log( "SCROLL: ", this.scroll.original );
+    }
     this.scroll.quantised = Math.floor(this.scroll.original / this.lineH)  * this.lineH;
     
   },
@@ -57,10 +55,14 @@ ScrollQuantiser.prototype = {
     this.onScroll();
   },
   measure: function(){    
-    this.lineH = this.$line.getBoundingClientRect().height;
+    this.lineH = Math.round(this.$line.getBoundingClientRect().height * 100) / 100;
     this.height.original = this.$ele.getBoundingClientRect().height;
     this.height.quantised = Math.floor( (this.height.original - this.lineH) /  this.lineH ) * this.lineH;
-    this.maxScroll =  Math.round( this.$scrollable.getBoundingClientRect().height - this.height.quantised );
+    let scrollableQuantised = Math.round(this.$scrollable.getBoundingClientRect().height / this.lineH) * this.lineH;
+    console.log( 'lineH', this.lineH  );
+    console.log('scrollableQuantised', scrollableQuantised, 'from: ',this.$scrollable.getBoundingClientRect().height );
+    this.maxScroll =  Math.ceil( scrollableQuantised - this.height.quantised );
+    console.log('maxScroll', this.maxScroll );
   },
   recalculate: function(){
     this._onScroll( 0 );
