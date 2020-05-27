@@ -96,8 +96,7 @@ const slideshowNav = ( slideshow ) => {
   let labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
   let nav = [];  
   for( let i = 0; i < slideshow.slides.length; i++ ){
-    if( i === 0 ){
-      console.log('LABEL: ', 'info' + Config.letterSeparator );
+    if( i === 0 ){     
       nav.push( {
         left: { label: 'info' + Config.letterSeparator, active: false}, 
         right: { label: labels[i] + Config.letterSeparator, active: true},
@@ -137,11 +136,8 @@ const prepareSlideshow = ( slideshow, pageName, slideshowName, section, addSecti
   return slideshow;
 }
 
-const dateToHTML = ( date ) => {
-  console.log( date );
-  var rp = date.replace( '-', '<span class="dctxt--date--hyphen">-</span>' );
-  console.log( rp );
-  return rp;
+const dateToHTML = ( date ) => { 
+  return date.replace( '-', '<span class="dctxt--date--hyphen">-</span>' );
 }
 
 const createRelatedMatters = ( related_matters, cv ) => {

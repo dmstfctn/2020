@@ -47,9 +47,6 @@ const renderPage = ( pageData, index, partnerPages, rendered ) => {
   if( pageData.is_external ){
     return false;
   }
-  if( ind === 0 ){
-    console.log('Rendering.js - renderPage(): pageData:', pageData );
-  }
   ind++;
 
   pageData.prev = (index - 1 >= 0 ) ? partnerPages[index-1] : partnerPages[ partnerPages.length + (index-1) ];
