@@ -9,14 +9,18 @@ const Config = require('../Config.js');
 const buildScript = path.join( __dirname, '..', 'build.js' );
 const publicDir = path.join( __dirname, '..', 'public' );
 console.log( ' ---------------- SETUP ---------------- ')
-console.log( '1 - run build script at:', buildScript );
-console.log( '2 - run static server from', publicDir );
-
+console.log( '  1 - run build script at:' );
+console.log( '      ' + buildScript );
+console.log( '  2 - run static server from:' ); 
+console.log( '      ' + publicDir );
+console.log();
 
 const app = express();
 app.use(express.static('public'));
 app.listen( Config.dev.local_port, () => {
-  console.log('  - Local Addr: http://localhost:' + Config.dev.local_port) 
+  console.log( ' ---------------- SERVER --------------- ')
+  console.log( '  - Local address: ' );
+  console.log( '    http://localhost:' + Config.dev.local_port + '/' + Config.url_root );
   console.log();
   console.log();
 });
@@ -68,4 +72,5 @@ chokidar.watch(
 console.log();
 console.log();
 console.log( ' --------- WATCHING FOR CHANGES --------' );
-
+console.log();
+console.log();
