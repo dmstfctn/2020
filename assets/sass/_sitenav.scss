@@ -5,7 +5,7 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 0.25rem;
-  padding: .3rem 1rem .3rem .8rem;
+  padding: .3rem 1rem .2rem .8rem;
 }
   .dc-sitenav::before {
     content: '';
@@ -17,6 +17,9 @@
     z-index: -1;
     top: -0.3rem;
     left:0;
+  }
+  .dc-sitenav a{
+    height: 1.65rem;
   }
     .dc-sitenav a::after{
       content: ',';
