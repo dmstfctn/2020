@@ -49,7 +49,7 @@ html, body{
 
 /* dotted line, title-subtitle */
 /* in CV and dissemination */
-.dc-cv--entry.dc-cv--now > a::after,
+.dc-cv--entry.dc-cv--entry__haslink > a::after,
 .dc-cv--entry::after,
 .dc-dissemination--info::after{
   content: '................................................................................................................................................................................................................................................................................................................................';
@@ -66,7 +66,7 @@ html, body{
   position: relative;
   left: auto;
 }
-  .dc-cv--entry.dc-cv--now::after{
+  .dc-cv--entry.dc-cv--entry__haslink::after{
     display: none;
   }
 
