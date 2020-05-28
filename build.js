@@ -27,10 +27,7 @@ Assets.sass(
 
 const relatedMatters = Formatter.createRelatedMatters( Content.related_matters, Content.cv );
 const focusGroups = Formatter.createFocusGroups( Content.focus_groups );
-const dissemination = Formatter.createDissemination( Content.dissemination );
 const infoSection = Formatter.createInfo( Content.bio, Content.cv );
-
-fs.mkdirSync( path.join( Config.paths.public, dissemination.slug ), {recursive: true} );
 
 const smallSiteData = Formatter.createSmallSite( Content );
 
@@ -38,7 +35,6 @@ const smallSiteData = Formatter.createSmallSite( Content );
 const navigation = [
   relatedMatters,
   focusGroups,
-  dissemination
 ];
 
 /* render the template for the navigation, for use in other pages */
@@ -114,21 +110,6 @@ let renderHomeInfo = {
 fs.writeFileSync( 
   path.join( Config.paths.public, infoSection.slug, 'index.html' ),  
   Templates.main( renderHomeInfo ) 
-);
-
-/* focus groups 'home' at /mmittee/dissemination/ */
-let renderHomeDissemination = {
-  title: 'Home',
-  pagetype: 'home',
-  homeactive: 'dissemination',
-  navigation: rendered_navigation,
-  content: null,
-  info: rendered_info,
-  small_site: rendered_small_site
-};
-fs.writeFileSync( 
-  path.join( Config.paths.public, dissemination.slug, 'index.html' ),  
-  Templates.main( renderHomeDissemination ) 
 );
 
 /* save the data to data.json */

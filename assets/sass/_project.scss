@@ -12,6 +12,7 @@
   right: 0.4rem;
   box-sizing: border-box;
   display: flex;
+  justify-content: center;
   flex-direction: row-reverse;
 }  
   .dc-worknav a{
@@ -22,7 +23,9 @@
   .dc-worknav .current{
     color: #FF0000;
   }
-  .dc-worknav--furtherlink{
+  .dc-worknav--furtherlink,
+  .dc-worknav--link__prev,
+  .dc-worknav--link__next{
     display: none;
   }
   .dc-worknav .dctxt--date{

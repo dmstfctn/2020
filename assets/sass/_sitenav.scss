@@ -3,7 +3,7 @@
   position: relative;
   z-index: 2;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin-bottom: 0.25rem;
   padding: .3rem 1rem .2rem .8rem;
 }
@@ -49,6 +49,25 @@
       html[data-dc-pagetype="home"][data-dc-homeactive="info"] .dc-sitenav a[href="/mmittee/info"]{
         pointer-events: none;
       }
+
+.dc-sitenav a[data-dc-localtarget="#focus-groups"]{
+  order: 1;
+  flex-shrink: 1;
+  width: 10em;
+}
+
+.dc-sitenav a[data-dc-localtarget="#related-matters"]{
+  order: 2;
+  flex-grow:2;
+  text-align: center;
+}
+
+.dc-sitenav a[data-dc-localtarget="#info"]{
+  order: 3;
+  flex-shrink:1;
+  text-align: right;
+  width: 10em;
+}
 
 
 /* the dropdowns / lists */
