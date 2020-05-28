@@ -116,7 +116,7 @@ $hoverImages.forEach( ( $hoverImg ) => {
 });
 
 /* top menu 'dropdowns' */
-let $sitenavDropdownLinks = document.querySelectorAll('.dc-sitenav a');
+let $sitenavDropdownLinks = document.querySelectorAll('.dc-sitenav__main a');
 let $sitenavDropdowns = document.querySelectorAll('.dc-navigation-item, .dc-info');
 
 $sitenavDropdownLinks.forEach( ($link ) => {
