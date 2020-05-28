@@ -22,8 +22,8 @@
       </dt>
       {{~#each this.contents~}}
       <!-- entries. entry: {{title}} -->
-      <dd class="dc-cv--entry{{#if now}} dc-cv--now{{/if}} dc-cv-type__{{type}}{{#if image}}{{#unless now}} dc-list-hoverimg{{/unless}}{{/if}}">
-        {{#if now}}<a href="{{url}}" class="dc-external-link" target="_blank" rel="noopener">{{/if}}
+      <dd class="dc-cv--entry{{#if now}} dc-cv--now{{/if}} dc-cv-type__{{type}}{{#if image}}{{#unless now}} dc-list-hoverimg{{/unless}}{{/if}}{{#if url}} dc-cv--entry__haslink{{/if}}">
+        {{#if url}}<a href="{{url}}" class="dc-external-link" target="_blank" rel="noopener">{{/if}}
           <div class="dc-cv--name">{{title}}</div>
           <div class="dc-cv--location">{{situation}}{{~#if location~}}, {{/if}}{{location}}</div>
           {{#unless now}}
@@ -31,7 +31,7 @@
             <img src="{{dc_urlpath image.lowSrc}}" data-src="{{dc_urlpath image.src}}">
           {{/if}}       
           {{/unless}}       
-        {{#if now}}</a>{{/if}}
+        {{#if url}}</a>{{/if}}
       </dd>
       {{/each}}
     {{/each}}
