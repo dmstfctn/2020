@@ -1,6 +1,8 @@
 const CFG = require('./Config.js' );
 const F = require( './Functions.js' );
 
+const Project = require( './Project.js' );
+
 const VisualQuantiser = require( './VisualQuantiser.js' );
 const ScrollQuantiser = require( './ScrollQuantiser.js' );
 
@@ -36,71 +38,6 @@ $workLinks.forEach( ( $link, index ) => {
       window.location = $link.dataset.href;
     }, 600 );
   });
-});
-
-let $mediaNavMain = document.querySelectorAll('.dc-media__main .dc-media--nav li:not(.dc-media--link)');
-let $mediaListMain = document.querySelectorAll('.dc-media__main .dc-media--list li');
-
-let $mediaPlay = document.querySelectorAll('.dc-media__main .dc-media--nav .dc-media--play');
-
-const activateSlide = function( $n, index ){
-  if( $n.classList.contains('dc-media--play')){
-    return false;
-  }
-  /* remove active state from all nav elements */
-  $mediaNavMain.forEach(($n) => {
-    $n.classList.remove('active');  
-  })
-  /* set the one hovered to active */
-  $n.classList.add('active');
-  /* loop over all related media items */
-  $mediaListMain.forEach(( $m, mediaIndex ) => {
-    const $video = $m.querySelector('video');
-    const $img = $m.querySelector('img');
-    if( mediaIndex !== index ){
-      /* if they don't share an index, deactivate them */
-      $m.classList.remove('active');
-      if( $video ){
-        $video.pause();
-      }
-    } else {
-      /* this should be the one that is linked to the hovered item */        
-      F.loadSlideImage( $m );
-      if( $video && $video.muted ){
-        $video.play();
-      }
-      $m.classList.add('active');
-    }
-  });
-}
-
-$mediaListMain.forEach( ( $m, index ) => {
-  if( $m.classList.contains('info') ){ return; }
-  $m.addEventListener('click', () => {
-    let nextIndex = ( index + 1 < $mediaNavMain.length ) ? index + 1 : 0;
-    activateSlide( $mediaNavMain[nextIndex], nextIndex );
-  });
-});
-
-$mediaNavMain.forEach(( $n, index ) => {
-  $n.addEventListener( 'mouseover', () => {
-    activateSlide( $n, index );
-  });
-  if( $n.classList.contains('dc-media--play') ){
-    let isPlaying = false;
-    $n.addEventListener('click', (e) => { 
-      let $audio = $mediaList[index].querySelector('audio');
-      if( isPlaying === false ){
-        isPlaying = true;
-        $n.classList.add('playing');
-        $audio.play();
-      } else {
-        isPlaying = false;
-        $n.classList.remove('playing');
-        $audio.pause();
-      }
-    });
-  }
 });
 
 /* hover items in CV & dissemination */
@@ -218,6 +155,7 @@ let cvScroller = new ScrollQuantiser(
 
 const Large = function(){
   console.log('new Large()');  
+  this.project = new Project();
 };
 
 Large.prototype.quantise = function(){
@@ -227,12 +165,8 @@ Large.prototype.quantise = function(){
   cvScroller.recalculate();
 }
 
-Large.prototype.loadImages = function(){
-  F.loadSlideImages( $mediaListMain ); 
-}
-
 Large.prototype.activate = function(){
-  this.loadImages();
+  this.project.activate();
   this.quantise();
   window.addEventListener('resize', () => {
     this.quantise() 

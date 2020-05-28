@@ -23,12 +23,7 @@
     {{/dc_isslidetext}}
     {{#dc_isslideembed this}}
       <li class="dc-media__embed{{#if @first}} active{{/if}}">
-        <figure>
-          {{{content}}}
-          <figcaption>
-            {{caption}}
-          </figcaption>
-        </figure>
+        {{{content}}}
       </li>
     {{/dc_isslideembed}}
     {{#dc_isslideaudio this}}
@@ -63,10 +58,10 @@
       <li {{#if @first}}class="active"{{/if}}>{{ nav.self.label }}</li>
     {{/dc_isslidetext}}
     {{#dc_isslideembed this}}
-      <li {{#if @first}}class="active"{{/if}}>{{ nav.self.label }}</li>
+      <li class="dc-media__playable dc-media__embed{{#if @first}} active{{/if}}">play</li>
     {{/dc_isslideembed}}
     {{#dc_isslideaudio this}}
-      <li class="dc-media__audio{{#if @first}} active{{/if}}">play</li>
+      <li class="dc-media__playable dc-media__audio{{#if @first}} active{{/if}}">play</li>
     {{/dc_isslideaudio}}
     {{#dc_isslidevideo this}}
       <li {{#if @first}}class="active"{{/if}}>{{ nav.self.label }}</li>

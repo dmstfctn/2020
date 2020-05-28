@@ -31,26 +31,35 @@
     }
 
 /* play / pause */
-.dc-media--play{
-  font-size: 0;   
+.dc-media__playable{
+  position: relative;
+  font-size: 0;     
+  width: 2rem;
 }
-  .dc-media--play:before{
-    position: absolute;
+  .dc-media__playable::after{
     font-size: 1rem;
-    content: 'play';
+    position: absolute;
+    right: 0;
   }
-  .dc-media--play.playing:before{
+  .dc-media__playable::before{
+    position: absolute;
+    content: 'play';
+    font-size: 1rem;    
+  }
+  .dc-media__playable.playing::before{
     content: 'pause';
   }
+  .dc-media__playable.playing::after{
+    right: -0.85rem;
+    animation: flick-in-out 1.6s infinite step-start;
+  }
 
-  .dc-media--play.playing{
+  .dc-media__playable.playing::before{
     color: #FF0000;
     animation: flick-in-out 1.6s infinite step-start;
   }
-    [dc-pagetype="focusgroup"] .dc-media--play.playing{
-      color: #FFFFFF;
-    }
-  .dc-media--play.playing:hover{
+    
+  .dc-media__playable.playing:hover{
     animation-play-state: paused;
     opacity: 1 !important;
   }
