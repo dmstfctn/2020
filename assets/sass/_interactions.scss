@@ -31,35 +31,50 @@
     }
 
 /* play / pause */
-.dc-media__playable{
+.dc-media__playable,
+.dc-media__openable{
   position: relative;
   font-size: 0;     
   width: 2rem;
-}
-  .dc-media__playable::after{
+  &::after{
     font-size: 1rem;
     position: absolute;
     right: 0;
   }
-  .dc-media__playable::before{
-    position: absolute;
-    content: 'play';
+  &::before{
+    position: absolute;    
     font-size: 1rem;    
   }
-  .dc-media__playable.playing::before{
-    content: 'pause';
-  }
-  .dc-media__playable.playing::after{
+  &e.playing::after{
     right: -0.85rem;
     animation: flick-in-out 1.6s infinite step-start;
   }
 
-  .dc-media__playable.playing::before{
+  &.playing::before{
     color: #FF0000;
     animation: flick-in-out 1.6s infinite step-start;
   }
     
-  .dc-media__playable.playing:hover{
+  &.playing:hover{
     animation-play-state: paused;
     opacity: 1 !important;
   }
+}
+.dc-media__playable{
+  &::before{
+    content: 'play';
+  }
+  &.playing::before{
+    content: 'pause';
+  }
+}
+
+.dc-media__openable{
+  width: 2.4rem;
+  &::before{
+    content: 'open';
+  }
+  &.playing::before{
+    content: 'close';
+  }
+}

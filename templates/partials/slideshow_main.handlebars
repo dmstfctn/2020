@@ -26,6 +26,11 @@
         {{{content}}}
       </li>
     {{/dc_slidetype}}
+    {{#dc_slidetype 'window' this}}
+      <li class="dc-media__window{{#if @first}} active{{/if}}">
+        <a href="{{content}}">open</a>
+      </li>
+    {{/dc_slidetype}}
     {{#dc_slidetype 'audio' this}}
       <li class="dc-media__audio{{#if @first}} active{{/if}}">
         <audio src="{{content.src}}"></audio>
@@ -59,6 +64,9 @@
     {{/dc_slidetype}}
     {{#dc_slidetype 'embed' this}}
       <li class="dc-media__playable dc-media__embed{{#if @first}} active{{/if}}">play</li>
+    {{/dc_slidetype}}
+    {{#dc_slidetype 'window' this}}
+      <li class="dc-media__openable dc-media__window{{#if @first}} active{{/if}}">open</li>
     {{/dc_slidetype}}
     {{#dc_slidetype 'audio' this}}
       <li class="dc-media__playable dc-media__audio{{#if @first}} active{{/if}}">play</li>

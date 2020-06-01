@@ -11,6 +11,7 @@ const Project = function(){
   this.$nav = document.querySelectorAll('.dc-media__main .dc-media--nav li:not(.dc-media--link)');
   this.index = 0;
   this.isPlaying = false;
+  this.extraWindow = null;
 };
 
 Project.prototype = {
@@ -52,6 +53,31 @@ Project.prototype = {
       this.playMedia( index );
     } else {
       this.stopMedia( index )
+    }
+  },
+  closeWindow: function( index ){
+    const $nav = this.$nav[index];
+    this.extraWindow.close();
+    $nav.classList.remove('playing');
+  },
+  openWindow: function( index ){
+    const $nav = this.$nav[index]
+    const $slide = this.$media[index];
+    const $link = $slide.querySelector('a');
+    const href = $link.getAttribute('href');
+    const w = 800;
+    const h = 600;
+    const x = (window.screen.availWidth - w) / 2;
+    const y = (window.screen.availHeight - h) / 2;
+    this.extraWindow = window.open( href, 'DC', `left=${x},top=${y},width=${w},height=${h}` );
+
+    $nav.classList.add('playing');
+  },
+  toggleWindow: function( index ){
+    if( this.extraWindow ){
+      this.closeWindow( index );
+    } else {
+      this.openWindow( index );
     }
   },
   loadImages: function(){
@@ -101,6 +127,10 @@ Project.prototype = {
       if($n.classList.contains('dc-media__playable')){ 
         $n.addEventListener('click', (e) => {
           this.toggleMedia( index );
+        });
+      } if($n.classList.contains('dc-media__openable')){ 
+        $n.addEventListener('click', (e) => {
+          this.toggleWindow( index );
         });
       } else {
         $n.addEventListener( 'mouseover', () => {               
