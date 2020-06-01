@@ -1,6 +1,6 @@
 <ol class="dc-media--list">
   {{#each slideshow.slides}}  
-    {{#dc_isslideimage this}}
+    {{#dc_slidetype 'image' this}}
       <li class="dc-media__image">        
         <img src="" data-src="{{dc_urlpath content.src}}">
         <nav class="dc-media--smallnav dc-smallnav">
@@ -8,8 +8,8 @@
           <span class="dc-smallnav--next{{#if nav.right.active}} active{{/if}}">{{nav.right.label}}</span>
         </nav>
       </li>
-    {{/dc_isslideimage}}
-    {{#dc_isslidetext this}}
+    {{/dc_slidetype}}
+    {{#dc_slidetype 'text' this}}
       <li class="dc-media__text">
         <div class="text">
           {{{content}}}
@@ -19,8 +19,8 @@
           </nav>
         </div>
       </li>
-    {{/dc_isslidetext}}
-    {{#dc_isslideembed this}}
+    {{/dc_slidetype}}
+    {{#dc_slidetype 'embed' this}}
       <li class="dc-media__embed">
         {{{content}}}
         <nav class="dc-media--smallnav dc-smallnav">
@@ -28,8 +28,8 @@
           <span class="dc-smallnav--next{{#if nav.right.active}} active{{/if}}">{{nav.right.label}}</span>
         </nav>
       </li>
-    {{/dc_isslideembed}}
-    {{#dc_isslideaudio this}}
+    {{/dc_slidetype}}
+    {{#dc_slidetype 'audio' this}}
       <li class="dc-media__audio">
         <audio src="{{dc_urlpath content.src}}"></audio>
         <nav class="dc-media--smallnav dc-smallnav">
@@ -37,8 +37,8 @@
           <span class="dc-smallnav--next{{#if nav.right.active}} active{{/if}}">{{nav.right.label}}</span>
         </nav>
       </li>
-    {{/dc_isslideaudio}}
-    {{#dc_isslidevideo this}}
+    {{/dc_slidetype}}
+    {{#dc_slidetype 'video' this}}
       <li class="dc-media__video"></li>
         <video src="{{dc_urlpath content.src}}"></video>
         <nav class="dc-media--smallnav dc-smallnav">
@@ -46,6 +46,6 @@
           <span class="dc-smallnav--next{{#if nav.right.active}} active{{/if}}">{{nav.right.label}}</span>
         </nav>
       </li>
-    {{/dc_isslidevideo}}       
+    {{/dc_slidetype}}       
   {{/each}}
 </ol>
