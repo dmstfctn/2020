@@ -34,14 +34,26 @@ Project.prototype = {
     const $nav = this.$nav[index]
     const $slide = this.$media[index];
     let $media = $slide.querySelector('audio') || $slide.querySelector('video');
-    $media.pause();
+    let $embed = $slide.querySelector('iframe');
+    if( $media ){
+      $media.pause();
+    } else if( $embed ){
+      // TODO: handle iframe for likely services properly (soundloud, vimeo, youtube?)
+    }
+    this.isPlaying = true;
     $nav.classList.remove('playing');
   },
   playMedia: function( index ){    
     const $nav = this.$nav[index]
     const $slide = this.$media[index];
-    let $media = $slide.querySelector('audio') || $slide.querySelector('video');    
-    $media.play();
+    let $media = $slide.querySelector('audio') || $slide.querySelector('video');   
+    let $embed = $slide.querySelector('iframe'); 
+    if( $media ){
+      $media.play();
+    } else if( $embed ){
+      // TODO: handle iframe for likely services properly (soundloud, vimeo, youtube?)
+    }
+    this.isPlaying = true;
     $nav.classList.add('playing');
   },
   toggleMedia: function( index ){
