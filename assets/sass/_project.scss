@@ -20,6 +20,9 @@
     margin: 0 0.2em;
   }
 
+  .dc-worknav a::after{
+    display: none;
+  }
   .dc-worknav .current{
     color: #FF0000;
   }
