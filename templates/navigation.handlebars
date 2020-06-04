@@ -1,11 +1,13 @@
 <nav class="dc-sitenav dc-sitenav__main">
   {{#each navigation}}
-    {{#if @first}}
-    <a href="{{dc_urlpath "" }}" data-dc-localtarget="#{{this.slug}}">{{this.name}}</a>
-    {{/if}}
-    {{#unless @first}}
+    {{#dc_ismenu 'DC' this}}
+    <a href="{{dc_urlpath "" }}" data-dc-localtarget="#{{this.slug}}">
+      {{this.name}}
+      {{> svg_DC }}
+    </a>
+    {{else}}
     <a href="{{dc_urlpath this.slug }}" data-dc-localtarget="#{{this.slug}}">{{this.name}}</a>
-    {{/unless}}
+    {{/dc_ismenu}}   
   {{/each}} 
   <a href="{{dc_urlpath "info"}}" data-dc-localtarget="#info">record</a>
 </nav>

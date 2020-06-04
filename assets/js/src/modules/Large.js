@@ -1,6 +1,8 @@
 const CFG = require('./Config.js' );
 const F = require( './Functions.js' );
 
+const GFX = require( './GFX.js' );
+
 const Menus = require( './Menus.js' );
 const Project = require( './Project.js' );
 const HoverImg = require( './HoverImg.js' );
@@ -69,6 +71,7 @@ $nextprevLinks.forEach( ($link) => {
 });
 
 const Large = function(){
+  this.GFX = new GFX();
   this.menus = new Menus();
   this.project = new Project();
   document.querySelectorAll( '.dc-list-hoverimg' )
@@ -119,6 +122,7 @@ Large.prototype.quantise = function(){
 }
 
 Large.prototype.activate = function(){
+  this.GFX.activate();
   this.project.activate();
   this.quantise();
   window.addEventListener('resize', () => {
@@ -126,6 +130,7 @@ Large.prototype.activate = function(){
   });
 }
 Large.prototype.deactivate = function(){
+  this.GFX.deactivate();
   window.removeEventListener('resize', () => {
     this.quantise() 
   });

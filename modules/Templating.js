@@ -29,6 +29,12 @@ Templating.registerHelpers = () => {
   Handlebars.registerHelper('dc_urlpath', (url_path, options) => {
       return '/' + path.join( Config.url_root, url_path );
   }); 
+  Handlebars.registerHelper('dc_ismenu', (name, menu, options) => {
+    if( name === menu.name ){
+      return options.fn(menu);
+    }
+    return options.inverse(menu);
+  });
 };
 
 Templating.getTemplates = () => {

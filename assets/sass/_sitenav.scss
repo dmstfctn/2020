@@ -62,7 +62,7 @@
   text-align: center;
   font-size: 0;
 } 
-.dc-sitenav a[data-dc-localtarget="#related-matters"]:after{
+.dc-sitenav a[data-dc-localtarget="#related-matters"] svg{
   display: block;
   width: 3.5rem;
   height: 2.5rem;
@@ -71,9 +71,6 @@
   top: 0;
   left:50%;
   transform: translateX(-50%);
-  background-image: url('../svg/DC.svg');
-  background-position: center top;
-  background-repeat: no-repeat;
 }
 
 .dc-sitenav a[data-dc-localtarget="#info"]{
