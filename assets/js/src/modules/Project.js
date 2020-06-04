@@ -73,7 +73,7 @@ Project.prototype = {
     $nav.classList.remove('playing');
   },
   openWindow: function( index ){
-    const $nav = this.$nav[index]
+    const $nav = this.$nav[index];
     const $slide = this.$media[index];
     const $link = $slide.querySelector('a');
     const href = $link.getAttribute('href');
@@ -97,18 +97,22 @@ Project.prototype = {
   },
   deactivateSlide: function( index ){
     const $slide = this.$media[index];
+    const $nav = this.$nav[index];
     const $video = $slide.querySelector('video');
     if( $video ){ $video.pause() }
     $slide.classList.remove( 'active' );
+    $nav.classList.remove( 'active' );
   },
   activateSlide: function( index ){
     const $slide = this.$media[index];
+    const $nav = this.$nav[index];
     const $video = $slide.querySelector( 'video' );
     F.loadSlideImage( $slide );
     if( $video && $video.muted ){
       $video.play();
     }
-    $slide.classList.add( 'active' );    
+    $slide.classList.add( 'active' );
+    $nav.classList.add( 'active' );
   },
   selectSlide: function( _index ){
     this.index = _index;
