@@ -21,34 +21,14 @@ Templating.registerPartials = () => {
 };
 
 Templating.registerHelpers = () => {
+  Handlebars.registerHelper('dc_slidetype', (type, slide, options) => {
+    if( type === slide.type ){
+      return options.fn(slide);
+    }
+  });
   Handlebars.registerHelper('dc_urlpath', (url_path, options) => {
       return '/' + path.join( Config.url_root, url_path );
-  });
-  Handlebars.registerHelper('dc_isslideimage', (slide, options) => {
-    if( slide.type === 'image' ){
-      return options.fn(slide);
-    }
-  });
-  Handlebars.registerHelper('dc_isslideembed', (slide, options) => {
-    if( slide.type === 'embed' ){
-      return options.fn(slide);
-    }
-  });
-  Handlebars.registerHelper('dc_isslidetext', (slide, options) => {
-    if( slide.type === 'text' ){
-      return options.fn(slide);
-    }
-  });
-  Handlebars.registerHelper('dc_isslideaudio', (slide, options) => {
-    if( slide.type === 'audio' ){
-      return options.fn(slide);
-    }
-  });
-  Handlebars.registerHelper('dc_isslidevideo', (slide, options) => {
-    if( slide.type === 'video' ){
-      return options.fn(slide);
-    }
-  });
+  }); 
 };
 
 Templating.getTemplates = () => {

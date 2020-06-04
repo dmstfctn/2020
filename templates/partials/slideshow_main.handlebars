@@ -1,6 +1,6 @@
 <ol class="dc-media--list">
   {{#each page.slideshows.main.slides}}  
-    {{#dc_isslideimage this}}
+   {{#dc_slidetype 'image' this }}
       <li class="dc-media__image{{#if @first}} active{{/if}}">
         <figure>
         {{#if @first}} 
@@ -13,30 +13,30 @@
           </figcaption>
         </figure>
       </li>
-    {{/dc_isslideimage}}
-    {{#dc_isslidetext this}}
+    {{/dc_slidetype}}
+    {{#dc_slidetype 'text' this}}
       <li class="dc-media__text{{#if @first}} active{{/if}}">        
         <div class="text">
           {{{content}}}
         </div>
       </li>
-    {{/dc_isslidetext}}
-    {{#dc_isslideembed this}}
+    {{/dc_slidetype}}
+    {{#dc_slidetype 'embed' this}}
       <li class="dc-media__embed{{#if @first}} active{{/if}}">
-        <figure>
-          {{{content}}}
-          <figcaption>
-            {{caption}}
-          </figcaption>
-        </figure>
+        {{{content}}}
       </li>
-    {{/dc_isslideembed}}
-    {{#dc_isslideaudio this}}
+    {{/dc_slidetype}}
+    {{#dc_slidetype 'window' this}}
+      <li class="dc-media__window{{#if @first}} active{{/if}}">
+        <a href="{{content}}">open</a>
+      </li>
+    {{/dc_slidetype}}
+    {{#dc_slidetype 'audio' this}}
       <li class="dc-media__audio{{#if @first}} active{{/if}}">
         <audio src="{{content.src}}"></audio>
       </li>
-    {{/dc_isslideaudio}}
-    {{#dc_isslidevideo this}}
+    {{/dc_slidetype}}
+    {{#dc_slidetype 'video' this}}
       <li class="dc-media__video{{#if @first}} active{{/if}}">
         <figure>
           <video src="{{content.src}}"></video>
@@ -45,7 +45,7 @@
           </figcaption>
         </figure>
       </li>
-    {{/dc_isslidevideo}}       
+    {{/dc_slidetype}}       
   {{/each}}
   <li class="info">
     <div class="text">
@@ -56,21 +56,24 @@
 <nav class="dc-media--nav">
   <ol>      
     {{#each page.slideshows.main.slides }}   
-    {{#dc_isslideimage this}}
+    {{#dc_slidetype 'image' this }}
       <li {{#if @first}}class="active"{{/if}}>{{ nav.self.label }}</li>
-    {{/dc_isslideimage}}
-    {{#dc_isslidetext this}}
+    {{/dc_slidetype}}
+    {{#dc_slidetype 'text' this}}
       <li {{#if @first}}class="active"{{/if}}>{{ nav.self.label }}</li>
-    {{/dc_isslidetext}}
-    {{#dc_isslideembed this}}
+    {{/dc_slidetype}}
+    {{#dc_slidetype 'embed' this}}
+      <li class="dc-media__playable dc-media__embed{{#if @first}} active{{/if}}">play</li>
+    {{/dc_slidetype}}
+    {{#dc_slidetype 'window' this}}
+      <li class="dc-media__openable dc-media__window{{#if @first}} active{{/if}}">open</li>
+    {{/dc_slidetype}}
+    {{#dc_slidetype 'audio' this}}
+      <li class="dc-media__playable dc-media__audio{{#if @first}} active{{/if}}">play</li>
+    {{/dc_slidetype}}
+    {{#dc_slidetype 'video' this}}
       <li {{#if @first}}class="active"{{/if}}>{{ nav.self.label }}</li>
-    {{/dc_isslideembed}}
-    {{#dc_isslideaudio this}}
-      <li class="dc-media__audio{{#if @first}} active{{/if}}">play</li>
-    {{/dc_isslideaudio}}
-    {{#dc_isslidevideo this}}
-      <li {{#if @first}}class="active"{{/if}}>{{ nav.self.label }}</li>
-    {{/dc_isslidevideo}}       
+    {{/dc_slidetype}}       
     {{/each}}  
     <li class="info">info</li>    
   </ol>

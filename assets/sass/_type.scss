@@ -127,18 +127,9 @@ html{
   .dc-media--nav ol li{
     list-style-type: none;
   }
-    .dc-media--nav ol li:before{
-      counter-increment: medianav;
-      content: counter(medianav, upper-alpha);
-      display: none;
-    }
     .dc-media--nav ol li:after{
       content: ',';
     }
-  .dc-media--nav ol li.info:before,
-  .dc-media--nav ol li.dc-media__audio:before{
-    content: '';
-  }
   .dc-media--nav ol li:last-child:after{
     content: '';
   }

@@ -41,6 +41,9 @@ html[data-dc-pagetype="focusgroup"]{
   .dc-media--nav ol li.active:after{
     color: #000000;
   }
+  .dc-media__playable.playing{
+    color: #FFFFFF;
+  }
 }
 
 html[data-dc-homeactive="focus-groups"]{

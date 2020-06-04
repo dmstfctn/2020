@@ -114,6 +114,11 @@ const constructSlide = ( filename, p, captions ) => {
     // embed code in a text doc with .embed as an extension
     slide.type = 'embed';
     slide.content = fs.readFileSync( filePath ).toString();
+  } else if( ext === '.window' ){
+    // url in a text doc with .window as an extension
+    // will appear in a new pop-out window
+    slide.type = 'window';
+    slide.content = fs.readFileSync( filePath ).toString();
   } else if( ext ==='.mp3' ){
     slide.type = 'audio';
     slide.content = filePath;
