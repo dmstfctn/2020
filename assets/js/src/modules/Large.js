@@ -102,11 +102,6 @@ Large.prototype.initQuantisers = function(){
       document.querySelector('#focus-groups ol'),
       document.querySelectorAll('#focus-groups ol li'),
       document.querySelector('#focus-groups .dc-biglist--now')
-    ),
-    'dissemination': VisualQuantiser(
-      document.querySelector('#dissemination ol'),
-      document.querySelectorAll('#dissemination ol li'),
-      document.querySelector('#dissemination .dc-biglist--now')
     )
   };
   this.cvScroller = new ScrollQuantiser( 
