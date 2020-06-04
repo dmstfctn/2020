@@ -60,6 +60,20 @@
   order: 2;
   flex-grow:2;
   text-align: center;
+  font-size: 0;
+} 
+.dc-sitenav a[data-dc-localtarget="#related-matters"]:after{
+  display: block;
+  width: 3.5rem;
+  height: 2.5rem;
+  content: '';
+  position: absolute;
+  top: 0;
+  left:50%;
+  transform: translateX(-50%);
+  background-image: url('../svg/DC.svg');
+  background-position: center top;
+  background-repeat: no-repeat;
 }
 
 .dc-sitenav a[data-dc-localtarget="#info"]{

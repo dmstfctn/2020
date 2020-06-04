@@ -141,7 +141,7 @@ const dateToHTML = ( date ) => {
 }
 
 const createRelatedMatters = ( related_matters, cv ) => {
-  const section_name = 'related matters';
+  const section_name = 'DC';
   const section_slug = H.createSlug('Related Matters');
 
   let list = [];
