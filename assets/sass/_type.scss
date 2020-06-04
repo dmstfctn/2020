@@ -35,7 +35,8 @@ html{
   margin-right: -0.2em;
 }
 
-.dc-sitenav{
+.dc-sitenav,
+.dc-item--header{
   font-size: 1.556rem;
   line-height: 1.429em;
   line-height: 1; 
@@ -101,13 +102,16 @@ html{
   font-family: arial, sans-serif;
 }
 
-.dc-worknav{
+.dc-item--header{
   text-transform: uppercase;
+  white-space: nowrap;
+  text-overflow: clip;  
 }
-  .dc-worknav a{
-    white-space: nowrap;
-    text-overflow: clip;
+  .dc-item--header h1{
+    font-weight: normal;
+    font-size: 1em;
   }
+
 
 .dc-media--list .info .text,
 .dc-media--list .dc-media__text .text{

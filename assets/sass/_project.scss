@@ -2,36 +2,19 @@
   height: calc( 100% - 1.667rem );
 }
 
-.dc-worknav{
+.dc-item--header{
   bottom: 0;
   position: absolute;
   z-index: 1;
-  padding-left: 0;
-  padding-right: 0;
-  left: 0.7rem;
-  right: 0.4rem;
+  padding: .3rem $dc_site_padding_right .45rem $dc_site_padding_left;
   box-sizing: border-box;
+  width: 100%;
   display: flex;
+  align-items: baseline;
   justify-content: center;
-  flex-direction: row-reverse;
+  color: #FF0000;
 }  
-  .dc-worknav a{
-    flex-shrink: 2;
-    margin: 0 0.2em;
-  }
-
-  .dc-worknav a::after{
-    display: none;
-  }
-  .dc-worknav .current{
-    color: #FF0000;
-  }
-  .dc-worknav--furtherlink,
-  .dc-worknav--link__prev,
-  .dc-worknav--link__next{
-    display: none;
-  }
-  .dc-worknav .dctxt--date{
+  .dc-item--header .dctxt--date{
     margin-right: 0.1em;
   }
 
