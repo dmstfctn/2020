@@ -90,6 +90,14 @@
     width: 100%;
     height: 100%;
   }
+
+  .dc-edit-fill{
+    fill: #050505;
+  }
+  .dc-edit-stroke{
+    stroke: #050505;
+  }
+
   &.hidden{
     animation-name: gfx-hide;
     animation-duration: .3s;

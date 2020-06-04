@@ -47,6 +47,14 @@ html[data-dc-pagetype="focusgroup"]{
   .dc-media__playable.playing{
     color: #FFFFFF;
   }
+  .dc-gfx{
+    .dc-edit-fill{
+      fill: #FF0000;
+    }
+    .dc-edit-stroke{
+      stroke: #FF0000;
+    }
+  }
 }
 
 html[data-dc-homeactive="focus-groups"]{
@@ -68,6 +76,14 @@ html[data-dc-homeactive="focus-groups"]{
   }
   .dc-sitenav a[data-dc-localtarget="#related-matters"] svg path{
     fill: #000000 !important;
+  }
+  .dc-gfx{
+    .dc-edit-fill{
+      fill: #FF0000;
+    }
+    .dc-edit-stroke{
+      stroke: #FF0000;
+    }
   }
 }
 
