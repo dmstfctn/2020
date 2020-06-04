@@ -77,7 +77,10 @@
   .dc-media--list .dc-media__text .text{
     width: 100%;
   }
-  
+  .dc-media--list figure{
+    margin: 0;
+    padding: 0;
+  }
   .dc-media--nav{
     margin-top: 2rem;
   }

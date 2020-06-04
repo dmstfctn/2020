@@ -13,7 +13,7 @@ html, body{
   }
 
   .dc-main-wrap{
-    padding: 0 1rem .3rem .8rem;
+    padding: 0 $dc_site_padding_right .3rem $dc_site_padding_left;
   }
 
   a:hover{
