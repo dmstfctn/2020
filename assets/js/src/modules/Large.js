@@ -1,13 +1,12 @@
 const CFG = require('./Config.js' );
 const F = require( './Functions.js' );
 
+const Menus = require( './Menus.js' );
 const Project = require( './Project.js' );
+const HoverImg = require( './HoverImg.js' );
 
 const VisualQuantiser = require( './VisualQuantiser.js' );
 const ScrollQuantiser = require( './ScrollQuantiser.js' );
-
-const INIT_PAGETYPE = document.querySelector('html').getAttribute('data-dc-pagetype');
-let prev_pagetype = INIT_PAGETYPE;
 
 /* list page links transition */
 let $sitenav = document.querySelector( '.dc-sitenav' );
@@ -40,65 +39,6 @@ $workLinks.forEach( ( $link, index ) => {
   });
 });
 
-/* hover items in CV & dissemination */
-let $hoverImages = document.querySelectorAll( '.dc-list-hoverimg' );
-$hoverImages.forEach( ( $hoverImg ) => {
-  $hoverImg.addEventListener( 'mouseover', ( e ) => {
-    let $img = $hoverImg.querySelector('img');
-    $img.addEventListener('load', () => {
-      $img.classList.add('loaded');
-    }, {once: true});
-    $img.src = $img.getAttribute( 'data-src' );
-  });
-});
-
-/* top menu 'dropdowns' */
-let $sitenavDropdownLinks = document.querySelectorAll('.dc-sitenav__main a');
-let $sitenavDropdowns = document.querySelectorAll('.dc-navigation-item, .dc-info');
-
-$sitenavDropdownLinks.forEach( ($link ) => {
-  $link.addEventListener('click', (e) => {
-    e.preventDefault();
-    let target = $link.getAttribute('data-dc-localtarget');
-    let $menu = document.querySelector( target );
-    let deactivate = false;
-    let pagetype = $menu.getAttribute('data-pagetype');
-    let id = $menu.id;    
-    let page = (target === '#related-matters') ? '' : target.replace('#','');
-    // clear data-dc-homeactive attribute used to show correct menu on load
-    document.querySelector('html').setAttribute('data-dc-homeactive', '');
-
-    history.replaceState(null,null,'/mmittee/' + page );
-
-    if( $link.classList.contains('active') ){
-      deactivate = true;
-      return false;
-    }
-    $link.classList.add( 'active' );
-    $sitenavDropdownLinks.forEach( ( $dropdownLink ) => {
-      $dropdownLink.classList.remove( 'active' );
-    });
-    $sitenavDropdowns.forEach( ( $dropdown ) => {
-      $dropdown.style.display = 'none';
-    });
-    if( deactivate && INIT_PAGETYPE !== 'home') {
-      document.querySelector('html').setAttribute('data-dc-pagetype', INIT_PAGETYPE );      
-    } else {
-      document.querySelector('html').setAttribute('data-dc-pagetype', pagetype );
-      $link.classList.add( 'active' );
-      $menu.style.display = 'block';
-      //run the 'visual quantiser' 
-      if( vcList[ id ] ){
-        vcList[ id ].run();
-      }
-      if( id === 'info' ){
-        cvScroller.recalculate();
-      }
-    }
-    return false;
-  });
-});
-
 /*next/prev work links in project page*/
 const $nextprevLinks = document.querySelectorAll('.dc-worknav a');
 let furtherProjectTimeout;
@@ -128,41 +68,59 @@ $nextprevLinks.forEach( ($link) => {
   
 });
 
-let vcList = {
-  'related-matters': VisualQuantiser( 
-    document.querySelector('#related-matters ol'),
-    document.querySelectorAll('#related-matters ol li'),
-    document.querySelector('#related-matters .dc-biglist--now')
-  ),
-  'focus-groups': VisualQuantiser( 
-    document.querySelector('#focus-groups ol'),
-    document.querySelectorAll('#focus-groups ol li'),
-    document.querySelector('#focus-groups .dc-biglist--now')
-  ),
-  'dissemination': VisualQuantiser(
-    document.querySelector('#dissemination ol'),
-    document.querySelectorAll('#dissemination ol li'),
-    document.querySelector('#dissemination .dc-biglist--now')
-  )
-};
-
-let cvScroller = new ScrollQuantiser( 
-  document.querySelector('#info .dc-cv'), 
-  document.querySelector('#info .dc-cv--entry'),
-  0.5 //speed
-);
-
-
 const Large = function(){
-  console.log('new Large()');  
+  this.menus = new Menus();
   this.project = new Project();
+  document.querySelectorAll( '.dc-list-hoverimg' )
+    .forEach( ($hoverImg) => {
+      HoverImg( $hoverImg );
+   });
+
+  this.initQuantisers(); 
+  
+  this.menus.onChange = ( id ) => {
+    if( id === 'related-matters' ){ id = ''; }
+    history.replaceState(null,null,'/mmittee/' + id );
+    //run the 'visual quantiser' 
+    if( this.vcList[ id ] ){
+      this.vcList[ id ].run();
+    }
+    if( id === 'info' ){
+      this.cvScroller.recalculate();
+    }
+  }
 };
+
+Large.prototype.initQuantisers = function(){
+  this.vcList = {
+    'related-matters': VisualQuantiser( 
+      document.querySelector('#related-matters ol'),
+      document.querySelectorAll('#related-matters ol li'),
+      document.querySelector('#related-matters .dc-biglist--now')
+    ),
+    'focus-groups': VisualQuantiser( 
+      document.querySelector('#focus-groups ol'),
+      document.querySelectorAll('#focus-groups ol li'),
+      document.querySelector('#focus-groups .dc-biglist--now')
+    ),
+    'dissemination': VisualQuantiser(
+      document.querySelector('#dissemination ol'),
+      document.querySelectorAll('#dissemination ol li'),
+      document.querySelector('#dissemination .dc-biglist--now')
+    )
+  };
+  this.cvScroller = new ScrollQuantiser( 
+    document.querySelector('#info .dc-cv'), 
+    document.querySelector('#info .dc-cv--entry'),
+    0.5 //speed
+  );
+}
 
 Large.prototype.quantise = function(){
-  for( i in vcList ){
-    vcList[i].run();
+  for( i in this.vcList ){
+    this.vcList[i].run();
   }
-  cvScroller.recalculate();
+  this.cvScroller.recalculate();
 }
 
 Large.prototype.activate = function(){
