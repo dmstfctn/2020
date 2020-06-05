@@ -27,8 +27,7 @@
       </li>
     {{/dc_slidetype}}
     {{#dc_slidetype 'window' this}}
-      <li class="dc-media__window{{#if @first}} active{{/if}}">
-        <a href="{{content}}">open</a>
+      <li class="dc-media__window{{#if @first}} active{{/if}}" data-content="{{content}}">        
       </li>
     {{/dc_slidetype}}
     {{#dc_slidetype 'audio' this}}

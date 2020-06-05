@@ -1,6 +1,8 @@
 const CFG = require('./Config.js' );
 const F = require( './Functions.js' );
 
+const PopOutWindow = require( './PopOutWindow.js' );
+
 let $mediaNavMain = document.querySelectorAll('.dc-media__main .dc-media--nav li:not(.dc-media--link)');
 let $mediaListMain = document.querySelectorAll('.dc-media__main .dc-media--list li');
 
@@ -9,6 +11,8 @@ let $mediaPlay = document.querySelectorAll('.dc-media__main .dc-media--nav .dc-m
 const Project = function(){
   this.$media = document.querySelectorAll('.dc-media__main .dc-media--list li');
   this.$nav = document.querySelectorAll('.dc-media__main .dc-media--nav li:not(.dc-media--link)');
+  this.$title = document.querySelector('.dc-item--header h1');
+  this.title = this.$title.innerText;
   this.index = 0;
   this.isPlaying = false;
   this.extraWindow = null;
@@ -74,14 +78,25 @@ Project.prototype = {
   },
   openWindow: function( index ){
     const $nav = this.$nav[index];
-    const $slide = this.$media[index];
-    const $link = $slide.querySelector('a');
-    const href = $link.getAttribute('href');
-    const w = 800;
-    const h = 600;
-    const x = (window.screen.availWidth - w) / 2;
-    const y = (window.screen.availHeight - h) / 2;
-    this.extraWindow = window.open( href, 'DC', `left=${x},top=${y},width=${w},height=${h}` );
+    const $slide = this.$media[index];  
+    const html = $slide.getAttribute('data-content');
+    const w = window.screen.availWidth / 3;
+    const h = ( w / 16 ) * 9;    
+    console.log( html );
+    if( this.extraWindow ){
+      this.extraWindow.destroy()
+    }
+
+    this.extraWindow = new PopOutWindow( 
+      this.title, 
+      html, 
+      {
+        width: w,
+        height: h
+      }
+    );
+
+    this.extraWindow.open();
 
     $nav.classList.add('playing');
   },
