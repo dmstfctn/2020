@@ -1,9 +1,6 @@
+html[data-dc-homeactive="focus-groups"],
 html[data-dc-pagetype="focusgroup"]{
   background: #FF0000;
-  color: #000000;
-  a:hover{
-    color: #FFFFFF;
-  }
   .dc-sitenav{
     color: #000000;
   }
@@ -19,9 +16,21 @@ html[data-dc-pagetype="focusgroup"]{
   .dc-sitenav::before{
     background: #FF0000;
   }
-  .dc-sitenav a[data-dc-localtarget="#related-matters"] svg path{
-    fill: #000000 !important;
+  .dc-sitenav a[data-dc-localtarget="#related-matters"]{ 
+    svg path{
+      fill: #000000;
+    }
+    &:hover{
+      svg path{
+        fill: #FFFFFF;
+      }
+    }
   }
+}
+
+html[data-dc-pagetype="focusgroup"]{
+  background: #FF0000;
+  color: #000000;
   .dc-work--year h2{
     color: #FFFFFF;
   }
@@ -57,26 +66,9 @@ html[data-dc-pagetype="focusgroup"]{
   }
 }
 
+
+
 html[data-dc-homeactive="focus-groups"]{
-  background: #FF0000;
-  .dc-sitenav{
-    color: #000000;
-  }
-  .dc-sitenav a:hover{
-    color: #FFFFFF
-  }
-  .dc-sitenav a.active{
-    color: #FFFFFF;
-  }
-  .dc-sitenav a::after{
-    color: #000000;
-  }
-  .dc-sitenav::before{
-    background: #FF0000;
-  }
-  .dc-sitenav a[data-dc-localtarget="#related-matters"] svg path{
-    fill: #000000 !important;
-  }
   .dc-gfx{
     .dc-edit-fill{
       fill: #FF0000;

@@ -25,12 +25,36 @@
       content: ',';
       color: #FFFFFF;
     }
+
+    .dc-sitenav a[data-dc-localtarget="#related-matters"]{ 
+      svg{
+        display: block;
+        width: 3.5rem;
+        height: 2.5rem;
+        content: '';
+        position: absolute;
+        top: 0;
+        left:50%;
+        transform: translateX(-50%);
+        path{
+          fill: #FFFFFF;
+        }
+      }
+      &.active,
+      &:hover{
+        svg path{
+          fill: #FF0000;
+        }
+      }
+    }
+
       .dc-sitenav a:last-child::after{
         content: '';
       }
       .dc-sitenav a.active{
         color: #FF0000;
       }
+      
       html[data-dc-pagetype="home"][data-dc-homeactive="related-matters"] .dc-sitenav a[href="/mmittee"],
       html[data-dc-pagetype="home"][data-dc-homeactive="dissemination"] .dc-sitenav a[href="/mmittee/dissemination"],
       html[data-dc-pagetype="home"][data-dc-homeactive="info"] .dc-sitenav a[href="/mmittee/info"],
@@ -62,16 +86,7 @@
   text-align: center;
   font-size: 0;
 } 
-.dc-sitenav a[data-dc-localtarget="#related-matters"] svg{
-  display: block;
-  width: 3.5rem;
-  height: 2.5rem;
-  content: '';
-  position: absolute;
-  top: 0;
-  left:50%;
-  transform: translateX(-50%);
-}
+
 
 .dc-sitenav a[data-dc-localtarget="#info"]{
   order: 3;
