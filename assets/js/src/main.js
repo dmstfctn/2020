@@ -1,6 +1,11 @@
 const CFG = require('./modules/Config.js' );
 const F = require( './modules/Functions.js' );
 
+const Loader = require('./modules/Loader.js');
+console.log("LOADLOADLOADLOAD")
+const l = new Loader();
+l.load('/mmittee/related-matters/echo-fx/');
+
 let DC = {
   env: {
     size: 'large',

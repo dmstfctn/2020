@@ -8,11 +8,12 @@ const Config = require( '../Config.js' );
 
 const js = ( src, dist ) => {  
   // ensure dist exists
-  fs.mkdirSync( path.dirname(dist), {recursive: true} );
+  fs.mkdirSync( path.dirname(dist), { recursive: true } );
   const out = fs.createWriteStream( dist );
 
-  // run browserify and optionally uglify(ify)
+  // run browserify, babelify, and optionally uglify(ify)
   const b = Browserify( src );
+  b.transform( "babelify", {presets: ["@babel/preset-env"], global: true } );  
   if( Config.minify ){ b.transform('uglifyify', { global: true  }) }
   b.bundle()
     .pipe( out );
