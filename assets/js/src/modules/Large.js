@@ -115,7 +115,7 @@ Large.prototype.initQuantisers = function(){
 }
 
 Large.prototype.quantise = function(){
-  for( i in this.vcList ){
+  for( let i in this.vcList ){
     this.vcList[i].run();
   }
   this.cvScroller.recalculate();
