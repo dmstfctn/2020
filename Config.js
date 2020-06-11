@@ -1,6 +1,7 @@
 const path = require('path');
 
 const url_root = 'mmittee';
+const public_root = path.join( __dirname, 'public' );
 
 let Config = {
   dev:{
@@ -11,9 +12,10 @@ let Config = {
   resizeImages: false, 
   url_root: url_root,
   paths: {
-    public: path.join( __dirname, 'public', url_root ),
-    public_data: path.join( __dirname, 'public', url_root, 'data' ),
-    public_assets: path.join( __dirname, 'public', url_root, 'assets' )
+    public_root: public_root,
+    public: path.join( public_root, url_root ),
+    public_data: path.join( public_root, url_root, 'data' ),
+    public_assets: path.join( public_root, url_root, 'assets' )
   },
   letterSeparator: ','
 };

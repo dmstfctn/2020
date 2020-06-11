@@ -112,5 +112,16 @@ fs.writeFileSync(
   Templates.main( renderHomeInfo ) 
 );
 
+/* write an index.html with link to /mmitte (or whatever url_root....) */
+fs.writeFileSync( 
+  path.join( Config.paths.public_root, 'index.html' ), 
+  `<html><head>
+    <meta http-equiv="refresh" content="0; url=/${Config.url_root}" />
+    <style>html, body, a{ background: #000000; color: #FF0000; font-family: sans-serif;}</style>
+  </head><body>
+    <a href="${Config.url_root}">VISIT SITE &rarr; /${Config.url_root}</a>
+  </body></html>`
+);
+
 /* save the data to data.json */
 fs.writeFileSync( 'data.json', JSON.stringify( Content, false, '  ' ) );
