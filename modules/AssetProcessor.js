@@ -4,6 +4,9 @@ const Browserify = require('browserify');
 
 const NodeSass = require('node-sass');
 
+const HandlebarsWithHelpers = require('./HandlebarsWithHelpers.js');
+const Handlebars = HandlebarsWithHelpers.Handlebars;
+
 const Config = require( '../Config.js' );
 
 const js = ( src, dist ) => {  
@@ -16,6 +19,10 @@ const js = ( src, dist ) => {
   b.transform( "babelify", {presets: ["@babel/preset-env"], global: true } );  
   if( Config.minify ){ b.transform('uglifyify', { global: true  }) }
   b.bundle()
+    .on('error', function(err){
+      console.log(err.message);
+      this.emit('end');
+    })
     .pipe( out );
 };
 
@@ -34,9 +41,39 @@ const sass = ( src, dist ) => {
   });
 }
 
+const handlebars = ( templates, partials, output ) => {
+  let result = `const Handlebars = require('./modules/HandlebarsWithHelpers.js').Handlebars;`;
+  const precompile = function( f ){
+    let name = path.basename( f, '.handlebars' );
+    let temp = fs.readFileSync( f ).toString();
+    let precomp = Handlebars.precompile( temp, {
+     knownHelpers: Object.keys( HandlebarsWithHelpers.Helpers )
+    });
+    return {
+      name: name,
+      string: JSON.stringify( precomp ),
+      precompiled: precomp
+    };
+  };
+  partials.forEach( ( f ) => {
+    let p = precompile( f );
+    result += `Handlebars.partials['${ p.name }'] = ` 
+    result += p.precompiled;
+    result += ';\n';
+  });
+  templates.forEach( ( f ) => {
+    let p = precompile( f );
+    result += `Handlebars.templates['${ p.name }'] = ` 
+    result += p.precompiled;
+  });
+  
+  fs.writeFileSync( output, result);
+};
+
 const AssetProcessor = {
   js,
-  sass
+  sass,
+  handlebars
 }
 
 module.exports = AssetProcessor;

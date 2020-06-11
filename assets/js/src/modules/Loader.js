@@ -1,5 +1,8 @@
 import 'whatwg-fetch';
 
+const HandlebarsWithHelpers = require('./HandlebarsWithHelpers.js' );
+const templates = require( '../templates.precompiled.js' );
+
 const Loader = function(){
   this.parser = new DOMParser();
 };

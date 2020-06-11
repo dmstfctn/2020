@@ -16,6 +16,30 @@ fs.mkdirSync( Config.paths.public_data, {recursive: true} );
 
 /* copy css/js/asset images into public */
 fs.copySync('assets', Config.paths.public_assets );
+
+fs.copySync( 
+  'modules/HandlebarsWithHelpers.js',
+  path.join( Config.paths.public_assets, 'js', 'src', 'modules', 'HandlebarsWithHelpers.js') 
+);
+fs.copySync( 
+  'Config.js',
+  path.join( Config.paths.public_assets, 'js', 'src', 'Config.js') 
+);
+
+/* precompile templates for client */
+Assets.handlebars( 
+  [
+    'templates/page.handlebars'
+  ],
+  [
+    'templates/partials/cv.handlebars',
+    'templates/partials/slideshow_main.handlebars',
+    'templates/partials/slideshow_small.handlebars'
+  ],
+  path.join( Config.paths.public_assets, 'js', 'src', 'templates.precompiled.js' ) // to
+);
+
+
 Assets.js( 
   path.join( Config.paths.public_assets, 'js', 'src', 'main.js' ), // from
   path.join( Config.paths.public_assets, 'js', 'dist', 'main.js' ) // to
