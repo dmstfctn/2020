@@ -70,11 +70,11 @@ const getProjectCvItems = ( title, cv ) => {
   return relatedCv;
 }
 /* 
-  constructSlide( filename, p, captions )
+  constructSlide( filename, p, meta )
   ------------------
   filename: the name of the file
   p:        the path to the file
-  captions: an object containing captions, indexed by filename
+  captions: an object containing meta info, indexed by filename
   
   e.g:
     H.constructSlide( 
@@ -96,17 +96,15 @@ const getProjectCvItems = ( title, cv ) => {
   }
 
 */
-const constructSlide = ( filename, p, captions, alts ) => {
+const constructSlide = ( filename, p, meta ) => {
   let filePath = path.join( p, filename );
   let ext = path.extname( filename );
-  let caption = captions[ filename ] || false;
-  let alt = alts[ filename ] || caption || false;
+  
   let type;
   let slide = {
-    caption: caption,
-    alt: alt
+    meta: meta
   };
-  if( filename === 'captions.yaml' ){
+  if( filename === 'meta.yaml' ){
     return;
   } 
   if( ext === '.md' ){
@@ -186,16 +184,15 @@ const readFolder = ( folderPath, cv ) => {
         } else {
           //a folder that contains content 
           const p = path.join( root, year, project, item );
-          // find the captions file
-          const captions = readYAML( path.join(p, 'captions.yaml') ) || {};
-          const alts = readYAML( path.join(p, 'alts.yaml') ) || {};
+          // find the meta file
+          const meta = readYAML( path.join(p, 'meta.yaml') ) || {};
 
           let files = fs.readdirSync( p )
                         .filter( removeDotFiles )         
-                        .filter( f => f !== 'captions.yaml' && f !== 'alts.yaml' );
+                        .filter( f => f !== 'meta.yaml' );
 
           let slideshow = files.map( (item) => {
-            return constructSlide( item, p, captions, alts );
+            return constructSlide( item, p, meta[item] );
           });
           projectData.slideshows[item] = {slides: slideshow};
         }             
@@ -216,16 +213,15 @@ const readShowreel = ( showreelPath ) => {
   contents.forEach( ( item ) => {
     //a folder that contains content 
     const p = path.join( showreelPath, item );
-    // find the captions file
-    const captions = readYAML( path.join(p, 'captions.yaml') ) || {};
-    const alts = readYAML( path.join(p, 'alts.yaml') ) || {};
+    // find the meta file
+    const meta = readYAML( path.join(p, 'meta.yaml') ) || {};
 
     let files = fs.readdirSync( p )
                   .filter( removeDotFiles )         
-                  .filter( f => f !== 'captions.yaml' && f !== 'alts.yaml' );
+                  .filter( f => f !== 'meta.yaml' );
 
     let slideshow = files.map( (item) => {
-      return constructSlide( item, p, captions, alts );
+      return constructSlide( item, p, meta[item] );
     });
     showreelData.slideshows[item] = { slides: slideshow };
   });

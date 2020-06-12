@@ -38,8 +38,10 @@
     overflow: hidden;
   }
   .dc-media--list li img{
-    transform: translateZ(0);
-    image-rendering: crisp-edges;
+    transform: translateZ(0) translateY(-50%);
+    image-rendering: crisp-edges;    
+    top: 50%;
+    position: relative;
   }
     .dc-media--list li img.loaded{
       image-rendering: auto;

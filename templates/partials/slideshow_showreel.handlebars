@@ -2,7 +2,7 @@
   {{#each slideshow.slides}}  
     {{#dc_slidetype 'image' this}}
       <li class="dc-media__image">        
-        <img src="" data-src="{{dc_urlpath content.src}}" alt="{{alt}}">
+        <img src="" data-src="{{dc_urlpath content.src}}" alt="{{meta.alt}}">
         <nav class="dc-media--smallnav dc-smallnav">
           <span class="dc-smallnav--prev{{#if nav.left.active}} active{{/if}}">{{nav.left.label}}</span>
           <span class="dc-smallnav--next{{#if nav.right.active}} active{{/if}}">{{nav.right.label}}</span>

@@ -4,13 +4,28 @@
       <li class="dc-media__image{{#if @first}} active{{/if}}">
         <figure>
         {{#if @first}} 
-          <img src="{{content.src}}" data-src="{{content.src}}" class="loaded" alt="{{alt}}">
+          <img 
+            src="{{content.src}}" 
+            data-src="{{content.src}}" 
+            class="loaded" 
+            alt="{{meta.alt}}"
+            {{#if meta.size}}
+            style="height: {{meta.size}}"
+            {{/if}}
+          >
         {{else}}
-          <img src="{{content.lowSrc}}" data-src="{{content.src}}" alt="{{alt}}">
+          <img 
+            src="{{content.lowSrc}}" 
+            data-src="{{content.src}}" 
+            alt="{{meta.alt}}"
+            {{#if meta.size}}
+            style="height: {{meta.size}}"
+            {{/if}}
+          >
         {{/if}}
-        {{#if caption}}
+        {{#if meta.caption}}
           <figcaption>
-            {{caption}}
+            {{meta.caption}}
           </figcaption>
         {{/if}}
         </figure>
@@ -41,9 +56,9 @@
       <li class="dc-media__video{{#if @first}} active{{/if}}">
         <figure>
           <video src="{{content.src}}"></video>
-          {{#if caption}}
+          {{#if meta.caption}}
           <figcaption>
-            {{caption}}
+            {{meta.caption}}
           </figcaption>
           {{/if}}
         </figure>
