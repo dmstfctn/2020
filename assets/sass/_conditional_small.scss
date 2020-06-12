@@ -27,7 +27,8 @@
     content: '';
   }
 
-  html[data-dc-pagetype="home"] .dc-navigation-item#related-matters{
+  html[data-dc-pagetype="home"] .dc-navigation-item#related-matters,
+  html[data-dc-pagetype="home"][data-dc-homeactive="related-matters"] .dc-navigation-item#related-matters{
     display: none;
   }
   html[data-dc-pagetype="home"] .dc-info,
@@ -238,7 +239,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 99;
+    z-index: 50;
     display: block;
     overflow: hidden;
   }
@@ -303,6 +304,14 @@
     height: 100vw;
     transform-origin: center;
     transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+    z-index: 60;
+    pointer-events: all;
+    & svg{
+      pointer-events: none;
+    }
+    &.hidden{
+      pointer-events: none;
+    }
   }
 }
 

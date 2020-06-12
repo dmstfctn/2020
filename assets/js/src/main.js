@@ -1,6 +1,11 @@
 const CFG = require('./modules/Config.js' );
 const F = require( './modules/Functions.js' );
 
+const GFX = require( './modules/GFX.js' );
+
+const gfx = new GFX();
+gfx.activate();
+
 let DC = {
   env: {
     size: 'large',

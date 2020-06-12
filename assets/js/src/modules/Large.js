@@ -3,8 +3,6 @@ const F = require( './Functions.js' );
 
 const Loader = require('./Loader.js');
 
-const GFX = require( './GFX.js' );
-
 const Menus = require( './Menus.js' );
 const Project = require( './Project.js' );
 const HoverImg = require( './HoverImg.js' );
@@ -13,7 +11,6 @@ const VisualQuantiser = require( './VisualQuantiser.js' );
 const ScrollQuantiser = require( './ScrollQuantiser.js' );
 
 const Large = function(){
-  this.GFX = new GFX();
   this.project = new Project();
   this.menus = new Menus();
   this.loader = new Loader([
@@ -143,7 +140,6 @@ Large.prototype.quantise = function(){
 }
 
 Large.prototype.activate = function(){
-  this.GFX.activate();
   this.project.activate();
   this.quantise();
   window.addEventListener('resize', () => {
@@ -151,7 +147,6 @@ Large.prototype.activate = function(){
   });
 }
 Large.prototype.deactivate = function(){
-  this.GFX.deactivate();
   window.removeEventListener('resize', () => {
     this.quantise() 
   });

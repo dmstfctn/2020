@@ -58,6 +58,12 @@ GFX.prototype = {
     window.addEventListener('mousemove', () => {
      this._onMove();
     });
+    window.addEventListener('touchstart', () => {
+      this._onMove();
+    });
+    window.addEventListener('click', () => {
+      this._onMove();
+    });
     if( visibilityAPI.property ){
       document.addEventListener( visibilityAPI.eventName, () => {        
         if( document[ visibilityAPI.property ] ){ //is hidden    
