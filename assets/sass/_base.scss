@@ -11,7 +11,12 @@ html, body{
   body{   
     min-height: 100%;
   }
-
+  .dc-main-content{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+  }
   .dc-main-wrap{
     padding: 0 $dc_site_padding_right .3rem $dc_site_padding_left;
   }
