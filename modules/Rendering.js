@@ -42,23 +42,22 @@ const moveSlideshowContent = ( slideshows ) => {
   }
 };
 
-let ind = 0;
 const renderPage = ( pageData, index, partnerPages, rendered ) => {
   if( pageData.is_external ){
     return false;
   }
-  ind++;
 
   pageData.prev = (index - 1 >= 0 ) ? partnerPages[index-1] : partnerPages[ partnerPages.length + (index-1) ];
   pageData.prev_prev = (index - 2 >= 0 ) ? partnerPages[index-2] : partnerPages[ partnerPages.length + (index-2) ]
   pageData.next = (index + 1 < partnerPages.length ) ? partnerPages[index+1] : partnerPages[ (index+1) - partnerPages.length ];
   pageData.next_next = (index + 2 < partnerPages.length ) ? partnerPages[index+2] : partnerPages[ (index+2) - partnerPages.length ];
 
-  let p = path.join( Config.paths.public, pageData.url );  
+  const p = path.join( Config.paths.public, pageData.url );  
+  
   moveSlideshowContent( pageData.data.slideshows );
 
-  let rendered_project = Templates.page( pageData );
-  let filePath = path.join( p, 'index.html' );
+  const rendered_project = Templates.page( pageData );
+  const htmlPath = path.join( p, 'index.html' );  
   
   let render = {
     title: pageData.name,
@@ -69,7 +68,8 @@ const renderPage = ( pageData, index, partnerPages, rendered ) => {
     small_site: rendered.small_site
   };
   fs.mkdirSync( p, {recursive: true});
-  fs.writeFileSync( filePath, Templates.main( render ) );
+  fs.writeFileSync( htmlPath, Templates.main( render ) );
+  
 };
 
 const moveCvContent = ( cv ) => {  

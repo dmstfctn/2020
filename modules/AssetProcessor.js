@@ -42,7 +42,9 @@ const sass = ( src, dist ) => {
 }
 
 const handlebars = ( templates, partials, output ) => {
-  let result = `const Handlebars = require('./modules/HandlebarsWithHelpers.js').Handlebars;`;
+  let result  = `const Handlebars = require('./modules/HandlebarsWithHelpers.js').Handlebars;`;
+      result += `const Templates = {};`;
+
   const precompile = function( f ){
     let name = path.basename( f, '.handlebars' );
     let temp = fs.readFileSync( f ).toString();
@@ -57,15 +59,21 @@ const handlebars = ( templates, partials, output ) => {
   };
   partials.forEach( ( f ) => {
     let p = precompile( f );
-    result += `Handlebars.partials['${ p.name }'] = ` 
+    result += `Handlebars.partials['${ p.name }'] = Handlebars.template(` 
     result += p.precompiled;
-    result += ';\n';
+    result += ');\n';
   });
   templates.forEach( ( f ) => {
     let p = precompile( f );
-    result += `Handlebars.templates['${ p.name }'] = ` 
+    result += `Templates['${ p.name }'] = Handlebars.template(` 
     result += p.precompiled;
+    result += ');\n';
   });
+
+  result += `module.exports = {
+    Handlebars,
+    Templates
+  }`;
   
   fs.writeFileSync( output, result);
 };

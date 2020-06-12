@@ -1,8 +1,8 @@
 const CFG = require('./modules/Config.js' );
 const F = require( './modules/Functions.js' );
 
-const Loader = require('./modules/Loader.js');
 console.log("LOADLOADLOADLOAD")
+const Loader = require('./modules/Loader.js');
 const l = new Loader();
 l.load('/mmittee/related-matters/echo-fx/');
 

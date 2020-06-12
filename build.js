@@ -81,6 +81,7 @@ let renderHome = {
   small_site: rendered_small_site
 };
 fs.writeFileSync( path.join( Config.paths.public, 'index.html' ), Templates.main( renderHome ) );
+fs.writeFileSync( path.join( Config.paths.public, 'index.json' ), JSON.stringify( renderHome ) );
 
 /* Related Matters */
 const relatedMattersPages = Formatter.createPageList( relatedMatters.contents );
@@ -93,6 +94,12 @@ relatedMattersPages.forEach( ( pageData, index ) => {
     small_site: rendered_small_site,
     info: rendered_info
   };
+  
+  fs.writeFileSync( 
+    path.join( Config.paths.public, pageData.url, 'index.json' ), 
+    JSON.stringify( pageData ) 
+  );
+
   Rendering.renderPage( pageData, index, relatedMattersPages, rendered );
 });
 
@@ -104,6 +111,12 @@ focusGroupsPages.forEach( ( pageData, index ) => {
     small_site: rendered_small_site,
     info: rendered_info
   };
+
+  fs.writeFileSync( 
+    path.join( Config.paths.public, pageData.url, 'index.json' ), 
+    JSON.stringify( pageData ) 
+  );
+
   Rendering.renderPage( pageData, index, focusGroupsPages, rendered );
 });
 
