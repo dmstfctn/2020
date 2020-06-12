@@ -12,37 +12,6 @@ const HoverImg = require( './HoverImg.js' );
 const VisualQuantiser = require( './VisualQuantiser.js' );
 const ScrollQuantiser = require( './ScrollQuantiser.js' );
 
-/* list page links transition */
-// let $sitenav = document.querySelector( '.dc-sitenav' );
-// let $dcNow = document.querySelector( '.dc-biglist--now' );
-// let $workLinks = document.querySelectorAll('.dc-work--items a');
-// let $workDates = document.querySelectorAll('.dc-work--year h2');
-
-// $workLinks.forEach( ( $link, index ) => {
-//   const is_external = $link.classList.contains('dc-external-link');
-//   if( is_external ){
-//     return;
-//   }
-//   $link.dataset.href = $link.href;
-//   $link.href = '';
-//   $link.addEventListener('click', (e) => {
-//     e.preventDefault();
-//     let $thisYear = $link.parentElement.parentElement.querySelector('h2');
-//     let $others = [...$workLinks].filter( ($ele, eleIndex) => { return index !== eleIndex } ); 
-//     $link.classList.add('transition-target');
-//     //$sitenav.classList.add('out1');
-//     $others.forEach( ( $other ) => { $other.classList.add('out1') });
-//     $workDates.forEach( ( $other ) => { $other.classList.add('out1') });
-//     $thisYear.classList.remove('out1');
-//     if( $dcNow ){
-//       $dcNow.classList.add('out1');
-//     }
-//     setTimeout(()=>{
-//       window.location = $link.dataset.href;
-//     }, 600 );
-//   });
-// });
-
 const Large = function(){
   this.GFX = new GFX();
   this.project = new Project();
