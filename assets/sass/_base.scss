@@ -13,9 +13,9 @@ html, body{
   }
   .dc-main-content{
     width: 100%;
-    height: 100%;
+    height: calc( 100% - 2.16rem );
     position: absolute;
-    top: 0;
+    top: 2.16rem;
   }
   .dc-main-wrap{
     padding: 0 $dc_site_padding_right .3rem $dc_site_padding_left;
