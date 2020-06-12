@@ -4,9 +4,9 @@
       <li class="dc-media__image{{#if @first}} active{{/if}}">
         <figure>
         {{#if @first}} 
-          <img src="{{content.src}}" data-src="{{content.src}}" class="loaded">
+          <img src="{{content.src}}" data-src="{{content.src}}" class="loaded" alt="{{alt}}">
         {{else}}
-          <img src="{{content.lowSrc}}" data-src="{{content.src}}">
+          <img src="{{content.lowSrc}}" data-src="{{content.src}}" alt="{{alt}}">
         {{/if}}
           <figcaption>
             {{caption}}

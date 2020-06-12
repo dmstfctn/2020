@@ -96,13 +96,15 @@ const getProjectCvItems = ( title, cv ) => {
   }
 
 */
-const constructSlide = ( filename, p, captions ) => {
+const constructSlide = ( filename, p, captions, alts ) => {
   let filePath = path.join( p, filename );
   let ext = path.extname( filename );
   let caption = captions[ filename ] || false;
+  let alt = alts[ filename ] || caption || false;
   let type;
   let slide = {
-    caption: caption
+    caption: caption,
+    alt: alt
   };
   if( filename === 'captions.yaml' ){
     return;
@@ -186,13 +188,14 @@ const readFolder = ( folderPath, cv ) => {
           const p = path.join( root, year, project, item );
           // find the captions file
           const captions = readYAML( path.join(p, 'captions.yaml') ) || {};
+          const alts = readYAML( path.join(p, 'alts.yaml') ) || {};
 
           let files = fs.readdirSync( p )
                         .filter( removeDotFiles )         
-                        .filter( f => f !== 'captions.yaml' );
+                        .filter( f => f !== 'captions.yaml' && f !== 'alts.yaml' );
 
           let slideshow = files.map( (item) => {
-            return constructSlide( item, p, captions );
+            return constructSlide( item, p, captions, alts );
           });
           projectData.slideshows[item] = {slides: slideshow};
         }             
@@ -215,13 +218,14 @@ const readShowreel = ( showreelPath ) => {
     const p = path.join( showreelPath, item );
     // find the captions file
     const captions = readYAML( path.join(p, 'captions.yaml') ) || {};
+    const alts = readYAML( path.join(p, 'alts.yaml') ) || {};
 
     let files = fs.readdirSync( p )
-                   .filter( removeDotFiles )         
-                   .filter( f => f !== 'captions.yaml' );
+                  .filter( removeDotFiles )         
+                  .filter( f => f !== 'captions.yaml' && f !== 'alts.yaml' );
 
     let slideshow = files.map( (item) => {
-      return constructSlide( item, p, captions );
+      return constructSlide( item, p, captions, alts );
     });
     showreelData.slideshows[item] = { slides: slideshow };
   });
