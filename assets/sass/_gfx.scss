@@ -1,82 +1,3 @@
-// @keyframes gfx-hide{
-//   0%{
-//     opacity: 1;
-//   }
-//   5%{
-//     opacity: 0;
-//   }
-//   10%{
-//     opacity: 1;
-//   }
-//   20%{
-//     opacity: 0;
-//   }
-//   40%{
-//     opacity: 1;
-//   }
-//   50%{
-//     opacity: 0;
-//   }
-//   100%{
-//     opacity: 0;
-//   }
-// }
-
-@keyframes nav-logo-hide{
-  0%{
-    opacity: 1;
-  }
-  50%{
-    opacity: 0;
-  }
-  100%{
-    opacity: 0;
-  }
-}
-
-@keyframes nav-logo-show{
-  0%{
-    opacity: 0;
-  }
-  50%{
-    opacity: 0;
-  }
-  100%{
-    opacity: 1;
-  }
-}
-
-@keyframes gfx-hide{
-  0%{
-    opacity: 1;
-  }
-  50%{
-    opacity: 1;
-  }
-  100%{
-    width: 3.5rem;
-    height: 2.5rem;
-    left: 50%;
-    opacity: 0;
-    transform: translateX(-50%);
-  }
-}
-@keyframes gfx-show{
-  0%{
-    width: 3.5rem;
-    height: 2.5rem;
-    left: 50%;
-    opacity: 0;
-    transform: translateX(-50%);
-  }
-  50%{
-    opacity: 1;
-  }
-  100%{
-    opacity: 1;
-  }
-}
-
 .dc-gfx{
   width: 100%;
   height: 100%;
@@ -99,30 +20,18 @@
   }
 
   &.hidden{
-    animation-name: gfx-hide;
-    animation-duration: .3s;
-    animation-timing-function: ease-out;     
-    animation-fill-mode: both;
+    opacity: 0;
   }
   &.visible{
-    animation-name: gfx-show;
-    animation-duration: .08s;
-    animation-timing-function: ease-in;     
-    animation-fill-mode: both;
+    opacity: 1;
   }
 }
 .dc-sitenav a[data-dc-localtarget="#related-matters"] svg{
   opacity: 0;
   &.hidden{
-    animation-timing-function: ease-out;     
-    animation-fill-mode: both;
-    animation-name: nav-logo-hide;
-    animation-duration: .08s;
+    opacity: 0;
   }
   &.visible{
-    animation-timing-function: ease-in;     
-    animation-fill-mode: both;
-    animation-name: nav-logo-show;
-    animation-duration: .3s;
+    opacity: 1;
   }
 }
