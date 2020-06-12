@@ -12,6 +12,11 @@ const Project = function(){
   this.$media = document.querySelectorAll('.dc-media__main .dc-media--list li');
   this.$nav = document.querySelectorAll('.dc-media__main .dc-media--nav li:not(.dc-media--link)');
   this.$title = document.querySelector('.dc-item--header h1');
+  if( !this.$title ){
+    this.legitimate = false;
+    return;
+  }
+  this.legitimate = true;
   this.title = this.$title.innerText;
   this.index = 0;
   this.isPlaying = false;

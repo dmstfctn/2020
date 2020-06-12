@@ -15,8 +15,7 @@ Menus.prototype = {
   showMenu: function( $link, $menu ){
     const pagetype = $menu.getAttribute('data-pagetype');
     const id = $menu.id;    
-    this.$dropdowns.forEach( ( $dropdown ) => { $dropdown.style.display = 'none'; });
-    this.$links.forEach( ( $link ) => { $link.classList.remove( 'active' ); });
+    this.hideMenus();
 
     $link.classList.add( 'active' );
     $menu.style.display = 'block';  
@@ -26,6 +25,10 @@ Menus.prototype = {
     document.querySelector('html').setAttribute('data-dc-pagetype', pagetype );
     
     this._onChange( id );
+  },
+  hideMenus: function(){
+    this.$links.forEach( ( $link ) => { $link.classList.remove( 'active' ); });
+    this.$dropdowns.forEach( ( $dropdown ) => { $dropdown.style.display = 'none'; });
   },
   setupLink: function( $link ){
     $link.addEventListener('click', (e) => {

@@ -1,6 +1,8 @@
 const CFG = require('./Config.js' );
 const F = require( './Functions.js' );
 
+const Loader = require('./Loader.js');
+
 const GFX = require( './GFX.js' );
 
 const Menus = require( './Menus.js' );
@@ -11,35 +13,35 @@ const VisualQuantiser = require( './VisualQuantiser.js' );
 const ScrollQuantiser = require( './ScrollQuantiser.js' );
 
 /* list page links transition */
-let $sitenav = document.querySelector( '.dc-sitenav' );
-let $dcNow = document.querySelector( '.dc-biglist--now' );
-let $workLinks = document.querySelectorAll('.dc-work--items a');
-let $workDates = document.querySelectorAll('.dc-work--year h2');
+// let $sitenav = document.querySelector( '.dc-sitenav' );
+// let $dcNow = document.querySelector( '.dc-biglist--now' );
+// let $workLinks = document.querySelectorAll('.dc-work--items a');
+// let $workDates = document.querySelectorAll('.dc-work--year h2');
 
-$workLinks.forEach( ( $link, index ) => {
-  const is_external = $link.classList.contains('dc-external-link');
-  if( is_external ){
-    return;
-  }
-  $link.dataset.href = $link.href;
-  $link.href = '';
-  $link.addEventListener('click', (e) => {
-    e.preventDefault();
-    let $thisYear = $link.parentElement.parentElement.querySelector('h2');
-    let $others = [...$workLinks].filter( ($ele, eleIndex) => { return index !== eleIndex } ); 
-    $link.classList.add('transition-target');
-    //$sitenav.classList.add('out1');
-    $others.forEach( ( $other ) => { $other.classList.add('out1') });
-    $workDates.forEach( ( $other ) => { $other.classList.add('out1') });
-    $thisYear.classList.remove('out1');
-    if( $dcNow ){
-      $dcNow.classList.add('out1');
-    }
-    setTimeout(()=>{
-      window.location = $link.dataset.href;
-    }, 600 );
-  });
-});
+// $workLinks.forEach( ( $link, index ) => {
+//   const is_external = $link.classList.contains('dc-external-link');
+//   if( is_external ){
+//     return;
+//   }
+//   $link.dataset.href = $link.href;
+//   $link.href = '';
+//   $link.addEventListener('click', (e) => {
+//     e.preventDefault();
+//     let $thisYear = $link.parentElement.parentElement.querySelector('h2');
+//     let $others = [...$workLinks].filter( ($ele, eleIndex) => { return index !== eleIndex } ); 
+//     $link.classList.add('transition-target');
+//     //$sitenav.classList.add('out1');
+//     $others.forEach( ( $other ) => { $other.classList.add('out1') });
+//     $workDates.forEach( ( $other ) => { $other.classList.add('out1') });
+//     $thisYear.classList.remove('out1');
+//     if( $dcNow ){
+//       $dcNow.classList.add('out1');
+//     }
+//     setTimeout(()=>{
+//       window.location = $link.dataset.href;
+//     }, 600 );
+//   });
+// });
 
 /*next/prev work links in project page*/
 const $nextprevLinks = document.querySelectorAll('.dc-worknav a');
@@ -74,6 +76,28 @@ const Large = function(){
   this.GFX = new GFX();
   this.menus = new Menus();
   this.project = new Project();
+
+  console.log('LARGE: PROJECT: ', this.project );
+
+  this.loader = new Loader([
+    'a[href^="/mmittee/related-matters/"]',
+    'a[href^="/mmittee/focus-groups/"]'
+  ]);
+  this.$mainContent = document.querySelector('.dc-main-content');
+  
+  this.loader.onLoad = ( data, url ) => {
+    history.pushState( null,null, F.slashEnd( url ) );
+    console.log('LOADED: ', data );
+    document.title = data.title;
+    document.documentElement.setAttribute('data-dc-pagetype', data.pagetype );
+    this.$mainContent.innerHTML = data.html;
+    this.project.deactivate();
+    this.project = new Project();
+    this.project.activate();
+    this.loader.initEvents( this.$mainContent );    
+    this.menus.hideMenus();
+  };
+    
   document.querySelectorAll( '.dc-list-hoverimg' )
     .forEach( ($hoverImg) => {
       HoverImg( $hoverImg );

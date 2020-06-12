@@ -1,19 +1,35 @@
 import 'whatwg-fetch';
 
-const Handlebars = require( '../templates.precompiled.js' ).Handlebars;
-const Templates = require( '../templates.precompiled.js' ).Templates;
+const Loader = function( triggers ){
+  this.loaded = {};
+  this.triggers = triggers;
 
-console.log( "HANDLEBARS: ", Handlebars );
-console.log( "TEMPLATES: ", Templates );
-
-const Loader = function(){
- 
+  this.initEvents();
 };
 
 Loader.prototype = {
+  initEvents: function( _context ){
+    const context = _context || document;
+    console.log('LOADER INIT EVENTS -> CONTEXT = ', context );
+    this.triggers.forEach( (trigger) => {
+      context.querySelectorAll( trigger ).forEach( ( $a ) => {
+        $a.addEventListener( 'click', ( e ) => {
+          e.preventDefault();
+          this.load( $a.getAttribute( 'href' ) );
+          return false;
+        });
+      });
+    });
+  },
   load: function( url ){
-    const jsonURL = url + '/index.json';
-    fetch( jsonURL )
+    if( this.loaded[ url ] ){
+      console.log('already loaded');
+      this._onLoad( this.loaded[ url ], url )
+      return;
+    }
+    console.log('loading fresh' );
+    const fragmentURL = url + '/fragment/index.json';
+    fetch( fragmentURL )
       .then(function( response ){
         console.log( 'response ok' );
         if (response.ok) {
@@ -27,12 +43,15 @@ Loader.prototype = {
       .then( (response) => {        
         return response.json();
       })
-      .then( ( json ) => {
-        console.log( json );
-        console.log( Templates.page( json ) );
-        //console.log( this.parser.parseFromString( html, 'text/html')
-      })
-  }
-}
+      .then( ( data ) => {
+        this.loaded[url] = data;
+        this._onLoad( data, url );               
+      });
+  },
+  _onLoad: function( data, url ){
+    this.onLoad( data, url );
+  },
+  onLoad: function( data, url ){ /* ... override .. */ }
+};
 
 module.exports = Loader;

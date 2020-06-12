@@ -53,11 +53,10 @@ const renderPage = ( pageData, index, partnerPages, rendered ) => {
   pageData.next_next = (index + 2 < partnerPages.length ) ? partnerPages[index+2] : partnerPages[ (index+2) - partnerPages.length ];
 
   const p = path.join( Config.paths.public, pageData.url );  
-  
+  const fragP = path.join( p, 'fragment' );  
   moveSlideshowContent( pageData.data.slideshows );
 
   const rendered_project = Templates.page( pageData );
-  const htmlPath = path.join( p, 'index.html' );  
   
   let render = {
     title: pageData.name,
@@ -67,9 +66,21 @@ const renderPage = ( pageData, index, partnerPages, rendered ) => {
     info: rendered.info,
     small_site: rendered.small_site
   };
-  fs.mkdirSync( p, {recursive: true});
-  fs.writeFileSync( htmlPath, Templates.main( render ) );
   
+  fs.mkdirSync( fragP, {recursive: true });
+  
+  /* write data/html for JS loading */
+  fs.writeFileSync( 
+    path.join( fragP, 'index.json'), 
+    JSON.stringify({
+      title: pageData.name,
+      pagetype: pageData.pagetype,
+      html: rendered_project 
+    })
+  );
+
+  /* write html for initial loading */
+  fs.writeFileSync( path.join( p, 'index.html' ), Templates.main( render ) );
 };
 
 const moveCvContent = ( cv ) => {  
