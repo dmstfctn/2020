@@ -39,7 +39,7 @@ html[data-dc-pagetype="focusgroup"]{
   a[href^="http"]::before{
     color: #000000;
   }
-  .dc-worknav .current{
+  .dc-item--header{
     color: #FFFFFF;
   }
   .dc-media--list li{
