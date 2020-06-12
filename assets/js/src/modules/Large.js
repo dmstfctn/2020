@@ -43,35 +43,6 @@ const ScrollQuantiser = require( './ScrollQuantiser.js' );
 //   });
 // });
 
-/*next/prev work links in project page*/
-const $nextprevLinks = document.querySelectorAll('.dc-worknav a');
-let furtherProjectTimeout;
-
-$nextprevLinks.forEach( ($link) => {
-  $link.addEventListener('click', ( e ) => {
-    if( $link.classList.contains('dc-external-link') ){
-      const next = $link.classList.contains('dc-worknav--link__next');
-      const prev = $link.classList.contains('dc-worknav--link__prev');
-      clearTimeout(furtherProjectTimeout);
-      if( next ){
-        furtherProjectTimeout = setTimeout(function(){
-          const $nextNext = document.querySelector('.dc-worknav a.dc-worknav--link__next-next');
-          window.location.href = $nextNext.getAttribute('href');
-        }, 200 );
-        return;
-      }
-      if( prev ){
-        furtherProjectTimeout = setTimeout(function(){
-          const $prevPrev = document.querySelector('.dc-worknav a.dc-worknav--link__prev-prev');
-          window.location.href = $prevPrev.getAttribute('href');
-        }, 200 );
-        return;
-      }
-    }
-  });
-  
-});
-
 const Large = function(){
   this.GFX = new GFX();
   this.project = new Project();
