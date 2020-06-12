@@ -1,28 +1,44 @@
+const CFG = require('./Config.js');
+
 const Menus = function(){
   this.INIT_PAGETYPE = document.querySelector('html').getAttribute('data-dc-pagetype');
-  this.$links = document.querySelectorAll('.dc-sitenav__main a');
-  this.$dropdowns = document.querySelectorAll('.dc-navigation-item, .dc-info');
-  this.$links.forEach( ( $link ) => {
-    this.setupLink( $link );
+  this.$titles = document.querySelectorAll( '.dc-sitenav__main a' );
+  this.$dropdowns = document.querySelectorAll( '.dc-navigation-item, .dc-info' );
+  this.$links = document.querySelectorAll( '.dc-work--items a' );
+
+  this.$titles.forEach( ( $title ) => {
+    this.setupTitleLink( $title );
   });
-}
+
+  this.$links.forEach( ( $link ) => {
+    this.setupLinks( $link );
+  });
+};
 
 Menus.prototype = {
   onChange: function( id ){ /* ... override ... */ },
   _onChange: function( id ){
     this.onChange( id );
   },
+  onTransitionStart: function(){ /* ... override ... */ },
+  _onTransitionStart: function(){
+    this.onTransitionStart();
+  },
+  onTransitionEnd: function(){ /* ... override ... */ },
+  _onTransitionEnd: function(){
+    this.onTransitionEnd();
+  },
   showMenuById: function( id ){
     const $link = document.querySelector('.dc-sitenav__main [data-dc-localtarget="#' + id + '"]' );
     const $menu = document.querySelector( '#' + id );
     this.showMenu( $link, $menu );
   },
-  showMenu: function( $link, $menu ){
+  showMenu: function( $title, $menu ){
     const pagetype = $menu.getAttribute('data-pagetype');
     const id = $menu.id;    
     this.hideMenus();
 
-    $link.classList.add( 'active' );
+    $title.classList.add( 'active' );
     $menu.style.display = 'block';  
 
     // clear data-dc-homeactive attribute used to show correct menu on load
@@ -32,22 +48,65 @@ Menus.prototype = {
     this._onChange( id );
   },
   hideMenus: function(){
-    this.$links.forEach( ( $link ) => { $link.classList.remove( 'active' ); });
+    this.$titles.forEach( ( $title ) => { $title.classList.remove( 'active' ); });
     this.$dropdowns.forEach( ( $dropdown ) => { $dropdown.style.display = 'none'; });
   },
-  setupLink: function( $link ){
-    $link.addEventListener('click', (e) => {
+  setupTitleLink: function( $title ){
+    $title.addEventListener( 'click', (e) => {
       e.preventDefault();
-      let target = $link.getAttribute('data-dc-localtarget');
+      let target = $title.getAttribute( 'data-dc-localtarget' );
       let $menu = document.querySelector( target );          
       
-      if( $link.classList.contains('active') ){ return false; }
+      if( $title.classList.contains( 'active' ) ){ return false; }
 
-      this.showMenu( $link, $menu );
+      this.showMenu( $title, $menu );
 
       return false;
     });
+  },
+  setupLinks: function( $link ){
+    $link.addEventListener('click', ( e ) => {
+      e.preventDefault();
+      this.runTransition( $link );
+    });
+  },
+  resetTransition: function(){
+    this.$dropdowns.forEach( ($dropdown) => {
+      $dropdown
+        .querySelectorAll( '.' + CFG.TRANSITION_HIDE_CLASS )
+        .forEach(function( $out ){
+          $out.classList.remove( CFG.TRANSITION_HIDE_CLASS );
+        });
+      $dropdown
+        .querySelectorAll('.' + CFG.TRANSITION_ACTIVE_CLASS )
+        .forEach(function( $active ){
+          $active.classList.remove( CFG.TRANSITION_ACTIVE_CLASS );
+        })
+    });
+
+  },
+  runTransition: function( $link ){
+    this._onTransitionStart();
+    const $dropdown = $link.parentElement.parentElement.parentElement.parentElement;
+    const $links = $dropdown.querySelectorAll( '.dc-work--items a' );
+    const $thisYear = $link.parentElement.parentElement.querySelector('h2');
+    const $others = [...$links].filter( ($e) => { return !$e.isSameNode( $link ) } ); 
+    const $dcNow = $dropdown.querySelector('.dc-biglist--now');
+    const $dates = $dropdown.querySelectorAll( '.dc-work--year h2' );
+
+    $link.classList.add( CFG.TRANSITION_ACTIVE_CLASS );
+    $others.forEach( ( $other ) => { $other.classList.add( CFG.TRANSITION_HIDE_CLASS ) });
+    $dates.forEach( ( $date ) => { $date.classList.add( CFG.TRANSITION_HIDE_CLASS ) });
+    $thisYear.classList.remove( CFG.TRANSITION_HIDE_CLASS );
+    if( $dcNow ){
+      $dcNow.classList.add( CFG.TRANSITION_HIDE_CLASS );
+    }
+    setTimeout(()=>{      
+      this.hideMenus();
+      this.resetTransition();
+      this._onTransitionEnd();
+    }, 600 );
   }
-}
+};
 
 module.exports = Menus;

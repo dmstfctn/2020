@@ -46,9 +46,15 @@ const ScrollQuantiser = require( './ScrollQuantiser.js' );
 const Large = function(){
   this.GFX = new GFX();
   this.project = new Project();
-    
-  this.initMenus();
-  this.initLoader();
+  this.menus = new Menus();
+  this.loader = new Loader([
+    'a[href^="/mmittee/related-matters/"]',
+    'a[href^="/mmittee/focus-groups/"]'
+  ]);
+
+
+  this.setupMenus();
+  this.setupLoader();
   this.initQuantisers(); 
 
   document.querySelectorAll( '.dc-list-hoverimg' )
@@ -57,9 +63,7 @@ const Large = function(){
    });
 };
 
-Large.prototype.initMenus = function(){
-  this.menus = new Menus();
-
+Large.prototype.setupMenus = function(){
   this.menus.onChange = ( id ) => {
     let p = id;
     if( id === 'related-matters' ){ p = ''; }    
@@ -85,14 +89,11 @@ Large.prototype.initMenus = function(){
 };
 
 
-Large.prototype.initLoader = function(){
-  this.loader = new Loader([
-    'a[href^="/mmittee/related-matters/"]',
-    'a[href^="/mmittee/focus-groups/"]'
-  ]);
-  this.$mainContent = document.querySelector('.dc-main-content');
-  
+Large.prototype.setupLoader = function(){
+  this.loader.initEvents();
+
   this.historyActive = true;
+  this.$mainContent = document.querySelector( '.dc-main-content' );  
 
   this.loader.onLoad = ( data, url, disableHistory  ) => {
     if( !disableHistory && this.historyActive ){     
@@ -106,6 +107,7 @@ Large.prototype.initLoader = function(){
       );
     }
     this.renderPage( data );
+    //this.menus.hideMenus();
   };
 
   window.addEventListener('popstate', ( event ) => {
@@ -130,7 +132,6 @@ Large.prototype.initLoader = function(){
     let pathSegments = window.location.pathname.split('/');
     let pathLast = pathSegments.pop() || pathSegments.pop(); 
     initialState.id = ( pathLast === 'mmittee' ) ? 'related-matters' : pathLast;
-
   }
   history.replaceState( initialState, null, window.location.pathname );
 }
@@ -162,8 +163,7 @@ Large.prototype.renderPage = function( data ){
   this.project.deactivate();
   this.project = new Project();
   this.project.activate();
-  this.loader.initEvents( this.$mainContent );    
-  this.menus.hideMenus();
+  this.loader.initEvents( this.$mainContent );  
 };
 
 Large.prototype.quantise = function(){

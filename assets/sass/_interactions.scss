@@ -1,11 +1,11 @@
 /* big list -> page transition */
-.out1{
+.dc-transition--out{
   opacity: 0;
 }
-  .dc-biglist--item .transition-target{
+  .dc-biglist--item .dc-transition--target{
     color: #FF0000;
   }
-  #focus-groups .dc-biglist--item .transition-target{
+  #focus-groups .dc-biglist--item .dc-transition--target{
     color: #FFFFFF;
   }
 /* hover images in CV + dissemination */

@@ -3,8 +3,6 @@ import 'whatwg-fetch';
 const Loader = function( triggers ){
   this.loaded = {};
   this.triggers = triggers;
-
-  this.initEvents();
 };
 
 Loader.prototype = {
@@ -15,8 +13,7 @@ Loader.prototype = {
       context.querySelectorAll( trigger ).forEach( ( $a ) => {
         $a.addEventListener( 'click', ( e ) => {
           e.preventDefault();
-          this.load( $a.getAttribute( 'href' ) );
-          return false;
+          this.load( $a.getAttribute( 'href' ) ); 
         });
       });
     });
