@@ -74,60 +74,30 @@ $nextprevLinks.forEach( ($link) => {
 
 const Large = function(){
   this.GFX = new GFX();
-  this.menus = new Menus();
   this.project = new Project();
-
-  console.log('LARGE: PROJECT: ', this.project );
-
-  this.loader = new Loader([
-    'a[href^="/mmittee/related-matters/"]',
-    'a[href^="/mmittee/focus-groups/"]'
-  ]);
-  this.$mainContent = document.querySelector('.dc-main-content');
-  
-  this.historyActive = true;
-
-  this.loader.onLoad = ( data, url, disableHistory  ) => {
-    if( !disableHistory && this.historyActive ){
-      console.log('history.pushState(', 'TYPE: page' )
-      history.pushState(
-        {
-          type: 'page', 
-          url: F.slashEnd( url ) 
-        }, 
-        null, 
-        F.slashEnd( url ) 
-      );
-    }
-
-    document.title = data.title;
-    document.documentElement.setAttribute('data-dc-pagetype', data.pagetype );
-    this.$mainContent.innerHTML = data.html;
-    this.project.deactivate();
-    this.project = new Project();
-    this.project.activate();
-    this.loader.initEvents( this.$mainContent );    
-    this.menus.hideMenus();
-  };
     
+  this.initMenus();
+  this.initLoader();
+  this.initQuantisers(); 
+
   document.querySelectorAll( '.dc-list-hoverimg' )
     .forEach( ($hoverImg) => {
       HoverImg( $hoverImg );
    });
+};
 
-  this.initQuantisers(); 
-  
+Large.prototype.initMenus = function(){
+  this.menus = new Menus();
+
   this.menus.onChange = ( id ) => {
     let p = id;
-    if( id === 'related-matters' ){ p = ''; }
-    console.log('history.pushState(', 'TYPE: menu' )
+    if( id === 'related-matters' ){ p = ''; }    
     if( this.historyActive ){
       history.pushState(
         {
           type: 'menu', 
           url: '/mmittee/' + p, 
-          id: id, 
-          path: p 
+          id: id,
         }, 
         null, 
         '/mmittee/' + p 
@@ -141,6 +111,31 @@ const Large = function(){
       this.cvScroller.recalculate();
     }
   }
+};
+
+
+Large.prototype.initLoader = function(){
+  this.loader = new Loader([
+    'a[href^="/mmittee/related-matters/"]',
+    'a[href^="/mmittee/focus-groups/"]'
+  ]);
+  this.$mainContent = document.querySelector('.dc-main-content');
+  
+  this.historyActive = true;
+
+  this.loader.onLoad = ( data, url, disableHistory  ) => {
+    if( !disableHistory && this.historyActive ){     
+      history.pushState(
+        {
+          type: 'page', 
+          url: F.slashEnd( url ) 
+        }, 
+        null, 
+        F.slashEnd( url ) 
+      );
+    }
+    this.renderPage( data );
+  };
 
   window.addEventListener('popstate', ( event ) => {
     const state = history.state;
@@ -153,7 +148,21 @@ const Large = function(){
       this.loader.load( state.url, true );
     }
   });
-};
+
+  //first history state:
+  const type = ( window.location.pathname.split('/').length > 4 ) ? 'page' : 'menu';
+  let initialState = {
+    type: type,
+    url: window.location.pathname
+  };
+  if( type === 'menu' ){
+    let pathSegments = window.location.pathname.split('/');
+    let pathLast = pathSegments.pop() || pathSegments.pop(); 
+    initialState.id = ( pathLast === 'mmittee' ) ? 'related-matters' : pathLast;
+
+  }
+  history.replaceState( initialState, null, window.location.pathname );
+}
 
 Large.prototype.initQuantisers = function(){
   this.vcList = {
@@ -174,6 +183,17 @@ Large.prototype.initQuantisers = function(){
     0.5 //speed
   );
 }
+
+Large.prototype.renderPage = function( data ){
+  document.title = data.title;
+  document.documentElement.setAttribute('data-dc-pagetype', data.pagetype );
+  this.$mainContent.innerHTML = data.html;
+  this.project.deactivate();
+  this.project = new Project();
+  this.project.activate();
+  this.loader.initEvents( this.$mainContent );    
+  this.menus.hideMenus();
+};
 
 Large.prototype.quantise = function(){
   for( let i in this.vcList ){
