@@ -11,7 +11,7 @@ const Menus = function(){
   });
 
   this.$links.forEach( ( $link ) => {
-    this.setupLinks( $link );
+    this.setupLink( $link );
   });
 };
 
@@ -64,7 +64,12 @@ Menus.prototype = {
       return false;
     });
   },
-  setupLinks: function( $link ){
+  setupLink: function( $link ){
+    if( $link.classList.contains('dc-external-link') ){ 
+      console.log('IS EXTERNAL LINK.');
+      return 
+    }
+    
     $link.addEventListener('click', ( e ) => {
       e.preventDefault();
       this.runTransition( $link );
