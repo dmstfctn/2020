@@ -8,9 +8,11 @@
         {{else}}
           <img src="{{content.lowSrc}}" data-src="{{content.src}}" alt="{{alt}}">
         {{/if}}
+        {{#if caption}}
           <figcaption>
             {{caption}}
           </figcaption>
+        {{/if}}
         </figure>
       </li>
     {{/dc_slidetype}}
@@ -39,9 +41,11 @@
       <li class="dc-media__video{{#if @first}} active{{/if}}">
         <figure>
           <video src="{{content.src}}"></video>
+          {{#if caption}}
           <figcaption>
             {{caption}}
           </figcaption>
+          {{/if}}
         </figure>
       </li>
     {{/dc_slidetype}}       
