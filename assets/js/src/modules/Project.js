@@ -134,12 +134,21 @@ Project.prototype = {
     $slide.classList.add( 'active' );
     $nav.classList.add( 'active' );
   },
+  navShouldShowSlide: function( $nav ){
+    if( 
+      $nav.classList.contains('dc-media__playable') || 
+      $nav.classList.contains('dc-media__openable')
+    ){ 
+      return false; 
+    }
+    return true;
+  },
   selectSlide: function( _index ){
     this.index = _index;
     if( _index >= this.$nav.length ){ this.index = this.$nav.length - 1; }
     if( _index < 0 ){ _index = 0; } 
 
-    if( this.$nav[ this.index ].classList.contains('dc-media--play') ){ return false; }
+    if( !this.navShouldShowSlide( this.$nav[ this.index ] ) ){ return false; }
 
     this.$media.forEach(( $m, index ) => {      
       if( index !== this.index ){
@@ -150,7 +159,12 @@ Project.prototype = {
     });
   },
   nextSlide: function(){
-    this.selectSlide( this.index + 1 );
+    if( this.navShouldShowSlide( this.$nav[ this.index + 1 ] ) ){ 
+      this.selectSlide( this.index + 1 );
+    } else  {
+      this.index = this.index + 1;
+      this.nextSlide();
+    }    
   },
   setupEvents: function(){
     /* click to advance */
