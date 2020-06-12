@@ -85,9 +85,21 @@ const Large = function(){
   ]);
   this.$mainContent = document.querySelector('.dc-main-content');
   
-  this.loader.onLoad = ( data, url ) => {
-    history.pushState( null,null, F.slashEnd( url ) );
-    console.log('LOADED: ', data );
+  this.historyActive = true;
+
+  this.loader.onLoad = ( data, url, disableHistory  ) => {
+    if( !disableHistory && this.historyActive ){
+      console.log('history.pushState(', 'TYPE: page' )
+      history.pushState(
+        {
+          type: 'page', 
+          url: F.slashEnd( url ) 
+        }, 
+        null, 
+        F.slashEnd( url ) 
+      );
+    }
+
     document.title = data.title;
     document.documentElement.setAttribute('data-dc-pagetype', data.pagetype );
     this.$mainContent.innerHTML = data.html;
@@ -106,16 +118,41 @@ const Large = function(){
   this.initQuantisers(); 
   
   this.menus.onChange = ( id ) => {
-    if( id === 'related-matters' ){ id = ''; }
-    history.replaceState(null,null,'/mmittee/' + id );
-    //run the 'visual quantiser' 
-    if( this.vcList[ id ] ){
-      this.vcList[ id ].run();
+    let p = id;
+    if( id === 'related-matters' ){ p = ''; }
+    console.log('history.pushState(', 'TYPE: menu' )
+    if( this.historyActive ){
+      history.pushState(
+        {
+          type: 'menu', 
+          url: '/mmittee/' + p, 
+          id: id, 
+          path: p 
+        }, 
+        null, 
+        '/mmittee/' + p 
+      );
     }
-    if( id === 'info' ){
+    //run the 'visual quantiser' 
+    if( this.vcList[ p ] ){
+      this.vcList[ p ].run();
+    }
+    if( p === 'info' ){
       this.cvScroller.recalculate();
     }
   }
+
+  window.addEventListener('popstate', ( event ) => {
+    const state = history.state;
+    console.log("HISTORY STATE: ", state );
+    if( state.type === 'menu' ){
+      this.historyActive = false;
+      this.menus.showMenuById( state.id );
+      this.historyActive = true;
+    } else {
+      this.loader.load( state.url, true );
+    }
+  });
 };
 
 Large.prototype.initQuantisers = function(){

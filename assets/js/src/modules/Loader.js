@@ -21,10 +21,10 @@ Loader.prototype = {
       });
     });
   },
-  load: function( url ){
+  load: function( url, disableHistory ){
     if( this.loaded[ url ] ){
       console.log('already loaded');
-      this._onLoad( this.loaded[ url ], url )
+      this._onLoad( this.loaded[ url ], url, disableHistory );
       return;
     }
     console.log('loading fresh' );
@@ -45,13 +45,13 @@ Loader.prototype = {
       })
       .then( ( data ) => {
         this.loaded[url] = data;
-        this._onLoad( data, url );               
+        this._onLoad( data, url, disableHistory );               
       });
   },
-  _onLoad: function( data, url ){
-    this.onLoad( data, url );
+  _onLoad: function( data, url, disableHistory ){
+    this.onLoad( data, url, disableHistory );
   },
-  onLoad: function( data, url ){ /* ... override .. */ }
+  onLoad: function( data, url, disableHistory ){ /* ... override .. */ }
 };
 
 module.exports = Loader;

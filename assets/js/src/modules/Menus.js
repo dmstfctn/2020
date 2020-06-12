@@ -12,6 +12,11 @@ Menus.prototype = {
   _onChange: function( id ){
     this.onChange( id );
   },
+  showMenuById: function( id ){
+    const $link = document.querySelector('.dc-sitenav__main [data-dc-localtarget="#' + id + '"]' );
+    const $menu = document.querySelector( '#' + id );
+    this.showMenu( $link, $menu );
+  },
   showMenu: function( $link, $menu ){
     const pagetype = $menu.getAttribute('data-pagetype');
     const id = $menu.id;    
