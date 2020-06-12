@@ -29,7 +29,7 @@ ScrollQuantiser.prototype = {
     this.$ele.classList.add( 'quantised-scroller' );
     this.$ele.addEventListener( 'wheel', (e) => {
       this._onScroll( e.deltaY );
-    });
+    }, {passive: true} );
   },
   update: function( deltaY ){
     this.scroll.original += deltaY * this.speed;   
