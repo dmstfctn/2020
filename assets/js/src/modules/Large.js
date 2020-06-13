@@ -78,7 +78,7 @@ Large.prototype.setupLoader = function(){
 
   window.addEventListener('popstate', ( event ) => {
     const state = history.state;
-    console.log("HISTORY STATE: ", state );
+    //console.log("HISTORY STATE: ", state );
     if( state.type === 'menu' ){
       this.historyActive = false;
       this.menus.showMenuById( state.id );

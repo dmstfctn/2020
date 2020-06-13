@@ -66,7 +66,7 @@ Menus.prototype = {
   },
   setupLink: function( $link ){
     if( $link.classList.contains('dc-external-link') ){ 
-      console.log('IS EXTERNAL LINK.');
+      //console.log('IS EXTERNAL LINK.');
       return 
     }
     

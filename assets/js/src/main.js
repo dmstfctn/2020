@@ -18,18 +18,18 @@ let DC = {
 window.DC = DC;
 
 /* site setup */
-console.log('CREATE MQ: ', `(max-width: ${CFG.BREAKPOINT}px)` );
+//console.log('CREATE MQ: ', `(max-width: ${CFG.BREAKPOINT}px)` );
 const mqSmall = window.matchMedia( `(max-width: ${CFG.BREAKPOINT}px)` );
 
 
 const mqSmallHandler = function( mq ){
   DC.env.size = (mqSmall.matches) ? 'small' : 'large';
   if( mqSmall.matches ){
-    console.log( 'small site' );
+    //console.log( 'small site' );
     DC.large.deactivate();
     DC.small.activate();
   } else {
-    console.log( 'large site' );
+    //console.log( 'large site' );
     DC.small.deactivate();
     DC.large.activate();
   }

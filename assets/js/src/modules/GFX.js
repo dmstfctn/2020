@@ -56,11 +56,11 @@ GFX.prototype = {
       this.hide();
     }, this.initialHide )
     window.addEventListener('pointermove', () => {
-      console.log('pointermove');
+      //console.log('pointermove');
       this._onMove();
     });
     window.addEventListener('pointerdown', () => {
-      console.log('pointerdown');
+      //console.log('pointerdown');
       this._onMove();
     });
     // window.addEventListener('click', () => {

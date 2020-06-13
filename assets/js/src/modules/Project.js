@@ -87,7 +87,7 @@ Project.prototype = {
     const html = $slide.getAttribute('data-content');
     const w = window.screen.availWidth / 3;
     const h = ( w / 16 ) * 9;    
-    console.log( html );
+    //console.log( html );
     if( this.extraWindow ){
       this.extraWindow.destroy()
     }

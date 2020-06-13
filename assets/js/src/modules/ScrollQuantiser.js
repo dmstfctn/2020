@@ -59,10 +59,10 @@ ScrollQuantiser.prototype = {
     this.height.original = this.$ele.getBoundingClientRect().height;
     this.height.quantised = Math.floor( (this.height.original - this.lineH) /  this.lineH ) * this.lineH;
     let scrollableQuantised = Math.round(this.$scrollable.getBoundingClientRect().height / this.lineH) * this.lineH;
-    console.log( 'lineH', this.lineH  );
-    console.log('scrollableQuantised', scrollableQuantised, 'from: ',this.$scrollable.getBoundingClientRect().height );
+    //console.log( 'lineH', this.lineH  );
+    //console.log('scrollableQuantised', scrollableQuantised, 'from: ',this.$scrollable.getBoundingClientRect().height );
     this.maxScroll =  Math.ceil( scrollableQuantised - this.height.quantised );
-    console.log('maxScroll', this.maxScroll );
+    //console.log('maxScroll', this.maxScroll );
   },
   recalculate: function(){
     this._onScroll( 0 );

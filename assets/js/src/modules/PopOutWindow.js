@@ -22,12 +22,12 @@ PopOutWindow.prototype = {
     const h = Math.round(this.config.height);
     const x = Math.round( (window.screen.availWidth - w) / 2 );
     const y = Math.round( (window.screen.availHeight - h) / 2 );
-    console.log('OPEN WINDOW WITH THIS CFG');
-    console.log(
-      this.url,
-      this.title,      
-      `width=${w},height=${h},screenX=${x},screenY=${y}`
-    );
+    //console.log('OPEN WINDOW WITH THIS CFG');
+    // console.log(
+    //   this.url,
+    //   this.title,      
+    //   `width=${w},height=${h},screenX=${x},screenY=${y}`
+    // );
     this.window = window.open(       
       this.url,
       this.title,      
@@ -42,7 +42,7 @@ PopOutWindow.prototype = {
     URL.revokeObjectURL( this.url );
   },
   createURL: function( html ){
-    console.log( 'createURL', html );
+    //console.log( 'createURL', html );
     return URL.createObjectURL(
       new Blob( [this.html], { type: "text/html" } )
     );

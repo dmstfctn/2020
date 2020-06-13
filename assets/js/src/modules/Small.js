@@ -9,7 +9,7 @@ const shouldShowreel = () => {
   if( !document.referrer ){
     return true;
   }
-  console.log( 'from:', document.referrer );
+  //console.log( 'from:', document.referrer );
   const there = F.slashEnd( new URL( document.referrer ).origin );
   const here = F.slashEnd( window.location.origin );
   return there !== here;
@@ -37,25 +37,25 @@ const Small = function(){
 Small.prototype.getSlideList = function( orientation ){
   let query = `.dc-item--info, .dc-media__${orientation} .dc-media--list li`;
   let slides = [...document.querySelectorAll( query )];
-  console.log( 'slide list for: ', orientation );
+  //console.log( 'slide list for: ', orientation );
   if( this.showreel ){
-    console.log( ' --> including showreel ', this.showreel.getSlides( orientation ) );
+    //console.log( ' --> including showreel ', this.showreel.getSlides( orientation ) );
     slides = slides.concat( this.showreel.getSlides( orientation ) );
   }
-  console.log(' --> ');
-  console.log( slides );
+  //console.log(' --> ');
+  //console.log( slides );
   return slides;
 }
 
 Small.prototype.preloadImages = function( _preloadCount ){
   
   let preloadCount = _preloadCount | 2;
-  console.log('preload', preloadCount, 'images' );
+  //console.log('preload', preloadCount, 'images' );
   for( let i = 1; i < 1 + preloadCount; i++ ){
     let index = this.slideIndex + i;
     for( let orientation of ['portrait', 'landscape'] ){
       if( this.items[ orientation ][ index ] ){
-        console.log( 'preload image: ', index, ' for ', orientation );
+        //console.log( 'preload image: ', index, ' for ', orientation );
         F.loadSlideImage( this.items[ orientation ][ index ] )
       }
     }
@@ -106,7 +106,7 @@ Small.prototype.setupInteraction = function(){
     if( this.slideIndex >= this.items[ this.orientation ].length ){
       let nextPageIndex = this.pageIndex + 1;
       if( this.data.pages[ nextPageIndex ] ){
-        console.log('load next page: ', this.data.pages[ nextPageIndex ] );
+        //console.log('load next page: ', this.data.pages[ nextPageIndex ] );
         F.loadPage( this.data.pages[ nextPageIndex ].url );
         return;
       }
@@ -149,7 +149,7 @@ Small.prototype.sizeRoot = function(){
 }
 
 Small.prototype.handleMq = function(){
-  console.log( 'handle mq' );
+  //console.log( 'handle mq' );
   if( this.mqLandscape.matches ){
     this.orientation = 'landscape';    
   }
@@ -174,7 +174,7 @@ Small.prototype.clearMq = function(){
 }
 
 Small.prototype.activate = function(){
-  console.log( 'activate small() ' );
+  //console.log( 'activate small() ' );
   this.setupMq();
   this.setupInteraction();
   this.readyForwardHint();  

@@ -8,7 +8,7 @@ const Loader = function( triggers ){
 Loader.prototype = {
   initEvents: function( _context ){
     const context = _context || document;
-    console.log('LOADER INIT EVENTS -> CONTEXT = ', context );
+    //console.log('LOADER INIT EVENTS -> CONTEXT = ', context );
     this.triggers.forEach( (trigger) => {
       context.querySelectorAll( trigger ).forEach( ( $a ) => {
         $a.addEventListener( 'click', ( e ) => {
@@ -20,15 +20,15 @@ Loader.prototype = {
   },
   load: function( url, disableHistory ){
     if( this.loaded[ url ] ){
-      console.log('already loaded');
+      //console.log('already loaded');
       this._onLoad( this.loaded[ url ], url, disableHistory );
       return;
     }
-    console.log('loading fresh' );
+    //console.log('loading fresh' );
     const fragmentURL = url + '/fragment/index.json';
     fetch( fragmentURL )
       .then(function( response ){
-        console.log( 'response ok' );
+        //console.log( 'response ok' );
         if (response.ok) {
           return response;
         } else {
