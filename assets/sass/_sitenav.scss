@@ -62,6 +62,9 @@
       html[data-dc-pagetype="dissemination"] .dc-sitenav a[href="/mmittee/dissemination"],
       html[data-dc-pagetype="null"] .dc-sitenav a[href="/mmittee/info"]{
         color: #FF0000;
+        svg path{
+          fill: #FF0000;
+        }
       }
       html[data-dc-pagetype="home"][data-dc-homeactive="focus-groups"] .dc-sitenav a[href="/mmittee/focus-groups"],
       html[data-dc-pagetype="focusgroup"] .dc-sitenav a[href="/mmittee/focus-groups"]{
