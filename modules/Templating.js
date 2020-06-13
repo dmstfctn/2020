@@ -1,6 +1,7 @@
 const fs = require('fs-extra');
 const path = require('path');
 
+const SvgOptimise = require('./SvgOptimise.js');
 const Handlebars = require('Handlebars');
 
 const Config = require('../Config.js');
@@ -35,6 +36,10 @@ Templating.registerHelpers = () => {
       return options.fn(menu);
     }
     return options.inverse(menu);
+  });
+  Handlebars.registerHelper('dc_svg', ( svg_path, options ) => {
+    let p = path.join( __dirname, '..', svg_path ); 
+    return SvgOptimise.sync( p );
   });
 };
 

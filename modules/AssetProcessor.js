@@ -4,6 +4,8 @@ const Browserify = require('browserify');
 
 const NodeSass = require('node-sass');
 
+const SvgOptimise = require('./SvgOptimise.js');
+
 const Config = require( '../Config.js' );
 
 const js = ( src, dist ) => {  
@@ -38,9 +40,26 @@ const sass = ( src, dist ) => {
   });
 }
 
+const svgToTemplate = ( src, dist ) => {
+  // ensure dist exists
+  fs.mkdirSync( path.dirname(dist), {recursive: true} );
+  const svgs = fs.readdirSync( src ).filter( ( f ) => { return path.extname(f) === '.svg' });
+  for( let i = 0; i < svgs.length; i++ ){
+    const filename = path.basename( svgs[i], '.svg' );
+    const templatename = 'svg_' + filename + '.handlebars';
+    const pIn = path.join( src, svgs[i] ); 
+    const pOut = path.join( dist, templatename );
+    const optim = SvgOptimise.sync( pIn );    
+    fs.writeFileSync( pOut, optim );
+  }
+  
+  
+}
+
 const AssetProcessor = {
   js,
-  sass
+  sass,
+  svgToTemplate
 }
 
 module.exports = AssetProcessor;

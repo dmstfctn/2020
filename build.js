@@ -26,6 +26,11 @@ Assets.sass(
   path.join( Config.paths.public_assets, 'css', 'main.css' ) // to
 );
 
+Assets.svgToTemplate(
+  path.join( Config.paths.public_assets, 'svg'), // from
+  path.join( __dirname, 'templates', 'partials' ) // to
+);
+
 const relatedMatters = Formatter.createRelatedMatters( Content.related_matters, Content.cv );
 const focusGroups = Formatter.createFocusGroups( Content.focus_groups );
 const infoSection = Formatter.createInfo( Content.bio, Content.cv );

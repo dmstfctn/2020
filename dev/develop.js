@@ -51,7 +51,9 @@ chokidar.watch(
     './build.js',
     './package.json'
   ], 
-  {},
+  {
+    ignored: ['./templates/partials/svg_*.handlebars']
+  },
 ).on( 'change', ( filename ) => {
   //console.log('chokidar watch sez: changed ', filename );
   runBuild();
