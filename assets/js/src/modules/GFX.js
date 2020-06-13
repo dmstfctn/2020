@@ -5,7 +5,7 @@ const GFX = function(){
   this.$gfx = document.querySelector('.dc-gfx');
   this.timeout = null;
   this.showDelay = 10000;
-  this.initialHide = 2000;
+  this.initialHide = 5000;
 }
 
 GFX.prototype = {
@@ -56,9 +56,11 @@ GFX.prototype = {
       this.hide();
     }, this.initialHide )
     window.addEventListener('pointermove', () => {
-     this._onMove();
+      console.log('pointermove');
+      this._onMove();
     });
     window.addEventListener('pointerdown', () => {
+      console.log('pointerdown');
       this._onMove();
     });
     // window.addEventListener('click', () => {
