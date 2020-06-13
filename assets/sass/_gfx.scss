@@ -12,11 +12,34 @@
     height: 100%;
   }
 
-  .dc-edit-fill{
-    fill: #050505;
-  }
-  .dc-edit-stroke{
-    stroke: #050505;
+  // .dc-edit-fill{
+  //   fill: #050505;
+  // }
+  // .dc-edit-stroke{
+  //   stroke: #050505;
+  // }
+
+  svg{
+    #black-stroke-thin-3,
+    #black-fill,
+    #red-fill,
+    #red-stroke-3,
+    #black-stroke,
+    #red-stroke-2,
+    #red-stroke,
+    #black-stroke-7{
+      display: none;
+    }
+    #black-stroke-thin-3-ALT_1_,
+    #black-fill-ALT_1_,
+    #red-fill-ALT_1_,
+    #red-stroke-3-ALT_1_,
+    #black-stroke-ALT_1_,
+    #red-stroke-2-ALT_1_,
+    #red-stroke-ALT_1_,
+    #black-stroke-7-ALT_1_{
+      display: block;
+    }
   }
 
   &.hidden{

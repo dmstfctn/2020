@@ -5,8 +5,6 @@ const deasync = require('deasync');
 
 const svgo = new SVGO({
   plugins: [{
-    cleanupAttrs: true,
-  }, {
     removeDoctype: true,
   },{
     removeXMLProcInst: true,
@@ -58,6 +56,9 @@ const svgo = new SVGO({
     convertShapeToPath: true,
   },{
     sortAttrs: true,
+  },
+  {
+    cleanupIDs: false
   }]
 });
 
