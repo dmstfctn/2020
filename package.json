@@ -4,6 +4,7 @@
   "description": "DC website, 2020 edition",
   "main": "build.js",
   "dependencies": {
+    "pepjs": "^0.5.2",
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {

@@ -55,15 +55,15 @@ GFX.prototype = {
     this.timeout = setTimeout( () => {
       this.hide();
     }, this.initialHide )
-    window.addEventListener('mousemove', () => {
+    window.addEventListener('pointermove', () => {
      this._onMove();
     });
-    window.addEventListener('touchstart', () => {
+    window.addEventListener('pointerdown', () => {
       this._onMove();
     });
-    window.addEventListener('click', () => {
-      this._onMove();
-    });
+    // window.addEventListener('click', () => {
+    //   this._onMove();
+    // });
     if( visibilityAPI.property ){
       document.addEventListener( visibilityAPI.eventName, () => {        
         if( document[ visibilityAPI.property ] ){ //is hidden    

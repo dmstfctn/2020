@@ -1,3 +1,5 @@
+import 'pepjs'
+
 const CFG = require('./Config.js' );
 const F = require( './Functions.js' );
 
@@ -85,7 +87,7 @@ Small.prototype.cancelForwardHint = function(){
 }
 
 Small.prototype.setupInteraction = function(){
-  this.$interactionEle.addEventListener( 'click', ( e ) => {
+  this.$interactionEle.addEventListener( 'pointerdown', ( e ) => {
     if( e.pageX >= window.innerWidth / 2 ){
       this.slideIndex++;    
       this.cancelForwardHint();
