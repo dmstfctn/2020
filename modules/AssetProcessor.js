@@ -4,9 +4,6 @@ const Browserify = require('browserify');
 
 const NodeSass = require('node-sass');
 
-const HandlebarsWithHelpers = require('./HandlebarsWithHelpers.js');
-const Handlebars = HandlebarsWithHelpers.Handlebars;
-
 const Config = require( '../Config.js' );
 
 const js = ( src, dist ) => {  
