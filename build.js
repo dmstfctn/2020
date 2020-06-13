@@ -9,6 +9,8 @@ const Rendering = require('./modules/Rendering.js');
 const ContentCollector = require('./modules/ContentCollector.js')
 const Content = ContentCollector( path.join( __dirname, 'content' ) );
 
+const HTMLO = require('./modules/HtmlOptimise.js');
+
 const Assets = require('./modules/AssetProcessor.js');
 
 /* set up our output structure */
@@ -62,8 +64,10 @@ let renderHome = {
   info: rendered_info,
   small_site: rendered_small_site
 };
-fs.writeFileSync( path.join( Config.paths.public, 'index.html' ), Templates.main( renderHome ) );
-fs.writeFileSync( path.join( Config.paths.public, 'index.json' ), JSON.stringify( renderHome ) );
+fs.writeFileSync( 
+  path.join( Config.paths.public, 'index.html' ), 
+  (Config.minifyHTML) ? HTMLO(Templates.main( renderHome )) : Templates.main( renderHome ) 
+);
 
 /* Related Matters */
 const relatedMattersPages = Formatter.createPageList( relatedMatters.contents );
@@ -104,7 +108,7 @@ let renderHomeFocusGroups = {
 };
 fs.writeFileSync( 
   path.join( Config.paths.public, focusGroups.slug, 'index.html' ),  
-  Templates.main( renderHomeFocusGroups ) 
+  (Config.minifyHTML) ? HTMLO(Templates.main( renderHomeFocusGroups )) : Templates.main( renderHomeFocusGroups )
 );
 /* Info 'home' at /mmittee/info/ */
 let renderHomeInfo = {
@@ -118,7 +122,7 @@ let renderHomeInfo = {
 };
 fs.writeFileSync( 
   path.join( Config.paths.public, infoSection.slug, 'index.html' ),  
-  Templates.main( renderHomeInfo ) 
+  (Config.minifyHTML) ? HTMLO(Templates.main( renderHomeInfo )) : Templates.main( renderHomeInfo )
 );
 
 /* write an index.html with link to /mmitte (or whatever url_root....) */

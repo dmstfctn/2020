@@ -9,6 +9,7 @@ let Config = {
   },
   debug: false,
   minify: false,
+  minifyHTML: true,
   resizeImages: false, 
   url_root: url_root,
   paths: {

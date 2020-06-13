@@ -6,6 +6,8 @@ const Jimp = require('jimp');
 const Config = require('../Config.js');
 
 const Templates = require('./Templating.js')();
+const HTMLO = require( './HtmlOptimise.js' );
+
 
 const createLowResAndSave = (imagePath, savePath) => { 
   if( !Config.resizeImages ){
@@ -56,7 +58,7 @@ const renderPage = ( pageData, index, partnerPages, rendered ) => {
   const fragP = path.join( p, 'fragment' );  
   moveSlideshowContent( pageData.data.slideshows );
 
-  const rendered_project = Templates.page( pageData );
+  const rendered_project = (Config.minifyHTML) ? HTMLO(Templates.page( pageData )) : Templates.page( pageData );
   
   let render = {
     title: pageData.name,
@@ -80,7 +82,8 @@ const renderPage = ( pageData, index, partnerPages, rendered ) => {
   );
 
   /* write html for initial loading */
-  fs.writeFileSync( path.join( p, 'index.html' ), Templates.main( render ) );
+  const page = ( Config.minifyHTML ) ? HTMLO( Templates.main( render ) ) : Templates.main( render );
+  fs.writeFileSync( path.join( p, 'index.html' ), page );
 };
 
 const moveCvContent = ( cv ) => {  
