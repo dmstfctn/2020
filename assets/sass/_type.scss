@@ -12,8 +12,25 @@ html{
   -moz-osx-font-smoothing: grayscale; 
 }
 
-.wf-loading *{
-  opacity: 0; 
+.wf-loading{
+  body{
+    *{
+      opacity: 0;   
+    }
+    img,
+    iframe,
+    video,
+    svg{
+      opacity: 1;
+    }
+  }
+
+  .dc-gfx{
+    opacity: 1;
+    *{
+      opacity: 1;
+    }
+  }
 }
 
 .dctxt--date{    
