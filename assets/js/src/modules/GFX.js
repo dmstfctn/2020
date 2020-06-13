@@ -5,7 +5,7 @@ const GFX = function(){
   this.$gfx = document.querySelector('.dc-gfx');
   this.timeout = null;
   this.showDelay = 10000;
-  this.initialHide = 5000;
+  this.initialHide = 4000;
 }
 
 GFX.prototype = {
