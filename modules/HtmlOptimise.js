@@ -2,7 +2,7 @@ const minify = require('html-minifier').minify;
 const minify_opts = {
   caseSensitive: true,
   collapseBooleanAttributes: true,
-  collapseInlineTagWhitespace: true,
+  collapseInlineTagWhitespace: false,
   collapseWhitespace: true,
   conservativeCollapse: false,
   continueOnParseError: false,
