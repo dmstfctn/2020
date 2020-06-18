@@ -76,9 +76,9 @@
 .dc-media__openable{
   width: 2.4rem;
   &::before{
-    content: 'open';
+    content: 'watch';
   }
   &.playing::before{
-    content: 'close';
+    content: 'stop';
   }
 }
