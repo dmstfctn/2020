@@ -22,11 +22,12 @@ PopOutWindow.prototype = {
     return config;
   },
   open: function(){
+    const browserChrome = window.outerHeight - window.innerHeight;
     const w = Math.round(this.config.width);
     const h = Math.round(this.config.height);
-    const x = Math.round( (window.screen.availWidth - w) / 2 );
-    const y = Math.round( (window.screen.availHeight - h) / 2 );
-
+    const x = Math.round( (window.innerWidth - w) / 2 ) + window.screenX;
+    const y = Math.round( (window.innerHeight - h) / 2 ) + window.screenY + (browserChrome/2);
+    
     this.window = window.open(       
       this.url,
       this.title,      
