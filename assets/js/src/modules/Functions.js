@@ -7,7 +7,6 @@ const Functions = {
       hidden = "hidden";
       visibilityChange = "visibilitychange";
     } else if (typeof document.msHidden !== "undefined") {
-
       hidden = "msHidden";
       visibilityChange = "msvisibilitychange";
     } else if (typeof document.webkitHidden !== "undefined") {
