@@ -77,7 +77,7 @@
   situation: NERO&thinsp;
   location: 
   url: https://www.neroeditions.com/docs/interface-chaos/
-  image: interface-chaos-nero.jpg
+  image:
   related: INTERFACE CHAOS
 
 # ############################## #
@@ -186,7 +186,7 @@
   situation: MILLE PLATEAUX
   location: 
   url: https://forceincmilleplateaux.bandcamp.com/album/flash-demons
-  image: flash-demons.jpg
+  image:
   related: 
     - FLASH
     - Demons
@@ -364,7 +364,7 @@
   situation: NOT
   location: 
   url: https://not.neroeditions.com/buon-paradiso-fiscale-tutti/
-  image: buon-paradiso-fiscale-a-tutti.jpg
+  image:
   related: Offshore Investigation Vehicle
 
 - now: false
@@ -375,7 +375,7 @@
   situation: SCHLOSS-POST
   location: 
   url: https://schloss-post.com/a-day-in-the-life-of/
-  image: a-day-in-the-life.jpg
+  image:
   related: Offshore SS18
 
 - now: false
@@ -386,7 +386,7 @@
   situation: RIZOSFERA
   location: 
   url: https://demystification.co/mmittee/toe/The_Offshore_Economist.pdf
-  image: toe.jpg
+  image:
   related: Offshore Investigation Vehicle
 
 # ## 2017 ###################### #
@@ -437,7 +437,7 @@
   situation: NUKFM
   location: 
   url: https://networkensemble.bandcamp.com/album/selected-network-studies
-  image: sns.jpg
+  image:
   related:
     - Network Ensemble
     - Selected Network Studies
@@ -457,6 +457,6 @@
   situation: NUKFM
   location: 
   url: https://networkensemble.bandcamp.com/album/chaos-variation-i
-  image: chaos-variation-i.jpg
+  image:
   related: 
     - Network Ensemble
