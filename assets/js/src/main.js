@@ -17,7 +17,7 @@ $allDots.forEach(function( $dots ){
 });
 
 window.runTypeDependentLayout = function(){
-  console.log('TYPE DEPENDENT LAYOUT');
+  // console.log('TYPE DEPENDENT LAYOUT');
   dots.forEach( function( d ){
     d.calculate();
   });
