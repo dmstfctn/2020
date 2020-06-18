@@ -46,7 +46,8 @@
   }
   &::before{
     position: absolute;    
-    font-size: 1rem;    
+    font-size: 1rem;
+    right: 0.2rem;
   }
   &e.playing::after{
     right: -0.85rem;
