@@ -26,6 +26,9 @@
         {{#if url}}<a href="{{url}}" class="dc-external-link" target="_blank" rel="noopener">{{/if}}
           <div class="dc-cv--name">{{{title}}}</div>
           <div class="dc-cv--location">{{{situation}}}{{~#if location~}}, {{/if}}{{{location}}}</div>
+          {{#if now}}
+          <span class="dots">..........................................................................................................................................................................................................................................</span>
+          {{/if}}
           {{#unless now}}
           {{#if image}}
             <img 
