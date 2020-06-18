@@ -6,6 +6,8 @@ const GFX = function(){
   this.timeout = null;
   this.showDelay = 15000;
   this.initialHide = 4000;
+  this.firstUserHide = true;
+  this.firstUserHideDelay = 400;
   this.ignoreFirstPointerMove = true;
 }
 
@@ -30,6 +32,8 @@ GFX.prototype = {
     this.timeout = setTimeout( () => {
       this.show( true );
     }, this.showDelay );
+
+    this.firstUserHide = false;
     if( immediate ){
       this.enableAnimation();
     }
@@ -37,8 +41,8 @@ GFX.prototype = {
   show: function( immediate ){
     if( immediate ){
       this.disableAnimation();
-    }
-    console.log( 'SHOW GFX' );
+    }    
+    clearTimeout( this.timeout );
     this.$gfx.classList.remove('hidden');
     this.$gfx.classList.add('visible');
     this.$nav_logo.classList.add('hidden');
@@ -50,7 +54,13 @@ GFX.prototype = {
     }
   },
   _onMove: function(){
-    this.hide();
+    if( this.firstUserHide ){
+      this.timeout = setTimeout( () => {
+        this.hide();
+      }, this.firstUserHideDelay );
+    } else {
+      this.hide();
+    }    
   },
   activate: function(){
     let visibilityAPI = F.visibilityChangeCompat();
@@ -58,7 +68,6 @@ GFX.prototype = {
       this.hide();
     }, this.initialHide )
     window.addEventListener('pointermove', () => {
-      // console.log('pointermove');
       if( this.ignoreFirstPointerMove ){
         this.ignoreFirstPointerMove = false;
         return;
@@ -67,17 +76,14 @@ GFX.prototype = {
       this._onMove();
     });
     window.addEventListener('pointerdown', () => {
-      // console.log('pointerdown');
       this._onMove();
     });
     // window.addEventListener('click', () => {
     //   this._onMove();
     // });
     if( visibilityAPI.property ){
-      document.addEventListener( visibilityAPI.eventName, () => {      
-        console.log( 'visibility change' );  
+      document.addEventListener( visibilityAPI.eventName, () => {              
         if( document[ visibilityAPI.property ] ){ //is hidden    
-          console.log( 'is hidden' );
           clearTimeout( this.timeout );
           this.show( true ) //show, immediately
         } else { 
