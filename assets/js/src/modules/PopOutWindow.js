@@ -38,12 +38,22 @@ PopOutWindow.prototype = {
         this._onClose();
       });      
     });
+
+    clearInterval(this.titleChangeInterval);
+    this.titleChangeInterval = setInterval( () => {
+      if( this.window.document.title === this.title ){
+        this.window.document.title = 'DEMYSTIFICATION COMMITTEE';
+      } else {
+        this.window.document.title = this.title;
+      }
+    }, 1600 )
   },
   close: function(){
+    clearInterval(this.titleChangeInterval);
     this.window.close();    
   },
   destroy: function(){
-    this.close();
+    this.close(); 
     URL.revokeObjectURL( this.url );
   },
   createURL: function( html ){
