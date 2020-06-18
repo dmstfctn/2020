@@ -58,7 +58,7 @@ GFX.prototype = {
       this.hide();
     }, this.initialHide )
     window.addEventListener('pointermove', () => {
-      console.log('pointermove');
+      // console.log('pointermove');
       if( this.ignoreFirstPointerMove ){
         this.ignoreFirstPointerMove = false;
         return;
@@ -67,7 +67,7 @@ GFX.prototype = {
       this._onMove();
     });
     window.addEventListener('pointerdown', () => {
-      console.log('pointerdown');
+      // console.log('pointerdown');
       this._onMove();
     });
     // window.addEventListener('click', () => {
