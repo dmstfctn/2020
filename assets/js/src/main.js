@@ -16,10 +16,15 @@ $allDots.forEach(function( $dots ){
   dots.push( d );
 });
 
-window.addEventListener('resize', function(){
+window.runTypeDependentLayout = function(){
+  console.log('TYPE DEPENDENT LAYOUT');
   dots.forEach( function( d ){
     d.calculate();
   });
+};
+
+window.addEventListener('resize', function(){
+  runTypeDependentLayout();
 });
 
 let DC = {
