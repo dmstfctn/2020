@@ -23,7 +23,8 @@
   display: none;
 }
   .dc-media--list{
-    height: calc(100% - 4rem);
+    margin-top: 1.75rem;
+    height: calc(100% - 4.7rem);
     overflow: hidden;
     position: relative;
     li{
@@ -90,7 +91,7 @@
 }
 
 .dc-media--nav{
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   ol{
     padding-left: .2rem; 
     display: flex;
