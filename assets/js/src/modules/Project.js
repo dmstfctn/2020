@@ -80,6 +80,7 @@ Project.prototype = {
   closeWindow: function( index ){
     const $nav = this.$nav[index];
     this.extraWindow.close();
+    this.extraWindow = false;
     $nav.classList.remove('playing');
   },
   openWindow: function( index ){
@@ -102,8 +103,9 @@ Project.prototype = {
       }
     );
 
-    this.extraWindow.onClose = function(){
+    this.extraWindow.onClose = () => {      
       $nav.classList.remove('playing');
+      this.extraWindow = false;
     };
 
     this.extraWindow.open();
@@ -185,6 +187,7 @@ Project.prototype = {
         });
       } if($n.classList.contains('dc-media__openable')){ 
         $n.addEventListener('click', (e) => {
+          console.log('openable click')
           this.toggleWindow( index );
         });
       } else {
