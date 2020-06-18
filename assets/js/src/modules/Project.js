@@ -85,7 +85,7 @@ Project.prototype = {
     const $nav = this.$nav[index];
     const $slide = this.$media[index];  
     const html = $slide.getAttribute('data-content');
-    const w = window.screen.availWidth / 3;
+    const w = window.screen.availWidth / 2.3;
     const h = ( w / 16 ) * 9;    
     //console.log( html );
     if( this.extraWindow ){
@@ -100,6 +100,10 @@ Project.prototype = {
         height: h
       }
     );
+
+    this.extraWindow.onClose = function(){
+      $nav.classList.remove('playing');
+    };
 
     this.extraWindow.open();
 
