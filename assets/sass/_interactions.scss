@@ -4,6 +4,9 @@
 }
   .dc-biglist--item .dc-transition--target{
     color: #FF0000;
+    &:after{
+      opacity: 0;
+    }
   }
   #focus-groups .dc-biglist--item .dc-transition--target{
     color: #FFFFFF;
