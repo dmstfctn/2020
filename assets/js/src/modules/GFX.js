@@ -4,7 +4,7 @@ const GFX = function(){
   this.$nav_logo = document.querySelector('[data-dc-localtarget="#related-matters"] svg' );
   this.$gfx = document.querySelector('.dc-gfx');
   this.timeout = null;
-  this.showDelay = 10000;
+  this.showDelay = 15000;
   this.initialHide = 4000;
   this.ignoreFirstPointerMove = true;
 }
