@@ -74,13 +74,11 @@
     figcaption{
       position: absolute;
       left: 100%;
-      top: 50%;      
-      width: 100%;
+      top: 100%;
       text-align: center;
       white-space: nowrap;
-      transform-origin: center;
-      margin-left: 1rem;
-      transform: translateX(-50%) translateY(-50%) rotate(90deg);
+      transform-origin: top left;
+      transform: rotate(-90deg);
     }
   }
   img{

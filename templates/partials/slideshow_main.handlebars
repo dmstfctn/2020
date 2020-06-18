@@ -24,7 +24,11 @@
           >
         {{/if}}
         {{#if meta.caption}}
-          <figcaption>
+          <figcaption 
+            {{#if meta.size}}
+            style="top: calc( 100% - (100% - {{meta.size}}) / 2 );"
+            {{/if}}
+          >
             {{meta.caption}}
           </figcaption>
         {{/if}}
