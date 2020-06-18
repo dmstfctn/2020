@@ -24,8 +24,8 @@
       <!-- entries. entry: {{title}} -->
       <dd class="dc-cv--entry{{#if now}} dc-cv--now{{/if}} dc-cv-type__{{type}}{{#if image}}{{#unless now}} dc-list-hoverimg{{/unless}}{{/if}}{{#if url}} dc-cv--entry__haslink{{/if}}">
         {{#if url}}<a href="{{url}}" class="dc-external-link" target="_blank" rel="noopener">{{/if}}
-          <div class="dc-cv--name">{{title}}</div>
-          <div class="dc-cv--location">{{situation}}{{~#if location~}}, {{/if}}{{location}}</div>
+          <div class="dc-cv--name">{{{title}}}</div>
+          <div class="dc-cv--location">{{{situation}}}{{~#if location~}}, {{/if}}{{{location}}}</div>
           {{#unless now}}
           {{#if image}}
             <img 
