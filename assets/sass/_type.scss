@@ -17,20 +17,20 @@ html{
     *{
       opacity: 0;   
     }
-    img,
-    iframe,
-    video,
-    svg{
-      opacity: 1;
-    }
+    // img,
+    // iframe,
+    // video,
+    // svg{
+    //   opacity: 1;
+    // }
   }
 
-  .dc-gfx{
-    opacity: 1;
-    *{
-      opacity: 1;
-    }
-  }
+  // .dc-gfx{
+  //   opacity: 1;
+  //   *{
+  //     opacity: 1;
+  //   }
+  // }
 }
 
 .dctxt--date{    
@@ -140,6 +140,9 @@ html{
   break-after: always;
   text-align: justify;    
 } 
+.dc-media--list figcaption{
+  font-size: 0.8rem;
+}
 
 
 .dc-media--nav ol{
