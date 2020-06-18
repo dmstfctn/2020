@@ -10,9 +10,6 @@ html[data-dc-pagetype="focusgroup"]{
   .dc-sitenav a.active{
     color: #FFFFFF;
   }
-  .dc-sitenav a::after{
-    color: #000000;
-  }
   .dc-sitenav::before{
     background: #FF0000;
   }

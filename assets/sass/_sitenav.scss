@@ -21,10 +21,6 @@
   .dc-sitenav a{
     height: 1.65rem;
   }
-    .dc-sitenav a::after{
-      content: ',';
-      color: #FFFFFF;
-    }
 
     .dc-sitenav a[data-dc-localtarget="#related-matters"]{ 
       svg{
@@ -48,9 +44,6 @@
       }
     }
 
-      .dc-sitenav a:last-child::after{
-        content: '';
-      }
       .dc-sitenav a.active{
         color: #FF0000;
       }
