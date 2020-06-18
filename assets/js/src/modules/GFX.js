@@ -6,6 +6,7 @@ const GFX = function(){
   this.timeout = null;
   this.showDelay = 10000;
   this.initialHide = 4000;
+  this.ignoreFirstPointerMove = true;
 }
 
 GFX.prototype = {
@@ -37,6 +38,7 @@ GFX.prototype = {
     if( immediate ){
       this.disableAnimation();
     }
+    console.log( 'SHOW GFX' );
     this.$gfx.classList.remove('hidden');
     this.$gfx.classList.add('visible');
     this.$nav_logo.classList.add('hidden');
@@ -56,23 +58,33 @@ GFX.prototype = {
       this.hide();
     }, this.initialHide )
     window.addEventListener('pointermove', () => {
-      //console.log('pointermove');
+      console.log('pointermove');
+      if( this.ignoreFirstPointerMove ){
+        this.ignoreFirstPointerMove = false;
+        return;
+      }
+      
       this._onMove();
     });
     window.addEventListener('pointerdown', () => {
-      //console.log('pointerdown');
+      console.log('pointerdown');
       this._onMove();
     });
     // window.addEventListener('click', () => {
     //   this._onMove();
     // });
     if( visibilityAPI.property ){
-      document.addEventListener( visibilityAPI.eventName, () => {        
+      document.addEventListener( visibilityAPI.eventName, () => {      
+        console.log( 'visibility change' );  
         if( document[ visibilityAPI.property ] ){ //is hidden    
+          console.log( 'is hidden' );
           clearTimeout( this.timeout );
           this.show( true ) //show, immediately
-        } else { /*is visible*/ }
-      })
+        } else { 
+          /*is visible*/ 
+          this.ignoreFirstPointerMove = true;
+        }
+      }, false );
     }
   },
   deactivate: function(){
