@@ -49,7 +49,7 @@ Project.prototype = {
     } else if( $embed ){
       // TODO: handle iframe for likely services properly (soundloud, vimeo, youtube?)
     }
-    this.isPlaying = true;
+    this.isPlaying = false;
     $nav.classList.remove('playing');
   },
   playMedia: function( index ){    
@@ -66,6 +66,7 @@ Project.prototype = {
     $nav.classList.add('playing');
   },
   toggleMedia: function( index ){
+    console.log('toggle media');
     const $nav = this.$nav[index]
     const $slide = this.$media[index];
     let $media = $slide.querySelector('audio') || $slide.querySelector('video');
