@@ -3,8 +3,24 @@ const F = require( './modules/Functions.js' );
 
 const GFX = require( './modules/GFX.js' );
 
+const Dots = require('./modules/Dots.js')
+
 const gfx = new GFX();
 gfx.activate();
+
+const $allDots = document.querySelectorAll('.dots');
+let dots = [];
+$allDots.forEach(function( $dots ){
+  const d = new Dots( $dots );
+  d.calculate();
+  dots.push( d );
+});
+
+window.addEventListener('resize', function(){
+  dots.forEach( function( d ){
+    d.calculate();
+  });
+});
 
 let DC = {
   env: {

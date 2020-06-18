@@ -56,6 +56,7 @@ html, body{
 /* in CV and dissemination */
 .dc-cv--entry.dc-cv--entry__haslink > a::after,
 .dc-cv--entry::after,
+.dc-biglist--now .dc-cv--entry .dots,
 .dc-dissemination--info::after{
   content: '................................................................................................................................................................................................................................................................................................................................';
   //white-space: nowrap;
@@ -72,6 +73,11 @@ html, body{
   left: auto;
 }
   .dc-cv--entry.dc-cv--entry__haslink::after{
+    display: none;
+  }
+
+  .dc-biglist--now .dc-cv--entry::after,
+  .dc-biglist--now .dc-cv--entry.dc-cv--entry__haslink > a::after{
     display: none;
   }
 
