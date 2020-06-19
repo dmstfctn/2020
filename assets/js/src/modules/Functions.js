@@ -47,18 +47,7 @@ const Functions = {
   loadPage: ( path ) => {
     let load = ( path.startsWith( '/' ) ) ? path : '/' + path;
     window.location.href = load;
-  },
-  getPageIndexFor: ( path ) => {
-    path = Functions.slashBoth( path );  
-  
-    let index = window.DCSMALL.pages
-      .findIndex( (item) => { 
-        let url = Functions.slashBoth( item.url );        
-        return url === path;  
-      });
-
-    return index;
-  },
+  }, 
   isHome: () => {
     return $html.getAttribute('data-dc-pagetype') === 'home';
   }

@@ -26,6 +26,7 @@ Loader.prototype = {
     }
     //console.log('loading fresh' );
     const fragmentURL = url + '/fragment/index.json';
+    console.log('loading fragmnt at: ', fragmentURL );
     fetch( fragmentURL )
       .then(function( response ){
         //console.log( 'response ok' );
