@@ -8,7 +8,7 @@ let $mediaListMain = document.querySelectorAll('.dc-media__main .dc-media--list 
 
 let $mediaPlay = document.querySelectorAll('.dc-media__main .dc-media--nav .dc-media--play');
 
-const Project = function(){
+const ProjectLarge = function(){
   this.$media = document.querySelectorAll('.dc-media__main .dc-media--list li');
   this.$nav = document.querySelectorAll('.dc-media__main .dc-media--nav li:not(.dc-media--link)');
   this.$title = document.querySelector('.dc-item--header h1');
@@ -23,7 +23,7 @@ const Project = function(){
   this.extraWindow = null;
 };
 
-Project.prototype = {
+ProjectLarge.prototype = {
   activate: function(){
     this.loadImages();
     this.setupEvents();
@@ -201,4 +201,4 @@ Project.prototype = {
   }
 };
 
-module.exports = Project;
+module.exports = ProjectLarge;

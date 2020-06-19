@@ -319,12 +319,10 @@
 }
 
 @media (orientation: landscape){
-  .dc-media__portrait,
-  .dc-showreel__portrait{
+  .dc-media__portrait{
     display: none;
   }
-  .dc-media__landscape,
-  .dc-showreel__landscape{
+  .dc-media__landscape{
     display: block;
   }
 }
