@@ -185,11 +185,28 @@ Project.prototype = {
       this.nextSlide();
     }    
   },
+  prevSlide: function(){
+    if( this.navShouldShowSlide( this.$nav[ this.index - 1 ] ) ){ 
+      this.selectSlide( this.index - 1 );
+    } else  {
+      this.index = this.index - 1;
+      this.prevSlide();
+    }    
+  },
   setupEvents: function(){
     /* click to advance */
     this.$media.forEach( ( $m, index ) => {
       if( $m.classList.contains('info') ){ return; }
       $m.addEventListener('click', () => { this.nextSlide() });
+    });
+    /* arrow keys */
+    window.addEventListener('keydown', ( e ) => {
+      if( e.key === 'ArrowRight'){
+        this.nextSlide()
+      }
+      if( e.key === 'ArrowLeft'){
+        this.prevSlide()
+      }
     });
     /* hover to select */
     this.$nav.forEach(( $n, index ) => {

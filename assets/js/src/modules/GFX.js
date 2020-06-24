@@ -82,7 +82,10 @@ GFX.prototype = {
       this._onMove();
     }, {passive: true} );
     window.addEventListener('keydown', ( e ) => {
-      if( e.key === 'ArrowDown' || e.key === 'ArrowUp' ){
+      if( 
+        e.key === 'ArrowDown' || e.key === 'ArrowUp' 
+        || e.key === 'ArrowLeft' || e.key === 'ArrowRight' 
+      ){
         this._onMove();
       }      
     });
