@@ -41,6 +41,21 @@ Templating.registerHelpers = () => {
     let p = path.join( __dirname, '..', svg_path ); 
     return SvgOptimise.sync( p );
   });
+  Handlebars.registerHelper('dc_collectionLength', ( collection, options ) => {
+    if( Array.isArray( collection ) ){
+      return collection.length;
+    }
+    if( typeof collection === 'object' ){
+      let count = 0;
+      for( let key in collection ) {
+        if( collection.hasOwnProperty(key) ){
+          count++;
+        }
+      }
+      return count;
+    }
+    return 0;
+  })
 };
 
 Templating.getTemplates = () => {
