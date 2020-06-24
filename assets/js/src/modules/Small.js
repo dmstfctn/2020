@@ -85,7 +85,7 @@ Small.prototype.setupInteraction = function(){
 
 Small.prototype.endState = function(){
   this.ended = true;
-  alert('END STATE');
+  alert('END OF SITE');
 }
 
 Small.prototype.projectEnd = function(){
