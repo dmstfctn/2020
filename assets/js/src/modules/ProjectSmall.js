@@ -82,7 +82,7 @@ ProjectSmall.prototype = {
     this._onChange();
   },
   prev: function( orientation ){
-    if( this.includesShowreel && this.isCurrentlyOnCV() ){
+    if( this.includesShowreel && this.isCurrentlyOnCV( orientation ) ){
       this._onCantGoBack();
       return;
     }
