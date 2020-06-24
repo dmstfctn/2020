@@ -59,6 +59,9 @@ const svgo = new SVGO({
   },
   {
     cleanupIDs: false
+  },
+  {
+    removeHiddenElems: false
   }]
 });
 

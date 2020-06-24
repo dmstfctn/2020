@@ -4,11 +4,12 @@ const GFX = function(){
   this.$nav_logo = document.querySelector('[data-dc-localtarget="#related-matters"] svg' );
   this.$gfx = document.querySelector('.dc-gfx');
   this.timeout = null;
-  this.showDelay = 15000;
-  this.initialHide = 4000;
+  this.showDelay = 15000;  
   this.firstUserHide = true;
-  this.firstUserHideDelay = 400;
+  this.firstUserHideDelay = 700;
   this.ignoreFirstPointerMove = true;
+  this.loadedAt = (new Date()).getTime();
+  this.increaseDelay( false );
 }
 
 GFX.prototype = {
@@ -19,6 +20,13 @@ GFX.prototype = {
   enableAnimation: function(){
     this.$gfx.style.animationDuration = '';
     this.$nav_logo.style.animationDuration = '';
+  },
+  increaseDelay: function( shouldIncrease ){
+    if( shouldIncrease ){
+      this.useShowDelay = this.showDelay * 2;
+    } else{
+      this.useShowDelay = this.showDelay;
+    }
   },
   hide: function( immediate ){
     if( immediate ){
@@ -31,7 +39,7 @@ GFX.prototype = {
     clearTimeout( this.timeout );
     this.timeout = setTimeout( () => {
       this.show( true );
-    }, this.showDelay );
+    }, this.useShowDelay );
 
     this.firstUserHide = false;
     if( immediate ){
@@ -55,18 +63,32 @@ GFX.prototype = {
   },
   _onMove: function(){
     if( this.firstUserHide ){
-      this.timeout = setTimeout( () => {
+      const timeSinceLoad = (new Date()).getTime() - this.loadedAt;
+      if( timeSinceLoad > this.firstUserHideDelay ){
         this.hide();
-      }, this.firstUserHideDelay );
+      } else {
+        this.timeout = setTimeout( () => {
+          this.hide();
+        }, this.firstUserHideDelay );
+      }
     } else {
       this.hide();
     }    
   },
   activate: function(){
     let visibilityAPI = F.visibilityChangeCompat();
-    this.timeout = setTimeout( () => {
-      this.hide();
-    }, this.initialHide )
+
+    window.addEventListener('wheel', () => {
+      this._onMove();
+    }, {passive: true} );
+    window.addEventListener('keydown', ( e ) => {
+      if( 
+        e.key === 'ArrowDown' || e.key === 'ArrowUp' 
+        || e.key === 'ArrowLeft' || e.key === 'ArrowRight' 
+      ){
+        this._onMove();
+      }      
+    });
     window.addEventListener('pointermove', () => {
       if( this.ignoreFirstPointerMove ){
         this.ignoreFirstPointerMove = false;

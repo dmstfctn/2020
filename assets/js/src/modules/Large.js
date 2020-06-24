@@ -18,7 +18,7 @@ const Large = function(){
     'a[href^="/mmittee/focus-groups/"]'
   ]);
 
-
+  this.setupLogo();
   this.setupMenus();
   this.setupLoader();
   this.initQuantisers(); 
@@ -28,6 +28,11 @@ const Large = function(){
       HoverImg( $hoverImg );
    });
 };
+
+Large.prototype.setupLogo = function(){
+  const version = Math.floor( Math.random() * 4 );
+  document.querySelector('.dc-logo').setAttribute('data-dc-version', version );
+}
 
 Large.prototype.setupMenus = function(){
   this.menus.onChange = ( id ) => {
@@ -118,7 +123,7 @@ Large.prototype.initQuantisers = function(){
   this.cvScroller = new ScrollQuantiser( 
     document.querySelector('#info .dc-cv'), 
     document.querySelector('#info .dc-cv--entry'),
-    0.5 //speed
+    0.4 //speed
   );
 }
 

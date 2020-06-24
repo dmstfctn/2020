@@ -31,6 +31,15 @@ ProjectLarge.prototype = {
   deactivate: function(){
 
   },
+  _onChangeSlide: function( $slide, $nav ){
+    if( $slide.classList.contains('info') || $slide.classList.contains('dc-media__text')){
+      window.DC_GFX.increaseDelay( true );
+    } else {
+      window.DC_GFX.increaseDelay( false );
+    }
+    this.onChangeSlide( $slide, $nav );
+  },
+  onChangeSlide: function( $slide, $nav ){ /* ... override ... */},
   stopAllMedia: function(){
     this.$nav.forEach(($n,index) => {
       if( $n.classList.contains('playing') ){
@@ -141,7 +150,8 @@ ProjectLarge.prototype = {
       $video.play();
     }
     $slide.classList.add( 'active' );
-    $nav.classList.add( 'active' );
+    $nav.classList.add( 'active' );    
+    this._onChangeSlide( $slide, $nav );
   },
   navShouldShowSlide: function( $nav ){
     if( 
@@ -175,11 +185,28 @@ ProjectLarge.prototype = {
       this.nextSlide();
     }    
   },
+  prevSlide: function(){
+    if( this.navShouldShowSlide( this.$nav[ this.index - 1 ] ) ){ 
+      this.selectSlide( this.index - 1 );
+    } else  {
+      this.index = this.index - 1;
+      this.prevSlide();
+    }    
+  },
   setupEvents: function(){
     /* click to advance */
     this.$media.forEach( ( $m, index ) => {
       if( $m.classList.contains('info') ){ return; }
       $m.addEventListener('click', () => { this.nextSlide() });
+    });
+    /* arrow keys */
+    window.addEventListener('keydown', ( e ) => {
+      if( e.key === 'ArrowRight'){
+        this.nextSlide()
+      }
+      if( e.key === 'ArrowLeft'){
+        this.prevSlide()
+      }
     });
     /* hover to select */
     this.$nav.forEach(( $n, index ) => {
