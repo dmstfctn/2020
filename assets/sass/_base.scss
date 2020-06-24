@@ -56,6 +56,7 @@ html, body{
 .dc-logo{ 
   svg path{
     display: initial;
+    shape-rendering: crispEdges;
   }
   &[data-dc-version="0"]{
     #layer_two, #layer_three, #layer_four{
