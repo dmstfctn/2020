@@ -32,14 +32,20 @@
         top: 0;
         left:50%;
         transform: translateX(-50%);
-        path{
-          fill: #FFFFFF;
+        path[fill]{
+          fill: #FFFFFF !important;
+        }
+        path[stroke]{
+          stroke:#FFFFFF !important;
         }
       }
       &.active,
       &:hover{
-        svg path{
-          fill: #FF0000;
+        svg path[fill]{
+          fill: #FF0000 !important;
+        }
+        svg path[stroke]{
+          stroke: #FF0000 !important;
         }
       }
     }

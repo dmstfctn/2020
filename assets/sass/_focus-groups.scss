@@ -14,12 +14,18 @@ html[data-dc-pagetype="focusgroup"]{
     background: #FF0000;
   }
   .dc-sitenav a[data-dc-localtarget="#related-matters"]{ 
-    svg path{
-      fill: #000000;
+    svg path[fill]{
+      fill: #000000 !important;
+    }
+    svg path[stroke]{
+      stroke: #000000 !important;
     }
     &:hover{
-      svg path{
-        fill: #FFFFFF;
+      svg path[fill]{
+        fill: #FFFFFF !important;
+      }
+      svg path[stroke]{
+        stroke: #FFFFFF !important;
       }
     }
   }
