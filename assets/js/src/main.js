@@ -2,7 +2,6 @@ const CFG = require('./modules/Config.js' );
 const F = require( './modules/Functions.js' );
 
 const GFX = require( './modules/GFX.js' );
-
 const Dots = require('./modules/Dots.js')
 
 const gfx = new GFX();
@@ -37,6 +36,7 @@ let DC = {
 };
 
 window.DC = DC;
+window.DC_GFX = gfx;
 
 /* site setup */
 //console.log('CREATE MQ: ', `(max-width: ${CFG.BREAKPOINT}px)` );

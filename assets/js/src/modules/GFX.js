@@ -9,6 +9,7 @@ const GFX = function(){
   this.firstUserHideDelay = 700;
   this.ignoreFirstPointerMove = true;
   this.loadedAt = (new Date()).getTime();
+  this.increaseDelay( false );
 }
 
 GFX.prototype = {
@@ -19,6 +20,13 @@ GFX.prototype = {
   enableAnimation: function(){
     this.$gfx.style.animationDuration = '';
     this.$nav_logo.style.animationDuration = '';
+  },
+  increaseDelay: function( shouldIncrease ){
+    if( shouldIncrease ){
+      this.useShowDelay = this.showDelay * 2;
+    } else{
+      this.useShowDelay = this.showDelay;
+    }
   },
   hide: function( immediate ){
     if( immediate ){
@@ -31,7 +39,7 @@ GFX.prototype = {
     clearTimeout( this.timeout );
     this.timeout = setTimeout( () => {
       this.show( true );
-    }, this.showDelay );
+    }, this.useShowDelay );
 
     this.firstUserHide = false;
     if( immediate ){
@@ -69,7 +77,7 @@ GFX.prototype = {
   },
   activate: function(){
     let visibilityAPI = F.visibilityChangeCompat();
-    
+
     window.addEventListener('wheel', () => {
       this._onMove();
     }, {passive: true} );

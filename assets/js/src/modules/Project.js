@@ -31,6 +31,15 @@ Project.prototype = {
   deactivate: function(){
 
   },
+  _onChangeSlide: function( $slide, $nav ){
+    if( $slide.classList.contains('info') || $slide.classList.contains('dc-media__text')){
+      window.DC_GFX.increaseDelay( true );
+    } else {
+      window.DC_GFX.increaseDelay( false );
+    }
+    this.onChangeSlide( $slide, $nav );
+  },
+  onChangeSlide: function( $slide, $nav ){ /* ... override ... */},
   stopAllMedia: function(){
     this.$nav.forEach(($n,index) => {
       if( $n.classList.contains('playing') ){
@@ -141,7 +150,8 @@ Project.prototype = {
       $video.play();
     }
     $slide.classList.add( 'active' );
-    $nav.classList.add( 'active' );
+    $nav.classList.add( 'active' );    
+    this._onChangeSlide( $slide, $nav );
   },
   navShouldShowSlide: function( $nav ){
     if( 
