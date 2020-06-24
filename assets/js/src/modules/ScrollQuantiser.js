@@ -32,14 +32,13 @@ ScrollQuantiser.prototype = {
     }, {passive: true} );
 
     window.addEventListener('keydown', ( e ) => {
-      console.log( e.key );
       if( e.key === 'ArrowDown' ){
         this._onKey( 1 );
       }
       if( e.key === 'ArrowUp'){
         this._onKey( -1 );
       }
-    })
+    });
   },
   update: function( deltaY ){
     this.scroll.original += deltaY * this.speed;   

@@ -123,7 +123,7 @@ Large.prototype.initQuantisers = function(){
   this.cvScroller = new ScrollQuantiser( 
     document.querySelector('#info .dc-cv'), 
     document.querySelector('#info .dc-cv--entry'),
-    0.5 //speed
+    0.4 //speed
   );
 }
 
