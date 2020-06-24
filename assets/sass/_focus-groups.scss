@@ -31,25 +31,22 @@ html[data-dc-pagetype="focusgroup"]{
     //   stroke: #FF0000;
     // }
     svg{
-      #black-stroke-thin-3,
-      #black-fill,
-      #red-fill,
-      #red-stroke-3,
-      #black-stroke,
-      #red-stroke-2,
       #red-stroke,
-      #black-stroke-7{
-        display: initial;
+      #red-stroke-2,
+      #red-stroke-3{
+        stroke: #ff0000;
       }
-      #black-stroke-thin-3-ALT_1_,
-      #black-fill-ALT_1_,
-      #red-fill-ALT_1_,
-      #red-stroke-3-ALT_1_,
-      #black-stroke-ALT_1_,
-      #red-stroke-2-ALT_1_,
-      #red-stroke-ALT_1_,
-      #black-stroke-7-ALT_1_{
-        display: none;
+      #black-stroke,
+      #black-stroke-thin-3{
+        stroke: #000000;
+      }
+    
+      #black-stroke-7,
+      #black-fill	{
+        fill: #1D1E1B;
+      }
+      #red-fill{
+        fill: #FC0000;
       }
     }
   }
