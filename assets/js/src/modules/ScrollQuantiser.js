@@ -30,6 +30,16 @@ ScrollQuantiser.prototype = {
     this.$ele.addEventListener( 'wheel', (e) => {
       this._onScroll( e.deltaY );
     }, {passive: true} );
+
+    window.addEventListener('keydown', ( e ) => {
+      console.log( e.key );
+      if( e.key === 'ArrowDown' ){
+        this._onKey( 1 );
+      }
+      if( e.key === 'ArrowUp'){
+        this._onKey( -1 );
+      }
+    })
   },
   update: function( deltaY ){
     this.scroll.original += deltaY * this.speed;   
@@ -50,6 +60,13 @@ ScrollQuantiser.prototype = {
   _onScroll: function( deltaY ){
     this.measure();
     this.update( deltaY );
+    this.render();
+    
+    this.onScroll();
+  },
+  _onKey: function( direction ){
+    this.measure();
+    this.update( (this.lineH * direction) * (1/this.speed) );
     this.render();
     
     this.onScroll();
