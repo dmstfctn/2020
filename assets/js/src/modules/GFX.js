@@ -10,6 +10,7 @@ const GFX = function(){
   this.ignoreFirstPointerMove = true;
   this.loadedAt = (new Date()).getTime();
   this.increaseDelay( false );
+  this.unhidable = false;
 }
 
 GFX.prototype = {
@@ -29,6 +30,9 @@ GFX.prototype = {
     }
   },
   hide: function( immediate ){
+    if( this.unhidable ){
+      return;
+    }
     if( immediate ){
       this.disableAnimation();
     }
@@ -119,7 +123,15 @@ GFX.prototype = {
     window.removeEventListener('mousemove', () => {
       this._onMove();
      });
+  },
+  startLoadingSequence: function(){
+    this.show();
+    this.unhidable = true;
+  },
+  endLoadingSequence: function(){
+    this.unhidable = false;
+    this.hide();
   }
-}
+};
 
 module.exports = GFX;

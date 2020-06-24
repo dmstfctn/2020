@@ -15,9 +15,37 @@
     letter-spacing: -0.05em;
   }
 
+  body.dc-loading{
+    &:before{
+      content: 'LOADING';
+      width: 100vw;
+      height: 1rem;
+      text-align: center;
+      font-size: 15vw;
+      display: block;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      color: #FFFFFF;
+      mix-blend-mode: hard-light;
+      border-radius: 50%;
+      z-index: 99;
+    }
+    .dc-main-content{
+      opacity: 0;
+    }
+    .dc-gfx{
+      animation-name: flick-in-out;
+      animation-duration: 3s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+    }
+  }
+
   .dc-main-content{
     height: 100%;
-    top: 0;
+    top: 0;   
   }
 
   .dc-external-link{

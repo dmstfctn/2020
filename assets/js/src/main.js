@@ -35,6 +35,13 @@ let DC = {
   small: require( './modules/Small.js' )
 };
 
+DC.small.onLoadingStart = function(){
+  gfx.startLoadingSequence();
+}
+DC.small.onLoadingComplete = function(){
+  gfx.endLoadingSequence();
+}
+
 window.DC = DC;
 window.DC_GFX = gfx;
 

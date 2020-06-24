@@ -13,6 +13,8 @@ const Small = function(){
   this.$interactionEle = document.querySelector('.dc-mobile-nav');  
   this.setupInteraction();
 
+  this.$mainContent = document.querySelector( '.dc-main-content' );  
+
   this.loader = new Loader();
   this.orientation = new Orientation();
   this.animations = new SmallAnimations( this.$interactionEle );
@@ -30,6 +32,17 @@ const Small = function(){
   this.setupProjectEvents();
   this.setupLoader();
 };
+
+Small.prototype._onLoadingStart = function(){
+  this.onLoadingStart();
+}
+Small.prototype.onLoadingStart = function(){ /* ... override ... */ };
+
+Small.prototype._onLoadingComplete = function(){
+  this.onLoadingComplete();
+}
+Small.prototype.onLoadingComplete = function(){ /* ... override ... */ };
+
 
 /* Utilities / Data */
 Small.prototype.getPageIndexFor = function( _path ){
@@ -99,14 +112,24 @@ Small.prototype.projectEnd = function(){
   if( this.completedPageIndices.indexOf( this.pageIndex ) === -1 ){
     console.log('page not already complete')
     this.loader.load( F.slashStart( this.data[ this.pageIndex ].url ) );
+    this.showLoader();
   } else {
     this.endState();
   }
 };
 
+Small.prototype.showLoader = function(){
+  this._onLoadingStart();
+  document.body.classList.add('dc-loading');  
+};
+Small.prototype.hideLoader = function(){
+  document.body.classList.remove('dc-loading');
+  this._onLoadingComplete();
+};
+
+
 Small.prototype.setupLoader = function(){
-  this.historyActive = true;
-  this.$mainContent = document.querySelector( '.dc-main-content' );  
+  this.historyActive = true; 
 
   this.loader.onLoad = ( data, url, disableHistory  ) => {
     if( !disableHistory && this.historyActive ){     
@@ -120,11 +143,13 @@ Small.prototype.setupLoader = function(){
       );
     }
     this.renderPage( data );
+    this.hideLoader();
   };
 
   window.addEventListener('popstate', ( event ) => {
     const state = history.state;    
     this.loader.load( state.url, true );
+    this.showLoader();
   });
 
   //first history state:
