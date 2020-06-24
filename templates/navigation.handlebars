@@ -3,7 +3,9 @@
     {{#dc_ismenu 'DC' this}}
     <a href="{{dc_urlpath "" }}" data-dc-localtarget="#{{this.slug}}">
       {{this.name}}
-      {{> svg_DC }}
+      <span class="dc-logo">
+        {{> svg_DC }}
+      </span>
     </a>
     {{else}}
     <a href="{{dc_urlpath this.slug }}" data-dc-localtarget="#{{this.slug}}">{{this.name}}</a>

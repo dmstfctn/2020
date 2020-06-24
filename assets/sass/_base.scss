@@ -52,6 +52,45 @@ html, body{
       left: 100%;
     }
 
+/*top logo permutations */
+.dc-logo{ 
+  svg path{
+    display: initial;
+  }
+  &[data-dc-version="0"]{
+    #layer_two, #layer_three, #layer_four{
+      display: none;
+    }
+    #layer_one{
+      display: initial;
+    }
+  }
+  &[data-dc-version="1"]{
+    #layer_one{
+      display: none;
+    }
+    #layer_two, #layer_three, #layer_four{
+      display: initial;
+    }
+  }
+  &[data-dc-version="2"]{
+    #layer_two, #layer_one{
+      display: none;
+    }
+    #layer_three, #layer_four{
+      display: initial;
+    }
+  }
+  &[data-dc-version="3"]{
+    #layer_two, #layer_four{
+      display: initial;
+    }
+    #layer_one, #layer_three{
+      display: none;
+    }
+  }
+}
+  
 /* dotted line, title-subtitle */
 /* in CV and dissemination */
 .dc-cv--entry.dc-cv--entry__haslink > a::after,
