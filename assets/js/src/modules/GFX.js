@@ -76,6 +76,11 @@ GFX.prototype = {
     window.addEventListener('wheel', () => {
       this._onMove();
     }, {passive: true} );
+    window.addEventListener('keydown', ( e ) => {
+      if( e.key === 'ArrowDown' || e.key === 'ArrowUp' ){
+        this._onMove();
+      }      
+    })
     window.addEventListener('pointermove', () => {
       if( this.ignoreFirstPointerMove ){
         this.ignoreFirstPointerMove = false;
