@@ -7,8 +7,9 @@ const GFX = function(){
   this.showDelay = 15000;
   this.initialHide = 4000;
   this.firstUserHide = true;
-  this.firstUserHideDelay = 400;
+  this.firstUserHideDelay = 700;
   this.ignoreFirstPointerMove = true;
+  this.loadedAt = (new Date()).getTime();
 }
 
 GFX.prototype = {
@@ -55,9 +56,14 @@ GFX.prototype = {
   },
   _onMove: function(){
     if( this.firstUserHide ){
-      this.timeout = setTimeout( () => {
+      const timeSinceLoad = (new Date()).getTime() - this.loadedAt;
+      if( timeSinceLoad > this.firstUserHideDelay ){
         this.hide();
-      }, this.firstUserHideDelay );
+      } else {
+        this.timeout = setTimeout( () => {
+          this.hide();
+        }, this.firstUserHideDelay );
+      }
     } else {
       this.hide();
     }    
