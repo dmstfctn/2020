@@ -72,7 +72,10 @@ GFX.prototype = {
     let visibilityAPI = F.visibilityChangeCompat();
     this.timeout = setTimeout( () => {
       this.hide();
-    }, this.initialHide )
+    }, this.initialHide );
+    window.addEventListener('wheel', () => {
+      this._onMove();
+    }, {passive: true} );
     window.addEventListener('pointermove', () => {
       if( this.ignoreFirstPointerMove ){
         this.ignoreFirstPointerMove = false;
