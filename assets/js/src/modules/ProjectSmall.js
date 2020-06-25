@@ -15,6 +15,7 @@ const ProjectSmall = function( _includesShowreel ){
   } else {
     this.$showreels.classList.remove('hide');
   }
+  this.loadPlaceholderImages();
 };
 
 ProjectSmall.prototype = {
@@ -61,6 +62,13 @@ ProjectSmall.prototype = {
       result = result.concat( [$dcInfo] ).concat( showreelSlides );
     }    
     return result;
+  },
+  loadPlaceholderImages: function(){
+    for( let orientation of ORIENTATIONS ){
+      for( let index = 0; index <  this.items[ orientation ].length; index++ ){
+        F.loadSlidePlaceholder( this.items[ orientation ][ index ] )
+      }
+    }
   },
   preloadImages: function( _preloadCount ){
     let preloadCount = _preloadCount | 2;  

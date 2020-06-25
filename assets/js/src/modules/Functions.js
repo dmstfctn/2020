@@ -19,6 +19,15 @@ const Functions = {
     }
   },
   /* hover items in project page */
+  loadSlidePlaceholder: function( $slide ){
+    const $img = $slide.querySelector('img');
+    if( $img && !$img.classList.contains('loaded') && !$img.classList.contains('placeholder-loaded') ){
+      $img.addEventListener('load', () => {
+        $img.classList.add('placeholder-loaded');
+      }, {once: true});
+      $img.src = $img.getAttribute( 'data-low-src' );
+    }
+  },
   loadSlideImage: function( $slide ){
     const $img = $slide.querySelector('img');
     if( $img && !$img.classList.contains('loaded') ){

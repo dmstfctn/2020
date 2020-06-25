@@ -5,9 +5,9 @@
         <figure>
         {{#if @first}} 
           <img 
-            src="{{content.src}}" 
-            data-src="{{content.src}}" 
-            class="loaded" 
+            src="{{content.lowSrc}}" 
+            data-src="{{content.src}}"
+            data-low-src="{{content.lowSrc}}"
             alt="{{meta.alt}}"
             {{#if meta.size}}
             style="height: {{meta.size}}"
@@ -15,8 +15,9 @@
           >
         {{else}}
           <img 
-            src="{{content.lowSrc}}" 
-            data-src="{{content.src}}" 
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="             
+            data-src="{{content.src}}"
+            data-low-src="{{content.lowSrc}}" 
             alt="{{meta.alt}}"
             {{#if meta.size}}
             style="height: {{meta.size}}"
