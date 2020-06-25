@@ -89,6 +89,7 @@ ProjectSmall.prototype = {
     this.slideIndex--;
     if( this.slideIndex < 0 ){
       this._onCantGoBack();
+      this.slideIndex = 0;
     }
     this.update();
     this._onChange();
