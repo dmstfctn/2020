@@ -20,6 +20,8 @@ const Small = function(){
   this.animations = new SmallAnimations( this.$interactionEle );
   this.data = window.DCSMALL.pages;  
   
+  this.remainingPages = this.data.length
+
   this.pageIndex = this.getPageIndexFor( window.location.pathname );
   this.startPageIndex = this.pageIndex;
   this.completedPageIndices = [];
@@ -101,16 +103,15 @@ Small.prototype.endState = function(){
   alert('END OF SITE');
 }
 
-Small.prototype.projectEnd = function(){
-  console.log('projectEnd');
+Small.prototype.projectEnd = function(){  
   this.completedPageIndices.push( this.pageIndex );
+  this.remainingPages = this.data.length - this.completedPageIndices.length;  
   this.pageIndex++;
   if( this.pageIndex >= this.data.length ){
     this.pageIndex = 0;    
   }
-  console.log('pageIndex: ', this.pageIndex );
-  if( this.completedPageIndices.indexOf( this.pageIndex ) === -1 ){
-    console.log('page not already complete')
+  
+  if( this.completedPageIndices.indexOf( this.pageIndex ) === -1 ){ 
     this.loader.load( F.slashStart( this.data[ this.pageIndex ].url ) );
     this.showLoader();
   } else {
@@ -164,11 +165,12 @@ Small.prototype.setupLoader = function(){
 }
 
 Small.prototype.renderPage = function( data ){
+  const addShowreel = (this.remainingPages === 0);
   document.title = data.title;
   document.documentElement.setAttribute('data-dc-pagetype', data.pagetype );
   this.$mainContent.innerHTML = data.html;
   this.project.deactivate();
-  this.project = new Project();
+  this.project = new Project( addShowreel ); 
   this.project.activate();
   this.setupProjectEvents();
 }

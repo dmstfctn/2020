@@ -12,6 +12,8 @@ const ProjectSmall = function( _includesShowreel ){
   this.slideIndex = 0;
   if( !this.includesShowreel ){
     this.$showreels.classList.add('hide');
+  } else {
+    this.$showreels.classList.remove('hide');
   }
 };
 
