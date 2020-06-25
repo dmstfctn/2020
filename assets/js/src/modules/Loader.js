@@ -1,8 +1,8 @@
 import 'whatwg-fetch';
 
-const Loader = function( triggers ){
+const Loader = function( _triggers ){
   this.loaded = {};
-  this.triggers = triggers;
+  this.triggers = _triggers || [];
 };
 
 Loader.prototype = {

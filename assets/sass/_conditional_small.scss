@@ -14,10 +14,45 @@
   .dc-info{
     letter-spacing: -0.05em;
   }
+  .dc-info--contents{
+    height: calc(100% - env(safe-area-inset-bottom) - 2.6rem);
+  }
+
+  body.dc-loading{
+    &:before{
+      content: 'LOADING';
+      width: 100vw;
+      height: 1rem;
+      text-align: center;
+      font-size: 15vw;
+      display: block;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      color: #FFFFFF;
+      mix-blend-mode: hard-light;
+      border-radius: 50%;
+      z-index: 99;
+    }
+    .dc-main-content{
+      opacity: 0;
+    }
+    .dc-gfx{
+      animation-name: flick-in-out;
+      animation-duration: 3s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+    }
+  }
+
+  .dc-biglist{
+    display: none !important;
+  }
 
   .dc-main-content{
     height: 100%;
-    top: 0;
+    top: 0;   
   }
 
   .dc-external-link{
@@ -97,6 +132,7 @@
       display: none;
     }
     .dc-media--list{
+      margin-top: 0;
       height: 100%;
     }    
       .dc-media--list img{
@@ -113,6 +149,7 @@
       position: absolute;
       top: 0;
       left: 0;
+      z-index: 2
     }
     .dc-media__portrait{
       display: block;
@@ -319,12 +356,10 @@
 }
 
 @media (orientation: landscape){
-  .dc-media__portrait,
-  .dc-showreel__portrait{
+  .dc-media__portrait{
     display: none;
   }
-  .dc-media__landscape,
-  .dc-showreel__landscape{
+  .dc-media__landscape{
     display: block;
   }
 }

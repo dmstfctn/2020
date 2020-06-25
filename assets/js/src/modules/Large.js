@@ -4,7 +4,7 @@ const F = require( './Functions.js' );
 const Loader = require('./Loader.js');
 
 const Menus = require( './Menus.js' );
-const Project = require( './Project.js' );
+const Project = require( './ProjectLarge.js' );
 const HoverImg = require( './HoverImg.js' );
 
 const VisualQuantiser = require( './VisualQuantiser.js' );
