@@ -2,20 +2,11 @@
   {{#each slideshow.slides}}  
     {{#dc_slidetype 'image' this}}
       <li class="dc-media__image">
-        {{#if @first}} 
-          <img 
-            src="{{content.src}}" 
-            data-src="{{content.src}}" 
-            class="loaded" 
-            alt="{{meta.alt}}"            
-          >
-        {{else}}
-          <img 
-            src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" 
-            data-src="{{content.src}}"
-            alt="{{meta.alt}}"
-          >
-        {{/if}}
+        <img 
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" 
+          data-src="{{content.src}}"
+          alt="{{meta.alt}}"
+        >
         <nav class="dc-media--smallnav dc-smallnav">
           <span class="dc-smallnav--prev{{#if nav.left.active}} active{{/if}}">{{nav.left.label}}</span>
           <span class="dc-smallnav--next{{#if nav.right.active}} active{{/if}}">{{nav.right.label}}</span>
