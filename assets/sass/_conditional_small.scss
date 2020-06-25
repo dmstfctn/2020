@@ -14,6 +14,9 @@
   .dc-info{
     letter-spacing: -0.05em;
   }
+  .dc-info--contents{
+    height: calc(100% - env(safe-area-inset-bottom) - 2.6rem);
+  }
 
   body.dc-loading{
     &:before{
