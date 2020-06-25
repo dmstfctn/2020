@@ -1,5 +1,4 @@
 import 'pepjs'
-import ProjectSmall from './ProjectSmall.js';
 
 const CFG = require('./Config.js' );
 const F = require( './Functions.js' );
