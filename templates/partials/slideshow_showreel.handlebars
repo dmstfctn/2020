@@ -7,6 +7,10 @@
           data-src="{{dc_urlpath content.src}}" 
           data-low-src="{{dc_urlpath content.lowSrc}}" 
           alt="{{meta.alt}}"
+          data-srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw== 1w,
+            {{dc_urlpath content.src}} 3000w"
+          data-sizes="(min-width: 900px) 1px, 
+                     100vw"
         >
         <nav class="dc-media--smallnav dc-smallnav">
           <span class="dc-smallnav--prev{{#if nav.left.active}} active{{/if}}">{{nav.left.label}}</span>
