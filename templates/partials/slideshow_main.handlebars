@@ -9,9 +9,13 @@
             data-src="{{content.src}}"
             data-low-src="{{content.lowSrc}}"
             alt="{{meta.alt}}"
+            data-srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw== 1w,
+                        {{content.src}} 3000w"
+            data-sizes="(max-width: 900px) 1px, 
+                        3000px"
             {{#if meta.size}}
             style="height: {{meta.size}}"
-            {{/if}}
+            {{/if}}            
           >
         {{else}}
           <img 
@@ -19,6 +23,10 @@
             data-src="{{content.src}}"
             data-low-src="{{content.lowSrc}}" 
             alt="{{meta.alt}}"
+            data-srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw== 1w,
+                        {{content.src}} 3000w"
+            data-sizes="(max-width: 900px) 1px, 
+                        3000px"
             {{#if meta.size}}
             style="height: {{meta.size}}"
             {{/if}}

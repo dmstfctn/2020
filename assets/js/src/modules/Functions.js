@@ -34,7 +34,8 @@ const Functions = {
       $img.addEventListener('load', () => {
         $img.classList.add('loaded');
       }, {once: true});
-      $img.src = $img.getAttribute( 'data-src' );
+      $img.srcset = $img.getAttribute( 'data-srcset' );
+      $img.sizes = $img.getAttribute( 'data-sizes' );
     }
   },
   loadSlideImages: function( $slides ){
