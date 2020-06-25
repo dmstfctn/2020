@@ -7,9 +7,11 @@ const Orientation = function(){
 Orientation.prototype = {
   activate: function(){
     this.setupMq();
+    this.setupResize();
   },
   deactivate: function(){
     this.clearMq();
+    this.clearResize();
     this.clearRootSize();
   },
   handleMq: function(){
@@ -20,6 +22,16 @@ Orientation.prototype = {
       this.orientation = 'portrait';
     }
     this.sizeRoot();
+  },
+  setupResize: function(){
+    window.addEventListener( 'resize', () => {
+      this.sizeRoot();
+    } );
+  },
+  clearResize: function(){
+    window.removeEventListener( 'resize', () => {
+      this.sizeRoot();
+    } );
   },
   setupMq: function(){
     this.mqLandscape.addListener( () => { this.handleMq() } );
