@@ -1,7 +1,7 @@
 const fs = require('fs-extra');
 const path = require('path');
 
-const Jimp = require('jimp');
+const sharp = require('sharp');
 
 const Config = require('../Config.js');
 
@@ -14,17 +14,15 @@ const createLowResAndSave = (imagePath, savePath) => {
     fs.copyFileSync( imagePath, savePath );
     return;
   } 
-  Jimp.read( imagePath).then( img => {
-    img
-      .scaleToFit(100,100)
-      //.blur( 1 )
-      //.resize( 200, Jimp.AUTO ) //alt
-      .write( savePath );
-
-  })
-  .catch( err => {
-    Config.log( 'Error Loading Image in CreateLowResAndSave() in Rendering.js ', err );
-  })
+  sharp( imagePath )
+    .resize( 100, 100, {
+      fit: sharp.fit.inside,
+      withoutEnlargement: true
+    })
+    .toFile( savePath )
+    .catch( err => {
+      Config.log( 'Error with Image in CreateLowResAndSave() in Rendering.js ', err );
+    });
 };
 
 const moveSlideshowContent = ( slideshows ) => {
