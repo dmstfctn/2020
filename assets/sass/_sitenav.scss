@@ -71,12 +71,6 @@
       html[data-dc-pagetype="home"][data-dc-homeactive="focus-groups"] .dc-sitenav a[href="/mmittee/focus-groups"],
       html[data-dc-pagetype="focusgroup"] .dc-sitenav a[href="/mmittee/focus-groups"]{
         color: #FFFFFF;        
-      }      
-      html[data-dc-pagetype="home"][data-dc-homeactive="focus-groups"] .dc-sitenav a[href="/mmittee/focus-groups"],
-      html[data-dc-pagetype="home"][data-dc-homeactive="related-matters"] .dc-sitenav a[href="/mmittee"],
-      html[data-dc-pagetype="home"][data-dc-homeactive="dissemination"] .dc-sitenav a[href="/mmittee/dissemination"],
-      html[data-dc-pagetype="home"][data-dc-homeactive="info"] .dc-sitenav a[href="/mmittee/info"]{
-        pointer-events: none;
       }
 
 .dc-sitenav a[data-dc-localtarget="#focus-groups"]{
