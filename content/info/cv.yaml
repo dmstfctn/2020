@@ -21,53 +21,65 @@
 
 # ## YEAR ######################
 # ## YEAR ## solo ##############
-# ## YEAR ## group shows #######
-# ## YEAR ## screenings ########
+# ## YEAR ## group show #######
+# ## YEAR ## screening ########
 # ## YEAR ## live ##############
 # ## YEAR ## talk ##############
 # ## YEAR ## dissemination #####
 
+# ########## 2021 ########## #
+# ## YEAR ## live ##############
+- now: true
+  year: 2021
+  type: live
+  date: 6.1
+  title: INTERFACE CHAOS LIVE
+  situation: CAFE OTO
+  location: london
+  url: https://www.cafeoto.co.uk/
+  image: 
+  related: 
+
 # ########## 2020 ########## #
 
 # ## 2020 ## solo ############## #
-- now: true
+- now: false
   year: 2020
   type: solo
   date: 23.3
   title: OFFSHORE MATTERS
   situation: AKSIOMA
   location: ljubljana
-  url: https://aksioma.org/
+  url: 
   image: offshore-matters.jpg
   related: Offshore Investigation Vehicle
-
-# ## 2020 ## talk ############## #
-- now: true
-  year: 2020
-  type: talk
-  date: 15.6
-  title: TAX HAVENS, NORMALIZED GRAND THEFT
-  situation: AKSIOMA
-  location: ljubljana
-  url: https://aksioma.org/moneylab8/
-  image: offshore-matters.jpg
-  related:
-    - Offshore Investigation Vehicle
-    - Offshore Spring Summer
 
 # ## 2020 ## live ############## #
 - now: false
   year: 2020
   type: live
   date: 29.1
-  title: CTM LIMINAL x TRANSMEDIALE 2020
+  title: CTM 2020 x TRANSMEDIALE
   situation: BERGHAIN
   location: berlin
   url: 
   image: echo-fx-berghain.jpg
   related: ECHO FX
 
-# ## 2020 ## screenings ######## #
+
+# ## 2020 ## screening ######## #
+# ## 2020 ## dissemination ##### #
+- now: false
+  year: 2020
+  type: screening
+  date: 29.1
+  title: "DOC #5: INTERFACE CHAOS"
+  situation: NERO
+  location: 
+  url: https://www.neroeditions.com/docs/interface-chaos/
+  image:
+  related:
+
 - now: false
   year: 2020
   type: screening
@@ -77,21 +89,37 @@
   location: graz
   url: 
   image: 
-  related: INTERFACE CHAOS
+  related:
 
-# ## 2020 ## dissemination ##### #
+  # ## 2020 ## talk ############## #
+
 - now: false
   year: 2020
-  type: dissemination
-  date: 29.1
-  title: INTERFACE CHAOS
-  situation: NERO&thinsp;
-  location: 
-  url: https://www.neroeditions.com/docs/interface-chaos/
-  image:
-  related: INTERFACE CHAOS
+  type: talk
+  date: 
+  title: "Moneylab #8"
+  situation: AKSIOMA
+  location:
+  url:
+  image: 
+  related:
+    - Offshore Investigation Vehicle
+    - Offshore SS18
 
-# ## 2020 ## group shows ####### #
+
+# ## 2020 ## focus group ############## #
+
+- now: false
+  year: 2020
+  type: focus group
+  date: 
+  title: BA ARCHITECTURE
+  situation: RAVENSBOURNE UNIVERSITY
+  location: london
+  url: 
+  image:
+  related: 
+
 # ############################## #
 # ############################## #
 
@@ -108,33 +136,44 @@
   image: 
   related: Network Ensemble
 
-# ## 2019 ## group shows ####### #
+# ## 2019 ## group show ####### #
 - now: false
   year: 2019
-  type: group shows
+  type: group show
   date: 
   title: PORTO DESIGN BIENNALE
   situation: TRINDADE
   location: porto
   url: 
   image: 
-  related: INTERFACE CHAOS
+  related:
 
 - now: false
   year: 2019
-  type: group shows
+  type: group show
   date: 
   title: A SCHOOL OF SCHOOLS
-  situation: C–MINE, genk, LUMA ARLES, arles
-  location: 
+  situation: C–MINE
+  location: genk
   url: 
   image: 
   related: OFFSHORE SS18
 
-# ## 2019 ## screenings ######## #    
 - now: false
   year: 2019
-  type: screenings
+  type: group show
+  date: 
+  title: A SCHOOL OF SCHOOLS
+  situation: LUMA ARLES
+  location: arles
+  url: 
+  image: 
+  related: OFFSHORE SS18
+
+# ## 2019 ## screening ######## #    
+- now: false
+  year: 2019
+  type: screening
   date: 
   title: Ø.29
   situation: CORSICA STUDIOS
@@ -145,36 +184,36 @@
 
 - now: false
   year: 2019
-  type: screenings
+  type: screening
   date: 
   title: INTERFACE CHAOS
   situation: TRUST
   location: berlin
   url: 
   image: 
-  related: INTERFACE CHAOS
+  related:
 
 - now: false
   year: 2019
-  type: screenings
+  type: screening
   date: 
   title: EMERGENCE
   situation: LCC
   location: london
   url: 
   image: 
-  related: INTERFACE CHAOS
+  related:
 
 - now: false
   year: 2019
-  type: screenings
+  type: screening
   date: 
   title: ANTIUNIVERSITY NOW
   situation: THE MONTPELIER
   location: london
   url: 
   image: 
-  related: INTERFACE CHAOS
+  related:
 
 # ## 2019 ## live ############## #
 - now: false
@@ -189,10 +228,23 @@
   related: 
 
 # ## 2019 ## talk ############## #
+
+# ## 2019 ## residency ############## #
+- now: false
+  year: 2019
+  type: residency
+  date: 
+  title: DESIGN SYSTEMS
+  situation: SHARED INSTITUTE
+  location: porto
+  url: 
+  image:
+  related: 
+
 # ## 2019 ## dissemination ##### #
 - now: false
   year: 2019
-  type: dissemination
+  type: release
   date: 
   title: Flash Demons
   situation: MILLE PLATEAUX
@@ -203,16 +255,37 @@
     - FLASH
     - Demons
 
-# ############################## #
-# ############################## #
+# ## 2019 ## focus group ############## #
+
+- now: false
+  year: 2019
+  type: focus group
+  date: 
+  title: MA VISUAL COMMUNICATION
+  situation: WEISENSEE
+  location: berlin
+  url: 
+  image:
+  related: 
+
+- now: false
+  year: 2019
+  type: focus group
+  date: 
+  title: MA GRAPHIC MEDIA DESIGN
+  situation: LCC
+  location: london
+  url: 
+  image:
+  related: 
 
 # ## 2018 ###################### #
 # ## 2018 ## solo ############## #
-# ## 2018 ## group shows ####### #
+# ## 2018 ## group show ####### #
 
 - now: false
   year: 2018
-  type: group shows
+  type: group show
   date: 
   title: Projected.Capital
   situation: ROEHRS & BOETSCH
@@ -223,7 +296,7 @@
 
 - now: false
   year: 2018
-  type: group shows
+  type: group show
   date: 
   title: 4th Istanbul Design Biennale
   situation: ARTER
@@ -234,7 +307,7 @@
 
 - now: false
   year: 2018
-  type: group shows
+  type: group show
   date: 
   title: Situations/Infrastructure
   situation: FOTOMUSEUM WINTERTHUR
@@ -245,16 +318,16 @@
 
 - now: false
   year: 2018
-  type: group shows
+  type: group show
   date: 
   title: transmediale face value
-  situation: HAUS DER KULTUREN DER WELT
+  situation: HKW
   location: berlin
   url: 
   image: 
   related: 
 
-# ## 2018 ## screenings ######## #
+# ## 2018 ## screening ######## #
 # ## 2018 ## live ############## #
 - now: false
   year: 2018
@@ -289,23 +362,13 @@
   image: 
   related: 
 
-- now: false
-  year: 2018
-  type: live
-  date: 
-  title: transmediale face value
-  situation: HAUS DER KULTUREN DER WELT
-  location: berlin
-  url: 
-  image: 
-  related: 
 
 # ## 2018 ## talk ############## #
 - now: false
   year: 2018
   type: talk
   date: 
-  title: "IMPAKT Festival: Algorithmic Superstructures"
+  title: IMPAKT Festival
   situation: HET HUIS
   location: utrecht
   url: 
@@ -338,7 +401,7 @@
   year: 2018
   type: talk
   date: 
-  title: Something or Other. Practicing Platforms.
+  title: Something or Other
   situation: LCC
   location: london
   url: 
@@ -370,7 +433,7 @@
 # ## 2018 ## dissemination ##### #
 - now: false
   year: 2018
-  type: dissemination
+  type: interview
   date: 
   title: BUON PARADISO FISCALE A TUTTI
   situation: NOT
@@ -381,7 +444,7 @@
 
 - now: false
   year: 2018
-  type: dissemination
+  type: writing
   date: 
   title: A DAY IN THE LIFE OF
   situation: SCHLOSS-POST
@@ -392,7 +455,7 @@
 
 - now: false
   year: 2018
-  type: dissemination
+  type: writing
   date: 
   title: THE OFFSHORE ECONOMIST
   situation: RIZOSFERA
@@ -401,32 +464,20 @@
   image:
   related: Offshore Investigation Vehicle
 
+# ## 2018 ## focus group ####### #
+- now: false
+  year: 2018
+  type: focus group
+  date: 
+  title: "MONEYLAB #8"
+  situation: SOMERSET HOUSE
+  location: london
+  url: 
+  image:
+  related: 
+
+
 # ## 2017 ###################### #
-# ## 2017 ## solo ############## #
-# ## 2017 ## group shows ####### #
-- now: false
-  year: 2017
-  type: group shows
-  date: 
-  title: the influencers
-  situation: CCCB
-  location: barcelona
-  url:
-  image:
-  related:
-
-- now: false
-  year: 2017
-  type: group shows
-  date: 
-  title: Rundgang 2017
-  situation: UNIVERSITÄT DER KÜNSTE
-  location: berlin
-  url:
-  image:
-  related:
-
-# ## 2017 ## screenings ######## #
 # ## 2017 ## live ############## #
 - now: false
   year: 2017
@@ -439,11 +490,82 @@
   image:
   related:
 
-# ## 2017 ## talk ############## #
+- now: false
+  year: 2017
+  type: live
+  date: 
+  title: Inside Terrain Vague
+  situation: UMLAUT
+  location: london
+  url:
+  image:
+  related:
+
+# ## 2017 ## group show ####### #
+- now: false
+  year: 2017
+  type: group show
+  date: 
+  title: the influencers
+  situation: CCCB
+  location: barcelona
+  url:
+  image:
+  related: OFFSHORE SS18
+
+# ## 2017 ## talk ####### #
+- now: false
+  year: 2017
+  type: talk
+  date: 
+  title: MA GMD guest practitioner series
+  situation: LCC
+  location: london
+  url:
+  image:
+  related: OFFSHORE SS18
+
+# ## 2017 ## residency ############## #
+- now: false
+  year: 2017
+  type: residency
+  date: 
+  title: Vilem Flusser Residency Program
+  situation: TRANSMEDIALE
+  location: berlin
+  url:
+  image:
+  related: 
+    - Offshore Investigation Vehicle
+    - OFFSHORE SS18
+
+# ## 2017 ## focus group ##### #
+- now: false
+  year: 2017
+  type: focus group
+  date: 
+  title: london design festival
+  situation: LCC
+  location: london
+  url: 
+  image:
+  related: 
+
+- now: false
+  year: 2017
+  type: focus group
+  date: 
+  title: Vilem Flusser Residency Program
+  situation: PRETIUMOFFICES
+  location: berlin
+  url: 
+  image:
+  related: 
+
 # ## 2017 ## dissemination ##### #
 - now: false
   year: 2017
-  type: dissemination
+  type: release
   date: 
   title: SELECTED NETWORK STUDIES
   situation: NUKFM
@@ -452,23 +574,42 @@
   image:
   related:
     - Network Ensemble
-    - Selected Network Studies
+    - Network Studies
 
 # ## 2016 ###################### #
-# ## 2016 ## solo ############## #
-# ## 2016 ## group shows ####### #
-# ## 2016 ## screenings ######## #
-# ## 2016 ## live ############## #
-# ## 2016 ## talk ############## #
+# ## 2016 ## screening ############## #
+- now: false
+  year: 2016
+  type: screening
+  date: 
+  title: DELEUZE STUDIES CONFERENCE
+  situation: ROMA TRE UNIVERISTY
+  location: rome
+  url: 
+  image:
+  related: Network Studies
+
+# ## 2016 ## focus group ############## #
+
+- now: false
+  year: 2016
+  type: focus group
+  date: 
+  title: OFFSHORE ROUNDTABLE
+  situation: RAVENSBOURNE UNIVERSITY
+  location: london
+  url: 
+  image:
+  related: 
+
 # ## 2016 ## dissemination ##### #
 - now: false
   year: 2016
-  type: dissemination
+  type: release
   date: 
   title: CHAOS VARIATION I
   situation: NUKFM
   location: 
   url: https://networkensemble.bandcamp.com/album/chaos-variation-i
   image:
-  related: 
-    - Network Ensemble
+  related: Network Ensemble
