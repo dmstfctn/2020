@@ -73,21 +73,20 @@
         color: #FFFFFF;        
       }
 
-.dc-sitenav a[data-dc-localtarget="#focus-groups"]{
+.dc-sitenav--entry__focus-groups{
   order: 1;
   flex-shrink: 1;
   width: 10em;
 }
 
-.dc-sitenav a[data-dc-localtarget="#related-matters"]{
+.dc-sitenav--entry__related-matters{
   order: 2;
   flex-grow:2;
   text-align: center;
   font-size: 0;
 } 
 
-
-.dc-sitenav a[data-dc-localtarget="#info"]{
+.dc-sitenav--entry__info{
   order: 3;
   flex-shrink:1;
   text-align: right;
