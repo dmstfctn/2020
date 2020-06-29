@@ -42,18 +42,6 @@
 
 # ########## 2020 ########## #
 
-# ## 2020 ## solo ############## #
-- now: false
-  year: 2020
-  type: solo
-  date: 23.3
-  title: OFFSHORE MATTERS
-  situation: AKSIOMA
-  location: ljubljana
-  url: 
-  image: offshore-matters.jpg
-  related: Offshore Investigation Vehicle
-
 # ## 2020 ## live ############## #
 - now: false
   year: 2020
@@ -66,8 +54,18 @@
   image: echo-fx-berghain.jpg
   related: ECHO FX
 
+# ## 2020 ## solo ############## #
+- now: false
+  year: 2020
+  type: solo
+  date: 23.3
+  title: OFFSHORE MATTERS
+  situation: AKSIOMA
+  location: ljubljana
+  url: 
+  image: offshore-matters.jpg
+  related: Offshore Investigation Vehicle
 
-# ## 2020 ## screening ######## #
 # ## 2020 ## dissemination ##### #
 - now: false
   year: 2020
@@ -80,6 +78,7 @@
   image:
   related:
 
+# ## 2020 ## screening ######## #
 - now: false
   year: 2020
   type: screening
@@ -88,7 +87,7 @@
   situation: FORUM STADTPARK
   location: graz
   url: 
-  image: 
+  image: interface-chaos-gratz.JPG
   related:
 
   # ## 2020 ## talk ############## #
@@ -100,7 +99,7 @@
   title: "Moneylab #8"
   situation: AKSIOMA
   location:
-  url:
+  url: https://www.youtube.com/watch?v=1_R4hy5g0jo
   image: 
   related:
     - Offshore Investigation Vehicle
@@ -117,7 +116,7 @@
   situation: RAVENSBOURNE UNIVERSITY
   location: london
   url: 
-  image:
+  image: plane-of-theseus.jpg
   related: 
 
 # ############################## #
@@ -133,7 +132,7 @@
   situation: GLUQBAR
   location: milan
   url: 
-  image: 
+  image: gluqbar.jpg
   related: Network Ensemble
 
 # ## 2019 ## group show ####### #
@@ -145,7 +144,7 @@
   situation: TRINDADE
   location: porto
   url: 
-  image: 
+  image: porto-biennale.jpg
   related:
 
 - now: false
@@ -153,7 +152,7 @@
   type: group show
   date: 
   title: A SCHOOL OF SCHOOLS
-  situation: C–MINE
+  situation: C-MINE
   location: genk
   url: 
   image: 
