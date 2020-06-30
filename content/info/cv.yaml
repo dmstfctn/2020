@@ -63,7 +63,7 @@
   situation: AKSIOMA
   location: ljubljana
   url: 
-  image: offshore-matters.jpg
+  image: offshore-matters-aksioma.jpg
   related: Offshore Investigation Vehicle
 
 # ## 2020 ## dissemination ##### #
@@ -87,7 +87,7 @@
   situation: FORUM STADTPARK
   location: graz
   url: 
-  image: interface-chaos-gratz.JPG
+  image: interface-chaos-graz.JPG
   related:
 
   # ## 2020 ## talk ############## #
@@ -145,7 +145,7 @@
   situation: GLUQBAR
   location: milan
   url: 
-  image: gluqbar.jpg
+  image: network-ensemble-gluqbar.jpg
   related: Network Ensemble
 
 # ## 2019 ## group show ####### #
@@ -157,7 +157,7 @@
   situation: TRINDADE
   location: porto
   url: 
-  image: porto-biennale.jpg
+  image: chaos-of-interfaces-porto-biennale.jpg
   related:
 
 - now: false
@@ -191,7 +191,7 @@
   situation: CORSICA STUDIOS
   location: london
   url: 
-  image: 
+  image: echo-fx-corsica-studios.jpg
   related: ECHO FX
 
 - now: false
@@ -202,7 +202,7 @@
   situation: TRUST
   location: berlin
   url: 
-  image: 
+  image: interface-chaos-discussion-trust.jpg
   related:
 
 - now: false
