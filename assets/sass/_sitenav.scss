@@ -144,14 +144,17 @@
   }
   .dc-work--year h2{
     position: relative;
-    margin: 0 .075em 0 0;
+    padding: 0 .09em 0 0;
     color: #FF0000;
     white-space: nowrap;    
+    -webkit-transform:translate3d(0,0,0);
+    -webkit-transform-style: preserve-3d;     
   }
   .dc-work--year .dc-work--items{
     flex-grow: 2;
     display: flex;
-    justify-content: space-between;    
+    justify-content: space-between;  
+    position: relative;  
   }   
     .dc-work--year .dc-work--items > *::after{
       color: #FFFFFF;

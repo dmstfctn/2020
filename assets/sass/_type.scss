@@ -42,7 +42,9 @@ html{
   letter-spacing: -0.03em;
 }
   .dctxt--date--hyphen{
-    margin: 0 0.05em;
+    padding: 0 0.05em;
+    -webkit-transform:translate3d(0,0,0);
+    -webkit-transform-style: preserve-3d;
   }
 
 .dctxt--at{
