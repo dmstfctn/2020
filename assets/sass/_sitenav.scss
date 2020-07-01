@@ -74,8 +74,9 @@
       }
 
 .dc-sitenav--entry__focus-groups{
-  order: 1;
+  order: 3;
   flex-shrink: 1;
+  text-align: right;
   width: 10em;
 }
 
@@ -87,9 +88,8 @@
 } 
 
 .dc-sitenav--entry__info{
-  order: 3;
-  flex-shrink:1;
-  text-align: right;
+  order: 1;
+  flex-shrink:1;  
   width: 10em;
 }
 
