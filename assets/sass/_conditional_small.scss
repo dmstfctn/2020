@@ -45,7 +45,15 @@
       animation-iteration-count: infinite;
     }
   }
-
+  .dc-external-link,
+  a[href^="mailto:"],
+  a[href^="http"]{
+    padding-right: 0;
+    &::before{
+      display: none;
+    }
+  }
+ 
   .dc-biglist{
     display: none !important;
   }
