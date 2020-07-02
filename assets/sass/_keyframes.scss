@@ -21,3 +21,14 @@
     transform: translateX(50%);
   }
 }
+@keyframes gfx-blur-fade{
+  0%{
+    opacity: 0.81;
+  }
+  50%{
+    opacity: 0.01;
+  }
+  100%{
+    opacity: 0.81;
+  }
+}

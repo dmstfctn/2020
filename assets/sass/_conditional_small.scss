@@ -349,8 +349,19 @@
     transform: translateX(-50%) translateY(-50%) rotate(-90deg);
     z-index: 60;
     pointer-events: all;
-    & svg{
+    svg{
       pointer-events: none;
+      #phone-blur,
+      #phone-fill{
+        display: initial;
+      }
+      #phone-blur{
+        animation-delay: 1.5s;
+        animation-name: gfx-blur-fade;
+        animation-duration: 7s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
     }
     &.hidden{
       pointer-events: none;

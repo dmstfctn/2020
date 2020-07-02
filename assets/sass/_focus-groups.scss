@@ -30,12 +30,6 @@ html[data-dc-pagetype="focusgroup"]{
     }
   }
   .dc-gfx{
-    // .dc-edit-fill{
-    //   fill: #FF0000;
-    // }
-    // .dc-edit-stroke{
-    //   stroke: #FF0000;
-    // }
     svg{
       #red-stroke,
       #red-stroke-2,
@@ -53,6 +47,12 @@ html[data-dc-pagetype="focusgroup"]{
       }
       #red-fill{
         fill: #FC0000;
+      }
+      #phone-blur{
+        fill: #c43131;
+      }
+      #phone-fill{
+        fill: #ff0000;
       }
     }
   }
