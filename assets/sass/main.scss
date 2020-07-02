@@ -38,6 +38,19 @@ $dc_site_padding_left: .8rem;
 [data-dc-pagetype="focusgroup"] a::-moz-selection{
   color: #FFFFFF;
 }
+[data-dc-homeactive="focus-groups"] ::-moz-selection{
+  color: #FFFFFF;
+}
+[data-dc-homeactive="focus-groups"] ::selection{
+  color: #FFFFFF;
+}
+[data-dc-homeactive="focus-groups"] a::selection{
+  color: #FFFFFF;
+}
+[data-dc-homeactive="focus-groups"] a::-moz-selection{
+  color: #FFFFFF;
+}
+
 .dots::selection{
   color: #FFFFFF;
 }
