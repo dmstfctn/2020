@@ -49,6 +49,10 @@ Small.prototype._onLoadingComplete = function(){
 }
 Small.prototype.onLoadingComplete = function(){ /* ... override ... */ };
 
+Small.prototype._onEndInteraction = function(){
+  this.onEndInteraction();
+}
+Small.prototype.onEndInteraction = function(){ /* ... override ... */ };
 
 /* Utilities / Data */
 Small.prototype.getPageIndexFor = function( _path ){
@@ -92,6 +96,7 @@ Small.prototype.deactivate = function(){
 Small.prototype.setupInteraction = function(){
   this.$interactionEle.addEventListener( 'pointerdown', ( e ) => {
     if( this.ended ){
+      this._onEndInteraction();
       return;
     }
     if(e.pageX >= window.innerWidth / 2){
@@ -103,8 +108,9 @@ Small.prototype.setupInteraction = function(){
 };
 
 Small.prototype.endState = function(){
+  console.log('SMALL, start end state');
   this.ended = true;
-  alert('END OF SITE');
+  document.body.classList.add('dc-small--end-state'); 
 }
 
 Small.prototype.projectEnd = function(){  

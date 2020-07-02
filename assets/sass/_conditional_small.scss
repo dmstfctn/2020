@@ -26,6 +26,15 @@
       animation-iteration-count: infinite;
     }
   }
+  body.dc-small--end-state{
+    .dc-info,
+    .dc-main-content{
+      opacity: 0;
+    }
+    .dc-gfx{
+      opacity: 1;
+    }
+  }
   .dc-external-link,
   a[href^="mailto:"],
   a[href^="http"]{

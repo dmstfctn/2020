@@ -42,6 +42,10 @@ DC.small.onLoadingComplete = function(){
   gfx.endLoadingSequence();
 }
 
+DC.small.onEndInteraction = function(){
+  gfx.removeLayer();
+}
+
 window.DC = DC;
 window.DC_GFX = gfx;
 

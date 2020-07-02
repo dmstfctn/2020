@@ -135,6 +135,14 @@ GFX.prototype = {
   endLoadingSequence: function(){
     this.unhidable = false;
     this.hide();
+  },
+  removeLayer: function(){
+    this.layerToRemove = this.layerToRemove || 1;
+    let $remove = this.$gfx.querySelector(`svg > :nth-child(${this.layerToRemove})`);
+    if( $remove ){
+      $remove.style.display = 'none';
+      this.layerToRemove++;
+    }
   }
 };
 
