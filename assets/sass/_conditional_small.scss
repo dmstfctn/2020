@@ -21,10 +21,11 @@
   body.dc-loading{
     pointer-events: none;
     .dc-gfx{
-      animation-name: flick-in-out;
-      animation-duration: 3s;
-      animation-timing-function: ease-in-out;
-      animation-iteration-count: infinite;
+      // animation-name: flick-in-out;
+      // animation-duration: 3s;
+      // animation-timing-function: ease-in-out;
+      // animation-iteration-count: infinite;
+      opacity: 1;
     }
   }
   body.dc-small--end-state{
