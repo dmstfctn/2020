@@ -18,26 +18,7 @@
     height: calc(100% - env(safe-area-inset-bottom) - 2.6rem);
   }
 
-  body.dc-loading{
-    &:before{
-      content: 'LOADING';
-      width: 100vw;
-      height: 1rem;
-      text-align: center;
-      font-size: 15vw;
-      display: block;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translateX(-50%) translateY(-50%);
-      color: #FFFFFF;
-      mix-blend-mode: hard-light;
-      border-radius: 50%;
-      z-index: 99;
-    }
-    .dc-main-content{
-      opacity: 0;
-    }
+  body.dc-loading{    
     .dc-gfx{
       animation-name: flick-in-out;
       animation-duration: 3s;
@@ -221,7 +202,7 @@
     float: none;
     width: auto;
   }
-  .dc-cv--entry[data-dc-cv-priority="1"]{
+  .dc-info .dc-cv--entry[data-dc-cv-priority="1"]{
     display: none;
   }
     .dc-cv--title{
