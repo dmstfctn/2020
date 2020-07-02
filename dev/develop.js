@@ -49,7 +49,8 @@ chokidar.watch(
     './templates',
     './modules',
     './build.js',
-    './package.json'
+    './package.json',
+    './htaccess'
   ], 
   {
     ignored: ['./templates/partials/svg_*.handlebars']

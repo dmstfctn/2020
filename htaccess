@@ -1,0 +1,27 @@
+Header add Cache-Control "max-age=1"
+
+AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript
+
+RewriteEngine On
+RewriteRule ^mmittee/ - [L]
+RewriteRule ^mmittee mmittee/ [L]
+RewriteRule ^(.*) /mmittee/$1 [R=301,L]
+
+<FilesMatch "\.(html)$">
+  Header add x-dc-0 "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+  Header add x-dc-1 "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+  Header add x-dc-2 "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+  Header add x-dc-3 "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+  Header add x-dc-4 "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+  Header add x-dc-5 "@@@@@@@@@@@@@@@@@@@@@#Q@WQQ@@@@@"
+  Header add x-dc-6 "@@@@@@Q         f@D,       z@@@@"
+  Header add x-dc-7 "@@@@@@=   JZ^   ;#   _*uyjx@@@@@"
+  Header add x-dc-8 "@@@@@N   ;@@^   K!   m@@@@@@@@@@"
+  Header add x-dc-9 "@@@@@;         I@_       _@@@@@@"
+  Header add x-dc-a "@@@@@@@@@@@@@6Q@@QSQQQQQQN@@@@@@"
+  Header add x-dc-b "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+  Header add x-dc-c "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+  Header add x-dc-d "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+  Header add x-dc-e "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+  Header add x-dc-f "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+</FilesMatch>

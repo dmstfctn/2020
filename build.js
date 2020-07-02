@@ -125,6 +125,10 @@ fs.writeFileSync(
   (Config.minifyHTML) ? HTMLO(Templates.main( renderHomeInfo )) : Templates.main( renderHomeInfo )
 );
 
+/* move .htaccess into public */
+fs.copySync('htaccess', path.join(Config.paths.public_root, '.htaccess') );
+
+
 /* write an index.html with link to /mmitte (or whatever url_root....) */
 fs.writeFileSync( 
   path.join( Config.paths.public_root, 'index.html' ), 
