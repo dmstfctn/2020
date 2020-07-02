@@ -1,4 +1,5 @@
 const F = require('./Functions.js');
+const PopOutWindow = require('./PopOutWindow.js');
 
 const GFX = function(){
   this.$nav_logo = document.querySelector('[data-dc-localtarget="#related-matters"] svg' );
@@ -44,7 +45,9 @@ GFX.prototype = {
     this.timeout = setTimeout( () => {
       this.show( true );
     }, this.useShowDelay );
-
+    if( this.firstUserHide ){
+      this._onFirstHide();
+    }
     this.firstUserHide = false;
     if( immediate ){
       this.enableAnimation();
@@ -143,7 +146,11 @@ GFX.prototype = {
       $remove.style.display = 'none';
       this.layerToRemove++;
     }
-  }
+  },
+  _onFirstHide: function(){
+    this.onFirstHide();
+  },
+  onFirstHide: function(){ /* ... override ... */ }
 };
 
 module.exports = GFX;

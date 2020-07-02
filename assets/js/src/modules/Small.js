@@ -81,8 +81,7 @@ Small.prototype.shouldShowreel = function(){
 
 /* Activate / Deactivate */
 Small.prototype.activate = function(){    
-  this.orientation.activate();  
-  this.animations.readyForwardHint();
+  this.orientation.activate();
   this.project.activate();
 }
 

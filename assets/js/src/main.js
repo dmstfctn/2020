@@ -46,6 +46,10 @@ DC.small.onEndInteraction = function(){
   gfx.removeLayer();
 }
 
+gfx.onFirstHide = function(){
+  DC.small.animations.readyForwardHint();
+}
+
 window.DC = DC;
 window.DC_GFX = gfx;
 

@@ -22,7 +22,7 @@ SmallAnimations.prototype = {
     this.clearForwardHintTimeout();
     this.forwardHintTimeout = setTimeout(() => {
       this.$ele.classList.add('go-further');
-    }, 14000 );
+    }, 10000 );
   },
   cancelForwardHint: function(){
     this.clearForwardHintTimeout();
