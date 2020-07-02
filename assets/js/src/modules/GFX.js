@@ -81,11 +81,13 @@ GFX.prototype = {
   },
   activate: function(){
     let visibilityAPI = F.visibilityChangeCompat();
-
+    console.log('GFX.js -> activate() -> addEventListeners ')
     window.addEventListener('wheel', () => {
+      console.log('GFX.js -> activate() -> EVENT: wheel ')
       this._onMove();
     }, {passive: true} );
     window.addEventListener('keydown', ( e ) => {
+      console.log('GFX.js -> activate() -> EVENT: keydown ')
       if( 
         e.key === 'ArrowDown' || e.key === 'ArrowUp' 
         || e.key === 'ArrowLeft' || e.key === 'ArrowRight' 
@@ -94,6 +96,7 @@ GFX.prototype = {
       }      
     });
     window.addEventListener('pointermove', () => {
+      console.log('GFX.js -> activate() -> EVENT: pointermove ')
       if( this.ignoreFirstPointerMove ){
         this.ignoreFirstPointerMove = false;
         return;
@@ -102,6 +105,7 @@ GFX.prototype = {
       this._onMove();
     });
     window.addEventListener('pointerdown', () => {
+      console.log('GFX.js -> activate() -> EVENT: pointerdown ')
       this._onMove();
     });
     // window.addEventListener('click', () => {
