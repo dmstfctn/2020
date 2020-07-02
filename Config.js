@@ -8,9 +8,9 @@ let Config = {
     local_port: 8080
   },
   debug: false,
-  minify: false,
+  minify: true,
   minifyHTML: true,
-  resizeImages: false, 
+  resizeImages: true, 
   url_root: url_root,
   paths: {
     public_root: public_root,
