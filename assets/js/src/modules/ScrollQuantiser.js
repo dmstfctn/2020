@@ -31,6 +31,32 @@ ScrollQuantiser.prototype = {
       this._onScroll( e.deltaY );
     }, {passive: true} );
 
+    this.$ele.addEventListener( 'touchstart', (e) => {
+      this.touchID = this.touchID || e.changedTouches[0].identifier;
+      this.pTouch = e.changedTouches[0];
+    });
+    this.$ele.addEventListener( 'touchmove', (e) => {
+      for( let i = 0; i < e.changedTouches.length; i++ ){
+        let touch = e.changedTouches[i];
+        if( touch.identifier === this.touchID ){          
+          let deltaY = this.pTouch.pageY - touch.pageY;
+          this._onScroll( deltaY );
+          this.pTouch = touch;
+        }
+      }
+    }, {passive: true} );
+    this.$ele.addEventListener( 'touchend', (e) => {
+      for( let i = 0; i < e.changedTouches.length; i++ ){
+        let touch = e.changedTouches[i];
+        if( touch.identifier === this.touchID ){
+          let deltaY = this.pTouch.pageY - touch.pageY;
+          this._onScroll( deltaY );
+          this.pTouch = null;
+          this.touchID = null;
+        }
+      }
+      console.log('touchend: ', e );
+    });
     window.addEventListener('keydown', ( e ) => {
       if( e.key === 'ArrowDown' ){
         this._onKey( 1 );

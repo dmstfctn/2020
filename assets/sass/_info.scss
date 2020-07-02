@@ -45,6 +45,7 @@
     flex-grow: 0;
     flex-shrink: 2;
     height: 100%;
+    touch-action: none;
   }
     .quantised-scroller--wrapper{
       overflow: hidden;

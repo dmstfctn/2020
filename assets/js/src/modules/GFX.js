@@ -102,10 +102,9 @@ GFX.prototype = {
       console.log('GFX.js -> activate() -> EVENT: pointermove ')
       if( this.ignoreFirstPointerMove ){
         this.ignoreFirstPointerMove = false;
-        return;
+      } else {
+        this._onMove();
       }
-      
-      this._onMove();
     });
     window.addEventListener('pointerdown', () => {
       console.log('GFX.js -> activate() -> EVENT: pointerdown ')
