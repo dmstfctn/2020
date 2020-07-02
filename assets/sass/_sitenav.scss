@@ -23,15 +23,19 @@
   }
 
     .dc-sitenav a[data-dc-localtarget="#related-matters"]{ 
+      $svg_scale: 4;
       svg{
         display: block;
-        width: 3.5rem;
-        height: 2.5rem;
+        width: 3.5rem * $svg_scale;
+        height: 2.5rem * $svg_scale;
         content: '';
         position: absolute;
         top: 0;
         left:50%;
-        transform: translateX(-50%);
+        transform:  translateX(-50%) 
+                    translateZ(0) 
+                    scale( 1 / $svg_scale ) 
+                    translateY( ( $svg_scale - 1 ) * -50% );
         path[fill]{
           fill: #FFFFFF !important;
         }
