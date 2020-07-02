@@ -18,7 +18,8 @@
     height: calc(100% - env(safe-area-inset-bottom) - 2.6rem);
   }
 
-  body.dc-loading{    
+  body.dc-loading{
+    pointer-events: none;
     .dc-gfx{
       animation-name: flick-in-out;
       animation-duration: 3s;
