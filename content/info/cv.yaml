@@ -189,7 +189,7 @@
   type: group show
   date: 
   title: A SCHOOL OF SCHOOLS
-  situation: LUMA ARLES
+  situation: LUMA
   location: arles
   url: 
   image: 
@@ -347,7 +347,7 @@
   type: group show
   date: 
   title: Situations/Infrastructure
-  situation: FOTOMUSEUM WINTERTHUR
+  situation: FOTOMUSEUM
   location: winterthur
   url: 
   image: 
@@ -397,7 +397,7 @@
   type: live
   date: 
   title: Borderline Festival
-  situation: ONASSIS CULTURAL CENTER
+  situation: ONASSIS STEGI
   location: athens
   url: 
   image: 
@@ -459,7 +459,7 @@
   type: talk
   date: 
   title: transmediale face value
-  situation: HAUS DER KULTUREN DER WELT
+  situation: HKW
   location: berlin
   url: 
   image: 
