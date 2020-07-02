@@ -60,6 +60,9 @@ Orientation.prototype = {
       document.querySelectorAll('html, body, .dc-mobile-nav').forEach( ( $e ) => {
         $e.style.height = window.innerHeight + 'px';   
       });
+      document.querySelectorAll('.dc-gfx').forEach( ( $e ) => {
+        $e.style.width = window.innerHeight + 'px';   
+      });
     }, 300 );
   }
 };
