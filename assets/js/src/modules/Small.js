@@ -15,6 +15,8 @@ const Small = function(){
   this.$mainContent = document.querySelector( '.dc-main-content' );  
 
   this.loader = new Loader();
+  this.minLoadTime = 800;
+
   this.orientation = new Orientation();
   this.animations = new SmallAnimations( this.$interactionEle );
   this.data = window.DCSMALL.pages;  
@@ -35,12 +37,15 @@ const Small = function(){
 };
 
 Small.prototype._onLoadingStart = function(){
+  this.loadingStartTime = (new Date()).getTime();
   this.onLoadingStart();
 }
 Small.prototype.onLoadingStart = function(){ /* ... override ... */ };
 
 Small.prototype._onLoadingComplete = function(){
-  this.onLoadingComplete();
+  this.loadingEndTime = (new Date()).getTime();
+  this.loadingTime = this.loadingEndTime -   this.loadingStartTime;
+  this.onLoadingComplete( this.loadingTime );
 }
 Small.prototype.onLoadingComplete = function(){ /* ... override ... */ };
 
@@ -122,9 +127,18 @@ Small.prototype.showLoader = function(){
   this._onLoadingStart();
   document.body.classList.add('dc-loading');  
 };
-Small.prototype.hideLoader = function(){
-  document.body.classList.remove('dc-loading');
+Small.prototype.hideLoader = function( _cb ){
+  const cb = _cb || function(){};
   this._onLoadingComplete();
+  if( this.loadingTime > this.minLoadTime ){ 
+    document.body.classList.remove('dc-loading');  
+    cb();
+  } else {
+    setTimeout( () => {
+      document.body.classList.remove('dc-loading');  
+      cb();
+    }, this.minLoadTime - this.loadingTime );
+  }
 };
 
 
@@ -132,6 +146,7 @@ Small.prototype.setupLoader = function(){
   this.historyActive = true; 
 
   this.loader.onLoad = ( data, url, disableHistory  ) => {
+ 
     if( !disableHistory && this.historyActive ){     
       history.pushState(
         {
@@ -142,8 +157,9 @@ Small.prototype.setupLoader = function(){
         F.slashEnd( url ) 
       );
     }
-    this.renderPage( data );
-    this.hideLoader();
+    this.hideLoader( () => {
+      this.renderPage( data );  
+    });
   };
 
   window.addEventListener('popstate', ( event ) => {
