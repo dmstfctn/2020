@@ -221,6 +221,9 @@
     float: none;
     width: auto;
   }
+  .dc-cv--entry[data-dc-cv-priority="1"]{
+    display: none;
+  }
     .dc-cv--title{
      height: auto;
      display: none;
@@ -251,7 +254,8 @@
       float: left;
     }
     .dc-cv--title__includesyear,
-    .dc-cv--title__includesyear + .dc-cv--entry{
+    .dc-cv--title__includesyear + .dc-cv--entry,
+    .dc-cv--title__includesyear + .dc-cv--entry[data-dc-cv-priority="1"] + .dc-cv--entry[data-dc-cv-priority="0"]{
       margin-top: 1em;
     }
     .dc-cv--title__includesyear:first-child,

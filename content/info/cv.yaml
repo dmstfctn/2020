@@ -1,6 +1,7 @@
 # EXAMPLE CV ENTRY:
 
 # - now: true
+#   priority: 0           #controls what's shown if there's not space on phone
 #   year: 2020
 #   type: solo / group / live / screening / talk / dissemination
 #   date: 23.3–
@@ -30,6 +31,7 @@
 # ########## 2021 ########## #
 # ## YEAR ## live ##############
 - now: true
+  priority: 0
   year: 2021
   type: live
   date: 6.1
@@ -44,6 +46,7 @@
 
 # ## 2020 ## live ############## #
 - now: false
+  priority: 0
   year: 2020
   type: live
   date: 29.1
@@ -56,6 +59,7 @@
 
 # ## 2020 ## solo ############## #
 - now: false
+  priority: 0
   year: 2020
   type: solo
   date: 23.3
@@ -68,6 +72,7 @@
 
 # ## 2020 ## dissemination ##### #
 - now: false
+  priority: 0
   year: 2020
   type: screening
   date: 29.1
@@ -80,6 +85,7 @@
 
 # ## 2020 ## screening ######## #
 - now: false
+  priority: 0
   year: 2020
   type: screening
   date: 
@@ -93,6 +99,7 @@
   # ## 2020 ## talk ############## #
 
 - now: false
+  priority: 0
   year: 2020
   type: talk
   date: 
@@ -109,6 +116,7 @@
 # ## 2020 ## focus group ############## #
 
 - now: false
+  priority: 0
   year: 2020
   type: focus group
   date: 
@@ -122,6 +130,7 @@
 # ## 2020 ## focus group ############## #
 
 - now: false
+  priority: 1
   year: 2020
   type: release
   date: 
@@ -138,6 +147,7 @@
 # ## 2019 ###################### #
 # ## 2019 ## solo ############## #
 - now: false
+  priority: 0
   year: 2019
   type: solo
   date: 
@@ -150,6 +160,7 @@
 
 # ## 2019 ## group show ####### #
 - now: false
+  priority: 0
   year: 2019
   type: group show
   date: 
@@ -161,6 +172,7 @@
   related:
 
 - now: false
+  priority: 0
   year: 2019
   type: group show
   date: 
@@ -172,6 +184,7 @@
   related: OFFSHORE SS18
 
 - now: false
+  priority: 1
   year: 2019
   type: group show
   date: 
@@ -184,6 +197,7 @@
 
 # ## 2019 ## screening ######## #    
 - now: false
+  priority: 0
   year: 2019
   type: screening
   date: 
@@ -195,6 +209,7 @@
   related: ECHO FX
 
 - now: false
+  priority: 0
   year: 2019
   type: screening
   date: 
@@ -206,6 +221,7 @@
   related:
 
 - now: false
+  priority: 1
   year: 2019
   type: screening
   date: 
@@ -217,6 +233,7 @@
   related:
 
 - now: false
+  priority: 0
   year: 2019
   type: screening
   date: 
@@ -229,6 +246,7 @@
 
 # ## 2019 ## live ############## #
 - now: false
+  priority: 0
   year: 2019
   type: live
   date: 
@@ -243,6 +261,7 @@
 
 # ## 2019 ## residency ############## #
 - now: false
+  priority: 0
   year: 2019
   type: residency
   date: 
@@ -255,6 +274,7 @@
 
 # ## 2019 ## dissemination ##### #
 - now: false
+  priority: 0
   year: 2019
   type: release
   date: 
@@ -270,6 +290,7 @@
 # ## 2019 ## focus group ############## #
 
 - now: false
+  priority: 0
   year: 2019
   type: focus group
   date: 
@@ -281,6 +302,7 @@
   related: 
 
 - now: false
+  priority: 0
   year: 2019
   type: focus group
   date: 
@@ -296,6 +318,7 @@
 # ## 2018 ## group show ####### #
 
 - now: false
+  priority: 1
   year: 2018
   type: group show
   date: 
@@ -307,6 +330,7 @@
   related: 
 
 - now: false
+  priority: 0
   year: 2018
   type: group show
   date: 
@@ -318,6 +342,7 @@
   related:
 
 - now: false
+  priority: 0
   year: 2018
   type: group show
   date: 
@@ -329,6 +354,7 @@
   related: 
 
 - now: false
+  priority: 0
   year: 2018
   type: group show
   date: 
@@ -342,6 +368,7 @@
 # ## 2018 ## screening ######## #
 # ## 2018 ## live ############## #
 - now: false
+  priority: 0
   year: 2018
   type: live
   date: 
@@ -353,6 +380,7 @@
   related: 
 
 - now: false
+  priority: 0
   year: 2018
   type: live
   date: 
@@ -364,6 +392,7 @@
   related: 
 
 - now: false
+  priority: 0
   year: 2018
   type: live
   date: 
@@ -377,6 +406,7 @@
 
 # ## 2018 ## talk ############## #
 - now: false
+  priority: 0
   year: 2018
   type: talk
   date: 
@@ -388,6 +418,7 @@
   related:
 
 - now: false
+  priority: 0
   year: 2018
   type: talk
   date: 
@@ -399,6 +430,7 @@
   related: 
 
 - now: false
+  priority: 0
   year: 2018
   type: talk
   date: 
@@ -410,6 +442,7 @@
   related: 
 
 - now: false
+  priority: 0
   year: 2018
   type: talk
   date: 
@@ -421,6 +454,7 @@
   related: 
 
 - now: false
+  priority: 0
   year: 2018
   type: talk
   date: 
@@ -432,6 +466,7 @@
   related: 
 
 - now: false
+  priority: 1
   year: 2018
   type: talk
   date: 
@@ -444,6 +479,7 @@
 
 # ## 2018 ## dissemination ##### #
 - now: false
+  priority: 0
   year: 2018
   type: interview
   date: 
@@ -455,6 +491,7 @@
   related: Offshore Investigation Vehicle
 
 - now: false
+  priority: 0
   year: 2018
   type: writing
   date: 
@@ -466,6 +503,7 @@
   related: Offshore SS18
 
 - now: false
+  priority: 0
   year: 2018
   type: writing
   date: 
@@ -478,6 +516,7 @@
 
 # ## 2018 ## focus group ####### #
 - now: false
+  priority: 0
   year: 2018
   type: focus group
   date: 
@@ -492,6 +531,7 @@
 # ## 2017 ###################### #
 # ## 2017 ## live ############## #
 - now: false
+  priority: 1
   year: 2017
   type: live
   date: 
@@ -503,6 +543,7 @@
   related:
 
 - now: false
+  priority: 0
   year: 2017
   type: live
   date: 
@@ -515,6 +556,7 @@
 
 # ## 2017 ## group show ####### #
 - now: false
+  priority: 0
   year: 2017
   type: group show
   date: 
@@ -527,6 +569,7 @@
 
 # ## 2017 ## talk ####### #
 - now: false
+  priority: 0
   year: 2017
   type: talk
   date: 
@@ -539,6 +582,7 @@
 
 # ## 2017 ## residency ############## #
 - now: false
+  priority: 0
   year: 2017
   type: residency
   date: 
@@ -553,6 +597,7 @@
 
 # ## 2017 ## focus group ##### #
 - now: false
+  priority: 1
   year: 2017
   type: focus group
   date: 
@@ -564,6 +609,7 @@
   related: 
 
 - now: false
+  priority: 0
   year: 2017
   type: focus group
   date: 
@@ -576,6 +622,7 @@
 
 # ## 2017 ## dissemination ##### #
 - now: false
+  priority: 0
   year: 2017
   type: release
   date: 
@@ -591,6 +638,7 @@
 # ## 2016 ###################### #
 # ## 2016 ## screening ############## #
 - now: false
+  priority: 1
   year: 2016
   type: screening
   date: 
@@ -604,6 +652,7 @@
 # ## 2016 ## focus group ############## #
 
 - now: false
+  priority: 1
   year: 2016
   type: focus group
   date: 
@@ -616,6 +665,7 @@
 
 # ## 2016 ## dissemination ##### #
 - now: false
+  priority: 1
   year: 2016
   type: release
   date: 
