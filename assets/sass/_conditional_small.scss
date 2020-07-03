@@ -373,10 +373,6 @@
 }
 
 @media (orientation: landscape){
-  .dc-info [data-dc-cv-priority="2"],
-  .dc-info [data-dc-cv-priority="1"]{
-    display: none;
-  }
   .dc-media__portrait{
     display: none;
   }
@@ -385,7 +381,7 @@
   }
 }
 
-@media (orientation: landscape) and (max-width: 900px){
+@media (orientation: landscape) and (max-width: 900px){  
   html{
     font-size: 3vh;
   }
@@ -396,6 +392,10 @@
     height: 100vh;
     transform-origin: center;
     transform: translateX(-50%) translateY(-50%) rotate(0);
+  }
+  .dc-info [data-dc-cv-priority="2"],
+  .dc-info [data-dc-cv-priority="1"]{
+    display: none;
   }
 }
 
