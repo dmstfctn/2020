@@ -123,7 +123,8 @@ Large.prototype.initQuantisers = function(){
   this.cvScroller = new ScrollQuantiser( 
     document.querySelector('#info .dc-cv'), 
     document.querySelector('#info .dc-cv--entry'),
-    0.4 //speed
+    0.4, //speed,
+    1 // no. of lines to cut off bottom 
   );
 }
 

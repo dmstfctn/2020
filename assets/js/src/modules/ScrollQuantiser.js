@@ -1,8 +1,10 @@
-const ScrollQuantiser = function( _$ele, _$line, _speed ){
+const ScrollQuantiser = function( _$ele, _$line, _speed, _cutBottomLines, _preventInput ){
   this.$ele = _$ele;
   this.$scrollable = this.$ele.querySelector(':first-child');
   this.$line = _$line;
   this.speed = _speed || 1;
+  this.cutBottomLines = _cutBottomLines || 0;
+  this.preventInput = _preventInput || false;
   this.scroll = {
     original: 0,
     quantised: 0
@@ -25,7 +27,9 @@ ScrollQuantiser.prototype = {
       this.$ele.appendChild( this.$wrapper );
       this.$wrapper.appendChild( this.$scrollable );
     }
-
+    if( this.preventInput ){
+      return;
+    }
     this.$ele.classList.add( 'quantised-scroller' );
     this.$ele.addEventListener( 'wheel', (e) => {
       this._onScroll( e.deltaY );
@@ -103,12 +107,12 @@ ScrollQuantiser.prototype = {
   measure: function(){    
     this.lineH = Math.round(this.$line.getBoundingClientRect().height * 100) / 100;
     this.height.original = this.$ele.getBoundingClientRect().height;
-    this.height.quantised = Math.floor( (this.height.original - this.lineH) /  this.lineH ) * this.lineH;
+    this.height.quantised = Math.floor( (this.height.original - (this.lineH * this.cutBottomLines)) /  this.lineH ) * this.lineH;
     let scrollableQuantised = Math.round(this.$scrollable.getBoundingClientRect().height / this.lineH) * this.lineH;
-    //console.log( 'lineH', this.lineH  );
-    //console.log('scrollableQuantised', scrollableQuantised, 'from: ',this.$scrollable.getBoundingClientRect().height );
+    console.log( 'lineH', this.lineH  );
+    console.log('scrollableQuantised', scrollableQuantised, 'from: ',this.$scrollable.getBoundingClientRect().height );
     this.maxScroll =  Math.ceil( scrollableQuantised - this.height.quantised );
-    //console.log('maxScroll', this.maxScroll );
+    console.log('maxScroll', this.maxScroll );
   },
   recalculate: function(){
     this._onScroll( 0 );

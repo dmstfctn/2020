@@ -255,6 +255,10 @@
       margin-top: 0;
     }
   
+  .dc-cv.quantised-scroller .quantised-scroller--wrapper:after{
+    display:none;
+  }
+
   .dc-showreels{
     display: block;
     z-index: 5;

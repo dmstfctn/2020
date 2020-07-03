@@ -8,6 +8,8 @@ const Project = require('./ProjectSmall.js');
 const Orientation = require('./Orientation.js');
 const SmallAnimations = require('./SmallAnimations.js');
 
+const ScrollQuantiser = require( './ScrollQuantiser.js' );
+
 const Small = function(){
   this.$interactionEle = document.querySelector('.dc-mobile-nav');  
   this.setupInteraction();
@@ -29,6 +31,15 @@ const Small = function(){
 
   this.showreelHasRun = false;
   this.project = new Project( this.shouldShowreel() );
+
+  this.cvScroller = new ScrollQuantiser( 
+    document.querySelector('#info .dc-cv'), 
+    document.querySelector('#info .dc-cv--entry'),
+    0.4, //speed,
+    0, //bottom lines to cut
+    true // prevent input / interaction being initialised
+  );
+  this.cvScroller.recalculate();
 
   this.ended = false;
 
