@@ -202,6 +202,16 @@ Small.prototype.setupProjectEvents = function(){
 
   this.project.onChange = () => {
     this.animations.cancelForwardHint();
+    if( this.project.isCurrentlyOnCV( this.orientation.orientation ) ){
+      history.pushState(
+        {
+          type: 'page', 
+          url: '/mmittee/'
+        }, 
+        null, 
+        '/mmittee/'
+      );
+    }
   }
 
   this.project.onCantGoBack = () => {

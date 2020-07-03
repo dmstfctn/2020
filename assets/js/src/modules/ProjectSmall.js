@@ -38,6 +38,9 @@ ProjectSmall.prototype = {
     /*noop*/
   },
   isCurrentlyOnCV: function( orientation ){
+    if( !this.items[ orientation ][ this.slideIndex ] ){
+      return false;
+    }
     return this.items[ orientation ][ this.slideIndex ].classList.contains( DC_INFO_CLASS );
   },
   getSlideLists: function(){  
@@ -83,6 +86,9 @@ ProjectSmall.prototype = {
   },
   next: function( orientation ){
     this.slideIndex++;
+    if( this.includesShowreel && this.isCurrentlyOnCV( orientation ) ){
+      document.body.parentElement.setAttribute('data-dc-pagetype', 'home');
+    }
     // we've gone past the last slide for this part
     if( this.slideIndex >= this.items[ orientation ].length ){
       this._onEnd();
