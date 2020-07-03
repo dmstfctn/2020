@@ -174,7 +174,7 @@
   related:
 
 - now: false
-  priority: 1
+  priority: 2
   year: 2019
   type: group show
   date: 
@@ -432,7 +432,7 @@
   related: 
 
 - now: false
-  priority: 1
+  priority: 2
   year: 2018
   type: talk
   date: 
@@ -444,7 +444,7 @@
   related: 
 
 - now: false
-  priority: 1
+  priority: 2
   year: 2018
   type: talk
   date: 
@@ -468,7 +468,7 @@
   related: 
 
 - now: false
-  priority: 1
+  priority: 2
   year: 2018
   type: talk
   date: 
@@ -571,7 +571,7 @@
 
 # ## 2017 ## talk ####### #
 - now: false
-  priority: 1
+  priority: 2
   year: 2017
   type: talk
   date: 
@@ -599,7 +599,7 @@
 
 # ## 2017 ## focus group ##### #
 - now: false
-  priority: 1
+  priority: 2
   year: 2017
   type: focus group
   date: 
@@ -640,7 +640,7 @@
 # ## 2016 ###################### #
 # ## 2016 ## screening ############## #
 - now: false
-  priority: 1
+  priority: 2
   year: 2016
   type: screening
   date: 
@@ -654,7 +654,7 @@
 # ## 2016 ## focus group ############## #
 
 - now: false
-  priority: 1
+  priority: 2
   year: 2016
   type: focus group
   date: 
@@ -667,7 +667,7 @@
 
 # ## 2016 ## dissemination ##### #
 - now: false
-  priority: 1
+  priority: 2
   year: 2016
   type: release
   date: 

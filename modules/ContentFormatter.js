@@ -267,7 +267,8 @@ const structureCV = ( cv ) => {
   
   years.forEach( ( year ) => {
     const entries = cv.entries.filter( e => e.year === year );
-    let contents = {};    
+    let contents = {};
+    let yearPriority = Infinity;
     entries.forEach( (entry) => {      
       if( !contents[entry.type] ){
         contents[entry.type] = {
@@ -279,9 +280,13 @@ const structureCV = ( cv ) => {
         entry.image = prepareImage( entry.image, destinationPath, src );    
       }
       contents[entry.type].contents.push( entry );
+      if( entry.priority < yearPriority ){
+        yearPriority = entry.priority;
+      }
     });
     structure.push({
       'year': year,
+      'priority': yearPriority,
       'contents': contents
     });
   });
