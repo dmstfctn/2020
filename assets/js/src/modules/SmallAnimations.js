@@ -11,6 +11,9 @@ SmallAnimations.prototype = {
   clearForwardHintTimeout: function(){
     clearTimeout( this.forwardHintTimeout );
   },
+  clearForwardHintAnimationTimeout: function(){
+    clearTimeout( this.forwardHintAnimationTimeout );
+  },
   triggerNoFurther: function(){
     this.clearNoFurtherTimeout();
     this.$ele.classList.add('no-further');
@@ -18,10 +21,17 @@ SmallAnimations.prototype = {
       this.$ele.classList.remove('no-further');
     }, 10 );
   },
+  triggerForwardHint: function(){
+    this.clearForwardHintAnimationTimeout();
+    this.$ele.classList.add('go-further');
+    this.forwardHintAnimationTimeout = setTimeout(() => {
+      this.$ele.classList.remove('go-further');
+    }, 1200);
+  },
   readyForwardHint: function(){
     this.clearForwardHintTimeout();
     this.forwardHintTimeout = setTimeout(() => {
-      this.$ele.classList.add('go-further');
+      
     }, 10000 );
   },
   cancelForwardHint: function(){

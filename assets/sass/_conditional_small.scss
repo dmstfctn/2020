@@ -303,13 +303,13 @@
         background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%);
       }
     .dc-mobile-nav::after{
-      opacity: 1;
-      transition: opacity .25s ease-out;
-      transform: translateX(50%);
-      background: linear-gradient(90deg, rgba(255,0,0,0) 80%, rgba(255,0,0,0.7) 100%);
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      //transform: translateX(50%);
+      background: linear-gradient(90deg, rgba(255,0,0,0) 50%, rgba(255,0,0,0.7) 100%);
     }
     html[data-dc-pagetype="focusgroup"] .dc-mobile-nav::after{
-      background: linear-gradient(90deg, rgba(0,0,0,0) 80%, rgba(0,0,0,0.7) 100%);
+      background: linear-gradient(90deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.7) 100%);
     }
     
     .dc-mobile-nav.no-further::before{
@@ -317,7 +317,7 @@
       transition: opacity 0s linear;
     }
     .dc-mobile-nav.go-further::after{            
-      animation: go-further 4.5s ease-in-out; 
+      opacity: 1;
     }
     html[data-dc-pagetype="focusgroup"] .dc-mobile-nav.opaque{
       background: #FF0000;
