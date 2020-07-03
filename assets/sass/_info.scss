@@ -46,11 +46,26 @@
     flex-shrink: 2;
     height: 100%;
     touch-action: none;
-  }
     .quantised-scroller--wrapper{
       overflow: hidden;
+      position: relative;
+      &:after{
+        text-indent: 20%;
+        content: '...continued';
+        position: absolute;
+        bottom: 0;
+        background:#000000;
+        left: 0;
+        right: 0;
+        display: block;
+        text-align: right;
+      }
     }
-  
+    &.has-scrolled .quantised-scroller--wrapper:after{
+      display: none;
+    }
+  }
+
   .dc-cv.quantised-scroller dl{
     overflow: hidden;
     position: relative;

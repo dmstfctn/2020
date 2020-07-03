@@ -11,7 +11,7 @@ const ScrollQuantiser = function( _$ele, _$line, _speed ){
     original: 0,
     quantised: 0
   };
-
+  this.hasScrolled = false;
   this.init();
   this.measure();
 }
@@ -78,6 +78,10 @@ ScrollQuantiser.prototype = {
     
   },
   render: function(){
+    if( !this.hasScrolled && this.scroll.quantised !== 0 ){
+      this.hasScrolled = true;
+      this.$ele.classList.add('has-scrolled');
+    }
     this.$wrapper.style.height = this.height.quantised + 'px';
     this.$scrollable.style.transform = `translateY(${ -this.scroll.quantised }px)`;
   },
