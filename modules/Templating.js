@@ -55,6 +55,10 @@ Templating.registerHelpers = () => {
       return count;
     }
     return 0;
+  });
+  Handlebars.registerHelper( 'debug', ( obj, context ) => {
+    console.log('HANDLEBARS DEBUG: ', context )
+    console.log( obj );
   })
 };
 
