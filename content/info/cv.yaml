@@ -34,7 +34,7 @@
   priority: 0
   year: 2021
   type: live
-  date: 6.1
+  date: 06.01
   title: INTERFACE CHAOS LIVE
   situation: CAFE OTO
   location: london
@@ -130,7 +130,7 @@
 # ## 2020 ## focus group ############## #
 
 - now: false
-  priority: 1
+  priority: 0
   year: 2020
   type: release
   date: 
@@ -172,7 +172,7 @@
   related:
 
 - now: false
-  priority: 0
+  priority: 1
   year: 2019
   type: group show
   date: 
@@ -184,7 +184,7 @@
   related: OFFSHORE SS18
 
 - now: false
-  priority: 1
+  priority: 0
   year: 2019
   type: group show
   date: 
@@ -221,7 +221,7 @@
   related:
 
 - now: false
-  priority: 1
+  priority: 0
   year: 2019
   type: screening
   date: 
@@ -233,7 +233,7 @@
   related:
 
 - now: false
-  priority: 0
+  priority: 1
   year: 2019
   type: screening
   date: 
@@ -430,7 +430,7 @@
   related: 
 
 - now: false
-  priority: 0
+  priority: 1
   year: 2018
   type: talk
   date: 
@@ -442,7 +442,7 @@
   related: 
 
 - now: false
-  priority: 0
+  priority: 1
   year: 2018
   type: talk
   date: 
@@ -454,7 +454,7 @@
   related: 
 
 - now: false
-  priority: 0
+  priority: 1
   year: 2018
   type: talk
   date: 
@@ -503,12 +503,12 @@
   related: Offshore SS18
 
 - now: false
-  priority: 0
+  priority: 1
   year: 2018
   type: writing
   date: 
   title: THE OFFSHORE ECONOMIST
-  situation: RIZOSFERA
+  situation: RIZOSFERA (RIZONOMIA)
   location: 
   url: https://demystification.co/mmittee/toe/The_Offshore_Economist.pdf
   image:
@@ -569,7 +569,7 @@
 
 # ## 2017 ## talk ####### #
 - now: false
-  priority: 0
+  priority: 1
   year: 2017
   type: talk
   date: 
