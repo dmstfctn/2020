@@ -11,10 +11,11 @@
         href="{{#unless this.is_external }}{{dc_urlpath this.url}}{{/unless}}{{#if this.is_external}}{{this.url}}{{/if}}" 
         {{#if this.is_external }}
           target="_blank"
-          rel="noopener"
-          class="dc-external-link"
+          rel="noopener"          
         {{/if}}
+        class="dc-work--item {{#if this.is_external }} dc-external-link{{/if}}"
       >
+        <span class="dc-work--item--description">{{this.data.data.description}}</span>
         {{~this.name~}}
       </a>
     {{/each}}
@@ -27,10 +28,11 @@
   <a href="{{now.url}}" class="dc-external-link" target="_blank" rel="noopener">
     <h2 class="dctxt--date dc-cv--now">now</h2><!--
   -->({{now.type}})
-    <div class="dc-cv--entry">
+    <div class="dc-cv--entry dc-work--item">
       <div class="dc-cv--name">{{now.title}}</div> 
       <span class="dots">..........................................................................................................................................................................................................................................</span>
       <div class="dc-cv--location">{{now.situation}}</div>
+      <span class="dc-work--item--description">{{now.description}}</span>
     </div>
   </a>
   {{/if}}

@@ -154,6 +154,42 @@
     -webkit-transform:translate3d(0,0,0);
     -webkit-transform-style: preserve-3d;     
   }
+
+  .dc-work--item{
+    //overriding the 'relative' of ext links to allow the 
+    //description to position relative to the line instead
+    position: static !important; 
+  }
+  .dc-work--item--description{
+    display: none;
+    position: absolute;
+    white-space: nowrap;
+    top: 0;
+    left: 0;
+    background: #000000;
+    z-index: 1;
+    pointer-events: none;
+    text-transform: none;
+    width: 100%;
+    text-align: justify;
+    overflow-x: hidden;
+    text-overflow: clip;
+    height: 3.5rem;
+    letter-spacing: -0.061em;
+    word-spacing: -0.023em;
+    &:before{
+      content: '...';        
+    }
+  }    
+
+    .dc-work--item:hover .dc-work--item--description{
+      display: block;
+    }
+
+    .dc-work--item.dc-transition--target:hover .dc-work--item--description{
+      display: none;
+    }
+
   .dc-work--year .dc-work--items{
     flex-grow: 2;
     display: flex;
@@ -208,6 +244,12 @@
     .dc-biglist--now .dc-cv--location{
       padding-left: 0;
     }
+
+  .dc-biglist--now .dc-work--item--description{
+    width: auto;
+    left: 2.7em;
+    right: 0;
+  }
 
 /* dissemination */
 .dc-dissemination--info{

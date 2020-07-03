@@ -1,6 +1,7 @@
 # EXAMPLE CV ENTRY:
 
 # - now: true
+#   description:          # only used if it's the 'now' item on the home page
 #   priority: 0           #controls what's shown if there's not space on phone
 #   year: 2020
 #   type: solo / group / live / screening / talk / dissemination
@@ -31,6 +32,7 @@
 # ########## 2021 ########## #
 # ## YEAR ## live ##############
 - now: true
+  description: screening with a live soundtrack by SKY H1
   priority: 0
   year: 2021
   type: live
