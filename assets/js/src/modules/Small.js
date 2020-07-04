@@ -119,7 +119,6 @@ Small.prototype.setupInteraction = function(){
 };
 
 Small.prototype.endState = function(){
-  console.log('SMALL, start end state');
   this.ended = true;
   document.body.classList.add('dc-small--end-state'); 
 }
@@ -185,8 +184,14 @@ Small.prototype.setupLoader = function(){
   };
 
   let popstateFunction = ( event ) => {
-    console.log('Small.js -> popstate');
-    const state = history.state;
+    console.log('Small.js -> popstate:', history.state );
+    const state = history.state;    
+    const statePageIndex = this.getPageIndexFor( history.state.url );
+    const completedAtIndex = this.completedPageIndices.indexOf( statePageIndex );    
+    if( completedAtIndex > -1 ){
+      this.pageIndex = statePageIndex;
+      this.completedPageIndices = this.completedPageIndices.slice( 0, completedAtIndex );
+    }
     this.loader.load( state.url, true, {shouldShowreel: state.shouldShowreel} );
     this.showLoader();
   };
@@ -214,9 +219,8 @@ Small.prototype.firstHistoryState = function(){
 Small.prototype.renderPage = function( data, extra ){  
   document.title = data.title;
   document.documentElement.setAttribute('data-dc-pagetype', data.pagetype );
-  console.log('Small -> renderPage -> pagetype:', data.pagetype, data )
+  
   const addShowreel = extra.shouldShowreel || (this.remainingPages === 0);
-  console.log('Small -> renderPage -> addShowreel:', addShowreel )
   this.$mainContent.innerHTML = data.html;
   this.project.deactivate();
   this.project = new Project( addShowreel ); 
