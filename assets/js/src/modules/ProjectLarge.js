@@ -12,6 +12,10 @@ const ProjectLarge = function(){
   this.$media = document.querySelectorAll('.dc-media__main .dc-media--list li');
   this.$nav = document.querySelectorAll('.dc-media__main .dc-media--nav li:not(.dc-media--link)');
   this.$title = document.querySelector('.dc-item--header h1');
+
+  /* see: https://stackoverflow.com/a/55050568 */
+  this.eventHandlers = new WeakMap();
+
   if( !this.$title ){
     this.legitimate = false;
     return;
@@ -22,8 +26,7 @@ const ProjectLarge = function(){
   this.isPlaying = false;
   this.extraWindow = null;
 
-  /* see: https://stackoverflow.com/a/55050568 */
-  this.eventHandlers = new WeakMap();
+
 };
 
 ProjectLarge.prototype = {
