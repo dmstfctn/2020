@@ -36,11 +36,8 @@ ProjectLarge.prototype = {
   },
   deactivate: function(){
     this.$media.forEach( ( $m, index ) => {
-      if( $m.classList.contains('info') ){ return; }
-      console.log( 'deactivating event for, ', $m );
-      console.log( 'all handlers: ', this.eventHandlers );
+      if( $m.classList.contains('info') ){ return; }      
       const e = this.eventHandlers.get( $m );
-      console.log( 'event: ', e );
       $m.removeEventListener( e.event, e.handler );
     });
     this.$nav.forEach(( $n, index ) => {
@@ -94,7 +91,6 @@ ProjectLarge.prototype = {
     $nav.classList.add('playing');
   },
   toggleMedia: function( index ){
-    console.log('toggle media');
     const $nav = this.$nav[index]
     const $slide = this.$media[index];
     let $media = $slide.querySelector('audio') || $slide.querySelector('video');
@@ -119,7 +115,6 @@ ProjectLarge.prototype = {
                 ? window.screen.availWidth / 2.3 
                 : window.innerWidth / 2.3;
     const h = ( w / 16 ) * 9;    
-    //console.log( html );
     if( this.extraWindow ){
       this.extraWindow.destroy()
     }
@@ -254,15 +249,12 @@ ProjectLarge.prototype = {
         event = 'click';
         $n.addEventListener('click', handler);
       } else {
-        func = () => {        
-          console.log('mouseover letter etc');
-          console.log( 'select slide: ', index );
+        func = () => {                  
           this.selectSlide( index );
         };
         handler = func.bind(this);
         event = 'mouseover';
         $n.addEventListener( 'mouseover', handler );
-        console.log('PROJECTLARGE: adding hover event to: ', $n.innerHTML );
       }
       this.eventHandlers.set( $n, { handler: handler, event: event })
     });
