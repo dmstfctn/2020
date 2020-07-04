@@ -212,9 +212,14 @@ Small.prototype.firstHistoryState = function(){
 Small.prototype.renderPage = function( data ){  
   document.title = data.title;
   document.documentElement.setAttribute('data-dc-pagetype', data.pagetype );
+  console.log('Small -> renderPage -> pagetype:', data.pagetype )
+  if( data.pagetype === 'home' ){
+    this.$mainContent.innerHTML = '';
+  }  
   if( data.pagetype !== 'relatedmatter' && data.pagetype !== 'focusgroup' ){
     return;
   }
+
   const addShowreel = (this.remainingPages === 0);
   this.$mainContent.innerHTML = data.html;
   this.project.deactivate();
