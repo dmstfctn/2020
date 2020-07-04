@@ -106,6 +106,7 @@ Small.prototype.deactivate = function(){
 /* interaction */
 Small.prototype.setupInteraction = function(){
   this.$interactionEle.addEventListener( 'pointerdown', ( e ) => {
+    console.log('---> small, pointerdown')
     if( this.ended ){
       this._onEndInteraction();
       return;
@@ -145,13 +146,15 @@ Small.prototype.showLoader = function(){
 };
 Small.prototype.hideLoader = function( _cb ){
   const cb = _cb || function(){};
-  this._onLoadingComplete();
+
   if( this.loadingTime > this.minLoadTime ){ 
     document.body.classList.remove('dc-loading');  
+    this._onLoadingComplete();
     cb();
   } else {
     setTimeout( () => {
       document.body.classList.remove('dc-loading');  
+      this._onLoadingComplete();
       cb();
     }, this.minLoadTime - this.loadingTime );
   }
@@ -192,8 +195,8 @@ Small.prototype.setupLoader = function(){
       this.pageIndex = statePageIndex;
       this.completedPageIndices = this.completedPageIndices.slice( 0, completedAtIndex );
     }
-    this.loader.load( state.url, true, {shouldShowreel: state.shouldShowreel} );
     this.showLoader();
+    this.loader.load( state.url, true, {shouldShowreel: state.shouldShowreel} );    
   };
 
   this.popstateHandler = popstateFunction.bind( this );
