@@ -73,6 +73,7 @@ const renderPage = ( pageData, index, partnerPages, rendered ) => {
   fs.writeFileSync( 
     path.join( fragP, 'index.json'), 
     JSON.stringify({
+      isPage: true,
       title: pageData.name,
       pagetype: pageData.pagetype,
       html: rendered_project 

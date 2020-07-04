@@ -55,6 +55,8 @@ const rendered_small_site = Rendering.renderSmall( smallSiteData );
 
 
 /* home page / info page*/
+let homePath = Config.paths.public;
+let homeFragP = path.join( homePath, 'fragment' );
 let renderHome = {
   title: 'Home',
   pagetype: 'home',
@@ -64,8 +66,18 @@ let renderHome = {
   info: rendered_info,
   small_site: rendered_small_site
 };
+fs.mkdirSync( homeFragP, {recursive: true });
 fs.writeFileSync( 
-  path.join( Config.paths.public, 'index.html' ), 
+  path.join( homeFragP, 'index.json' ), 
+  JSON.stringify({
+    isPage: true,
+    title: renderHome.title,
+    pagetype: renderHome.pagetype,
+    html: '' 
+  })
+);
+fs.writeFileSync( 
+  path.join( homePath, 'index.html' ), 
   (Config.minifyHTML) ? HTMLO(Templates.main( renderHome )) : Templates.main( renderHome ) 
 );
 
@@ -97,6 +109,8 @@ focusGroupsPages.forEach( ( pageData, index ) => {
 });
 
 /* focus groups 'home' at /mmittee/focus-groups/ */
+let focusGroupsPath = path.join( Config.paths.public, focusGroups.slug );
+let focusGroupsFragP = path.join( focusGroupsPath, 'fragment' );
 let renderHomeFocusGroups = {
   title: 'Home',
   pagetype: 'home',
@@ -106,11 +120,24 @@ let renderHomeFocusGroups = {
   info: rendered_info,
   small_site: rendered_small_site
 };
+fs.mkdirSync( focusGroupsFragP, {recursive: true });
 fs.writeFileSync( 
-  path.join( Config.paths.public, focusGroups.slug, 'index.html' ),  
+  path.join( focusGroupsFragP, 'index.json' ), 
+  JSON.stringify({
+    isPage: true,
+    title: renderHomeFocusGroups.title,
+    pagetype: renderHomeFocusGroups.pagetype,
+    html: '' 
+  })
+);
+fs.writeFileSync( 
+  path.join( focusGroupsPath, 'index.html' ),  
   (Config.minifyHTML) ? HTMLO(Templates.main( renderHomeFocusGroups )) : Templates.main( renderHomeFocusGroups )
 );
+
 /* Info 'home' at /mmittee/info/ */
+let homeInfoPath = path.join( Config.paths.public, infoSection.slug );
+let homeInfoFragP = path.join( homeInfoPath, 'fragment' );
 let renderHomeInfo = {
   title: 'Home',
   pagetype: 'home',
@@ -120,8 +147,18 @@ let renderHomeInfo = {
   info: rendered_info,
   small_site: rendered_small_site
 };
+fs.mkdirSync( homeInfoFragP, {recursive: true });
 fs.writeFileSync( 
-  path.join( Config.paths.public, infoSection.slug, 'index.html' ),  
+  path.join( homeInfoFragP, 'index.json' ), 
+  JSON.stringify({
+    isPage: true,
+    title: renderHomeInfo.title,
+    pagetype: renderHomeInfo.pagetype,
+    html: '' 
+  })
+);
+fs.writeFileSync( 
+  path.join( homeInfoPath, 'index.html' ),  
   (Config.minifyHTML) ? HTMLO(Templates.main( renderHomeInfo )) : Templates.main( renderHomeInfo )
 );
 

@@ -21,6 +21,9 @@ const ProjectLarge = function(){
   this.index = 0;
   this.isPlaying = false;
   this.extraWindow = null;
+
+  /* see: https://stackoverflow.com/a/55050568 */
+  this.eventHandlers = new WeakMap();
 };
 
 ProjectLarge.prototype = {
@@ -29,7 +32,20 @@ ProjectLarge.prototype = {
     this.setupEvents();
   },
   deactivate: function(){
-
+    this.$media.forEach( ( $m, index ) => {
+      if( $m.classList.contains('info') ){ return; }
+      console.log( 'deactivating event for, ', $m );
+      console.log( 'all handlers: ', this.eventHandlers );
+      const e = this.eventHandlers.get( $m );
+      console.log( 'event: ', e );
+      $m.removeEventListener( e.event, e.handler );
+    });
+    this.$nav.forEach(( $n, index ) => {
+      const e = this.eventHandlers.get( $n );
+      $n.removeEventListener( e.event, e.handler );
+    });
+    const windowEvent = this.eventHandlers.get( window );
+    window.removeEventListener( windowEvent.event, windowEvent.handler );
   },
   _onChangeSlide: function( $slide, $nav ){
     if( $slide.classList.contains('info') || $slide.classList.contains('dc-media__text')){
@@ -194,36 +210,58 @@ ProjectLarge.prototype = {
     }    
   },
   setupEvents: function(){
-    /* click to advance */
+    /* click to advance */    
     this.$media.forEach( ( $m, index ) => {
       if( $m.classList.contains('info') ){ return; }
-      $m.addEventListener('click', () => { this.nextSlide() });
+      const handler = this.nextSlide.bind(this)
+      this.eventHandlers.set( $m, {handler: handler, event: 'click'} );
+      $m.addEventListener( 'click', handler );
     });
+
     /* arrow keys */
-    window.addEventListener('keydown', ( e ) => {
+    const onKeydown = (e) => {
       if( e.key === 'ArrowRight'){
         this.nextSlide()
       }
       if( e.key === 'ArrowLeft'){
         this.prevSlide()
       }
-    });
+    }
+    const keydownHandler = onKeydown.bind( this );
+    this.eventHandlers.set( window, {handler: keydownHandler, event: 'keydown'} )
+    window.addEventListener('keydown', keydownHandler);
+
     /* hover to select */
     this.$nav.forEach(( $n, index ) => {
+      let func;
+      let handler;
+      let event;
       if($n.classList.contains('dc-media__playable')){ 
-        $n.addEventListener('click', (e) => {
+        func = (e) => {
           this.toggleMedia( index );
-        });
+        }
+        handler = func.bind(this);
+        event = 'click';
+        $n.addEventListener('click', handler );
       } if($n.classList.contains('dc-media__openable')){ 
-        $n.addEventListener('click', (e) => {
-          console.log('openable click')
+        func = (e) => {
           this.toggleWindow( index );
-        });
+        };
+        handler = func.bind(this);
+        event = 'click';
+        $n.addEventListener('click', handler);
       } else {
-        $n.addEventListener( 'mouseover', () => {               
+        func = () => {        
+          console.log('mouseover letter etc');
+          console.log( 'select slide: ', index );
           this.selectSlide( index );
-        });
+        };
+        handler = func.bind(this);
+        event = 'mouseover';
+        $n.addEventListener( 'mouseover', handler );
+        console.log('PROJECTLARGE: adding hover event to: ', $n.innerHTML );
       }
+      this.eventHandlers.set( $n, { handler: handler, event: event })
     });
   }
 };

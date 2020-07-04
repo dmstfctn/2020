@@ -19,8 +19,7 @@ const Large = function(){
   ]);
 
   this.setupLogo();
-  this.setupMenus();
-  this.setupLoader();
+  this.setupMenus();  
   this.initQuantisers(); 
 
   document.querySelectorAll( '.dc-list-hoverimg' )
@@ -59,6 +58,10 @@ Large.prototype.setupMenus = function(){
   }
 };
 
+Large.prototype.cancelLoader = function(){
+  this.loader.onLoad = () => {};
+  window.removeEventListener('popstate', this.popstateHandler );
+}
 
 Large.prototype.setupLoader = function(){
   this.loader.initEvents();
@@ -81,7 +84,8 @@ Large.prototype.setupLoader = function(){
     //this.menus.hideMenus();
   };
 
-  window.addEventListener('popstate', ( event ) => {
+  let popstateFunction = ( event ) => {
+    console.log('Large.js -> popstate');
     const state = history.state;
     //console.log("HISTORY STATE: ", state );
     if( state.type === 'menu' ){
@@ -89,10 +93,19 @@ Large.prototype.setupLoader = function(){
       this.menus.showMenuById( state.id );
       this.historyActive = true;
     } else {
+      this.menus.hideMenus();
       this.loader.load( state.url, true );
     }
-  });
+  };
 
+  this.popstateHandler = popstateFunction.bind( this );
+  
+  window.addEventListener('popstate', this.popstateHandler );
+  
+  this.firstHistoryState();
+}
+
+Large.prototype.firstHistoryState = function(){
   //first history state:
   const type = ( window.location.pathname.split('/').length > 4 ) ? 'page' : 'menu';
   let initialState = {
@@ -105,7 +118,7 @@ Large.prototype.setupLoader = function(){
     initialState.id = ( pathLast === 'mmittee' ) ? 'related-matters' : pathLast;
   }
   history.replaceState( initialState, null, window.location.pathname );
-}
+};
 
 Large.prototype.initQuantisers = function(){
   this.vcList = {
@@ -129,10 +142,15 @@ Large.prototype.initQuantisers = function(){
 }
 
 Large.prototype.renderPage = function( data ){
+  console.log('--------------> RENDER PAGE');
   document.title = data.title;
   document.documentElement.setAttribute('data-dc-pagetype', data.pagetype );
-  this.$mainContent.innerHTML = data.html;
+  if( data.pagetype !== 'relatedmatter' && data.pagetype !== 'focusgroup' ){
+    console.log('not a relatedmatter or focusgroup page, so no rendering' );
+    return;
+  }
   this.project.deactivate();
+  this.$mainContent.innerHTML = data.html; 
   this.project = new Project();
   this.project.activate();
   this.loader.initEvents( this.$mainContent );  
@@ -146,16 +164,15 @@ Large.prototype.quantise = function(){
 }
 
 Large.prototype.activate = function(){
+  this.setupLoader();
   this.project.activate();
   this.quantise();
-  window.addEventListener('resize', () => {
-    this.quantise() 
-  });
+  this.resizeHandler = this.quantise.bind(this);
+  window.addEventListener('resize', this.resizeHandler );
 }
 Large.prototype.deactivate = function(){
-  window.removeEventListener('resize', () => {
-    this.quantise() 
-  });
+  this.cancelLoader();
+  window.removeEventListener('resize', this.resizeHandler );
 }
 
 module.exports = new Large();

@@ -44,7 +44,6 @@ const Small = function(){
   this.ended = false;
 
   this.setupProjectEvents();
-  this.setupLoader();
 };
 
 Small.prototype._onLoadingStart = function(){
@@ -91,12 +90,14 @@ Small.prototype.shouldShowreel = function(){
 }
 
 /* Activate / Deactivate */
-Small.prototype.activate = function(){    
+Small.prototype.activate = function(){
+  this.setupLoader();
   this.orientation.activate();
   this.project.activate();
 }
 
 Small.prototype.deactivate = function(){
+  this.cancelLoader();
   this.orientation.deactivate();
   this.project.deactivate();
   this.animations.clearForwardHintTimeout();
@@ -158,11 +159,15 @@ Small.prototype.hideLoader = function( _cb ){
 };
 
 
+Small.prototype.cancelLoader = function(){
+  this.loader.onLoad = () => {};
+  window.removeEventListener('popstate', this.popstateHandler );
+}
+
 Small.prototype.setupLoader = function(){
   this.historyActive = true; 
 
   this.loader.onLoad = ( data, url, disableHistory  ) => {
- 
     if( !disableHistory && this.historyActive ){     
       history.pushState(
         {
@@ -178,13 +183,22 @@ Small.prototype.setupLoader = function(){
     });
   };
 
-  window.addEventListener('popstate', ( event ) => {
+  let popstateFunction = ( event ) => {
+    console.log('Small.js -> popstate');
     const state = history.state;    
     this.loader.load( state.url, true );
     this.showLoader();
-  });
+  };
+
+  this.popstateHandler = popstateFunction.bind( this );
+
+  window.addEventListener('popstate', this.popstateHandler );
 
   //first history state:
+  this.firstHistoryState();
+}
+
+Small.prototype.firstHistoryState = function(){
   history.replaceState(
     {
       type: 'page',
@@ -195,15 +209,18 @@ Small.prototype.setupLoader = function(){
   );
 }
 
-Small.prototype.renderPage = function( data ){
-  const addShowreel = (this.remainingPages === 0);
+Small.prototype.renderPage = function( data ){  
   document.title = data.title;
   document.documentElement.setAttribute('data-dc-pagetype', data.pagetype );
+  if( data.pagetype !== 'relatedmatter' && data.pagetype !== 'focusgroup' ){
+    return;
+  }
+  const addShowreel = (this.remainingPages === 0);
   this.$mainContent.innerHTML = data.html;
   this.project.deactivate();
   this.project = new Project( addShowreel ); 
   this.project.activate();
-  this.setupProjectEvents();
+  this.setupProjectEvents();  
 }
 
 Small.prototype.setupProjectEvents = function(){
