@@ -167,26 +167,27 @@ Small.prototype.cancelLoader = function(){
 Small.prototype.setupLoader = function(){
   this.historyActive = true; 
 
-  this.loader.onLoad = ( data, url, disableHistory  ) => {
+  this.loader.onLoad = ( data, url, disableHistory, extra ) => {
     if( !disableHistory && this.historyActive ){     
       history.pushState(
         {
           type: 'page', 
-          url: F.slashEnd( url ) 
+          url: F.slashEnd( url ),
+          shouldShowreel: this.shouldShowreel()
         }, 
         null, 
         F.slashEnd( url ) 
       );
     }
     this.hideLoader( () => {
-      this.renderPage( data );  
+      this.renderPage( data, extra );  
     });
   };
 
   let popstateFunction = ( event ) => {
     console.log('Small.js -> popstate');
-    const state = history.state;    
-    this.loader.load( state.url, true );
+    const state = history.state;
+    this.loader.load( state.url, true, {shouldShowreel: state.shouldShowreel} );
     this.showLoader();
   };
 
@@ -202,25 +203,20 @@ Small.prototype.firstHistoryState = function(){
   history.replaceState(
     {
       type: 'page',
-      url: window.location.pathname
+      url: window.location.pathname,
+      shouldShowreel: this.shouldShowreel()
     }, 
     null, 
     window.location.pathname 
   );
 }
 
-Small.prototype.renderPage = function( data ){  
+Small.prototype.renderPage = function( data, extra ){  
   document.title = data.title;
   document.documentElement.setAttribute('data-dc-pagetype', data.pagetype );
-  console.log('Small -> renderPage -> pagetype:', data.pagetype )
-  if( data.pagetype === 'home' ){
-    this.$mainContent.innerHTML = '';
-  }  
-  if( data.pagetype !== 'relatedmatter' && data.pagetype !== 'focusgroup' ){
-    return;
-  }
-
-  const addShowreel = (this.remainingPages === 0);
+  console.log('Small -> renderPage -> pagetype:', data.pagetype, data )
+  const addShowreel = extra.shouldShowreel || (this.remainingPages === 0);
+  console.log('Small -> renderPage -> addShowreel:', addShowreel )
   this.$mainContent.innerHTML = data.html;
   this.project.deactivate();
   this.project = new Project( addShowreel ); 
@@ -239,7 +235,8 @@ Small.prototype.setupProjectEvents = function(){
       history.pushState(
         {
           type: 'page', 
-          url: '/mmittee/'
+          url: '/mmittee/',
+          shouldShowreel: true
         }, 
         null, 
         '/mmittee/'

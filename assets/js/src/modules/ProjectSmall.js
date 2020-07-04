@@ -16,6 +16,7 @@ const ProjectSmall = function( _includesShowreel ){
     this.$showreels.classList.remove('hide');
   }
   this.loadPlaceholderImages();
+  this.update();  
 };
 
 ProjectSmall.prototype = {
@@ -73,6 +74,13 @@ ProjectSmall.prototype = {
       }
     }
   },
+  deactivateAll: function(){
+    this.items.portrait
+      .concat( this.items.landscape )
+      .forEach( ( item ) => {
+        item.classList.remove( 'active' );
+      });
+  },
   preloadImages: function( _preloadCount ){
     let preloadCount = _preloadCount | 2;  
     for( let i = 1; i < 1 + preloadCount; i++ ){
@@ -111,11 +119,7 @@ ProjectSmall.prototype = {
     this._onChange();
   },
   update: function(){
-    this.items.portrait
-      .concat( this.items.landscape )
-      .forEach( ( item ) => {
-        item.classList.remove( 'active' );
-      });
+    this.deactivateAll();
     
     if( this.items.portrait[ this.slideIndex ] ){
       this.items.portrait[ this.slideIndex ].classList.add( 'active' );

@@ -18,10 +18,11 @@ Loader.prototype = {
       });
     });
   },
-  load: function( url, disableHistory ){
+  load: function( url, disableHistory, _passThrough ){
+    const passThrough = _passThrough || {};
     if( this.loaded[ url ] ){
       console.log('already loaded: ', url );
-      this._onLoad( this.loaded[ url ], url, disableHistory );
+      this._onLoad( this.loaded[ url ], url, disableHistory, passThrough );
       return;
     }
     //console.log('loading fresh' );
@@ -44,11 +45,11 @@ Loader.prototype = {
       })
       .then( ( data ) => {
         this.loaded[url] = data;
-        this._onLoad( data, url, disableHistory );               
+        this._onLoad( data, url, disableHistory, passThrough );               
       });
   },
-  _onLoad: function( data, url, disableHistory ){
-    this.onLoad( data, url, disableHistory );
+  _onLoad: function( data, url, disableHistory, passThrough ){
+    this.onLoad( data, url, disableHistory, passThrough );
   },
   onLoad: function( data, url, disableHistory ){ /* ... override .. */ }
 };
