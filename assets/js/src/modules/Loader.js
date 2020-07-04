@@ -20,7 +20,7 @@ Loader.prototype = {
   },
   load: function( url, disableHistory ){
     if( this.loaded[ url ] ){
-      //console.log('already loaded');
+      console.log('already loaded: ', url );
       this._onLoad( this.loaded[ url ], url, disableHistory );
       return;
     }
@@ -35,6 +35,7 @@ Loader.prototype = {
         } else {
           var error = new Error(response.statusText)
           error.response = response
+          window.location.href = url;
           throw error;
         }
       })
