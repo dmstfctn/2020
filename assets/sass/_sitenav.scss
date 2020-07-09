@@ -181,9 +181,16 @@
       content: '...';        
     }
   }    
+    .dc-work--item.dc-external-link .dc-work--item--description{
+      width: auto;
+      right: 0.5em;
+    }
 
     .dc-work--item:hover .dc-work--item--description{
       display: block;
+    }
+    .dc-work--item.dc-external-link:hover:before{
+      color: #FF0000;
     }
 
   
@@ -247,8 +254,12 @@
   .dc-biglist--now .dc-work--item--description{
     width: auto;
     left: 2.65em;
-    right: 0;
+    right: 0.5em;
   }
+  .dc-biglist--now .dc-external-link:hover:before{
+    color: #FF0000;
+  }
+
 
 /* dissemination */
 .dc-dissemination--info{
