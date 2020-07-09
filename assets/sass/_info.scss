@@ -56,13 +56,29 @@
         bottom: 0;
         background:#000000;
         left: 0;
-        right: 0;
+        right: .8rem;
         display: block;
         text-align: right;
       }
+      &:before{
+        display: block;
+        background: #000000;
+        content: '↓\FE0E';
+        position: absolute;
+        width: 0.8rem;
+        bottom: -0.05em;
+        font-size: 0.55em;
+        right: 0;
+        z-index: 2;
+        text-align: center;
+        text-indent: 0.2em;
+      }
     }
-    &.has-scrolled .quantised-scroller--wrapper:after{
-      display: none;
+    &.has-scrolled .quantised-scroller--wrapper{
+      &:after,
+      &:before{
+        display: none;
+      }
     }
   }
 
@@ -81,7 +97,7 @@
     width: 28%;
     float: left;
     clear: both;
-    text-indent: 38%;
+    text-indent: 41%;
     position: relative;
     .dctxt--date:first-child{
       position: absolute;
