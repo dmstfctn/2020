@@ -229,16 +229,16 @@
   .dc-cv--bracket{
     display: none;
   }
-    .dc-cv--now .dc-cv--type,
-    .dc-cv--now .dc-cv--bracket{
-      display: inline;
-    }
+
   .dc-cv--entry {
     height: 1.33em;
   }
 
     .dc-cv--entry::before{
       bottom: 0.45em;
+    }
+    .dc-cv--title{
+      text-indent: 0;
     }
     .dc-cv--title.dc-cv--title__includesyear{
       float: left;
@@ -252,9 +252,15 @@
     .dc-cv--title__includesyear:first-child + .dc-cv--entry{
       margin-top: 0;
     }
+    .dc-cv--title .dctxt--date:first-child{
+      position: static;
+    }
   
-  .dc-cv.quantised-scroller .quantised-scroller--wrapper:after{
-    display:none;
+  .dc-cv.quantised-scroller .quantised-scroller--wrapper{
+    &::after,
+    &::before{
+      display:none;
+    }
   }
 
   .dc-info [data-dc-cv-priority="1"],
