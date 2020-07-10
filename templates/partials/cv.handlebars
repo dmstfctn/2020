@@ -9,9 +9,7 @@
         {{/unless}}
         {{~#if type~}}
         <span class="dc-cv--bracket">(</span><!--
-        --><span class="dc-cv--type dc-cv--type__{{~type~}}">
-            {{~type~}}
-          </span><!--
+        --><span class="dc-cv--type dc-cv--type__{{~type~}}">{{{ dc_cvcat type }}}</span><!--
         {{/if}}
         {{~#if type~}}
       --><span class="dc-cv--bracket">)</span>
