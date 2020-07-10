@@ -71,7 +71,7 @@
     display: block;
   }
   .dc-info{
-    padding-top: .7em;
+    padding-top: 2.9rem;
     font-size: 1rem;       
   }
     .dc-line-break-small{
@@ -112,12 +112,13 @@
     height: 100%;
     position: relative;
   }
-    .dc-item--info{
+    .dc-item--info{      
       display: block;
       box-sizing: border-box;
       width: 100%;
       height: 100%;
       padding: 1rem;
+      padding-top: 2.9rem;
       background: #000000;
       z-index: 1;
       display: none;      
@@ -190,8 +191,25 @@
       }
 
   .dc-sitenav{
-    display: none;
+    height: 2rem;
+    display: block;
+    margin-top: .2rem;
+    z-index: 5;
+    &:before,
+    .dc-sitenav--entry__focus-groups,
+    .dc-sitenav--entry__info{
+      display: none;
+    }
   }
+  html[data-dc-pagetype="relatedmatter"] .dc-sitenav a[href="/mmittee"] svg path{
+    &[stroke]{
+      stroke:  #FFFFFF !important;
+    }
+    &[fill]{
+      fill: #FFFFFF !important;
+    }
+  }
+
   .dc-item--header{
     display: none;
   }
