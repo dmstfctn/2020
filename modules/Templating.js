@@ -41,6 +41,15 @@ Templating.registerHelpers = () => {
     let p = path.join( __dirname, '..', svg_path ); 
     return SvgOptimise.sync( p );
   });
+  Handlebars.registerHelper('dc_cvcat', ( category, options ) => {     
+    try {
+      let p = path.join( __dirname, '..', 'assets', 'svg', 'cvcat_' + category + '.svg' ); 
+      let svg = fs.readFileSync( p );
+      return SvgOptimise.sync( p ) + '<span class="dc-cv--rawcat">' + category + '</span>';
+    } catch (err) {
+      return category;
+    }    
+  });
   Handlebars.registerHelper('dc_collectionLength', ( collection, options ) => {
     if( Array.isArray( collection ) ){
       return collection.length;

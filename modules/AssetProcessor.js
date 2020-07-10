@@ -45,6 +45,9 @@ const svgToTemplate = ( src, dist ) => {
   fs.mkdirSync( path.dirname(dist), {recursive: true} );
   const svgs = fs.readdirSync( src ).filter( ( f ) => { return path.extname(f) === '.svg' });
   for( let i = 0; i < svgs.length; i++ ){
+    if( svgs[i].indexOf('cvcat_') === 0 ){
+      continue; // ignore svgs used for categories on the cv
+    }
     const filename = path.basename( svgs[i], '.svg' );
     const templatename = 'svg_' + filename + '.handlebars';
     const pIn = path.join( src, svgs[i] ); 

@@ -243,6 +243,7 @@
     height: 1.07em;
     line-height: 1;
     width: 100%;
+    position: relative !important;
   }
     .dc-biglist--now .dc-cv--entry::before{
       bottom: 0.45em;
@@ -253,8 +254,8 @@
 
   .dc-biglist--now .dc-work--item--description{
     width: auto;
-    left: 2.65em;
-    right: 0.5em;
+    left: 0;
+    right: 0;
   }
   .dc-biglist--now .dc-external-link:hover:before{
     color: #FF0000;
