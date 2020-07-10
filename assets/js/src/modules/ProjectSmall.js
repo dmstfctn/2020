@@ -4,17 +4,12 @@ const F = require( './Functions.js' );
 const DC_INFO_CLASS = 'dc-info';
 const ORIENTATIONS = ['portrait','landscape'];
 
-const ProjectSmall = function( _includesShowreel ){
-  this.includesShowreel = _includesShowreel || false;
+const ProjectSmall = function( _includesCV ){
+  this.includesCV = _includesCV || false;
   this.$wrapper = document.querySelector( '.dc-item' );  
-  this.$showreels = document.querySelector( '.dc-showreels' );
   this.items = this.getSlideLists();  
   this.slideIndex = 0;
-  if( !this.includesShowreel ){
-    this.$showreels.classList.add('hide');
-  } else {
-    this.$showreels.classList.remove('hide');
-  }
+  
   this.loadPlaceholderImages();
   this.update();  
 };
@@ -60,10 +55,9 @@ ProjectSmall.prototype = {
         result = result.concat( slides );
       } 
     }
-    if( this.includesShowreel ){
-      const $dcInfo = document.querySelector( `.${DC_INFO_CLASS}` );       
-      const showreelSlides = [... this.$showreels.querySelectorAll( slidesQuery )];
-      result = result.concat( [$dcInfo] ).concat( showreelSlides );
+    if( this.includesCV ){
+      const $dcInfo = document.querySelector( `.${DC_INFO_CLASS}` );
+      result = result.concat( [$dcInfo] )
     }    
     return result;
   },
@@ -94,7 +88,7 @@ ProjectSmall.prototype = {
   },
   next: function( orientation ){
     this.slideIndex++;
-    if( this.includesShowreel && this.isCurrentlyOnCV( orientation ) ){
+    if( this.includesCV && this.isCurrentlyOnCV( orientation ) ){
       document.body.parentElement.setAttribute('data-dc-pagetype', 'home');
     }
     // we've gone past the last slide for this part
@@ -106,7 +100,7 @@ ProjectSmall.prototype = {
     this._onChange();
   },
   prev: function( orientation ){
-    if( this.includesShowreel && this.isCurrentlyOnCV( orientation ) ){
+    if( this.includesCV && this.isCurrentlyOnCV( orientation ) ){
       this._onCantGoBack();
       return;
     }

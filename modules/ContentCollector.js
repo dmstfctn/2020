@@ -204,32 +204,6 @@ const readFolder = ( folderPath, cv ) => {
   return data;
 };
 
-const readShowreel = ( showreelPath ) => {
-  let showreelData = {
-    name: 'showreel',
-    slideshows: {}
-  };
-  const contents = fs.readdirSync( showreelPath ).filter( removeDotFiles );
-  contents.forEach( ( item ) => {
-    //a folder that contains content 
-    const p = path.join( showreelPath, item );
-    // find the meta file
-    const meta = readYAML( path.join(p, 'meta.yaml') ) || {};
-
-    let files = fs.readdirSync( p )
-                  .filter( removeDotFiles )         
-                  .filter( f => f !== 'meta.yaml' );
-
-    let slideshow = files.map( (item) => {
-      return constructSlide( item, p, meta[item] );
-    });
-    showreelData.slideshows[item] = { slides: slideshow };
-  });
-
-  return showreelData;
-
-}
-
 const loadCV = ( file ) => {
   const cvYaml = fs.readFileSync( file );
   return {
@@ -274,10 +248,8 @@ const cvToDissemination = function( cv, contentPath ){
 const ContentCollector = function( contentPath ){
   const cv = loadCV( path.join( contentPath, 'info', 'cv.yaml' ) );
   const dissemination = cvToDissemination( cv, contentPath );
-  const showreel = readShowreel( path.join( contentPath, 'showreel' ) );
   return {
     bio: renderMarkdownAndProcess( fs.readFileSync( path.join( contentPath, 'info', 'bio.md' ) ).toString() ),
-    showreel: showreel,
     cv: cv,
     dissemination: dissemination,
     related_matters: readFolder( path.join( contentPath, 'related matters'), cv ),

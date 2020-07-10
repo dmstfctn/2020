@@ -112,10 +112,8 @@ const renderInfo = ( data ) => {
 }
 
 const renderSmall = ( small ) => {
-  moveSlideshowContent( small.showreel.slideshows );
   return Templates.small({
-    json: JSON.stringify( {pages:small.pages} ),
-    showreel: small.showreel
+    json: JSON.stringify( {pages:small.pages} )
   });
 }
 

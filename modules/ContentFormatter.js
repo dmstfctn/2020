@@ -333,18 +333,9 @@ const yearNameToNumeric = ( name )=>{
     })[0];
 };
 
-const prepareShowreel = ( showreel ) => {
-  for( let i in showreel.slideshows ){
-    let orientation = i;
-    showreel.slideshows[i] = prepareSlideshow( showreel.slideshows[i], '', orientation, 'showreel', true );
-  }
-  return showreel;
-}
-
 const createSmallSite = ( content ) => {
   let site = {
-    pages: [],
-    showreel: prepareShowreel( content.showreel )
+    pages: [],    
   };
   for( let i in content.related_matters.contents ){
     let year = content.related_matters.contents[i];
