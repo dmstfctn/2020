@@ -189,6 +189,10 @@
       html[data-dc-pagetype="focusgroup"]  .dc-item--info   .dc-smallnav .active{
         color: #FFFFFF;
       }
+      .dc-item--info  .dc-smallnav :first-child,
+      .dc-media--list :first-child .dc-smallnav :first-child{
+        text-transform: uppercase;
+      }
 
   .dc-sitenav{
     height: 2rem;

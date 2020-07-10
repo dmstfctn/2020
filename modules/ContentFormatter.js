@@ -92,13 +92,14 @@ const prepareSlide = ( slide, pageName, slideshowName, section, addSectionToSrc 
   return slide;
 }
 
-const slideshowNav = ( slideshow ) => {
+const slideshowNav = ( slideshow, _first ) => {
+  let first = _first || 'info';
   let labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
   let nav = [];  
   for( let i = 0; i < slideshow.slides.length; i++ ){
     if( i === 0 ){     
       nav.push( {
-        left: { label: 'info' + Config.letterSeparator, active: false}, 
+        left: { label: first + Config.letterSeparator, active: false}, 
         right: { label: labels[i] + Config.letterSeparator, active: true},
         self: { label: labels[i], active: true }
       } );
@@ -128,9 +129,9 @@ const slideshowNav = ( slideshow ) => {
 };
 
 const prepareSlideshow = ( slideshow, pageName, slideshowName, section, addSectionToSrc  ) => {
-  let nav = slideshowNav( slideshow );
+  let nav = slideshowNav( slideshow, pageName );
   for( let i in slideshow.slides ){
-    slideshow.slides[i] = prepareSlide( slideshow.slides[i], pageName, slideshowName, section, addSectionToSrc );
+    slideshow.slides[i] = prepareSlide( slideshow.slides[i], H.createSlug(pageName), slideshowName, section, addSectionToSrc );
     slideshow.slides[i].nav = nav[i];
   }
   return slideshow;
@@ -157,7 +158,7 @@ const createRelatedMatters = ( related_matters, cv ) => {
       let sub_item = item.contents[j];           
       for( slideshowName in sub_item.slideshows ){
         let slideshow = sub_item.slideshows[ slideshowName ];
-        sub_item.slideshows[ slideshowName ] = prepareSlideshow( slideshow, H.createSlug(sub_item.name), H.createSlug(slideshowName), section_slug  );
+        sub_item.slideshows[ slideshowName ] = prepareSlideshow( slideshow, sub_item.name, H.createSlug(slideshowName), section_slug  );
       }
       sub_item.cv = structureCV( sub_item.cv );
       line.contents.push({
@@ -202,7 +203,7 @@ const createFocusGroups = ( focus_groups ) => {
       let sub_item = item.contents[j];
       for( slideshowName in sub_item.slideshows ){
         let slideshow = sub_item.slideshows[ slideshowName ];
-        sub_item.slideshows[ slideshowName ] = prepareSlideshow( slideshow, H.createSlug(sub_item.name), H.createSlug(slideshowName), section_slug  );
+        sub_item.slideshows[ slideshowName ] = prepareSlideshow( slideshow, sub_item.name, H.createSlug(slideshowName), section_slug  );
       }
       sub_item.cv = structureCV( sub_item.cv );
       let line = {
