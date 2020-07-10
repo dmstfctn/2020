@@ -118,7 +118,7 @@
 # ## 2020 ## focus group ############## #
 
 - now: false
-  priority: 0
+  priority: 2
   year: 2020
   type: focus group
   date: 
@@ -127,12 +127,12 @@
   location: london
   url: 
   image: 
-  related: 
+  related: Plane of Theseus
 
 # ## 2020 ## focus group ############## #
 
 - now: false
-  priority: 0
+  priority: 1
   year: 2020
   type: release
   date: 
@@ -158,7 +158,11 @@
   location: milan
   url: 
   image: network-ensemble-gluqbar.jpg
-  related: Network Ensemble
+  related:
+    - Network Ensemble
+    - Network Studies
+    - Flash
+    - Demons
 
 # ## 2019 ## group show ####### #
 - now: false
@@ -174,7 +178,7 @@
   related:
 
 - now: false
-  priority: 2
+  priority: 0
   year: 2019
   type: group show
   date: 
@@ -235,7 +239,7 @@
   related:
 
 - now: false
-  priority: 1
+  priority: 0
   year: 2019
   type: screening
   date: 
@@ -257,7 +261,7 @@
   location: london
   url: 
   image: 
-  related: 
+  related: Network Ensemble
 
 # ## 2019 ## talk ############## #
 
@@ -286,13 +290,14 @@
   url: https://forceincmilleplateaux.bandcamp.com/album/flash-demons
   image:
   related: 
-    - FLASH
+    - Flash
     - Demons
+    - Network Ensemble
 
 # ## 2019 ## focus group ############## #
 
 - now: false
-  priority: 0
+  priority: 1
   year: 2019
   type: focus group
   date: 
@@ -301,10 +306,10 @@
   location: berlin
   url: 
   image:
-  related: 
+  related: Plane of Theseus
 
 - now: false
-  priority: 0
+  priority: 1
   year: 2019
   type: focus group
   date: 
@@ -313,14 +318,14 @@
   location: london
   url: 
   image:
-  related: 
+  related: Never stop stopping
 
 # ## 2018 ###################### #
 # ## 2018 ## solo ############## #
 # ## 2018 ## group show ####### #
 
 - now: false
-  priority: 1
+  priority: 0
   year: 2018
   type: group show
   date: 
@@ -341,7 +346,7 @@
   location: istanbul
   url: 
   image: 
-  related:
+  related: OFFSHORE SS18
 
 - now: false
   priority: 0
@@ -353,7 +358,7 @@
   location: winterthur
   url: 
   image: 
-  related: 
+  related: Network Studies
 
 - now: false
   priority: 0
@@ -365,7 +370,7 @@
   location: berlin
   url: 
   image: 
-  related: 
+  related: Offshore Investigation Vehicle
 
 # ## 2018 ## screening ######## #
 # ## 2018 ## live ############## #
@@ -379,19 +384,7 @@
   location: berlin
   url: 
   image: 
-  related: 
-
-- now: false
-  priority: 0
-  year: 2018
-  type: live
-  date: 
-  title: Alt-Age
-  situation: DESIGN MUSEUM
-  location: london
-  url: 
-  image: 
-  related: 
+  related: Demons
 
 - now: false
   priority: 0
@@ -403,8 +396,7 @@
   location: athens
   url: 
   image: 
-  related: 
-
+  related: Network Ensemble
 
 # ## 2018 ## talk ############## #
 - now: false
@@ -418,6 +410,8 @@
   url: 
   image: 
   related:
+    - Flash
+    - Demons
 
 - now: false
   priority: 0
@@ -430,9 +424,11 @@
   url: 
   image: 
   related: 
+    - Offshore Investigation Vehicle
+    - Flash
 
 - now: false
-  priority: 2
+  priority: 1
   year: 2018
   type: talk
   date: 
@@ -441,7 +437,7 @@
   location: london
   url: 
   image: 
-  related: 
+  related: Flash
 
 - now: false
   priority: 2
@@ -454,6 +450,8 @@
   url: 
   image: 
   related: 
+    - Offshore Investigation Vehicle
+    - Flash
 
 - now: false
   priority: 1
@@ -465,10 +463,10 @@
   location: berlin
   url: 
   image: 
-  related: 
+  related: Offshore Investigation Vehicle
 
 - now: false
-  priority: 2
+  priority: 0
   year: 2018
   type: talk
   date: 
@@ -477,7 +475,9 @@
   location: london
   url: 
   image: 
-  related: 
+  related:
+    - Offshore Investigation Vehicle
+    - OFFSHORE SS18
 
 # ## 2018 ## dissemination ##### #
 - now: false
@@ -490,7 +490,9 @@
   location: 
   url: https://not.neroeditions.com/buon-paradiso-fiscale-tutti/
   image:
-  related: Offshore Investigation Vehicle
+  related:
+    - Offshore Investigation Vehicle
+    - Network Ensemble
 
 - now: false
   priority: 0
@@ -502,7 +504,7 @@
   location: 
   url: https://schloss-post.com/a-day-in-the-life-of/
   image:
-  related: Offshore SS18
+  related: OFFSHORE SS18
 
 - now: false
   priority: 1
@@ -510,7 +512,7 @@
   type: writing
   date: 
   title: THE OFFSHORE ECONOMIST
-  situation: RIZOSFERA (RIZONOMIA)
+  situation: RIZOSFERA
   location: 
   url: https://demystification.co/mmittee/toe/The_Offshore_Economist.pdf
   image:
@@ -518,16 +520,16 @@
 
 # ## 2018 ## focus group ####### #
 - now: false
-  priority: 0
+  priority: 1
   year: 2018
   type: focus group
   date: 
-  title: "MONEYLAB #8"
+  title: "MONEYLAB #4"
   situation: SOMERSET HOUSE
   location: london
   url: 
   image:
-  related: 
+  related: OFFSHORE ROUNDTABLE
 
 
 # ## 2017 ###################### #
@@ -542,7 +544,19 @@
   location: berlin
   url:
   image:
-  related:
+  related: Network Ensemble
+
+- now: false
+  priority: 1
+  year: 2018
+  type: live
+  date: 
+  title: Alt-Age
+  situation: DESIGN MUSEUM
+  location: london
+  url: 
+  image: 
+  related: Flash
 
 - now: false
   priority: 0
@@ -554,13 +568,13 @@
   location: london
   url:
   image:
-  related:
+  related: Network Ensemble
 
 # ## 2017 ## group show ####### #
 - now: false
   priority: 0
   year: 2017
-  type: group show
+  type: talk
   date: 
   title: the influencers
   situation: CCCB
@@ -583,16 +597,28 @@
 
 # ## 2017 ## talk ####### #
 - now: false
-  priority: 2
+  priority: 0
   year: 2017
-  type: talk
+  type: group show
   date: 
-  title: MA GMD guest practitioner series
+  title: uncertainty playground
   situation: LCC
   location: london
   url:
   image:
-  related: OFFSHORE SS18
+  related: Offshore Investigation Vehicle
+
+- now: false
+  priority: 0
+  year: 2017
+  type: group show
+  date: 
+  title: holding space
+  situation: THE BRICK CUBE
+  location: london
+  url:
+  image: offshore-az.jpg
+  related: 
 
 # ## 2017 ## residency ############## #
 - now: false
@@ -620,10 +646,10 @@
   location: london
   url: 
   image:
-  related: 
+  related: OFFSHORE ROUNDTABLE
 
 - now: false
-  priority: 0
+  priority: 2
   year: 2017
   type: focus group
   date: 
@@ -632,7 +658,7 @@
   location: berlin
   url: 
   image:
-  related: 
+  related: OFFSHORE ROUNDTABLE
 
 # ## 2017 ## dissemination ##### #
 - now: false
@@ -656,7 +682,7 @@
   year: 2016
   type: screening
   date: 
-  title: DELEUZE STUDIES CONFERENCE
+  title: DELEUZE STUDIES
   situation: ROMA TRE UNIVERISTY
   location: rome
   url: 
@@ -675,7 +701,7 @@
   location: london
   url: 
   image:
-  related: 
+  related: OFFSHORE ROUNDTABLE
 
 # ## 2016 ## dissemination ##### #
 - now: false
