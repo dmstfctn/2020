@@ -176,6 +176,7 @@ const createRelatedMatters = ( related_matters, cv ) => {
   for( let i = 0; i < cv.entries.length; i++ ){
     if( cv.entries[i].now ){
       now = cv.entries[i];
+      now.label = (typeof cv.entries[i].now === 'string') ? cv.entries[i].now : 'now';
       break;
     }    
   }
