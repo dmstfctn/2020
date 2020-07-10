@@ -36,6 +36,8 @@ Large.prototype.setupLogo = function(){
 Large.prototype.setupMenus = function(){
   this.menus.onChange = ( id ) => {
     let p = id;
+    document.documentElement.setAttribute('data-dc-menuvisible', id );
+
     if( id === 'related-matters' ){ p = ''; }    
     if( this.historyActive ){
       history.pushState(
@@ -91,9 +93,11 @@ Large.prototype.setupLoader = function(){
     if( state.type === 'menu' ){
       this.historyActive = false;
       this.menus.showMenuById( state.id );
+      document.documentElement.setAttribute('data-dc-menuvisible', state.id );
       this.historyActive = true;
     } else {
       this.menus.hideMenus();
+      document.documentElement.setAttribute('data-dc-menuvisible', '' );
       this.loader.load( state.url, true );
     }
   };
@@ -141,10 +145,10 @@ Large.prototype.initQuantisers = function(){
   );
 }
 
-Large.prototype.renderPage = function( data ){
-  console.log('--------------> RENDER PAGE');
+Large.prototype.renderPage = function( data ){  
   document.title = data.title;
   document.documentElement.setAttribute('data-dc-pagetype', data.pagetype );
+  document.documentElement.setAttribute('data-dc-menuvisible', '' );
   if( data.pagetype !== 'relatedmatter' && data.pagetype !== 'focusgroup' ){
     console.log('not a relatedmatter or focusgroup page, so no rendering' );
     return;

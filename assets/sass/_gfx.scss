@@ -51,3 +51,11 @@
     opacity: 1;
   }
 }
+html[data-dc-pagetype="home"],
+html[data-dc-menuvisible="related-matters"]{
+  .dc-gfx svg{ 
+    #red-fill{
+      fill: #FF0000;
+    }
+  }
+}
