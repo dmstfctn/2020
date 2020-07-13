@@ -198,7 +198,7 @@
   situation: LUMA
   location: arles
   url: 
-  image: school-of-schools-luma.jpg
+  image: school-of-schools-luma2.jpg
   related: OFFSHORE SS18
 
 # ## 2019 ## screening ######## #    
@@ -387,6 +387,18 @@
   related: Demons
 
 - now: false
+  priority: 2
+  year: 2018
+  type: live
+  date: 
+  title: transmediale face value
+  situation: HKW
+  location: berlin
+  url: 
+  image: demystification-committee-transmediale-performance.jpg
+  related: Offshore Investigation Vehicle
+
+- now: false
   priority: 0
   year: 2018
   type: live
@@ -468,7 +480,7 @@
     - Flash
 
 - now: false
-  priority: 1
+  priority: 2
   year: 2018
   type: talk
   date: 
@@ -543,7 +555,7 @@
   situation: NON
   location: berlin
   url:
-  image: # need to look into my HD
+  image: demystification-committee-non-performance.jpg
   related: Network Ensemble
 
 - now: false
@@ -605,7 +617,7 @@
   situation: LCC
   location: london
   url:
-  image:
+  image: demystification-committee-offshore-ivnestigation-vehicle-lcc.jpg
   related: Offshore Investigation Vehicle
 
 # ## 2017 ## residency ############## #
@@ -615,10 +627,10 @@
   type: residency
   date: 
   title: Vilem Flusser Residency Program
-  situation: TRANSMEDIALE
+  situation: TRANSMEDIALE OFFICES
   location: berlin
   url:
-  image:
+  image: vilem-flusser-artistic-residency.jpg
   related: 
     - Offshore Investigation Vehicle
     - OFFSHORE SS18
@@ -633,7 +645,7 @@
   situation: LCC
   location: london
   url: 
-  image:
+  image: demystification-committee-offshore-roundtable.jpg
   related: OFFSHORE ROUNDTABLE
 
 - now: false
@@ -645,7 +657,7 @@
   situation: PRETIUMOFFICES
   location: berlin
   url: 
-  image:
+  image: demystification-committee-offshore-roundtable-transmediale.jpg
   related: OFFSHORE ROUNDTABLE
 
 # ## 2017 ## dissemination ##### #
@@ -674,22 +686,8 @@
   situation: ROMA TRE UNIVERISTY
   location: rome
   url: 
-  image:
+  image: 
   related: Network Studies
-
-# ## 2016 ## focus group ############## #
-
-- now: false
-  priority: 2
-  year: 2016
-  type: focus group
-  date: 
-  title: OFFSHORE ROUNDTABLE
-  situation: RAVENSBOURNE UNIVERSITY
-  location: london
-  url: 
-  image:
-  related: OFFSHORE ROUNDTABLE
 
 # ## 2016 ## dissemination ##### #
 - now: false
