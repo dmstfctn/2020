@@ -22,6 +22,11 @@ html, body{
     padding: 0 $dc_site_padding_right .3rem $dc_site_padding_left;
   }
 
+  sup{
+    font-size: 0.5em;
+    line-height: 1;
+  }
+
   a:hover{
     color: #FF0000;
   }
