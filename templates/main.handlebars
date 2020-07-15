@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
   <meta name="description" content="Established in 2016, the Demystification Committee is chaired from London and Berlin.">
   <title>{{ title }} | Demystification Committee</title>
+  
+  <link rel="stylesheet" href="{{dc_urlpath '/assets/css/main.css' }}">
+  
   <!-- font load -->
   <script>
     (function(d) {
@@ -21,9 +24,9 @@
       },
       h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
     })(document);
-  </script>
-  <!-- end font load -->
-  <link rel="stylesheet" href="{{dc_urlpath '/assets/css/main.css' }}">
+  </script>  
+  <!-- end font load -->  
+  <script defer src="{{dc_urlpath '/assets/js/dist/main.js' }}"></script>
 </head>
 <body>
   {{{ navigation }}}
@@ -35,7 +38,6 @@
     {{> svg_GFX }}
   </div>
   <div class="dc-mobile-nav" touch-action="auto"></div>
-  {{{ small_site }}}
-  <script src="{{dc_urlpath '/assets/js/dist/main.js' }}"></script>
+  {{{ small_site }}}  
 </body>
 </html>
