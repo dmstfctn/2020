@@ -36,13 +36,13 @@
   priority: 0
   year: 2021
   type: live
-  date: 6.1
+  date: 1.6
   title: INTERFACE CHAOS LIVE
   situation: CAFE OTO
   location: london
   url: https://www.cafeoto.co.uk/
   image: 
-  related: 
+  related: Interface Chaos
 
 # ########## 2020 ########## #
 
@@ -83,7 +83,7 @@
   location: 
   url: https://www.neroeditions.com/docs/interface-chaos/
   image:
-  related:
+  related: Interface Chaos
 
 # ## 2020 ## screening ######## #
 - now: false
@@ -96,7 +96,7 @@
   location: graz
   url: 
   image: interface-chaos-graz.JPG
-  related:
+  related: Interface Chaos
 
   # ## 2020 ## talk ############## #
 
@@ -187,7 +187,7 @@
   location: porto
   url: 
   image: chaos-of-interfaces-porto-biennale.jpg
-  related:
+  related: Interface Chaos
 
 - now: false
   priority: 0
@@ -200,6 +200,18 @@
   url: 
   image: school-of-schools-luma2.jpg
   related: OFFSHORE SS18
+
+- now: false
+  priority: 0
+  year: 2019
+  type: group show
+  date: 
+  title: EMERGENCE
+  situation: LCC
+  location: london
+  url: 
+  image: demystification-committee-emergence-lcc.jpg
+  related: Interface Chaos
 
 # ## 2019 ## screening ######## #    
 - now: false
@@ -224,19 +236,7 @@
   location: berlin
   url: 
   image: interface-chaos-discussion-trust.jpg
-  related:
-
-- now: false
-  priority: 0
-  year: 2019
-  type: screening
-  date: 
-  title: EMERGENCE
-  situation: LCC
-  location: london
-  url: 
-  image: demystification-committee-emergence-lcc.jpg
-  related:
+  related: Interface Chaos
 
 - now: false
   priority: 0
@@ -248,7 +248,7 @@
   location: london
   url: 
   image: Interface-Chaos-Antiuniversity.jpg
-  related:
+  related: Interface Chaos
 
 # ## 2019 ## live ############## #
 - now: false
@@ -600,6 +600,18 @@
   year: 2017
   type: group show
   date: 
+  title: rundgang
+  situation: UDK
+  location: berlin
+  url:
+  image: demystification-committee-udk.jpg
+  related: Offshore Investigation Vehicle
+
+- now: false
+  priority: 0
+  year: 2017
+  type: group show
+  date: 
   title: holding space
   situation: THE BRICK CUBE
   location: london
@@ -627,7 +639,7 @@
   type: residency
   date: 
   title: Vilem Flusser Residency Program
-  situation: TRANSMEDIALE OFFICES
+  situation: TRANSMEDIALE
   location: berlin
   url:
   image: vilem-flusser-artistic-residency.jpg
@@ -686,7 +698,7 @@
   situation: ROMA TRE UNIVERISTY
   location: rome
   url: 
-  image: 
+  image: # no image exist (also cannot be displayed with current settings)
   related: Network Studies
 
 # ## 2016 ## dissemination ##### #
