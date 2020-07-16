@@ -15,7 +15,7 @@
     letter-spacing: -0.05em;
   }
   .dc-info--contents{
-    height: calc(100% - env(safe-area-inset-bottom) - 0.8rem);
+    height: calc(100% - env(safe-area-inset-bottom));
   }
 
   body.dc-loading{
