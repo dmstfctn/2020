@@ -50,29 +50,15 @@
       overflow: hidden;
       position: relative;
       &:after{
-        text-indent: 20%;
         content: '...continued';
         position: absolute;
         bottom: 0;
         background:#000000;
         left: 0;
-        right: .8rem;
+        right: 0;
         display: block;
         text-align: right;
-      }
-      &:before{
-        display: block;
-        background: #000000;
-        content: '↓\FE0E';
-        position: absolute;
-        width: 0.8rem;
-        bottom: -0.05em;
-        font-size: 0.55em;
-        right: 0;
-        z-index: 2;
-        text-align: center;
-        text-indent: 0.2em;
-      }
+      }     
     }
     &.has-scrolled .quantised-scroller--wrapper{
       &:after,
