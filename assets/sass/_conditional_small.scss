@@ -263,10 +263,12 @@
     }
     .dc-cv--title.dc-cv--title__includesyear{
       float: left;
-    }
+    }    
     .dc-cv--title__includesyear,
-    .dc-cv--title__includesyear + .dc-cv--entry,
-    .dc-cv--title__includesyear + .dc-cv--entry[data-dc-cv-priority="1"] + .dc-cv--entry[data-dc-cv-priority="0"]{
+    .dc-cv--title__includesyear + .dc-cv--entry{   
+      margin-top: 1em;
+    }
+    .dc-info .dc-cv--title__includesyear + .dc-cv--entry[data-dc-cv-priority="1"] + .dc-cv--entry[data-dc-cv-priority="0"]{
       margin-top: 1em;
     }
     .dc-cv--title__includesyear:first-child,

@@ -13,6 +13,14 @@ const HTMLO = require('./modules/HtmlOptimise.js');
 
 const Assets = require('./modules/AssetProcessor.js');
 
+/* delete the public directory */
+if( 
+  Config.paths.public_root.indexOf(__dirname) !== -1 // check that the root is in this dir
+  && Config.paths.public_root !== '/' // and that it isn't somehow the root of everything
+){
+  fs.removeSync( Config.paths.public_root );
+}
+
 /* set up our output structure */
 fs.mkdirSync( Config.paths.public_data, {recursive: true} );
 
