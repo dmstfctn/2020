@@ -36,6 +36,7 @@ const runBuild = () => {
   buildWait = setTimeout( ()=>{    
     if( buildProcess ){
       buildProcess.kill();
+      console.log( " ----------- BUILD CANCELLED ----------- ")
     }
     console.log( " ------------ BUILDING SITE ------------ ")
     buildProcess = cp.spawn('node', ['build.js'] );
@@ -47,9 +48,7 @@ const runBuild = () => {
     });
     buildProcess.on('close', ( code )=>{
       if( code === 0 ){
-        console.log( " ----------- BUILD COMPLETE ------------ ")
-      } else {
-        console.log( " ----------- BUILD CANCELLED ----------- ")
+        console.log( " ----------- BUILD COMPLETED ----------- ")
       }
     });    
   }, 250 );
