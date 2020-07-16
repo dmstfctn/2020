@@ -92,6 +92,11 @@ html[data-dc-pagetype="focusgroup"]{
   .dc-media__playable.playing{
     color: #FFFFFF;
   }
+  .dc-item--cv{
+    .dctxt--date{
+      color: #000000;
+    }
+  }
 }
 
 
