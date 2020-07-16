@@ -81,7 +81,7 @@ ScrollQuantiser.prototype = {
     
   },
   render: function(){
-    if( !this.hasScrolled && this.scroll.quantised !== 0 ){
+    if( !this.hasScrolled && this.scroll.quantised > 0 ){
       this.hasScrolled = true;
       this.$ele.classList.add('has-scrolled');
     }
