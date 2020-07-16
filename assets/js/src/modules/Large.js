@@ -87,9 +87,7 @@ Large.prototype.setupLoader = function(){
   };
 
   let popstateFunction = ( event ) => {
-    console.log('Large.js -> popstate');
     const state = history.state;
-    //console.log("HISTORY STATE: ", state );
     if( state.type === 'menu' ){
       this.historyActive = false;
       this.menus.showMenuById( state.id );
@@ -145,12 +143,11 @@ Large.prototype.initQuantisers = function(){
   );
 }
 
-Large.prototype.renderPage = function( data ){  
+Large.prototype.renderPage = function( data ){
   document.title = data.title;
   document.documentElement.setAttribute('data-dc-pagetype', data.pagetype );
   document.documentElement.setAttribute('data-dc-menuvisible', '' );
   if( data.pagetype !== 'relatedmatter' && data.pagetype !== 'focusgroup' ){
-    console.log('not a relatedmatter or focusgroup page, so no rendering' );
     return;
   }
   this.project.deactivate();

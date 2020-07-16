@@ -59,7 +59,6 @@ ScrollQuantiser.prototype = {
           this.touchID = null;
         }
       }
-      console.log('touchend: ', e );
     });
     window.addEventListener('keydown', ( e ) => {
       if( e.key === 'ArrowDown' ){
@@ -82,7 +81,7 @@ ScrollQuantiser.prototype = {
     
   },
   render: function(){
-    if( !this.hasScrolled && this.scroll.quantised !== 0 ){
+    if( !this.hasScrolled && this.scroll.quantised > 0 ){
       this.hasScrolled = true;
       this.$ele.classList.add('has-scrolled');
     }
@@ -108,11 +107,8 @@ ScrollQuantiser.prototype = {
     this.lineH = Math.round(this.$line.getBoundingClientRect().height * 100) / 100;
     this.height.original = this.$ele.getBoundingClientRect().height;
     this.height.quantised = Math.floor( (this.height.original - (this.lineH * this.cutBottomLines)) /  this.lineH ) * this.lineH;
-    let scrollableQuantised = Math.round(this.$scrollable.getBoundingClientRect().height / this.lineH) * this.lineH;
-    console.log( 'lineH', this.lineH  );
-    console.log('scrollableQuantised', scrollableQuantised, 'from: ',this.$scrollable.getBoundingClientRect().height );
+    let scrollableQuantised = Math.round(this.$scrollable.getBoundingClientRect().height / this.lineH) * this.lineH;    
     this.maxScroll =  Math.ceil( scrollableQuantised - this.height.quantised );
-    console.log('maxScroll', this.maxScroll );
   },
   recalculate: function(){
     this._onScroll( 0 );

@@ -36,13 +36,13 @@
   priority: 0
   year: 2021
   type: live
-  date: 06.01
+  date: 1.6
   title: INTERFACE CHAOS LIVE
   situation: CAFE OTO
   location: london
   url: https://www.cafeoto.co.uk/
   image: 
-  related: 
+  related: Interface Chaos
 
 # ########## 2020 ########## #
 
@@ -76,14 +76,14 @@
 - now: false
   priority: 0
   year: 2020
-  type: screening
+  type: interview
   date: 29.1
   title: "DOC #5: INTERFACE CHAOS"
   situation: NERO
   location: 
   url: https://www.neroeditions.com/docs/interface-chaos/
   image:
-  related:
+  related: Interface Chaos
 
 # ## 2020 ## screening ######## #
 - now: false
@@ -96,14 +96,14 @@
   location: graz
   url: 
   image: interface-chaos-graz.JPG
-  related:
+  related: Interface Chaos
 
   # ## 2020 ## talk ############## #
 
 - now: false
   priority: 0
   year: 2020
-  type: talk
+  type: streaming
   date: 
   title: "Moneylab #8"
   situation: AKSIOMA
@@ -118,7 +118,7 @@
 # ## 2020 ## focus group ############## #
 
 - now: false
-  priority: 0
+  priority: 2
   year: 2020
   type: focus group
   date: 
@@ -126,22 +126,22 @@
   situation: RAVENSBOURNE UNIVERSITY
   location: london
   url: 
-  image: 
-  related: 
+  image: plane-of-theseus-ravensbourne.jpg
+  related: Plane of Theseus
 
 # ## 2020 ## focus group ############## #
 
-- now: false
-  priority: 0
-  year: 2020
-  type: release
-  date: 
-  title: RHYTHM, CHAOS AND NONPULSED MAN
-  situation: LA DELEUZIANA
-  location:
-  url: https://rizosfera.net/en/prodotto/nukfmusb010/
-  image: 
-  related: 
+# ## - now: false
+  # ## priority: 1
+  # ## year: 2020
+  # ## type: release
+  # ## date: 
+  # ## title: RHYTHM, CHAOS AND NONPULSED MAN
+  # ## situation: LA DELEUZIANA
+  # ## location:
+  # ## url: https://rizosfera.net/en/prodotto/nukfmusb010/
+  # ## image: 
+  # ## related: 
 
 # ############################## #
 # ############################## #
@@ -158,9 +158,25 @@
   location: milan
   url: 
   image: network-ensemble-gluqbar.jpg
-  related: Network Ensemble
+  related:
+    - The Network Ensemble
+    - Network Study (I, VII, VIII)
+    - Flash
+    - Demons
 
 # ## 2019 ## group show ####### #
+- now: false
+  priority: 0
+  year: 2019
+  type: group show
+  date: 
+  title: A SCHOOL OF SCHOOLS
+  situation: C-MINE
+  location: genk
+  url: 
+  image: c-mine-school-of-school.jpg
+  related: OFFSHORE SS18
+
 - now: false
   priority: 0
   year: 2019
@@ -171,19 +187,7 @@
   location: porto
   url: 
   image: chaos-of-interfaces-porto-biennale.jpg
-  related:
-
-- now: false
-  priority: 2
-  year: 2019
-  type: group show
-  date: 
-  title: A SCHOOL OF SCHOOLS
-  situation: C-MINE
-  location: genk
-  url: 
-  image: 
-  related: OFFSHORE SS18
+  related: Interface Chaos
 
 - now: false
   priority: 0
@@ -194,8 +198,20 @@
   situation: LUMA
   location: arles
   url: 
-  image: 
+  image: school-of-schools-luma2.jpg
   related: OFFSHORE SS18
+
+- now: false
+  priority: 0
+  year: 2019
+  type: group show
+  date: 
+  title: EMERGENCE
+  situation: LCC
+  location: london
+  url: 
+  image: demystification-committee-emergence-lcc.jpg
+  related: Interface Chaos
 
 # ## 2019 ## screening ######## #    
 - now: false
@@ -220,22 +236,10 @@
   location: berlin
   url: 
   image: interface-chaos-discussion-trust.jpg
-  related:
+  related: Interface Chaos
 
 - now: false
   priority: 0
-  year: 2019
-  type: screening
-  date: 
-  title: EMERGENCE
-  situation: LCC
-  location: london
-  url: 
-  image: 
-  related:
-
-- now: false
-  priority: 1
   year: 2019
   type: screening
   date: 
@@ -243,8 +247,8 @@
   situation: THE MONTPELIER
   location: london
   url: 
-  image: 
-  related:
+  image: Interface-Chaos-Antiuniversity.jpg
+  related: Interface Chaos
 
 # ## 2019 ## live ############## #
 - now: false
@@ -256,8 +260,8 @@
   situation: DESIGN MUSEUM
   location: london
   url: 
-  image: 
-  related: 
+  image: Designing-Museum-Designing-Time.jpg
+  related: The Network Ensemble
 
 # ## 2019 ## talk ############## #
 
@@ -271,7 +275,7 @@
   situation: SHARED INSTITUTE
   location: porto
   url: 
-  image:
+  image: demystification-committee-residency.jpg
   related: 
 
 # ## 2019 ## dissemination ##### #
@@ -286,25 +290,26 @@
   url: https://forceincmilleplateaux.bandcamp.com/album/flash-demons
   image:
   related: 
-    - FLASH
+    - Flash
     - Demons
+    - The Network Ensemble
 
 # ## 2019 ## focus group ############## #
 
 - now: false
-  priority: 0
+  priority: 1
   year: 2019
   type: focus group
   date: 
   title: MA VISUAL COMMUNICATION
-  situation: WEISENSEE
+  situation: WEISENSEE HOCHSCHULE
   location: berlin
   url: 
-  image:
-  related: 
+  image: demystification-committee-weisensee.jpg
+  related: Plane of Theseus
 
 - now: false
-  priority: 0
+  priority: 1
   year: 2019
   type: focus group
   date: 
@@ -312,15 +317,27 @@
   situation: LCC
   location: london
   url: 
-  image:
-  related: 
+  image: demystification-committee-lcc.jpg
+  related: Never stop stopping
 
 # ## 2018 ###################### #
 # ## 2018 ## solo ############## #
 # ## 2018 ## group show ####### #
 
 - now: false
-  priority: 1
+  priority: 0
+  year: 2018
+  type: group show
+  date: 
+  title: 4<sup>th</sup> Istanbul Design Biennale
+  situation: ARTER
+  location: istanbul
+  url: 
+  image: offshore-ss18-istanbul-design-biennale.jpg
+  related: OFFSHORE SS18
+
+- now: false
+  priority: 0
   year: 2018
   type: group show
   date: 
@@ -328,20 +345,8 @@
   situation: ROEHRS & BOETSCH
   location: zurich
   url: 
-  image: 
+  image: project-capital.jpg
   related: 
-
-- now: false
-  priority: 0
-  year: 2018
-  type: group show
-  date: 
-  title: 4th Istanbul Design Biennale
-  situation: ARTER
-  location: istanbul
-  url: 
-  image: 
-  related:
 
 - now: false
   priority: 0
@@ -352,8 +357,8 @@
   situation: FOTOMUSEUM
   location: winterthur
   url: 
-  image: 
-  related: 
+  image: demystification-committee-fotomuseum-winterthur.jpg
+  related: Network Study (I, VII, VIII)
 
 - now: false
   priority: 0
@@ -364,8 +369,8 @@
   situation: HKW
   location: berlin
   url: 
-  image: 
-  related: 
+  image: demystification-committee-transmediale-show.jpg
+  related: Offshore Investigation Vehicle
 
 # ## 2018 ## screening ######## #
 # ## 2018 ## live ############## #
@@ -378,20 +383,20 @@
   situation: SPEKTRUM
   location: berlin
   url: 
-  image: 
-  related: 
+  image: demystification-committee-spektrum-radical-networks.jpg
+  related: Demons
 
 - now: false
-  priority: 0
+  priority: 2
   year: 2018
   type: live
   date: 
-  title: Alt-Age
-  situation: DESIGN MUSEUM
-  location: london
+  title: transmediale face value
+  situation: HKW
+  location: berlin
   url: 
-  image: 
-  related: 
+  image: demystification-committee-transmediale-performance.jpg
+  related: Offshore Investigation Vehicle
 
 - now: false
   priority: 0
@@ -402,37 +407,54 @@
   situation: ONASSIS STEGI
   location: athens
   url: 
-  image: 
-  related: 
-
+  image: demystification-committee-spektrum-onassis-stegi-borderline-festival.jpg
+  related: The Network Ensemble
 
 # ## 2018 ## talk ############## #
 - now: false
   priority: 0
   year: 2018
-  type: talk
+  type: streaming
   date: 
   title: IMPAKT Festival
   situation: HET HUIS
   location: utrecht
-  url: 
-  image: 
+  url: https://youtu.be/6vQ8qMVoNaM?t=2322
+  image:
   related:
+    - Flash
+    - Demons
 
 - now: false
   priority: 0
   year: 2018
-  type: talk
+  type: streaming
   date: 
-  title: Automated Lanscapes
+  title: Automated Landscapes
   situation: HET NIEUWE INSTITUUT
   location: rotterdam
-  url: 
+  url: https://vimeo.com/302821667
   image: 
   related: 
+    - Offshore Investigation Vehicle
+    - Flash
 
 - now: false
-  priority: 2
+  priority: 0
+  year: 2018
+  type: streaming
+  date: 
+  title: "MoneyLab #4"
+  situation: SOMERSET HOUSE
+  location: london
+  url: https://vimeo.com/254278033#t=3847s
+  image: 
+  related:
+    - Offshore Investigation Vehicle
+    - OFFSHORE SS18
+
+- now: false
+  priority: 1
   year: 2018
   type: talk
   date: 
@@ -440,8 +462,8 @@
   situation: DESIGN MUSEUM
   location: london
   url: 
-  image: 
-  related: 
+  image: # need to look on HD
+  related: Flash
 
 - now: false
   priority: 2
@@ -452,11 +474,13 @@
   situation: LCC
   location: london
   url: 
-  image: 
+  image: demystification-committee-something-or-other.jpg
   related: 
+    - Offshore Investigation Vehicle
+    - Flash
 
 - now: false
-  priority: 1
+  priority: 2
   year: 2018
   type: talk
   date: 
@@ -464,20 +488,8 @@
   situation: HKW
   location: berlin
   url: 
-  image: 
-  related: 
-
-- now: false
-  priority: 2
-  year: 2018
-  type: talk
-  date: 
-  title: "MoneyLab #4"
-  situation: SOMERSET HOUSE
-  location: london
-  url: 
-  image: 
-  related: 
+  image: demystification-committee-transmediale-talk.jpg
+  related: Offshore Investigation Vehicle
 
 # ## 2018 ## dissemination ##### #
 - now: false
@@ -490,7 +502,9 @@
   location: 
   url: https://not.neroeditions.com/buon-paradiso-fiscale-tutti/
   image:
-  related: Offshore Investigation Vehicle
+  related:
+    - Offshore Investigation Vehicle
+    - The Network Ensemble
 
 - now: false
   priority: 0
@@ -502,7 +516,7 @@
   location: 
   url: https://schloss-post.com/a-day-in-the-life-of/
   image:
-  related: Offshore SS18
+  related: OFFSHORE SS18
 
 - now: false
   priority: 1
@@ -510,7 +524,7 @@
   type: writing
   date: 
   title: THE OFFSHORE ECONOMIST
-  situation: RIZOSFERA (RIZONOMIA)
+  situation: RIZOSFERA
   location: 
   url: https://demystification.co/mmittee/toe/The_Offshore_Economist.pdf
   image:
@@ -518,16 +532,16 @@
 
 # ## 2018 ## focus group ####### #
 - now: false
-  priority: 0
+  priority: 1
   year: 2018
   type: focus group
   date: 
-  title: "MONEYLAB #8"
+  title: "MONEYLAB #4"
   situation: SOMERSET HOUSE
   location: london
   url: 
-  image:
-  related: 
+  image: demystification-committee-somerset-house.jpg
+  related: OFFSHORE ROUNDTABLE
 
 
 # ## 2017 ###################### #
@@ -541,8 +555,20 @@
   situation: NON
   location: berlin
   url:
-  image:
-  related:
+  image: demystification-committee-non-performance.jpg
+  related: The Network Ensemble
+
+- now: false
+  priority: 1
+  year: 2018
+  type: live
+  date: 
+  title: Alt-Age
+  situation: DESIGN MUSEUM
+  location: london
+  url: 
+  image: demystification-committee-design-museum-performance.jpg
+  related: Flash
 
 - now: false
   priority: 0
@@ -553,34 +579,58 @@
   situation: UMLAUT
   location: london
   url:
-  image:
-  related:
+  image: demystification-committee-umalut-performance.jpg
+  related: The Network Ensemble
 
 # ## 2017 ## group show ####### #
 - now: false
   priority: 0
   year: 2017
-  type: group show
+  type: talk
   date: 
   title: the influencers
   situation: CCCB
   location: barcelona
   url:
-  image:
+  image: cccb-demystification-committee-talk.jpg
   related: OFFSHORE SS18
+
+- now: false
+  priority: 0
+  year: 2017
+  type: group show
+  date: 
+  title: rundgang
+  situation: UDK
+  location: berlin
+  url:
+  image: demystification-committee-udk.jpg
+  related: Offshore Investigation Vehicle
+
+- now: false
+  priority: 0
+  year: 2017
+  type: group show
+  date: 
+  title: holding space
+  situation: THE BRICK CUBE
+  location: london
+  url:
+  image: offshore-az.jpg
+  related: 
 
 # ## 2017 ## talk ####### #
 - now: false
-  priority: 2
+  priority: 0
   year: 2017
-  type: talk
+  type: group show
   date: 
-  title: MA GMD guest practitioner series
+  title: uncertainty playground
   situation: LCC
   location: london
   url:
-  image:
-  related: OFFSHORE SS18
+  image: demystification-committee-offshore-ivnestigation-vehicle-lcc.jpg
+  related: Offshore Investigation Vehicle
 
 # ## 2017 ## residency ############## #
 - now: false
@@ -592,7 +642,7 @@
   situation: TRANSMEDIALE
   location: berlin
   url:
-  image:
+  image: vilem-flusser-artistic-residency.jpg
   related: 
     - Offshore Investigation Vehicle
     - OFFSHORE SS18
@@ -607,11 +657,11 @@
   situation: LCC
   location: london
   url: 
-  image:
-  related: 
+  image: demystification-committee-offshore-roundtable.jpg
+  related: OFFSHORE ROUNDTABLE
 
 - now: false
-  priority: 0
+  priority: 2
   year: 2017
   type: focus group
   date: 
@@ -619,8 +669,8 @@
   situation: PRETIUMOFFICES
   location: berlin
   url: 
-  image:
-  related: 
+  image: demystification-committee-offshore-roundtable-transmediale.jpg
+  related: OFFSHORE ROUNDTABLE
 
 # ## 2017 ## dissemination ##### #
 - now: false
@@ -634,8 +684,8 @@
   url: https://networkensemble.bandcamp.com/album/selected-network-studies
   image:
   related:
-    - Network Ensemble
-    - Network Studies
+    - The Network Ensemble
+    - Network Study (I, VII, VIII)
 
 # ## 2016 ###################### #
 # ## 2016 ## screening ############## #
@@ -644,26 +694,12 @@
   year: 2016
   type: screening
   date: 
-  title: DELEUZE STUDIES CONFERENCE
+  title: DELEUZE STUDIES
   situation: ROMA TRE UNIVERISTY
   location: rome
   url: 
-  image:
-  related: Network Studies
-
-# ## 2016 ## focus group ############## #
-
-- now: false
-  priority: 2
-  year: 2016
-  type: focus group
-  date: 
-  title: OFFSHORE ROUNDTABLE
-  situation: RAVENSBOURNE UNIVERSITY
-  location: london
-  url: 
-  image:
-  related: 
+  image: # no image exist (also cannot be displayed with current settings)
+  related: Network Study (I, VII, VIII)
 
 # ## 2016 ## dissemination ##### #
 - now: false
@@ -676,4 +712,4 @@
   location: 
   url: https://networkensemble.bandcamp.com/album/chaos-variation-i
   image:
-  related: Network Ensemble
+  related: The Network Ensemble
