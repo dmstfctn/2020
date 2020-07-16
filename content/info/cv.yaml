@@ -159,8 +159,8 @@
   url: 
   image: network-ensemble-gluqbar.jpg
   related:
-    - Network Ensemble
-    - Network Studies
+    - The Network Ensemble
+    - Network Study (I, VII, VIII)
     - Flash
     - Demons
 
@@ -261,7 +261,7 @@
   location: london
   url: 
   image: Designing-Museum-Designing-Time.jpg
-  related: Network Ensemble
+  related: The Network Ensemble
 
 # ## 2019 ## talk ############## #
 
@@ -292,7 +292,7 @@
   related: 
     - Flash
     - Demons
-    - Network Ensemble
+    - The Network Ensemble
 
 # ## 2019 ## focus group ############## #
 
@@ -358,7 +358,7 @@
   location: winterthur
   url: 
   image: demystification-committee-fotomuseum-winterthur.jpg
-  related: Network Studies
+  related: Network Study (I, VII, VIII)
 
 - now: false
   priority: 0
@@ -408,7 +408,7 @@
   location: athens
   url: 
   image: demystification-committee-spektrum-onassis-stegi-borderline-festival.jpg
-  related: Network Ensemble
+  related: The Network Ensemble
 
 # ## 2018 ## talk ############## #
 - now: false
@@ -504,7 +504,7 @@
   image:
   related:
     - Offshore Investigation Vehicle
-    - Network Ensemble
+    - The Network Ensemble
 
 - now: false
   priority: 0
@@ -556,7 +556,7 @@
   location: berlin
   url:
   image: demystification-committee-non-performance.jpg
-  related: Network Ensemble
+  related: The Network Ensemble
 
 - now: false
   priority: 1
@@ -580,7 +580,7 @@
   location: london
   url:
   image: demystification-committee-umalut-performance.jpg
-  related: Network Ensemble
+  related: The Network Ensemble
 
 # ## 2017 ## group show ####### #
 - now: false
@@ -684,8 +684,8 @@
   url: https://networkensemble.bandcamp.com/album/selected-network-studies
   image:
   related:
-    - Network Ensemble
-    - Network Studies
+    - The Network Ensemble
+    - Network Study (I, VII, VIII)
 
 # ## 2016 ###################### #
 # ## 2016 ## screening ############## #
@@ -699,7 +699,7 @@
   location: rome
   url: 
   image: # no image exist (also cannot be displayed with current settings)
-  related: Network Studies
+  related: Network Study (I, VII, VIII)
 
 # ## 2016 ## dissemination ##### #
 - now: false
@@ -712,4 +712,4 @@
   location: 
   url: https://networkensemble.bandcamp.com/album/chaos-variation-i
   image:
-  related: Network Ensemble
+  related: The Network Ensemble
