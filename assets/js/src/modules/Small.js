@@ -106,7 +106,6 @@ Small.prototype.deactivate = function(){
 /* interaction */
 Small.prototype.setupInteraction = function(){
   this.$interactionEle.addEventListener( 'pointerdown', ( e ) => {
-    console.log('---> small, pointerdown')
     if( this.ended ){
       this._onEndInteraction();
       return;
@@ -187,7 +186,6 @@ Small.prototype.setupLoader = function(){
   };
 
   let popstateFunction = ( event ) => {
-    console.log('Small.js -> popstate:', history.state );
     const state = history.state;    
     const statePageIndex = this.getPageIndexFor( history.state.url );
     const completedAtIndex = this.completedPageIndices.indexOf( statePageIndex );    
