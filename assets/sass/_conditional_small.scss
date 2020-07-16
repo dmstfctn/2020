@@ -373,7 +373,7 @@
   .dc-gfx{
     top: 50%;
     left: 50%; 
-    width: 100vh;
+    width: 84vh;
     height: 100vw;
     transform-origin: center;
     transform: translateX(-50%) translateY(-50%) rotate(-90deg);
@@ -410,7 +410,7 @@
         fill: #c43131;
       }
       #phone-fill{
-        fill: #ff0000;
+        fill: #000000;
       }
     }
     &.hidden{
@@ -430,11 +430,12 @@
       #black-stroke-thin-3{
         stroke: #7D7D7D;
       }
-      
       #black-stroke-7,
-      #black-fill,
-      #phone-fill{
+      #black-fill{
         fill: #000000;
+      }
+      #phone-fill{
+        fill: #FF0000;
       }
       #red-fill{
         fill: #111110;
