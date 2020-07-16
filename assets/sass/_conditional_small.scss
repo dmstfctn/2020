@@ -196,14 +196,15 @@
       display: none;
     }
   }
-  // html[data-dc-pagetype="relatedmatter"] .dc-sitenav a[href="/mmittee"] svg path{
-  //   &[stroke]{
-  //     stroke:  #FFFFFF !important;
-  //   }
-  //   &[fill]{
-  //     fill: #FFFFFF !important;
-  //   }
-  // }
+
+  html[data-dc-pagetype="home"] .dc-sitenav a[href="/mmittee"] svg path{
+    &[stroke]{
+      stroke: #FF0000 !important;
+    }
+    &[fill]{
+      fill: #FF0000 !important;
+    }
+  }
 
   .dc-item--header{
     display: none;
