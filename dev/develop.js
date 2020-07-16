@@ -30,14 +30,27 @@ console.log( ' ----------- SETUP COMPLETE ------------ ')
 
 
 let buildWait; 
+let buildProcess;
 const runBuild = () => {
   clearTimeout( buildWait );
-  buildWait = setTimeout( ()=>{
+  buildWait = setTimeout( ()=>{    
+    if( buildProcess ){
+      buildProcess.kill();
+    }
     console.log( " ------------ BUILDING SITE ------------ ")
-    cp.exec('node build.js', {}, ( err, stdout )=>{
+    buildProcess = cp.spawn('node', ['build.js'] );
+    buildProcess.stderr.on('data', ( err ) => {
       if( err ) throw new Error( err );
-      console.log( stdout );
-      console.log( " ----------- BUILD COMPLETE ------------ ")
+    });
+    buildProcess.stdout.on('data', ( stdout ) => {
+      console.log( stdout.toString() );
+    });
+    buildProcess.on('close', ( code )=>{
+      if( code === 0 ){
+        console.log( " ----------- BUILD COMPLETE ------------ ")
+      } else {
+        console.log( " ----------- BUILD CANCELLED ----------- ")
+      }
     });    
   }, 250 );
 }
