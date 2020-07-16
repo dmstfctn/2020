@@ -3,7 +3,7 @@ title: Network Study (I, VII, VIII)
 description: surveying urban wireless network infrastructure
 ---
 
-NETWORK STUDY I, VII, VIII is a set of three audiovisual pieces exploring network infrastructure; each piece reproduces the activity of wireless networks by translating captured data into sound, textual information, pictograms and warping satellite imagery.
+_NETWORK STUDY I, VII, VIII_ is a set of three audiovisual pieces exploring network infrastructure; each piece reproduces the activity of wireless networks by translating captured data into sound, textual information, pictograms and warping satellite imagery.
 
 NETWORK STUDY I explores the London Internet Exchange (LINX), an area inhabited by buildings with imposing grey exteriors, surrounded by metal fencing and security cameras, where 600 operators connect to exchange traffic; in its proximity is Canary Wharf, a key European financial hub, thriving on the network performance and scalability offered by LINX services.
 

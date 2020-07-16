@@ -112,10 +112,17 @@
       padding-top: 2.9rem;
       background: #000000;
       z-index: 1;
-      display: none;      
+      display: none;
+      em{
+        font-style: normal;
+        color: #FF0000;
+      } 
     }
       .dc-item__focusgroup .dc-item--info{
         background: #FF0000;
+        em{
+          color: #FFFFFF;
+        }
       }
       .dc-item--info.active{
         display: block;
