@@ -1,11 +1,19 @@
 const HoverImg = function( $hoverImg ){
+  this.$img = $hoverImg.querySelector('img');
   $hoverImg.addEventListener( 'mouseover', ( e ) => {
-    let $img = $hoverImg.querySelector('img');
-    $img.addEventListener('load', () => {
-      $img.classList.add('loaded');
+    this.$img.addEventListener('load', () => {
+      this.$img.classList.add('loaded');      
+      this._onShow();
     }, {once: true});
-    $img.src = $img.getAttribute( 'data-src' );
+    this.$img.src = this.$img.getAttribute( 'data-src' );
   });
+};
+
+HoverImg.prototype = {
+  _onShow: function(){
+    this.onShow();
+  },
+  onShow: function(){ /* ... override ... */ }
 };
 
 module.exports = HoverImg;

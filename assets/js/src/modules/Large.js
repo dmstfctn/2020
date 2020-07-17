@@ -23,8 +23,15 @@ const Large = function(){
   this.initQuantisers(); 
 
   document.querySelectorAll( '.dc-list-hoverimg' )
-    .forEach( ($hoverImg) => {
-      HoverImg( $hoverImg );
+    .forEach( ($hoverImg) => {            
+      let hoverImg = new HoverImg( $hoverImg );
+      hoverImg.onShow = function(){
+        let lineH = $hoverImg.offsetHeight;
+        let distFromBottom = parseInt($hoverImg.getAttribute('data-lines-from-bottom')) * lineH;
+        if( distFromBottom < hoverImg.$img.offsetHeight ){
+          hoverImg.$img.style.marginTop = distFromBottom - hoverImg.$img.offsetHeight + 'px';
+        }
+      }
    });
 };
 
@@ -122,6 +129,44 @@ Large.prototype.firstHistoryState = function(){
   history.replaceState( initialState, null, window.location.pathname );
 };
 
+Large.prototype.initScrollQuantiser = function(){
+  this.cvScroller = new ScrollQuantiser( 
+    document.querySelector('#info .dc-cv'), 
+    document.querySelectorAll('#info .dc-cv--entry'),
+    0.4, //speed,
+    1 // no. of lines to cut off bottom 
+  );
+
+  const $cvScrollerContents = document.querySelectorAll('#info .quantised-scroller--wrapper dl > *');
+  let scrollerTitles = [];
+  let entriesWithImages = [];
+  let entryIndex = 0;
+  const totalEntries = [... $cvScrollerContents].filter(function( $ele ){
+    return $ele.classList.contains('dc-cv--entry');
+  }).length;
+  $cvScrollerContents.forEach( ($ele, index ) => {
+    if( $ele.tagName === 'DT' ){
+      scrollerTitles.push({
+        $ele: $ele,
+        index: entryIndex
+      });
+    } else {
+      const $img = $ele.querySelector('img');
+      $ele.setAttribute('data-lines-from-bottom',  totalEntries - entryIndex );     
+      entryIndex++;
+    }    
+  });
+  this.cvScroller.onScroll = () => {
+    scrollerTitles.forEach( ( title ) =>{
+      if( title.index < this.cvScroller.minVisLine || title.index > this.cvScroller.maxVisLine ){
+        title.$ele.classList.add( 'quantised-scroller--hidden');
+      } else {
+        title.$ele.classList.remove( 'quantised-scroller--hidden');
+      }
+    });  
+  }
+}
+
 Large.prototype.initQuantisers = function(){
   this.vcList = {
     'related-matters': VisualQuantiser( 
@@ -135,34 +180,8 @@ Large.prototype.initQuantisers = function(){
       document.querySelector('#focus-groups .dc-biglist--now')
     )
   };
-  this.cvScroller = new ScrollQuantiser( 
-    document.querySelector('#info .dc-cv'), 
-    document.querySelectorAll('#info .dc-cv--entry'),
-    0.4, //speed,
-    1 // no. of lines to cut off bottom 
-  );
-  const $cvScrollerContents = document.querySelectorAll('#info .quantised-scroller--wrapper dl > *');
-  let scrollerTitles = [];
-  let entryIndex = 0;
-  $cvScrollerContents.forEach( ($ele, index ) => {
-    if( $ele.tagName === 'DT' ){
-      scrollerTitles.push({
-        $ele: $ele,
-        index: entryIndex
-      });
-    } else {
-      entryIndex++;
-    }    
-  });
-  this.cvScroller.onScroll = () => {
-    scrollerTitles.forEach( ( title ) =>{
-      if( title.index < this.cvScroller.minVisLine || title.index > this.cvScroller.maxVisLine ){
-        title.$ele.classList.add( 'quantised-scroller--hidden');
-      } else {
-        title.$ele.classList.remove( 'quantised-scroller--hidden');
-      }
-    });
-  }
+  
+  this.initScrollQuantiser();
 }
 
 Large.prototype.renderPage = function( data ){
