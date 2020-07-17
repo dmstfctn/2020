@@ -348,7 +348,7 @@ const createSmallSite = ( content ) => {
         site.pages.push({
           year: yearNumeric - 0.5, //so that these go after focus groups
           url: Config.url_root + '/' + createURLPath( item.name, 'related matters' ),
-          //data: item
+          title: item.name
         });
       }
     }
@@ -363,7 +363,7 @@ const createSmallSite = ( content ) => {
         site.pages.push({
           year: yearNumeric,
           url: Config.url_root + '/' + createURLPath( item.name, 'focus groups' ),
-          //data: item
+          title: item.name
         });
       }
     }

@@ -30,7 +30,9 @@ const Small = function(){
   this.completedPageIndices = [];
 
   this.showreelHasRun = false;
-  this.project = new Project( this.shouldShowreel() );
+  this.project = new Project( this.shouldShowreel() );  
+  const nextProjectTitle = this.getNextProjectTitle( this.shouldShowreel() );
+  this.project.setNextProjectTitle( nextProjectTitle );
 
   this.cvScroller = new ScrollQuantiser( 
     document.querySelector('#info .dc-cv'), 
@@ -75,6 +77,14 @@ Small.prototype.getPageIndexFor = function( _path ){
     });
 
   return index;
+}
+
+Small.prototype.getNextProjectTitle = function( _includesCv ){
+  if( !this.data[this.pageIndex+1] || _includesCv ){
+    return 'DEMYSTIFICATION COMMITTEE';
+  } else {
+    return this.data[this.pageIndex+1].title.toUpperCase();
+  }
 }
 
 Small.prototype.shouldShowreel = function(){
@@ -226,6 +236,8 @@ Small.prototype.renderPage = function( data, extra ){
   this.project.deactivate();
   this.project = new Project( addShowreel ); 
   this.project.activate();
+  const nextProjectTitle = this.getNextProjectTitle( addShowreel ); 
+  this.project.setNextProjectTitle( nextProjectTitle );
   this.setupProjectEvents();  
 }
 

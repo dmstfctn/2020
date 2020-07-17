@@ -61,6 +61,17 @@ ProjectSmall.prototype = {
     }    
     return result;
   },
+  setNextProjectTitle: function( title ){
+    for( let orientation of ORIENTATIONS ){
+      const lastSlideIndex = ( this.includesCV ) ? this.items[ orientation ].length - 2 : this.items[ orientation ].length - 1;
+      if( lastSlideIndex < 1 ){ return; }
+      
+      const $nextLabel = this.items[ orientation ][ lastSlideIndex ].querySelector('.dc-smallnav--next');
+      if( $nextLabel ){
+        $nextLabel.innerHTML = title;
+      }      
+    }
+  },
   loadPlaceholderImages: function(){
     for( let orientation of ORIENTATIONS ){
       for( let index = 0; index <  this.items[ orientation ].length; index++ ){
