@@ -83,13 +83,14 @@
     width: 28%;
     float: left;
     clear: both;
-    text-indent: 41%;
     position: relative;
     .dctxt--date:first-child{
       position: absolute;
       left: 0;
-      text-indent: 0;
       top: 0.41em;
+    }
+    .dc-cv--bracket__first{
+      margin-left: 41%;
     }
   }
 

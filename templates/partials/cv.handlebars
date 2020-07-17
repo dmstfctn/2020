@@ -8,11 +8,11 @@
           <span class="dctxt--date">{{../year}}{{~#if this.contents.[0].now~}}.{{this.contents.[0].date}}{{/if}}</span>            
         {{/unless}}
         {{~#if type~}}
-        <span class="dc-cv--bracket">(</span><!--
+        <span class="dc-cv--bracket dc-cv--bracket__first">(</span><!--
         --><span class="dc-cv--type dc-cv--type__{{~type~}}">{{{ dc_cvcat type }}}</span><!--
         {{/if}}
         {{~#if type~}}
-      --><span class="dc-cv--bracket">)</span>
+      --><span class="dc-cv--bracket dc-cv--bracket__last">)</span>
         {{/if}}
       </dt>
       {{~#each this.contents~}}
