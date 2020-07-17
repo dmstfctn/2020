@@ -1,7 +1,8 @@
-const ScrollQuantiser = function( _$ele, _$line, _speed, _cutBottomLines, _preventInput ){
+const ScrollQuantiser = function( _$ele, _$lines, _speed, _cutBottomLines, _preventInput ){
   this.$ele = _$ele;
   this.$scrollable = this.$ele.querySelector(':first-child');
-  this.$line = _$line;
+  this.$lines = _$lines;
+  this.$line = this.$lines[0]; 
   this.speed = _speed || 1;
   this.cutBottomLines = _cutBottomLines || 0;
   this.preventInput = _preventInput || false;
@@ -9,10 +10,18 @@ const ScrollQuantiser = function( _$ele, _$line, _speed, _cutBottomLines, _preve
     original: 0,
     quantised: 0
   };
+  this.pScroll = {
+    original: 0,
+    quantised: 0
+  };
   this.height = {
     original: 0,
     quantised: 0
   };
+  this.firstVisibleLineIndex = 0;
+  this.visibleLineCount = 0;
+  this.minVisLine = 0;
+  this.maxVisLine = this.$lines.length;
   this.hasScrolled = false;
   this.init();
   this.measure();
@@ -70,6 +79,8 @@ ScrollQuantiser.prototype = {
     });
   },
   update: function( deltaY ){
+    this.pScroll.original = this.scroll.original;
+    this.pScroll.quantised = this.scroll.quantised;
     this.scroll.original += deltaY * this.speed;   
     if( this.scroll.original < 0 ){
       this.scroll.original = 0;
@@ -77,16 +88,30 @@ ScrollQuantiser.prototype = {
     if( this.scroll.original > this.maxScroll ){
       this.scroll.original = this.maxScroll;
     }
-    this.scroll.quantised = Math.floor(this.scroll.original / this.lineH)  * this.lineH;
+    this.firstVisibleLineIndex = Math.floor(this.scroll.original / this.lineH);
+    this.scroll.quantised = this.firstVisibleLineIndex * this.lineH;
+
+    this.minVisLine = this.firstVisibleLineIndex;
+    this.maxVisLine = this.firstVisibleLineIndex + this.visibleLineCount;
     
   },
   render: function(){
+    if( this.scroll.quantised === this.pScroll.quantised && this.hasScrolled ){
+      return;
+    }
     if( !this.hasScrolled && this.scroll.quantised > 0 ){
       this.hasScrolled = true;
       this.$ele.classList.add('has-scrolled');
     }
     this.$wrapper.style.height = this.height.quantised + 'px';
-    this.$scrollable.style.transform = `translateY(${ -this.scroll.quantised }px)`;
+    this.$scrollable.style.transform = `translateY(${ -this.scroll.quantised }px)`;   
+    this.$lines.forEach( ( $ele, index ) => {
+      if( index < this.minVisLine || index > this.maxVisLine ){
+        $ele.classList.add('quantised-scroller--hidden');
+      } else {
+        $ele.classList.remove('quantised-scroller--hidden');
+      }
+    });
   },
   onScroll: function(){ /* ... override ... */ },
   _onScroll: function( deltaY ){
@@ -105,8 +130,9 @@ ScrollQuantiser.prototype = {
   },
   measure: function(){    
     this.lineH = Math.round(this.$line.getBoundingClientRect().height * 100) / 100;
-    this.height.original = this.$ele.getBoundingClientRect().height;
-    this.height.quantised = Math.floor( (this.height.original - (this.lineH * this.cutBottomLines)) /  this.lineH ) * this.lineH;
+    this.height.original = this.$ele.getBoundingClientRect().height;    
+    this.visibleLineCount = Math.floor( (this.height.original - (this.lineH * this.cutBottomLines)) /  this.lineH );
+    this.height.quantised = this.visibleLineCount * this.lineH;
     let scrollableQuantised = Math.round(this.$scrollable.getBoundingClientRect().height / this.lineH) * this.lineH;    
     this.maxScroll =  Math.ceil( scrollableQuantised - this.height.quantised );
   },

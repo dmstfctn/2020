@@ -137,10 +137,32 @@ Large.prototype.initQuantisers = function(){
   };
   this.cvScroller = new ScrollQuantiser( 
     document.querySelector('#info .dc-cv'), 
-    document.querySelector('#info .dc-cv--entry'),
+    document.querySelectorAll('#info .dc-cv--entry'),
     0.4, //speed,
     1 // no. of lines to cut off bottom 
   );
+  const $cvScrollerContents = document.querySelectorAll('#info .quantised-scroller--wrapper dl > *');
+  let scrollerTitles = [];
+  let entryIndex = 0;
+  $cvScrollerContents.forEach( ($ele, index ) => {
+    if( $ele.tagName === 'DT' ){
+      scrollerTitles.push({
+        $ele: $ele,
+        index: entryIndex
+      });
+    } else {
+      entryIndex++;
+    }    
+  });
+  this.cvScroller.onScroll = () => {
+    scrollerTitles.forEach( ( title ) =>{
+      if( title.index < this.cvScroller.minVisLine || title.index > this.cvScroller.maxVisLine ){
+        title.$ele.classList.add( 'quantised-scroller--hidden');
+      } else {
+        title.$ele.classList.remove( 'quantised-scroller--hidden');
+      }
+    });
+  }
 }
 
 Large.prototype.renderPage = function( data ){
