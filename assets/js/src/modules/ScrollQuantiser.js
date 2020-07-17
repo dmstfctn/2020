@@ -47,7 +47,7 @@ ScrollQuantiser.prototype = {
     this.$ele.addEventListener( 'touchstart', (e) => {
       this.touchID = this.touchID || e.changedTouches[0].identifier;
       this.pTouch = e.changedTouches[0];
-    });
+    }, {passive: true} );
     this.$ele.addEventListener( 'touchmove', (e) => {
       for( let i = 0; i < e.changedTouches.length; i++ ){
         let touch = e.changedTouches[i];
@@ -68,7 +68,7 @@ ScrollQuantiser.prototype = {
           this.touchID = null;
         }
       }
-    });
+    }, {passive: true} );
     window.addEventListener('keydown', ( e ) => {
       if( e.key === 'ArrowDown' ){
         this._onKey( 1 );
