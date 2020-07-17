@@ -215,10 +215,11 @@
       display: inline-block;
       width: 100%;
     }
-      /* and undo it on dissemination because it goes weird there in other browsers */
-     .dc-work--year .dc-work--items.dc-dissemination-item > *:only-child{
-       margin-bottom: 0;
-     }
+    /* and fix the issue this causes whereby the last item has a double height hover area */
+    .dc-work--item{
+      height: 1.142em;
+      overflow: hidden;
+    }
 
 /* related matters */
 /* now */
