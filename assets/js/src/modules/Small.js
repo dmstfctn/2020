@@ -10,7 +10,9 @@ const SmallAnimations = require('./SmallAnimations.js');
 
 const ScrollQuantiser = require( './ScrollQuantiser.js' );
 
-const Small = function(){
+const Small = function( _loops ){
+  this.loops = !!_loops;
+
   this.$interactionEle = document.querySelector('.dc-mobile-nav');  
   this.setupInteraction();
 
@@ -26,6 +28,8 @@ const Small = function(){
   this.remainingPages = this.data.length
 
   this.pageIndex = this.getPageIndexFor( window.location.pathname );
+
+  console.log('SMALL SITE PAGE INDEX: ', this.pageIndex );
   this.startPageIndex = this.pageIndex;
   this.completedPageIndices = [];
 
@@ -133,6 +137,20 @@ Small.prototype.endState = function(){
   document.body.classList.add('dc-small--end-state'); 
 }
 
+Small.prototype.resetAndloop = function(){
+  this.showreelHasRun = false;
+  this.completedPageIndices = [];
+  this.remainingPages = this.data.length;
+  this.pageIndex = this.startPageIndex;
+  const startURL = (this.data[ this.pageIndex ]) ? F.slashStart(this.data[ this.pageIndex ].url) : '/mmittee/';
+  this.loader.load( 
+    startURL, 
+    false , 
+    {shouldShowreel: !!this.data[ this.pageIndex ] } 
+  );
+  this.showLoader();
+}
+
 Small.prototype.projectEnd = function(){  
   this.completedPageIndices.push( this.pageIndex );
   this.remainingPages = this.data.length - this.completedPageIndices.length;  
@@ -145,8 +163,14 @@ Small.prototype.projectEnd = function(){
     this.loader.load( F.slashStart( this.data[ this.pageIndex ].url ) );
     this.showLoader();
   } else {
-    this.endState();
+    if( this.loops ){
+      this.resetAndloop();
+    } else {
+      this.endState();
+    }
   }
+
+  console.log('projectEnd() , pageIndex = ', this.pageIndex );
 };
 
 Small.prototype.showLoader = function(){
@@ -231,7 +255,7 @@ Small.prototype.renderPage = function( data, extra ){
   document.title = data.title;
   document.documentElement.setAttribute('data-dc-pagetype', data.pagetype );
   
-  const addShowreel = extra.shouldShowreel || (this.remainingPages === 0);
+  const addShowreel = extra.shouldShowreel || (this.remainingPages === 0 && !this.loops);
   this.$mainContent.innerHTML = data.html;
   this.project.deactivate();
   this.project = new Project( addShowreel ); 
@@ -265,4 +289,4 @@ Small.prototype.setupProjectEvents = function(){
     this.animations.triggerNoFurther();
   };
 }
-module.exports = new Small();
+module.exports = new Small( CFG.SITE_SHOULD_LOOP );
