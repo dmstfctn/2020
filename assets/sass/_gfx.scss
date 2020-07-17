@@ -49,11 +49,28 @@
     opacity: 1;
   }
 }
+
+/* special version on menus */
 html[data-dc-pagetype="home"],
 html[data-dc-menuvisible="related-matters"]{
   .dc-gfx svg{ 
     #red-fill{
       fill: #FF0000;
+    }
+  }
+}
+
+html[data-dc-pagetype="home"][data-dc-homeactive="focus-groups"],
+html[data-dc-menuvisible="focus-groups"]{
+  .dc-gfx svg{ 
+    #red-fill{
+      fill: #000000;
+    }
+    #black-fill{
+      fill: #000000;
+    }
+    #black-blur{
+      fill: #1D1E1B;
     }
   }
 }
