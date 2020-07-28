@@ -1,25 +1,12 @@
 1.jpg:  
-  caption: one dot jpeg
-  alt: ALT one dot jpeg,
+  caption: NE2
+  alt: ALT one dot jpeg
 2.jpg:  
-  caption: two dot jpeg
+  caption: NE3
   alt: ALT two dot jpeg
 3.jpg:  
-  caption: three dot jpeg
+  caption: Selected Network Studies, relesead by NUKFM
   alt: ALT three dot jpeg
 4.jpg:  
-  caption: four dot jpeg
+  caption: Flash Demons, released by MILLE PLATEAUX
   alt: ALT four dot jpeg
-5.jpg:  
-  alt: ALT five dot jpeg
-6.jpg:  
-  alt: ALT six dot jpeg
-7.jpg:  
-  alt: ALT seven dot jpeg
-8.jpg:
-  caption: this image displays at 50%
-  size: 50%
-9.jpg:  
-  caption: this image displays at 75%
-  alt: ALT nine dot jpeg
-  size: 75%
