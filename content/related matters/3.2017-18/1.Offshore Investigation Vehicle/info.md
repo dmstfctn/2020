@@ -9,4 +9,4 @@ The OFFSHORE INVESTIGATION VEHICLE consisted of Empire Management Limited, a UK 
 
 The OFFSHORE INVESTIGATION VEHICLE was joined by 58 members of the public through the issue of Empire Management Limited shares, allowing them to explore its structure and operational scope through a series of lecture-performances and exhibitions.
 
-Those operations are publicly documented on the UK registrar of companies, while setup information are released as a PDF.
+Those operations are publicly documented on the UK registrar of companies, while company formation information is released as a PDF.
