@@ -2,7 +2,7 @@ const fs = require('fs-extra');
 const path = require('path');
 const Config = require('../Config.js');
 const H = require('./Helpers.js');
-
+const imgSize = require('image-size');
 
 const createURLPath = ( name, section ) => {
   const slug = H.createSlug( name );  
@@ -61,11 +61,12 @@ const prepareImage = ( original, destinationPath, src ) => {
   const prepared = {
     originalPath: original,
     newPath: path.join( destinationPath, filename ),
-    src: path.join( src, filename ),
+    srcset: path.join( src, filename ),
     lowPath: path.join( destinationPath, lowFilename ),
     lowSrc: path.join( src, lowFilename ),
     isImage: true,
-    processed: false
+    processed: false,
+    dimensions: imgSize( original )
   };
   return prepared;
 }
