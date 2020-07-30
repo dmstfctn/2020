@@ -55,13 +55,13 @@ const prepareFile = (  original, destinationPath, src ) => {
 const prepareImage = ( original, destinationPath, src ) => {
   if( typeof original === 'object' ){
     return original;
-  }
+  }  
   const filename = path.basename( original );
   const lowFilename = 'tiny.' + filename;
   const prepared = {
     originalPath: original,
     newPath: path.join( destinationPath, filename ),
-    srcset: path.join( src, filename ),
+    src: path.join( src, filename ),
     lowPath: path.join( destinationPath, lowFilename ),
     lowSrc: path.join( src, lowFilename ),
     isImage: true,
