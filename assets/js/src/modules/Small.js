@@ -130,6 +130,11 @@ Small.prototype.setupInteraction = function(){
       this.project.prev( this.orientation.orientation );
     }
   });
+  this.$interactionEle.addEventListener('touchmove', function (event) {
+    if (event.targetTouches.length === 1) {
+      event.preventDefault();
+    }
+  });
 };
 
 Small.prototype.endState = function(){
