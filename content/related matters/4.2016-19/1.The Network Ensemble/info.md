@@ -7,4 +7,4 @@ THE NETWORK ENSEMBLE was a noise project making use of wireless network data as 
 
 Executed by two human operators, the noise performances executed under the moniker explored the activity of local wireless networks through sound.
 
-The NETWORK ENSEMBLE is released by NUKFM and MILLE PLATEAUX.
+THE NETWORK ENSEMBLE is released by NUKFM and MILLE PLATEAUX.
