@@ -18,7 +18,7 @@ Orientation.prototype = {
   handleMq: function(){
     console.log('handleMq');
     console.log( this.mqLandscape );
-    console.log(this.mqPortrait);
+    console.log( this.mqPortrait );
     if( this.mqLandscape.matches ){
       this.o = 'landscape';
       this.orientation = 'landscape';    
@@ -26,13 +26,14 @@ Orientation.prototype = {
     if( this.mqPortrait.matches ){
       this.o = 'portrait';
       this.orientation = 'portrait';
-    }
-    console.log('mqresult: ', this.orientation, this.o );
+    }    
     this.sizeRoot();
   },
   setupResize: function(){
     window.addEventListener( 'resize', () => {
+      console.log('handleResize')
       this.sizeRoot();
+      document.body.scrollTop = 0
     } );
   },
   clearResize: function(){
@@ -68,9 +69,7 @@ Orientation.prototype = {
         $e.style.height = window.innerHeight + 'px';   
         $e.style.minHeight = window.innerHeight + 'px';   
       });
-      document.querySelectorAll('.dc-gfx').forEach( ( $e ) => {
-        console.log(this);
-        console.log('SIZE gFX. ORIENTATION: ', this.orientation, ' <--- !!!!! -->>', this.o )
+      document.querySelectorAll('.dc-gfx, .dc-gfx svg').forEach( ( $e ) => {      
         if( this.orientation === 'portrait' ){
           console.log('PORTRAIT: H: ', window.innerHeight + 'px', 'W:', window.innerWidth + 'px' );
           $e.style.width = window.innerHeight + 'px';   

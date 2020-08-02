@@ -106,12 +106,14 @@ Small.prototype.shouldShowreel = function(){
 /* Activate / Deactivate */
 Small.prototype.activate = function(){
   this.setupLoader();
+  this.cvScroller.activate();
   this.orientation.activate();
   this.project.activate();
 }
 
 Small.prototype.deactivate = function(){
   this.cancelLoader();
+  this.cvScroller.deactivate();
   this.orientation.deactivate();
   this.project.deactivate();
   this.animations.clearForwardHintTimeout();

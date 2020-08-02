@@ -1,6 +1,7 @@
 @media (max-width: 900px){
   html, body{
     padding: 0;
+    top: 0;
   }
   html{
     //font-size: 9.5px;
@@ -309,7 +310,7 @@
   }
    
   .dc-mobile-nav{
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
@@ -373,8 +374,9 @@
     bottom: calc( env(safe-area-inset-bottom) + .8rem  );
   }
   .dc-gfx{
-    top: 50%;
     left: 50%; 
+    top: 50%;
+    overflow: hidden;
     width: 84vh;
     height: 100vw;
     transform-origin: center;
@@ -466,12 +468,12 @@
     font-size: 3vh;
   }
   .dc-gfx{
-    top: 50%;
+    top: 0;
     left: 50%; 
     width: 100vw;
     height: 100vh;
     transform-origin: center;
-    transform: translateX(-50%) translateY(-50%) rotate(0);
+    transform: translateX(-50%) rotate(0);
   }
   .dc-info [data-dc-cv-priority="2"],
   .dc-info [data-dc-cv-priority="1"]{
