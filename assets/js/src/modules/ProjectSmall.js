@@ -152,6 +152,9 @@ ProjectSmall.prototype = {
     if( $slide.classList.contains('dc-media__video') ){
       $slide.querySelector('video').play();
     }
+  },
+  changeOrientation: function( orientation ){
+    this.update( orientation );
   }
 };
 

@@ -109,12 +109,16 @@ Small.prototype.activate = function(){
   this.cvScroller.activate();
   this.orientation.activate();
   this.project.activate();
+  this.orientation.onOrientationChange = () => {
+    this.project.changeOrientation( this.orientation.orientation );
+  };
 }
 
 Small.prototype.deactivate = function(){
   this.cancelLoader();
   this.cvScroller.deactivate();
   this.orientation.deactivate();
+  this.orientation.onOrientationChange = function(){};
   this.project.deactivate();
   this.animations.clearForwardHintTimeout();
 }

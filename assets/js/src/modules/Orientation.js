@@ -1,6 +1,5 @@
 const Orientation = function(){
   this.orientation = 'portrait';
-  this.o = 'portrait'
   this.mqPortrait = window.matchMedia( '(orientation: portrait)' );
   this.mqLandscape = window.matchMedia( '(orientation: landscape)' );
 }
@@ -15,23 +14,18 @@ Orientation.prototype = {
     this.clearResize();
     this.clearRootSize();
   },
-  handleMq: function(){
-    console.log('handleMq');
-    console.log( this.mqLandscape );
-    console.log( this.mqPortrait );
+  handleMq: function(){    
     if( this.mqLandscape.matches ){
-      this.o = 'landscape';
       this.orientation = 'landscape';    
     }
     if( this.mqPortrait.matches ){
-      this.o = 'portrait';
       this.orientation = 'portrait';
-    }    
+    }        
+    this._onOrientationChange();
     this.sizeRoot();
   },
   setupResize: function(){
     window.addEventListener( 'resize', () => {
-      console.log('handleResize')
       this.sizeRoot();
       document.body.scrollTop = 0
     } );
@@ -80,8 +74,17 @@ Orientation.prototype = {
           $e.style.height = window.innerHeight + 'px'; 
         }
       });
+      this._onSizeRoot();
     }, 300 );
-  }
+  },
+  _onSizeRoot: function(){
+    this.onSizeRoot();
+  },
+  onSizeRoot: function(){ /* ... override ... */ },
+  _onOrientationChange: function(){
+    this.onOrientationChange();
+  },
+  onOrientationChange: function(){ /* ... override ... */ }
 };
 
 module.exports = Orientation;
