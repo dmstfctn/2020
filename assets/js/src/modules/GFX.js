@@ -12,6 +12,7 @@ const GFX = function(){
   this.loadedAt = (new Date()).getTime();
   this.increaseDelay( false );
   this.unhidable = false;
+  this.isPrevented = false;
 }
 
 GFX.prototype = {
@@ -29,6 +30,12 @@ GFX.prototype = {
     } else{
       this.useShowDelay = this.showDelay;
     }
+  },
+  preventAppearance: function(){
+    this.isPrevented = true;
+  },
+  enableAppearance: function(){
+    this.isPrevented = false;
   },
   hide: function( immediate ){
     if( this.unhidable ){
@@ -54,6 +61,10 @@ GFX.prototype = {
     }
   },
   show: function( immediate ){
+    if( this.isPrevented ){
+      this.hide();
+      return false;
+    }
     if( immediate ){
       this.disableAnimation();
     }    

@@ -150,7 +150,10 @@ ProjectSmall.prototype = {
   },
   activateSlide: function( $slide ){
     if( $slide.classList.contains('dc-media__video') ){
+      window.DC_GFX.preventAppearance();
       $slide.querySelector('video').play();
+    } else {
+      window.DC_GFX.enableAppearance();
     }
   },
   changeOrientation: function( orientation ){
