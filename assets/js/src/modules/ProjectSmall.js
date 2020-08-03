@@ -121,7 +121,7 @@ ProjectSmall.prototype = {
       this._onCantGoBack();
       this.slideIndex = 0;
     }
-    this.update();
+    this.update( orientation );
     this._onChange();
   },
   update: function( orientation ){
