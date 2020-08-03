@@ -81,8 +81,11 @@ ProjectLarge.prototype = {
     const $nav = this.$nav[index]
     const $slide = this.$media[index];
     let $media = $slide.querySelector('audio') || $slide.querySelector('video');   
-    let $embed = $slide.querySelector('iframe'); 
+    let $embed = $slide.querySelector('iframe');     
     if( $media ){
+      $media.addEventListener('ended', () => {
+        this.stopMedia( index );
+      }, {once: true});
       $media.play();
     } else if( $embed ){
       // TODO: handle iframe for likely services properly (soundloud, vimeo, youtube?)
