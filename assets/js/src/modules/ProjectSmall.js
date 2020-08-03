@@ -130,12 +130,14 @@ ProjectSmall.prototype = {
     if( this.items.portrait[ this.slideIndex ] ){
       this.items.portrait[ this.slideIndex ].classList.add( 'active' );
       if( orientation === 'portrait' ){
+        this.deactivateSlide( this.items.landscape[ this.slideIndex ] );
         this.activateSlide( this.items.portrait[ this.slideIndex ] );
       }
     }
     if( this.items.landscape[ this.slideIndex ] ){
       this.items.landscape[ this.slideIndex ].classList.add( 'active' );
       if( orientation === 'landscape' ){
+        this.deactivateSlide( this.items.portrait[ this.slideIndex ] );
         this.activateSlide(  this.items.landscape[ this.slideIndex ] );
       }
     }
@@ -151,7 +153,14 @@ ProjectSmall.prototype = {
   activateSlide: function( $slide ){
     if( $slide.classList.contains('dc-media__video') ){
       window.DC_GFX.preventAppearance();
-      $slide.querySelector('video').play();
+      let videoPlay = $slide.querySelector('video').play();
+      if( videoPlay ){
+        videoPlay.catch( ( e ) => {
+          console.log('VIDEO CANT PLAY, go to next' );
+          console.log( e );
+          this.next();
+        });
+      }
     } else {
       window.DC_GFX.enableAppearance();
     }
