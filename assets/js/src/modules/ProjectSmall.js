@@ -84,6 +84,7 @@ ProjectSmall.prototype = {
       .concat( this.items.landscape )
       .forEach( ( item ) => {
         item.classList.remove( 'active' );
+        this.deactivateSlide( item );
       });
   },
   preloadImages: function( _preloadCount ){
@@ -107,7 +108,7 @@ ProjectSmall.prototype = {
       this._onEnd();
       return;
     }    
-    this.update();
+    this.update( orientation );
     this._onChange();
   },
   prev: function( orientation ){
@@ -123,16 +124,34 @@ ProjectSmall.prototype = {
     this.update();
     this._onChange();
   },
-  update: function(){
+  update: function( orientation ){
     this.deactivateAll();
     
     if( this.items.portrait[ this.slideIndex ] ){
       this.items.portrait[ this.slideIndex ].classList.add( 'active' );
+      if( orientation === 'portrait' ){
+        this.activateSlide( this.items.portrait[ this.slideIndex ] );
+      }
     }
     if( this.items.landscape[ this.slideIndex ] ){
       this.items.landscape[ this.slideIndex ].classList.add( 'active' );
+      if( orientation === 'landscape' ){
+        this.activateSlide(  this.items.landscape[ this.slideIndex ] );
+      }
     }
     this.preloadImages( 2 );
+  },
+  deactivateSlide: function( $slide ){
+    if( $slide.classList.contains('dc-media__video') ){
+      const $video = $slide.querySelector('video');
+      $video.pause();
+      $video.currentTime = 0;
+    }
+  },
+  activateSlide: function( $slide ){
+    if( $slide.classList.contains('dc-media__video') ){
+      $slide.querySelector('video').play();
+    }
   }
 };
 

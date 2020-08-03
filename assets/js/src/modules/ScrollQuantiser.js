@@ -6,6 +6,7 @@ const ScrollQuantiser = function( _$ele, _$lines, _speed, _cutBottomLines, _prev
   this.speed = _speed || 1;
   this.cutBottomLines = _cutBottomLines || 0;
   this.preventInput = _preventInput || false;
+  this.preventInputInit = this.preventInput;
   this.scroll = {
     original: 0,
     quantised: 0
@@ -41,14 +42,17 @@ ScrollQuantiser.prototype = {
     }
     this.$ele.classList.add( 'quantised-scroller' );
     this.$ele.addEventListener( 'wheel', (e) => {
+      if( this.preventInput ){ return; }
       this._onScroll( e.deltaY );
     }, {passive: true} );
 
     this.$ele.addEventListener( 'touchstart', (e) => {
+      if( this.preventInput ){ return; }
       this.touchID = this.touchID || e.changedTouches[0].identifier;
       this.pTouch = e.changedTouches[0];
     }, {passive: true} );
     this.$ele.addEventListener( 'touchmove', (e) => {
+      if( this.preventInput ){ return; }
       for( let i = 0; i < e.changedTouches.length; i++ ){
         let touch = e.changedTouches[i];
         if( touch.identifier === this.touchID ){          
@@ -59,6 +63,7 @@ ScrollQuantiser.prototype = {
       }
     }, {passive: true} );
     this.$ele.addEventListener( 'touchend', (e) => {
+      if( this.preventInput ){ return; }
       for( let i = 0; i < e.changedTouches.length; i++ ){
         let touch = e.changedTouches[i];
         if( touch.identifier === this.touchID ){
@@ -70,6 +75,7 @@ ScrollQuantiser.prototype = {
       }
     }, {passive: true} );
     window.addEventListener('keydown', ( e ) => {
+      if( this.preventInput ){ return; }
       if( e.key === 'ArrowDown' ){
         this._onKey( 1 );
       }
@@ -138,6 +144,12 @@ ScrollQuantiser.prototype = {
   },
   recalculate: function(){
     this._onScroll( 0 );
+  },
+  deactivate: function(){
+    this.preventInput = false;
+  },
+  activate: function(){
+    this.preventInput = this.preventInputInit;
   }
 }
 

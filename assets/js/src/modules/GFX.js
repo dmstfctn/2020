@@ -109,6 +109,11 @@ GFX.prototype = {
     // window.addEventListener('click', () => {
     //   this._onMove();
     // });
+    this.$gfx.addEventListener('touchmove', function (event) {
+      if (event.targetTouches.length === 1) {
+        event.preventDefault();
+      }
+    });
     if( visibilityAPI.property ){
       document.addEventListener( visibilityAPI.eventName, () => {              
         if( document[ visibilityAPI.property ] ){ //is hidden    

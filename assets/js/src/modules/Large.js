@@ -210,10 +210,12 @@ Large.prototype.activate = function(){
   this.project.activate();
   this.quantise();
   this.resizeHandler = this.quantise.bind(this);
+  this.cvScroller.activate();
   window.addEventListener('resize', this.resizeHandler );
 }
 Large.prototype.deactivate = function(){
   this.cancelLoader();
+  this.cvScroller.deactivate();
   window.removeEventListener('resize', this.resizeHandler );
 }
 

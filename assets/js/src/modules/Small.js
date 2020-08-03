@@ -106,12 +106,14 @@ Small.prototype.shouldShowreel = function(){
 /* Activate / Deactivate */
 Small.prototype.activate = function(){
   this.setupLoader();
+  this.cvScroller.activate();
   this.orientation.activate();
   this.project.activate();
 }
 
 Small.prototype.deactivate = function(){
   this.cancelLoader();
+  this.cvScroller.deactivate();
   this.orientation.deactivate();
   this.project.deactivate();
   this.animations.clearForwardHintTimeout();
@@ -128,6 +130,11 @@ Small.prototype.setupInteraction = function(){
       this.project.next( this.orientation.orientation );
     } else {
       this.project.prev( this.orientation.orientation );
+    }
+  });
+  this.$interactionEle.addEventListener('touchmove', function (event) {
+    if (event.targetTouches.length === 1) {
+      event.preventDefault();
     }
   });
 };

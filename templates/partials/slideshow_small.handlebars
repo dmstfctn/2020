@@ -48,8 +48,8 @@
       </li>
     {{/dc_slidetype}}
     {{#dc_slidetype 'video' this}}
-      <li class="dc-media__video{{#if @first}} active{{/if}}"></li>
-        <video src="{{content.src}}"></video>
+      <li class="dc-media__video{{#if @first}} active{{/if}}">
+        <video src="{{content.src}}" loop playsinline></video>
          <nav class="dc-media--smallnav dc-smallnav">
           <span class="dc-smallnav--prev{{#if nav.left.active}} active{{/if}}">{{nav.left.label}}</span>
           <span class="dc-smallnav--next{{#if nav.right.active}} active{{/if}}">{{nav.right.label}}</span>
