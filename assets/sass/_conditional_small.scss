@@ -174,34 +174,6 @@
         margin-bottom: 1rem;
       }
     }
-    .dc-smallnav{
-      position: absolute;
-      left: 0;
-      bottom: .8rem;
-      width: 100vw;
-      display: flex;
-      justify-content: space-between;
-      padding: 0 1rem;
-      box-sizing: border-box;
-      z-index: 1;
-    }
-      .dc-smallnav span{
-        color: #FFFFFF;
-      }
-      .dc-smallnav .active{
-        color: #FF0000;
-        //animation: flick-in-out 1.6s infinite step-start;
-      }
-      html[data-dc-pagetype="focusgroup"] .dc-item--info  .dc-smallnav span{
-        color: #000000;
-      }
-      html[data-dc-pagetype="focusgroup"]  .dc-item--info   .dc-smallnav .active{
-        color: #FFFFFF;
-      }
-      .dc-item--info  .dc-smallnav :first-child,
-      .dc-media--list :first-child .dc-smallnav :first-child{
-        text-transform: uppercase;
-      }
 
   .dc-sitenav{
     height: 2rem;
@@ -379,9 +351,6 @@
   .dc-info{
     padding-right: calc( env(safe-area-inset-right) + 1rem );
     padding-left: calc( env(safe-area-inset-left) + 1rem );
-  }
-  .dc-smallnav{
-    bottom: calc( env(safe-area-inset-bottom) + .8rem  );
   }
   .dc-gfx{
     left: 50%; 

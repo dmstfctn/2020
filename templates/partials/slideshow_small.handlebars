@@ -13,7 +13,7 @@
                     100vw"
           >
           {{/if}}
-           {{#if content.landscape.src}}
+          {{#if content.landscape.src}}
           <source 
             {{#if content.portrait.src}}media="(orientation: landscape)"{{/if}}
             data-low-src="{{content.landscape.lowSrc}}"
@@ -24,11 +24,7 @@
           >
           {{/if}}
           <img data-src="{{content.portrait.src}}" alt="{{meta.alt}}">
-        </picture>        
-        <nav class="dc-media--smallnav dc-smallnav">
-          <span class="dc-smallnav--prev{{#if nav.left.active}} active{{/if}}">{{nav.left.label}}</span>
-          <span class="dc-smallnav--next{{#if nav.right.active}} active{{/if}}">{{nav.right.label}}</span>
-        </nav>
+        </picture>
       </li>
     {{/dc_slidetype}}
     {{#dc_slidetype 'text' this}}
@@ -36,37 +32,21 @@
         <div class="text">
           {{{content.portrait}}}
         </div>
-         <nav class="dc-media--smallnav dc-smallnav">
-          <span class="dc-smallnav--prev{{#if nav.left.active}} active{{/if}}">{{nav.left.label}}</span>
-          <span class="dc-smallnav--next{{#if nav.right.active}} active{{/if}}">{{nav.right.label}}</span>
-        </nav>
       </li>
     {{/dc_slidetype}}
     {{#dc_slidetype 'embed' this}}
       <li class="dc-media__embed{{#if @first}} active{{/if}}">
         {{{content.portrait}}}
-         <nav class="dc-media--smallnav dc-smallnav">
-          <span class="dc-smallnav--prev{{#if nav.left.active}} active{{/if}}">{{nav.left.label}}</span>
-          <span class="dc-smallnav--next{{#if nav.right.active}} active{{/if}}">{{nav.right.label}}</span>
-        </nav>
       </li>
     {{/dc_slidetype}}
     {{#dc_slidetype 'audio' this}}
       <li class="dc-media__audio{{#if @first}} active{{/if}}">
-        <audio src="{{content.portrait.src}}"></audio>
-         <nav class="dc-media--smallnav dc-smallnav">
-          <span class="dc-smallnav--prev{{#if nav.left.active}} active{{/if}}">{{nav.left.label}}</span>
-          <span class="dc-smallnav--next{{#if nav.right.active}} active{{/if}}">{{nav.right.label}}</span>
-        </nav>
+        <audio src="{{content.portrait.src}}"></audio>       
       </li>
     {{/dc_slidetype}}
     {{#dc_slidetype 'video' this}}
       <li class="dc-media__video{{#if @first}} active{{/if}}">
-        <video src="{{content.portrait.src}}" loop playsinline></video>
-         <nav class="dc-media--smallnav dc-smallnav">
-          <span class="dc-smallnav--prev{{#if nav.left.active}} active{{/if}}">{{nav.left.label}}</span>
-          <span class="dc-smallnav--next{{#if nav.right.active}} active{{/if}}">{{nav.right.label}}</span>
-        </nav>
+        <video src="{{content.portrait.src}}" loop playsinline></video>        
       </li>
     {{/dc_slidetype}}       
   {{/each}}
