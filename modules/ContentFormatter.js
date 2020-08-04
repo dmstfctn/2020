@@ -2,7 +2,7 @@ const fs = require('fs-extra');
 const path = require('path');
 const Config = require('../Config.js');
 const H = require('./Helpers.js');
-const imgSize = require('image-size');
+const ImgSize = require('image-size');
 
 const createURLPath = ( name, section ) => {
   const slug = H.createSlug( name );  
@@ -27,6 +27,14 @@ const createURLPath = ( name, section ) => {
     */
 
 const prepareFile = (  original, destinationPath, src ) => {
+  if( typeof original === 'object' ){
+    const keys = Object.keys(original);
+    let list = {};  
+    Object.values(original).forEach( (value, index ) => {
+      list[ keys[index] ] = prepareFile( value, destinationPath, src );
+    });
+    return list;
+  }  
   const filename = path.basename( original );
   const prepared = {
     originalPath: original,
@@ -38,7 +46,7 @@ const prepareFile = (  original, destinationPath, src ) => {
 }
 
 /* 
-  prepareImage( originalPath, destinationPath, destinationSrc ):
+  prepareImage( originalPath, destinationPath, destinationSrc, _prefix ):
       from a source path, e.g 'content/related matters/1.2019/1.ECHO FX/landscape/1.image.jpg' 
       and a destination path e.g. 'public/related-matters/echo-fx/content/landscape/'
       create: 
@@ -52,21 +60,32 @@ const prepareFile = (  original, destinationPath, src ) => {
           processed: false /// set to true once file has been moved, sized, etc
         }
     */
-const prepareImage = ( original, destinationPath, src ) => {
+const prepareImage = ( original, destinationPath, src, _prefix ) => {
+  let prefix = _prefix || false;
   if( typeof original === 'object' ){
-    return original;
+    if( 'dimensions' in original ){
+      //assume it's already been processed...
+      return original;
+    }
+    const keys = Object.keys(original);
+    let list = {};      
+    Object.values(original).forEach( (value, index ) => {      
+      list[ keys[index] ] = prepareImage( value, destinationPath, src, keys[index] );
+    });
+    return list;
   }  
   const filename = path.basename( original );
-  const lowFilename = 'tiny.' + filename;
+  const outFilename = ( prefix ) ? prefix + '.' + filename : filename;
+  const lowFilename = 'tiny.' + outFilename;  
   const prepared = {
     originalPath: original,
-    newPath: path.join( destinationPath, filename ),
-    src: path.join( src, filename ),
+    newPath: path.join( destinationPath, outFilename ),
+    src: path.join( src, outFilename ),
     lowPath: path.join( destinationPath, lowFilename ),
     lowSrc: path.join( src, lowFilename ),
     isImage: true,
     processed: false,
-    dimensions: imgSize( original )
+    dimensions: ImgSize( original )
   };
   return prepared;
 }

@@ -30,12 +30,15 @@ const moveSlideshowContent = ( slideshows ) => {
     let slideshow = slideshows[ name ];
     slideshow.slides.forEach( (slide) => {
       if( slide.type === 'image' || slide.type === 'video' || slide.type === 'audio' ){
-        /* endure the destination exists */
-        fs.mkdirSync( path.dirname(slide.content.newPath), {recursive: true} );
-        /* copy the file */
-        fs.copyFileSync( slide.content.originalPath, slide.content.newPath );
-        if( slide.type === 'image' ){         
-          createLowResAndSave( slide.content.originalPath, slide.content.lowPath );          
+        let content = ( typeof slide.content === 'object' ) ? slide.content : [slide.content];
+        for( i in content ){
+          /* endure the destination exists */        
+          fs.mkdirSync( path.dirname(content[i].newPath), {recursive: true} );
+          /* copy the file */
+          fs.copyFileSync( content[i].originalPath, content[i].newPath );
+          if( slide.type === 'image' ){         
+            createLowResAndSave( content[i].originalPath, content[i].lowPath );          
+          }        
         }        
       }
     });

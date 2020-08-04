@@ -12,11 +12,8 @@
   <section class="dc-media dc-media__main">
     {{> slideshow_main page=data }}
   </section>
-    <section class="dc-media dc-media__portrait">
-    {{> slideshow_small slideshow=data.slideshows.portrait }}
-  </section>
-    <section class="dc-media dc-media__landscape">
-    {{> slideshow_small slideshow=data.slideshows.landscape }}
+    <section class="dc-media dc-media__small">
+    {{> slideshow_small slideshow=data.slideshows.small }}
   </section>
 </article>
 <header class="dc-item--header">

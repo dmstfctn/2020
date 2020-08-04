@@ -17,6 +17,9 @@ const markdown = require( 'markdown-it' )( 'commonmark', {
 const removeDotFiles = ( f ) => {
   return f.indexOf('.') !== 0;
 };
+const removeMetaYaml = ( f ) => {
+  return f !== 'meta.yaml';
+}
 const readJSON = ( path ) => {
   let json = false; 
   try{
@@ -69,9 +72,57 @@ const getProjectCvItems = ( title, cv ) => {
   });
   return relatedCv;
 }
+
+const getSlideType = ( filename ) => {
+  let ext = path.extname( filename );
+  if( ext === '.md' ){
+    return 'text';
+  } else if( ext === '.embed' ){    
+    return 'embed';   
+  } else if( ext === '.window' ){
+    return  'window';
+  } else if( ext ==='.mp3' ){
+    return 'audio';
+  } else if( ext === '.mp4' ){
+    return 'video';
+  }
+  return 'image';
+}
+
+/* 
+  constructSlideshow( versions, meta )
+  --------------------------------------
+  versions:   array of paths to folders of content (e.g. portrait & andscape folder)
+  p:          the path to the versions
+  meta:       an object containing meta info, indexed by filename
+*/
+
+const constructSlideshow = ( versions, p, meta ) => {
+  let slideshow = {};
+  versions.forEach( ( directory ) => {
+    const pDir = path.join( p, directory );
+    const contents = fs.readdirSync( pDir )
+                      .filter( removeDotFiles )
+                      .filter( removeMetaYaml );
+    contents.forEach( ( filename ) => {
+      const slide = constructSlide( filename, pDir, meta[filename] );
+      if( !slideshow[filename] ){
+        slideshow[filename] = {          
+          meta: meta[filename],
+          type: getSlideType( filename ),
+          content: {}
+        };
+      }      
+      slideshow[filename].content[ directory ] = slide.content;
+    });    
+  });
+
+  return Object.values( slideshow );
+}
+
 /* 
   constructSlide( filename, p, meta )
-  ------------------
+  -----------------------------------
   filename: the name of the file
   p:        the path to the file
   captions: an object containing meta info, indexed by filename
@@ -102,32 +153,27 @@ const constructSlide = ( filename, p, meta ) => {
   
   let type;
   let slide = {
-    meta: meta
+    meta: meta,
+    type: getSlideType( filename )
   };
   if( filename === 'meta.yaml' ){
     return;
   } 
-  if( ext === '.md' ){
-    slide.type = 'text';
+  if( slide.type === 'text' ){    
     slide.content = markdown.render( fs.readFileSync( filePath ).toString() );
-  } else if( ext === '.embed' ){
+  } else if( slide.type === 'embed' ){
     // embed code in a text doc with .embed as an extension
-    slide.type = 'embed';
     slide.content = fs.readFileSync( filePath ).toString();
-  } else if( ext === '.window' ){
+  } else if( slide.type === 'window'){
     // url in a text doc with .window as an extension
     // will appear in a new pop-out window
-    slide.type = 'window';
     slide.content = fs.readFileSync( filePath ).toString();
-  } else if( ext ==='.mp3' ){
-    slide.type = 'audio';
+  } else if( slide.type === 'audio' ){
     slide.content = filePath;
-  } else if( ext === '.mp4' ){
-    slide.type = 'video'
+  } else if( slide.type === 'video' ){
     slide.content = filePath;
   } else { 
     // assume an image
-    slide.type = 'image';
     slide.content = filePath;
   }
   return slide;
@@ -181,19 +227,25 @@ const readFolder = ( folderPath, cv ) => {
           let fm = frontmatter( fs.readFileSync( itemPath ));
           projectData.data = fm.data;
           projectData.info = markdown.render( fm.content );
-        } else {
-          //a folder that contains content 
+        } else {         
           const p = path.join( root, year, project, item );
           // find the meta file
           const meta = readYAML( path.join(p, 'meta.yaml') ) || {};
 
           let files = fs.readdirSync( p )
                         .filter( removeDotFiles )         
-                        .filter( f => f !== 'meta.yaml' );
+                        .filter( removeMetaYaml );
 
-          let slideshow = files.map( (item) => {
-            return constructSlide( item, p, meta[item] );
-          });
+          let slideshow; 
+          if( item === 'main' ){
+            // the main slideshow (large / desktop site)
+            slideshow = constructSlideshow( [item], path.join( root, year, project), meta );
+          } else if( item === 'small' ){            
+            slideshow = constructSlideshow( files, p, meta );
+          } else {
+            return;
+          }
+
           projectData.slideshows[item] = {slides: slideshow};
         }             
       });

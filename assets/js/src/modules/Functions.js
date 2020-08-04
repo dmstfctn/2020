@@ -21,21 +21,50 @@ const Functions = {
   /* hover items in project page */
   loadSlidePlaceholder: function( $slide ){
     const $img = $slide.querySelector('img');
-    if( $img && !$img.classList.contains('loaded') && !$img.classList.contains('placeholder-loaded') ){
-      $img.addEventListener('load', () => {
-        $img.classList.add('placeholder-loaded');
-      }, {once: true});
-      $img.src = $img.getAttribute( 'data-low-src' );
+    const $picture = $slide.querySelector('picture');
+    const $top = ($picture) ? $picture : $img;
+    const type = ($picture) ? 'picture' : 'img';
+    if( $top && !$top.classList.contains('loaded') && !$top.classList.contains('placeholder-loaded') ){
+      if( type === 'img' ){
+        $top.addEventListener('load', () => {
+          $top.classList.add('placeholder-loaded');
+        }, {once: true});
+        $top.src = $top.getAttribute( 'data-low-src' );
+      } else if( type === 'picture' ){       
+        $img.addEventListener('load', () => {
+          console.log('source loaded');
+          $top.classList.add('placeholder-loaded');
+        }, {once: true});
+
+        $top.querySelectorAll('source').forEach( ($source) => {
+          console.log('load source: ', $source )
+          $source.setAttribute('srcset', $source.getAttribute('data-low-src') );
+        });
+      }
     }
   },
   loadSlideImage: function( $slide ){
     const $img = $slide.querySelector('img');
-    if( $img && !$img.classList.contains('loaded') ){
-      $img.addEventListener('load', () => {
-        $img.classList.add('loaded');
-      }, {once: true});
-      $img.srcset = $img.getAttribute( 'data-srcset' );
-      $img.sizes = $img.getAttribute( 'data-sizes' );
+    const $picture = $slide.querySelector('picture');
+    const $top = ($picture) ? $picture : $img;
+    const type = ($picture) ? 'picture' : 'img';
+    if( $top && !$top.classList.contains('loaded') ){
+      if( type === 'img' ){
+        $img.addEventListener('load', () => {
+          $img.classList.add('loaded');
+        }, {once: true});
+        $img.srcset = $img.getAttribute( 'data-srcset' );
+        $img.sizes = $img.getAttribute( 'data-sizes' );
+      } else if( type === 'picture' ){
+        $img.addEventListener('load', () => {
+          $top.classList.add('loaded');
+        }, {once: true});
+        
+        $top.querySelectorAll('source').forEach( ($source) => {
+          $source.setAttribute('srcset', $source.getAttribute('data-srcset') );
+          $source.setAttribute('sizes', $source.getAttribute('data-sizes') );
+        });
+      }
     }
   },
   loadSlideImages: function( $slides ){

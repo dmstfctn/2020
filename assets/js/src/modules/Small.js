@@ -13,8 +13,7 @@ const ScrollQuantiser = require( './ScrollQuantiser.js' );
 const Small = function( _loops ){
   this.loops = !!_loops;
 
-  this.$interactionEle = document.querySelector('.dc-mobile-nav');  
-  this.setupInteraction();
+  this.$interactionEle = document.querySelector('.dc-mobile-nav');    
 
   this.$mainContent = document.querySelector( '.dc-main-content' );  
 
@@ -50,6 +49,8 @@ const Small = function( _loops ){
   this.ended = false;
 
   this.setupProjectEvents();
+
+  this.setupInteraction();
 };
 
 Small.prototype._onLoadingStart = function(){

@@ -2,12 +2,11 @@ const CFG = require('./Config.js' );
 const F = require( './Functions.js' );
 
 const DC_INFO_CLASS = 'dc-info';
-const ORIENTATIONS = ['portrait','landscape'];
 
 const ProjectSmall = function( _includesCV ){
   this.includesCV = _includesCV || false;
   this.$wrapper = document.querySelector( '.dc-item' );  
-  this.items = this.getSlideLists();  
+  this.items = this.getSlideListByName( 'small' );
   this.slideIndex = 0;
   
   this.loadPlaceholderImages();
@@ -34,20 +33,14 @@ ProjectSmall.prototype = {
     /*noop*/
   },
   isCurrentlyOnCV: function( orientation ){
-    if( !this.items[ orientation ][ this.slideIndex ] ){
+    if( !this.items[ this.slideIndex ] ){
       return false;
     }
-    return this.items[ orientation ][ this.slideIndex ].classList.contains( DC_INFO_CLASS );
+    return this.items[ this.slideIndex ].classList.contains( DC_INFO_CLASS );
   },
-  getSlideLists: function(){  
-    return {
-      portrait: this.getSlideListByOrientation( 'portrait' ),
-      landscape: this.getSlideListByOrientation( 'landscape' ),
-    };  
-  },
-  getSlideListByOrientation: function( orientation ){
+  getSlideListByName: function( name ){
     let result = [];
-    const slidesQuery = `.dc-item--info, .dc-media__${orientation} .dc-media--list li`;
+    const slidesQuery = `.dc-item--info, .dc-media__${name} .dc-media--list li`;
 
     if( this.$wrapper ){  
       const slides = [... this.$wrapper.querySelectorAll( slidesQuery )];    
@@ -62,26 +55,21 @@ ProjectSmall.prototype = {
     return result;
   },
   setNextProjectTitle: function( title ){
-    for( let orientation of ORIENTATIONS ){
-      const lastSlideIndex = ( this.includesCV ) ? this.items[ orientation ].length - 2 : this.items[ orientation ].length - 1;
-      if( lastSlideIndex < 1 ){ return; }
-      
-      const $nextLabel = this.items[ orientation ][ lastSlideIndex ].querySelector('.dc-smallnav--next');
-      if( $nextLabel ){
-        $nextLabel.innerHTML = title;
-      }      
+    const lastSlideIndex = ( this.includesCV ) ? this.items.length - 2 : this.items.length - 1;
+    if( lastSlideIndex < 1 ){ return; }
+    
+    const $nextLabel = this.items[ lastSlideIndex ].querySelector('.dc-smallnav--next');
+    if( $nextLabel ){
+      $nextLabel.innerHTML = title;
     }
   },
   loadPlaceholderImages: function(){
-    for( let orientation of ORIENTATIONS ){
-      for( let index = 0; index <  this.items[ orientation ].length; index++ ){
-        F.loadSlidePlaceholder( this.items[ orientation ][ index ] )
-      }
+    for( let index = 0; index <  this.items.length; index++ ){
+      F.loadSlidePlaceholder( this.items[ index ] )
     }
   },
   deactivateAll: function(){
-    this.items.portrait
-      .concat( this.items.landscape )
+    this.items
       .forEach( ( item ) => {
         item.classList.remove( 'active' );
         this.deactivateSlide( item );
@@ -91,10 +79,8 @@ ProjectSmall.prototype = {
     let preloadCount = _preloadCount | 2;  
     for( let i = 1; i < 1 + preloadCount; i++ ){
       let index = this.slideIndex + i;
-      for( let orientation of ORIENTATIONS ){
-        if( this.items[ orientation ][ index ] ){
-          F.loadSlideImage( this.items[ orientation ][ index ] )
-        }
+      if( this.items[ index ] ){
+        F.loadSlideImage( this.items[ index ] )
       }
     } 
   },
@@ -104,7 +90,7 @@ ProjectSmall.prototype = {
       document.body.parentElement.setAttribute('data-dc-pagetype', 'home');
     }
     // we've gone past the last slide for this part
-    if( this.slideIndex >= this.items[ orientation ].length ){
+    if( this.slideIndex >= this.items.length ){
       this._onEnd();
       return;
     }    
@@ -127,20 +113,11 @@ ProjectSmall.prototype = {
   update: function( orientation ){
     this.deactivateAll();
     
-    if( this.items.portrait[ this.slideIndex ] ){
-      this.items.portrait[ this.slideIndex ].classList.add( 'active' );
-      if( orientation === 'portrait' ){
-        this.deactivateSlide( this.items.landscape[ this.slideIndex ] );
-        this.activateSlide( this.items.portrait[ this.slideIndex ] );
-      }
+    if( this.items[ this.slideIndex ] ){
+      this.items[ this.slideIndex ].classList.add( 'active' );     
+      this.activateSlide( this.items[ this.slideIndex ] );
     }
-    if( this.items.landscape[ this.slideIndex ] ){
-      this.items.landscape[ this.slideIndex ].classList.add( 'active' );
-      if( orientation === 'landscape' ){
-        this.deactivateSlide( this.items.portrait[ this.slideIndex ] );
-        this.activateSlide(  this.items.landscape[ this.slideIndex ] );
-      }
-    }
+  
     this.preloadImages( 2 );
   },
   deactivateSlide: function( $slide ){
@@ -152,7 +129,7 @@ ProjectSmall.prototype = {
   },
   activateSlide: function( $slide ){
     if( $slide.classList.contains('dc-media__video') ){
-      window.DC_GFX.preventAppearance();
+      if( window.DC_GFX ) window.DC_GFX.preventAppearance();
       let videoPlay = $slide.querySelector('video').play();
       if( videoPlay ){
         videoPlay.catch( ( e ) => {
@@ -162,12 +139,9 @@ ProjectSmall.prototype = {
         });
       }
     } else {
-      window.DC_GFX.enableAppearance();
+      if( window.DC_GFX ) window.DC_GFX.enableAppearance();
     }
   },
-  changeOrientation: function( orientation ){
-    this.update( orientation );
-  }
 };
 
 module.exports = ProjectSmall;

@@ -5,12 +5,12 @@
         <figure>
         {{#if @first}} 
           <img 
-            src="{{content.lowSrc}}" 
-            data-src="{{content.src}}"
-            data-low-src="{{content.lowSrc}}"
+            src="{{content.main.lowSrc}}" 
+            data-src="{{content.main.src}}"
+            data-low-src="{{content.main.lowSrc}}"
             alt="{{meta.alt}}"
             data-srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw== 1w,
-                        {{content.src}} 3000w"
+                        {{content.main.src}} 3000w"
             data-sizes="(max-width: 900px) 1px, 
                         3000px"
             {{#if meta.size}}
@@ -20,11 +20,11 @@
         {{else}}
           <img 
             src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="             
-            data-src="{{content.src}}"
-            data-low-src="{{content.lowSrc}}" 
+            data-src="{{content.main.src}}"
+            data-low-src="{{content.main.lowSrc}}" 
             alt="{{meta.alt}}"
             data-srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw== 1w,
-                        {{content.src}} 3000w"
+                        {{content.main.src}} 3000w"
             data-sizes="(max-width: 900px) 1px, 
                         3000px"
             {{#if meta.size}}
@@ -47,28 +47,28 @@
     {{#dc_slidetype 'text' this}}
       <li class="dc-media__text{{#if @first}} active{{/if}}">        
         <div class="text">
-          {{{content}}}
+          {{{content.main}}}
         </div>
       </li>
     {{/dc_slidetype}}
     {{#dc_slidetype 'embed' this}}
       <li class="dc-media__embed{{#if @first}} active{{/if}}">
-        {{{content}}}
+        {{{content.main}}}
       </li>
     {{/dc_slidetype}}
     {{#dc_slidetype 'window' this}}
-      <li class="dc-media__window{{#if @first}} active{{/if}}" data-content="{{content}}">        
+      <li class="dc-media__window{{#if @first}} active{{/if}}" data-content="{{content.main}}">        
       </li>
     {{/dc_slidetype}}
     {{#dc_slidetype 'audio' this}}
       <li class="dc-media__audio{{#if @first}} active{{/if}}">
-        <audio src="{{content.src}}"></audio>
+        <audio src="{{content.main.src}}"></audio>
       </li>
     {{/dc_slidetype}}
     {{#dc_slidetype 'video' this}}
       <li class="dc-media__video{{#if @first}} active{{/if}}">
         <figure>
-          <video src="{{content.src}}"></video>
+          <video src="{{content.main.src}}"></video>
           {{#if meta.caption}}
           <figcaption>
             {{meta.caption}}
