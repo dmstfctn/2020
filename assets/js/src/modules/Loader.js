@@ -30,7 +30,6 @@ Loader.prototype = {
     
     fetch( fragmentURL )
       .then(function( response ){
-        //console.log( 'response ok' );
         if (response.ok) {
           return response;
         } else {

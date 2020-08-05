@@ -155,29 +155,23 @@ Small.prototype.projectEnd = function( backwards ){
   
   this.loader.load( F.slashStart( this.data[ this.pageIndex ].url ), false, { backwards: backwards } );
   this.showLoader( backwards );
-
-  console.log('projectEnd() , pageIndex = ', this.pageIndex );
 };
 
 Small.prototype.showLoader = function( backwards ){
-  console.log('SHOW LOADER!');
   this._onLoadingStart();
   document.body.classList.add('dc-loading');  
   this.progress.startLoadAnim( this.minLoadTime, backwards );  
 };
 Small.prototype.hideLoader = function( _cb ){
-  console.log( 'Small.prototype.hideLoader()',this.loadingTime, '/', this.minLoadTime )
   const cb = _cb || function(){};
   if( this.loadingTime < this.minLoadTime ){ 
     setTimeout( () => {
-      console.log( 'HIDE LOADER (timeout)' )
       this.progress.cancelLoadAnim();
       document.body.classList.remove('dc-loading');
       this._onLoadingComplete();
       cb();
     }, this.minLoadTime - this.loadingTime );
   } else {
-    console.log( 'HIDE LOADER (direct)' )
     this.progress.cancelLoadAnim();
     document.body.classList.remove('dc-loading');
     this._onLoadingComplete();
@@ -187,7 +181,6 @@ Small.prototype.hideLoader = function( _cb ){
 
 
 Small.prototype.cancelLoader = function(){
-  console.log('Small.prototype.cancelLoader()');
   this.loader.onLoad = () => {};
   this.progress.cancelLoadAnim();
   window.removeEventListener('popstate', this.popstateHandler );
@@ -197,7 +190,6 @@ Small.prototype.setupLoader = function(){
   this.historyActive = true; 
 
   this.loader.onLoad = ( data, url, disableHistory, extra ) => {
-    console.log('Small.js: this.loader.onLoad() ' );
     if( !disableHistory && this.historyActive ){     
       history.pushState(
         {
@@ -211,7 +203,7 @@ Small.prototype.setupLoader = function(){
     }
     this.loadingEndTime = (new Date()).getTime();
     this.loadingTime = this.loadingEndTime - this.loadingStartTime;
-    
+
     this.hideLoader( () => {
       this.renderPage( data, extra );  
     });
