@@ -61,8 +61,6 @@ Small.prototype._onLoadingStart = function(){
 Small.prototype.onLoadingStart = function(){ /* ... override ... */ };
 
 Small.prototype._onLoadingComplete = function(){
-  this.loadingEndTime = (new Date()).getTime();
-  this.loadingTime = this.loadingEndTime - this.loadingStartTime;
   this.onLoadingComplete( this.loadingTime );
 }
 Small.prototype.onLoadingComplete = function(){ /* ... override ... */ };
@@ -168,16 +166,18 @@ Small.prototype.showLoader = function( backwards ){
   this.progress.startLoadAnim( this.minLoadTime, backwards );  
 };
 Small.prototype.hideLoader = function( _cb ){
-  console.log( 'HIDE LOADER' )
+  console.log( 'Small.prototype.hideLoader()',this.loadingTime, '/', this.minLoadTime )
   const cb = _cb || function(){};
   if( this.loadingTime < this.minLoadTime ){ 
     setTimeout( () => {
+      console.log( 'HIDE LOADER (timeout)' )
       this.progress.cancelLoadAnim();
       document.body.classList.remove('dc-loading');
       this._onLoadingComplete();
       cb();
     }, this.minLoadTime - this.loadingTime );
   } else {
+    console.log( 'HIDE LOADER (direct)' )
     this.progress.cancelLoadAnim();
     document.body.classList.remove('dc-loading');
     this._onLoadingComplete();
@@ -209,6 +209,9 @@ Small.prototype.setupLoader = function(){
         F.slashEnd( url ) 
       );
     }
+    this.loadingEndTime = (new Date()).getTime();
+    this.loadingTime = this.loadingEndTime - this.loadingStartTime;
+    
     this.hideLoader( () => {
       this.renderPage( data, extra );  
     });
