@@ -20,7 +20,9 @@ Loader.prototype = {
   load: function( url, disableHistory, _passThrough ){
     const passThrough = _passThrough || {};
     if( this.loaded[ url ] ){
-      this._onLoad( this.loaded[ url ], url, disableHistory, passThrough );
+      setTimeout( () => {
+        this._onLoad( this.loaded[ url ], url, disableHistory, passThrough );
+      }, 10 );      
       return;
     }  
 
