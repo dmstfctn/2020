@@ -345,14 +345,14 @@
 
   .dc-mobile-bar{
     height: .5rem;
-    background: #FF0000;
+    background: #00ffff;
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
   }
     html[data-dc-pagetype="focusgroup"] .dc-mobile-bar{
-      background: #000000;
+      background: #ffff00;
     }
 
   /* ios / notch overrides */
