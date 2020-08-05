@@ -32,12 +32,9 @@ const Functions = {
         $top.src = $top.getAttribute( 'data-low-src' );
       } else if( type === 'picture' ){       
         $img.addEventListener('load', () => {
-          console.log('source loaded');
           $top.classList.add('placeholder-loaded');
         }, {once: true});
-
         $top.querySelectorAll('source').forEach( ($source) => {
-          console.log('load source: ', $source )
           $source.setAttribute('srcset', $source.getAttribute('data-low-src') );
         });
       }

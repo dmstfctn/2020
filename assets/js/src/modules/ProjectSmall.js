@@ -3,14 +3,17 @@ const F = require( './Functions.js' );
 
 const DC_INFO_CLASS = 'dc-info';
 
-const ProjectSmall = function( _includesCV ){
+const ProjectSmall = function( _includesCV, backwards ){
   this.includesCV = _includesCV || false;
   this.$wrapper = document.querySelector( '.dc-item' );  
   this.items = this.getSlideListByName( 'small' );
-  this.slideIndex = 0;
+  this.slideIndex = (backwards) ? this.items.length - 1 : 0;
   
   this.loadPlaceholderImages();
   this.update();  
+  if( backwards ){
+    F.loadSlideImage( this.items[ this.slideIndex ] )
+  }
 };
 
 ProjectSmall.prototype = {
@@ -29,6 +32,14 @@ ProjectSmall.prototype = {
   activate: function(){
     this.preloadImages( 2 );
   },
+  _onNext: function(){
+    this.onNext();
+  },
+  onNext: function(){ /* ... override ... */ },
+  _onPrev: function(){
+    this.onPrev();
+  },
+  onPrev: function(){ /* ... override ... */ },
   deactivate: function(){
     /*noop*/
   },
@@ -77,8 +88,9 @@ ProjectSmall.prototype = {
   },
   preloadImages: function( _preloadCount ){
     let preloadCount = _preloadCount | 2;  
-    for( let i = 1; i < 1 + preloadCount; i++ ){
+    for( let i = -preloadCount; i < 1 + preloadCount; i++ ){
       let index = this.slideIndex + i;
+      if( index === this.slideIndex ){ continue; }
       if( this.items[ index ] ){
         F.loadSlideImage( this.items[ index ] )
       }
@@ -95,7 +107,8 @@ ProjectSmall.prototype = {
       return;
     }    
     this.update( orientation );
-    this._onChange();
+    this._onNext();
+    this._onChange();    
   },
   prev: function( orientation ){
     if( this.includesCV && this.isCurrentlyOnCV( orientation ) ){
@@ -108,6 +121,7 @@ ProjectSmall.prototype = {
       this.slideIndex = 0;
     }
     this.update( orientation );
+    this._onPrev();
     this._onChange();
   },
   update: function( orientation ){

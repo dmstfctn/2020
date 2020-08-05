@@ -21,12 +21,9 @@
 
   body.dc-loading{
     pointer-events: none;
-    .dc-gfx{
-      // animation-name: flick-in-out;
-      // animation-duration: 3s;
-      // animation-timing-function: ease-in-out;
-      // animation-iteration-count: infinite;
-      opacity: 1;
+    .dc-main-content,
+    #info{
+      opacity: 0;
     }
   }
   body.dc-small--end-state{
@@ -301,49 +298,61 @@
     display: block;
     overflow: hidden;
   }
-  .dc-mobile-nav::before,
-  .dc-mobile-nav::after{
-    content: '';
-    display: block;
-    height: 100%;
-    width: 100%;      
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 0;    
-    pointer-events: none;
-  }
-    .dc-mobile-nav::before{
-      background: linear-gradient(90deg, rgba(255,0,0,0.7) 0%, rgba(255,0,0,0) 50%);
-      opacity: 0;
-      transition: opacity .5s ease-in;      
-    }
-      html[data-dc-pagetype="focusgroup"] .dc-mobile-nav::before{
-        background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%);
-      }
+    .dc-mobile-nav::before,
     .dc-mobile-nav::after{
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-      //transform: translateX(50%);
-      background: linear-gradient(90deg, rgba(255,0,0,0) 50%, rgba(255,0,0,0.7) 100%);
+      content: '';
+      display: block;
+      height: 100%;
+      width: 100%;      
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 0;    
+      pointer-events: none;
     }
-    html[data-dc-pagetype="focusgroup"] .dc-mobile-nav::after{
-      background: linear-gradient(90deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.7) 100%);
-    }
+      .dc-mobile-nav::before{
+        background: linear-gradient(90deg, rgba(255,0,0,0.7) 0%, rgba(255,0,0,0) 50%);
+        opacity: 0;
+        transition: opacity .5s ease-in;      
+      }
+        html[data-dc-pagetype="focusgroup"] .dc-mobile-nav::before{
+          background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%);
+        }
+      .dc-mobile-nav::after{
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+        //transform: translateX(50%);
+        background: linear-gradient(90deg, rgba(255,0,0,0) 50%, rgba(255,0,0,0.7) 100%);
+      }
+      html[data-dc-pagetype="focusgroup"] .dc-mobile-nav::after{
+        background: linear-gradient(90deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.7) 100%);
+      }
     
-    .dc-mobile-nav.no-further::before{
-      opacity: 1;
-      transition: opacity 0s linear;
-    }
-    .dc-mobile-nav.go-further::after{            
-      opacity: 1;
-    }
-    html[data-dc-pagetype="focusgroup"] .dc-mobile-nav.opaque{
-      background: #FF0000;
-    }
+      .dc-mobile-nav.no-further::before{
+        opacity: 1;
+        transition: opacity 0s linear;
+      }
+      .dc-mobile-nav.go-further::after{            
+        opacity: 1;
+      }
+      html[data-dc-pagetype="focusgroup"] .dc-mobile-nav.opaque{
+        background: #FF0000;
+      }
 
-    html.dc-has-gone-further .dc-mobile-nav::after{
-      opacity: 0;
+      html.dc-has-gone-further .dc-mobile-nav::after{
+        opacity: 0;
+      }
+
+  .dc-mobile-bar{
+    height: .5rem;
+    background: #FF0000;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+    html[data-dc-pagetype="focusgroup"] .dc-mobile-bar{
+      background: #000000;
     }
 
   /* ios / notch overrides */

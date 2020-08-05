@@ -35,17 +35,6 @@ let DC = {
   small: require( './modules/Small.js' )
 };
 
-DC.small.onLoadingStart = function(){
-  gfx.startLoadingSequence();
-}
-DC.small.onLoadingComplete = function(){
-  gfx.endLoadingSequence();
-}
-
-DC.small.onEndInteraction = function(){
-  gfx.removeLayer();
-}
-
 gfx.onFirstHide = function(){
   DC.small.animations.readyForwardHint();
 }

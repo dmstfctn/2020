@@ -7,6 +7,7 @@ const Loader = require('./Loader.js');
 const Project = require('./ProjectSmall.js');
 const Orientation = require('./Orientation.js');
 const SmallAnimations = require('./SmallAnimations.js');
+const ProgressBar = require( './ProgressBar.js' );
 
 const ScrollQuantiser = require( './ScrollQuantiser.js' );
 
@@ -19,7 +20,7 @@ const Small = function( _loops ){
 
   this.loader = new Loader();
   this.minLoadTime = 800;
-
+  
   this.orientation = new Orientation();
   this.animations = new SmallAnimations( this.$interactionEle );
   this.data = window.DCSMALL.pages;  
@@ -28,14 +29,14 @@ const Small = function( _loops ){
 
   this.pageIndex = this.getPageIndexFor( window.location.pathname );
 
-  console.log('SMALL SITE PAGE INDEX: ', this.pageIndex );
   this.startPageIndex = this.pageIndex;
-  this.completedPageIndices = [];
 
   this.showreelHasRun = false;
   this.project = new Project( this.shouldShowreel() );  
   const nextProjectTitle = this.getNextProjectTitle( this.shouldShowreel() );
   this.project.setNextProjectTitle( nextProjectTitle );
+  
+  this.progress = new ProgressBar( this.project.items.length + 1 );
 
   this.cvScroller = new ScrollQuantiser( 
     document.querySelector('#info .dc-cv'), 
@@ -61,7 +62,7 @@ Small.prototype.onLoadingStart = function(){ /* ... override ... */ };
 
 Small.prototype._onLoadingComplete = function(){
   this.loadingEndTime = (new Date()).getTime();
-  this.loadingTime = this.loadingEndTime -   this.loadingStartTime;
+  this.loadingTime = this.loadingEndTime - this.loadingStartTime;
   this.onLoadingComplete( this.loadingTime );
 }
 Small.prototype.onLoadingComplete = function(){ /* ... override ... */ };
@@ -144,70 +145,51 @@ Small.prototype.setupInteraction = function(){
   });
 };
 
-Small.prototype.endState = function(){
-  this.ended = true;
-  document.body.classList.add('dc-small--end-state'); 
-}
-
-Small.prototype.resetAndloop = function(){
-  this.showreelHasRun = false;
-  this.completedPageIndices = [];
-  this.remainingPages = this.data.length;
-  this.pageIndex = this.startPageIndex;
-  const startURL = (this.data[ this.pageIndex ]) ? F.slashStart(this.data[ this.pageIndex ].url) : '/mmittee/';
-  this.loader.load( 
-    startURL, 
-    false , 
-    {shouldShowreel: !!this.data[ this.pageIndex ] } 
-  );
-  this.showLoader();
-}
-
-Small.prototype.projectEnd = function(){  
-  this.completedPageIndices.push( this.pageIndex );
-  this.remainingPages = this.data.length - this.completedPageIndices.length;  
-  this.pageIndex++;
+Small.prototype.projectEnd = function( backwards ){  
+  this.pageIndex = (backwards) ? this.pageIndex - 1 : this.pageIndex + 1;
+  
   if( this.pageIndex >= this.data.length ){
     this.pageIndex = 0;    
   }
-  
-  if( this.completedPageIndices.indexOf( this.pageIndex ) === -1 ){ 
-    this.loader.load( F.slashStart( this.data[ this.pageIndex ].url ) );
-    this.showLoader();
-  } else {
-    if( this.loops ){
-      this.resetAndloop();
-    } else {
-      this.endState();
-    }
+  if( this.pageIndex < 0 ){
+    this.pageIndex = this.data.length-1;    
   }
+  
+  this.loader.load( F.slashStart( this.data[ this.pageIndex ].url ), false, { backwards: backwards } );
+  this.showLoader( backwards );
 
   console.log('projectEnd() , pageIndex = ', this.pageIndex );
 };
 
-Small.prototype.showLoader = function(){
+Small.prototype.showLoader = function( backwards ){
+  console.log('SHOW LOADER!');
   this._onLoadingStart();
   document.body.classList.add('dc-loading');  
+  this.progress.startLoadAnim( this.minLoadTime, backwards );  
 };
 Small.prototype.hideLoader = function( _cb ){
+  console.log( 'HIDE LOADER' )
   const cb = _cb || function(){};
-
-  if( this.loadingTime > this.minLoadTime ){ 
-    document.body.classList.remove('dc-loading');  
-    this._onLoadingComplete();
-    cb();
-  } else {
+  if( this.loadingTime < this.minLoadTime ){ 
     setTimeout( () => {
-      document.body.classList.remove('dc-loading');  
+      this.progress.cancelLoadAnim();
+      document.body.classList.remove('dc-loading');
       this._onLoadingComplete();
       cb();
     }, this.minLoadTime - this.loadingTime );
+  } else {
+    this.progress.cancelLoadAnim();
+    document.body.classList.remove('dc-loading');
+    this._onLoadingComplete();
+    cb();
   }
 };
 
 
 Small.prototype.cancelLoader = function(){
+  console.log('Small.prototype.cancelLoader()');
   this.loader.onLoad = () => {};
+  this.progress.cancelLoadAnim();
   window.removeEventListener('popstate', this.popstateHandler );
 }
 
@@ -215,6 +197,7 @@ Small.prototype.setupLoader = function(){
   this.historyActive = true; 
 
   this.loader.onLoad = ( data, url, disableHistory, extra ) => {
+    console.log('Small.js: this.loader.onLoad() ' );
     if( !disableHistory && this.historyActive ){     
       history.pushState(
         {
@@ -233,12 +216,7 @@ Small.prototype.setupLoader = function(){
 
   let popstateFunction = ( event ) => {
     const state = history.state;    
-    const statePageIndex = this.getPageIndexFor( history.state.url );
-    const completedAtIndex = this.completedPageIndices.indexOf( statePageIndex );    
-    if( completedAtIndex > -1 ){
-      this.pageIndex = statePageIndex;
-      this.completedPageIndices = this.completedPageIndices.slice( 0, completedAtIndex );
-    }
+    const statePageIndex = this.getPageIndexFor( history.state.url );  
     this.showLoader();
     this.loader.load( state.url, true, {shouldShowreel: state.shouldShowreel} );    
   };
@@ -264,14 +242,19 @@ Small.prototype.firstHistoryState = function(){
 }
 
 Small.prototype.renderPage = function( data, extra ){  
+  const backwards = !!extra.backwards;
   document.title = data.title;
   document.documentElement.setAttribute('data-dc-pagetype', data.pagetype );
   
   const addShowreel = extra.shouldShowreel || (this.remainingPages === 0 && !this.loops);
   this.$mainContent.innerHTML = data.html;
   this.project.deactivate();
-  this.project = new Project( addShowreel ); 
+  this.project = new Project( addShowreel, backwards ); 
   this.project.activate();
+  this.progress.init( 
+    ( backwards ) ? this.project.items.length - 1 : 0, 
+    this.project.items.length 
+  );
   const nextProjectTitle = this.getNextProjectTitle( addShowreel ); 
   this.project.setNextProjectTitle( nextProjectTitle );
   this.setupProjectEvents();  
@@ -279,9 +262,14 @@ Small.prototype.renderPage = function( data, extra ){
 
 Small.prototype.setupProjectEvents = function(){
   this.project.onEnd = () => {
-    this.projectEnd();
+    this.projectEnd( false );
   };
-
+  this.project.onNext = () => {
+    this.progress.next();
+  };
+  this.project.onPrev = () => {
+    this.progress.prev();
+  };
   this.project.onChange = () => {
     this.animations.cancelForwardHint();
     if( this.project.isCurrentlyOnCV( this.orientation.orientation ) ){
@@ -298,7 +286,8 @@ Small.prototype.setupProjectEvents = function(){
   }
 
   this.project.onCantGoBack = () => {
-    this.animations.triggerNoFurther();
+    this.projectEnd( true );
+    //this.animations.triggerNoFurther();
   };
 }
 module.exports = new Small( CFG.SITE_SHOULD_LOOP );
