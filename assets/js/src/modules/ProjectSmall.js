@@ -6,7 +6,7 @@ const DC_INFO_CLASS = 'dc-info';
 const ProjectSmall = function( _includesCV, backwards ){
   this.includesCV = _includesCV || false;
   this.$wrapper = document.querySelector( '.dc-item' );  
-  this.items = this.getSlideListByName( 'small' );
+  this.items = this.getItems();
   this.slideIndex = (backwards) ? this.items.length - 1 : 0;
   
   this.loadPlaceholderImages();
@@ -49,9 +49,10 @@ ProjectSmall.prototype = {
     }
     return this.items[ this.slideIndex ].classList.contains( DC_INFO_CLASS );
   },
-  getSlideListByName: function( name ){
+  getItems: function(){
     let result = [];
-    const slidesQuery = `.dc-item--info, .dc-media__${name} .dc-media--list li`;
+    const name = 'small';
+    const slidesQuery = `.dc-item--info, .dc-item--info .dc-small-chunk, .dc-media__${name} .dc-media--list li`;
 
     if( this.$wrapper ){  
       const slides = [... this.$wrapper.querySelectorAll( slidesQuery )];    
@@ -60,8 +61,9 @@ ProjectSmall.prototype = {
       } 
     }
     if( this.includesCV ){
-      const $dcInfo = document.querySelector( `.${DC_INFO_CLASS}` );
-      result = result.concat( [$dcInfo] )
+      const $dcInfo = document.querySelector( `.${DC_INFO_CLASS}`);
+      const $dcInfoSections = document.querySelectorAll( `.${DC_INFO_CLASS} .dc-small-chunk` );
+      result = result.concat( [$dcInfo].concat([... $dcInfoSections]) );
     }    
     return result;
   },

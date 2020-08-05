@@ -85,6 +85,13 @@
         display: none;
       }
 
+  .dc-small-chunk{
+    opacity: 0;
+    &.active{
+      opacity: 1;
+    }
+  }
+
   .dc-work--year{
     display: block;
   }
@@ -110,7 +117,7 @@
       padding-top: 2.9rem;
       background: #000000;
       z-index: 1;
-      display: none;
+      //display: none;
       em{
         font-style: normal;
         color: #FFFFFF;
@@ -123,7 +130,7 @@
         }
       }
       .dc-item--info.active{
-        display: block;
+       // display: block;
       }
     .dc-media--nav{
       display: none;
