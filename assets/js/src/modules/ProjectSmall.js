@@ -4,11 +4,18 @@ const F = require( './Functions.js' );
 const DC_INFO_CLASS = 'dc-info';
 
 const ProjectSmall = function( _includesCV, backwards ){
+  console.log( 'NEW ProjectSmal: _includesCV (shouldShowreel?):', _includesCV );
   this.includesCV = _includesCV || false;
   this.$wrapper = document.querySelector( '.dc-item' );  
   this.items = this.getItems();
-  this.slideIndex = (backwards) ? this.items.length - 1 : 0;
+  this.minIndex = 0;
+  if( !this.includesCV && !backwards ){
+    this.minIndex = 1;
+  } 
+  this.slideIndex = (backwards) ? this.items.length - 1 : this.minIndex;
   
+  console.log( 'new ProjectSmall() starting index: ', this.slideIndex );
+
   this.loadPlaceholderImages();
   this.update();  
   if( backwards ){
@@ -26,6 +33,11 @@ ProjectSmall.prototype = {
   },
   onEnd: function(){ /* ... override ... */ },
   _onChange: function(){
+    if( this.slideIndex === 0 ){
+      this.isOnGfxPlaceholder = true;
+    } else {
+      this.isOnGfxPlaceholder = false;
+    }
     this.onChange();
   },
   onChange: function(){ /* ... override ... */ },
@@ -47,13 +59,17 @@ ProjectSmall.prototype = {
     if( !this.items[ this.slideIndex ] ){
       return false;
     }
-    return this.items[ this.slideIndex ].classList.contains( DC_INFO_CLASS );
+    const current = this.items[ this.slideIndex ];
+    const parent = current.parentElement;
+    let parentIsInfo = (parent) ? parent.classList.contains( DC_INFO_CLASS ) : false;
+    let isInfo = current.classList.contains( DC_INFO_CLASS );      
+    return parentIsInfo || isInfo;
   },
   getItems: function(){
-    let result = [];
+    let result = [document.createElement('div')]; //fake first one for gfx
     const name = 'small';
     const slidesQuery = `.dc-item--info, .dc-item--info .dc-small-chunk, .dc-media__${name} .dc-media--list li`;
-
+    
     if( this.$wrapper ){  
       const slides = [... this.$wrapper.querySelectorAll( slidesQuery )];    
       if( slides.length > 0 ){
@@ -65,6 +81,7 @@ ProjectSmall.prototype = {
       const $dcInfoSections = document.querySelectorAll( `.${DC_INFO_CLASS} .dc-small-chunk` );
       result = result.concat( [$dcInfo].concat([... $dcInfoSections]) );
     }    
+    console.log('ProjectSmall.js getItems(): result:', result );
     return result;
   },
   setNextProjectTitle: function( title ){
@@ -113,14 +130,11 @@ ProjectSmall.prototype = {
     this._onChange();    
   },
   prev: function( orientation ){
-    if( this.includesCV && this.isCurrentlyOnCV( orientation ) ){
-      this._onCantGoBack();
-      return;
-    }
     this.slideIndex--;
-    if( this.slideIndex < 0 ){
+    if( this.slideIndex < this.minIndex ){
       this._onCantGoBack();
       this.slideIndex = 0;
+      return;
     }
     this.update( orientation );
     this._onPrev();

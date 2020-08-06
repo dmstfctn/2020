@@ -37,31 +37,37 @@ ProgressBar.prototype = {
     clearTimeout( this.animTimeout );
   },
   startLoadAnim: function( time, backwards ){
-    clearTimeout( this.animTimeout );
-    let indices = [
-      this.length * 0.75,
-      this.length * 0.5,
-      this.length * 0.25
-    ];
-    if( backwards ){ indices.reverse() };
+    // clearTimeout( this.animTimeout );
+    // let indices = [
+    //   this.length * 0.75,
+    //   this.length * 0.5,
+    //   this.length * 0.25
+    // ];
+    // if( backwards ){ indices.reverse() };
 
-    this.index = indices[0];
-    this.render();
+    // this.index = indices[0];
+    // this.render();
 
-    this.animTimeout = setTimeout( () => {
-      clearTimeout( this.animTimeout );
+    // this.animTimeout = setTimeout( () => {
+    //   clearTimeout( this.animTimeout );
 
-      this.index = indices[1];
-      this.render();
+    //   this.index = indices[1];
+    //   this.render();
 
-      this.animTimeout = setTimeout( () => {
-        clearTimeout( this.animTimeout );
+    //   this.animTimeout = setTimeout( () => {
+    //     clearTimeout( this.animTimeout );
 
-        this.index = indices[2];
-        this.render();
+    //     this.index = indices[2];
+    //     this.render();
         
-      }, time/2);
-    }, time/2);
+    //   }, time/2);
+    // }, time/2);
+    if( backwards ){
+      this.index = this.length;
+    } else {
+      this.index = 0;
+    }    
+    this.render();
   }
 }
 

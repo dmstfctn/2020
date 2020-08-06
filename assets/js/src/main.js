@@ -5,7 +5,6 @@ const GFX = require( './modules/GFX.js' );
 const Dots = require('./modules/Dots.js')
 
 const gfx = new GFX();
-gfx.activate();
 
 const $allDots = document.querySelectorAll('.dots');
 let dots = [];
@@ -37,6 +36,11 @@ let DC = {
 
 gfx.onFirstHide = function(){
   DC.small.animations.readyForwardHint();
+  DC.small.firstGfxHide();
+}
+
+DC.small.onReenableFirstGfxHide = function(){
+  gfx.reenableFirstHide();
 }
 
 window.DC = DC;
@@ -62,3 +66,5 @@ const mqSmallHandler = function( mq ){
 
 mqSmall.addListener( mqSmallHandler );
 mqSmallHandler( mqSmall );
+
+gfx.activate();

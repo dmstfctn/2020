@@ -83,6 +83,16 @@ Small.prototype.getPageIndexFor = function( _path ){
   return index;
 }
 
+Small.prototype._onReenableFirstGfxHide = function(){
+  this.onReenableFirstGfxHide();
+}
+
+Small.prototype.onReenableFirstGfxHide = function(){ /* ... override ... */ };
+
+Small.prototype.firstGfxHide = function(){
+  this.project.next();
+};
+
 Small.prototype.getNextProjectTitle = function( _includesCv ){
   if( !this.data[this.pageIndex+1] || _includesCv ){
     return 'DEMYSTIFICATION COMMITTEE';
@@ -92,12 +102,20 @@ Small.prototype.getNextProjectTitle = function( _includesCv ){
 }
 
 Small.prototype.shouldShowreel = function(){
+  console.log('Small() shouldShowreel()')
   if( this.showreelHasRun ){ //the showreel has already run once
+    console.log( false, 'because: this.showreelHasRun === true ')
     return false;
   }
   if( !document.referrer ){ //i.e. entered website directly
+    console.log( true, 'because: !document.referrer ')
     return true;
   }
+  if( F.slashEnd(window.location.pathname) === '/mmittee/' ){
+    console.log( true, 'because: /mmittee/ ')
+    return true;
+  }
+  console.log(there !== here, 'because there !== here evaluated that way' );
   const there = F.slashEnd( new URL( document.referrer ).origin );
   const here = F.slashEnd( window.location.origin );
   return there !== here; //if came to the site from a different URL, then true
@@ -126,6 +144,7 @@ Small.prototype.deactivate = function(){
 /* interaction */
 Small.prototype.setupInteraction = function(){
   this.$interactionEle.addEventListener( 'pointerdown', ( e ) => {
+    console.log( 'DC SMALL event: pointerdown' );
     if( this.ended ){
       this._onEndInteraction();
       return;
@@ -135,7 +154,10 @@ Small.prototype.setupInteraction = function(){
     } else {
       this.project.prev( this.orientation.orientation );
     }
-  });
+    if( this.project.isOnGfxPlaceholder ){
+      e.stopPropagation();
+    }
+  });  
   this.$interactionEle.addEventListener('touchmove', function (event) {
     if (event.targetTouches.length === 1) {
       event.preventDefault();
@@ -241,15 +263,12 @@ Small.prototype.renderPage = function( data, extra ){
   document.title = data.title;
   document.documentElement.setAttribute('data-dc-pagetype', data.pagetype );
   
-  const addShowreel = extra.shouldShowreel || (this.remainingPages === 0 && !this.loops);
+  const addShowreel = extra.shouldShowreel || this.startPageIndex === this.pageIndex;
   this.$mainContent.innerHTML = data.html;
   this.project.deactivate();
   this.project = new Project( addShowreel, backwards ); 
   this.project.activate();
-  this.progress.init( 
-    ( backwards ) ? this.project.items.length - 1 : 0, 
-    this.project.items.length 
-  );
+  this.progress.init( this.project.slideIndex, this.project.items.length );
   const nextProjectTitle = this.getNextProjectTitle( addShowreel ); 
   this.project.setNextProjectTitle( nextProjectTitle );
   this.setupProjectEvents();  
@@ -277,6 +296,9 @@ Small.prototype.setupProjectEvents = function(){
         null, 
         '/mmittee/'
       );
+    }
+    if( this.project.isOnGfxPlaceholder ){
+      this._onReenableFirstGfxHide();
     }
   }
 
