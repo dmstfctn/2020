@@ -3,29 +3,16 @@ const F = require( './Functions.js' );
 
 const DC_INFO_CLASS = 'dc-info';
 
-const ProjectSmall = function( _includesCV, backwards, isFirstOneAgain ){
-  console.log( 'NEW ProjectSmall: _includesCV (shouldShowreel?):', _includesCV );
-  this.includesCV = _includesCV || false;
+const ProjectSmall = function( backwards, hasGfx ){
   this.$wrapper = document.querySelector( '.dc-item' );  
   this.items = this.getItems();
-  console.log( 'NEW ProjectSmall: items:', this.items );
-  this.minIndex = 0;
-  if( !this.includesCV && !backwards && !isFirstOneAgain ){
-    this.minIndex = 1;
-  } 
-  console.log('new ProjectSmall() includesCV: ', this.includesCV, ' backwards:', backwards, 'minINdex:', this.minIndex );
-  if( !isFirstOneAgain ){
-    this.slideIndex = (backwards) ? this.items.length - 1 : this.minIndex;
-  } else {
-    this.slideIndex = (backwards) ? this.items.length - 1 : this.minIndex + 1;
-  }
-  
-  console.log( 'new ProjectSmall() starting index: ', this.slideIndex );
+  this.minIndex = (hasGfx) ? 0 : 1;
+  this.slideIndex = (backwards) ? this.items.length - 1 : this.minIndex;
 
   this.loadPlaceholderImages();
   this.update();  
-  if( backwards ){
-    F.loadSlideImage( this.items[ this.slideIndex ] )
+  if( backwards && this.items[ this.slideIndex ].ele ){
+    F.loadSlideImage( this.items[ this.slideIndex ].ele )
   }
 };
 
@@ -58,9 +45,15 @@ ProjectSmall.prototype = {
   deactivate: function(){
     /*noop*/
   },
+  _onGfx: function(){
+    console.log('ProjectSmall, onGfx()');
+    this.onGfx();
+  },
+  onGfx: function(){ /* ... override ... */ },
   isCurrentlyOnGfxPlaceholder: function(){
     if( this.slideIndex <= 0 ){
       this.isOnGfxPlaceholder = true;
+      this._onGfx();
     } else {
       this.isOnGfxPlaceholder = false;
     }
@@ -76,42 +69,102 @@ ProjectSmall.prototype = {
     let isInfo = current.classList.contains( DC_INFO_CLASS );      
     return parentIsInfo || isInfo;
   },
-  getItems: function(){
-    let result = [document.createElement('div')]; //fake first one for gfx
-    const name = 'small';
-    const slidesQuery = `.dc-item--info, .dc-item--info .dc-small-chunk, .dc-media__${name} .dc-media--list li`;
-    
-    if( this.$wrapper ){  
-      const slides = [... this.$wrapper.querySelectorAll( slidesQuery )];    
-      if( slides.length > 0 ){
-        result = result.concat( slides );
-      } 
+  getProjectItems: function(){
+    let result = [];
+    if( !this.$wrapper ){  
+      return result;
     }
-    if( this.includesCV ){
-      const $dcInfo = document.querySelector( `.${DC_INFO_CLASS}`);
-      const $dcInfoSections = document.querySelectorAll( `.${DC_INFO_CLASS} .dc-small-chunk` );
-      result = result.concat( [$dcInfo].concat([... $dcInfoSections]) );
-    }
+    const $info = this.$wrapper.querySelector('.dc-item--info')
+    result = [
+      {
+        type: 'standard',
+        ele: $info,
+        parent: false
+      }
+    ];
+    result = result.concat(
+      [...this.$wrapper.querySelectorAll('.dc-item--info .dc-small-chunk')]
+        .map( ($ele) => {
+          return {
+            type: 'chunk',
+            ele: $ele,
+            parent: $info
+          }
+        })
+    );
+    result = result.concat(
+      [...this.$wrapper.querySelectorAll( '.dc-media__small .dc-media--list li' )]
+        .map( ($ele) => {
+          return {
+            type: 'standard',
+            ele: $ele,
+            parent: false
+          }
+        })
+    );
+
     return result;
   },
-  setNextProjectTitle: function( title ){
-    const lastSlideIndex = ( this.includesCV ) ? this.items.length - 2 : this.items.length - 1;
-    if( lastSlideIndex < 1 ){ return; }
-    
-    const $nextLabel = this.items[ lastSlideIndex ].querySelector('.dc-smallnav--next');
-    if( $nextLabel ){
-      $nextLabel.innerHTML = title;
+  getCvItems: function(){
+    const $dcInfo = document.querySelector( `.${DC_INFO_CLASS}`);
+    const $dcInfoSections = document.querySelectorAll( `.${DC_INFO_CLASS} .dc-small-chunk` );
+    return [{
+      type: 'standard',
+      ele: $dcInfo,
+      parent: false
+    }].concat(
+      [... $dcInfoSections]
+      .map( ($ele) => {
+        return {
+          type: 'chunk',
+          ele: $ele,
+          parent: $dcInfo
+        }
+      })
+    );
+  },
+  hideCv: function(){
+    const items = this.getCvItems();
+    items
+      .forEach( ( item ) => {
+        if( item.type === 'gfx' ) return;
+        item.ele.classList.remove( 'active' );
+        if( item.type === 'chunk' ) item.parent.classList.remove('active');
+      });
+  },
+  getItems: function(){
+    let result = this.getProjectItems();
+   
+    if( result.length === 0 ){ //there are no project slides, must be cv
+      result = this.getCvItems();
+    } else {
+      this.hideCv();
     }
+
+    //add gfx placeholder at the start
+    result = [{
+      type: 'gfx',
+      ele: false,
+      parent: false
+    }].concat( result );
+
+    return result;
   },
   loadPlaceholderImages: function(){
-    for( let index = 0; index <  this.items.length; index++ ){
-      F.loadSlidePlaceholder( this.items[ index ] )
+    for( let index = 0; index <  this.items.length; index++ ){      
+      const slide = this.items[ index ];
+      console.log('loadPlaceholderImages() iteration ', index, 'slide: ', slide );
+      if( !slide ) continue;
+      if( slide.type === 'gfx' ) continue;
+      F.loadSlidePlaceholder( slide.ele );
     }
   },
   deactivateAll: function(){
     this.items
       .forEach( ( item ) => {
-        item.classList.remove( 'active' );
+        if( item.type === 'gfx' ) return;
+        item.ele.classList.remove( 'active' );
+        if( item.type === 'chunk' ) item.parent.classList.remove('active');
         this.deactivateSlide( item );
       });
   },
@@ -119,17 +172,18 @@ ProjectSmall.prototype = {
     let preloadCount = _preloadCount | 2;  
     for( let i = -preloadCount; i < 1 + preloadCount; i++ ){
       let index = this.slideIndex + i;
-      if( index === this.slideIndex ){ continue; }
-      if( this.items[ index ] ){
-        F.loadSlideImage( this.items[ index ] )
-      }
+      const slide = this.items[ index ];
+      if( !slide ) continue;
+      if( slide.type === 'gfx' ) continue;
+      if( index === this.slideIndex ) continue;
+      F.loadSlideImage( slide.ele )
     } 
   },
   next: function( orientation ){
     this.slideIndex++;
-    if( this.includesCV && this.isCurrentlyOnCV( orientation ) ){
-      document.body.parentElement.setAttribute('data-dc-pagetype', 'home');
-    }
+    // if( this.includesCV && this.isCurrentlyOnCV( orientation ) ){
+    //   document.body.parentElement.setAttribute('data-dc-pagetype', 'home');
+    // }
     // we've gone past the last slide for this part
     if( this.slideIndex >= this.items.length ){
       this._onEnd();
@@ -156,24 +210,35 @@ ProjectSmall.prototype = {
     this._onChange();
   },
   update: function( orientation ){
+    console.log('update()');
+    console.log('slideImdex', this.slideIndex )
+    const slide = this.items[ this.slideIndex ]
     this.deactivateAll();
     
-    if( this.items[ this.slideIndex ] ){
-      this.items[ this.slideIndex ].classList.add( 'active' );     
+    if( slide.type === 'gfx' ){
+
+    } else {
+      console.log('ProjectSmall, update(), slideIndex: ', this.slideIndex );
+      slide.ele.classList.add( 'active' );
+      if( slide.type === 'chunk' ){
+        slide.parent.classList.add('active');
+      }
       this.activateSlide( this.items[ this.slideIndex ] );
     }
   
     this.preloadImages( 2 );
   },
-  deactivateSlide: function( $slide ){
-    if( $slide.classList.contains('dc-media__video') ){
+  deactivateSlide: function( slide ){
+    const $slide = slide.ele;
+    if( $slide && $slide.classList.contains('dc-media__video') ){
       const $video = $slide.querySelector('video');
       $video.pause();
       $video.currentTime = 0;
     }
   },
-  activateSlide: function( $slide ){
-    if( $slide.classList.contains('dc-media__video') ){
+  activateSlide: function( slide ){
+    const $slide = slide.ele;
+    if( $slide && $slide.classList.contains('dc-media__video') ){
       if( window.DC_GFX ) window.DC_GFX.preventAppearance();
       let videoPlay = $slide.querySelector('video').play();
       if( videoPlay ){

@@ -35,7 +35,6 @@ let DC = {
 };
 
 gfx.onFirstHide = function(){
-  DC.small.animations.readyForwardHint();
   DC.small.firstGfxHide();
 }
 
