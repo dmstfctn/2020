@@ -356,7 +356,11 @@ const yearNameToNumeric = ( name )=>{
 
 const createSmallSite = ( content ) => {
   let site = {
-    pages: [],    
+    pages: [{
+      year: Infinity,
+      url: Config.url_root + '/',
+      title: 'Demystification Committee'
+    }],    
   };
   for( let i in content.related_matters.contents ){
     let year = content.related_matters.contents[i];

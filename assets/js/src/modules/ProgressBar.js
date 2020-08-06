@@ -5,7 +5,6 @@ const ProgressBar = function( length ){
 
 ProgressBar.prototype = {
   init: function( current, length ){
-    console.log('ProgressBar INIT: current: ', current,' length: ', length );
     this.setLength( length );
     this.setCurrent( current);
     this.render();
@@ -30,7 +29,6 @@ ProgressBar.prototype = {
   },
   render: function(){
     this.percent = this.index / this.length  * 100;
-    console.log('ProgressBar() render(): ', this.percent );
     this.$ele.style.width = this.percent + '%';
   },
   cancelLoadAnim: function(){

@@ -25,11 +25,20 @@ const Small = function( _loops ){
   this.animations = new SmallAnimations( this.$interactionEle );
   this.data = window.DCSMALL.pages;  
   
-  this.remainingPages = this.data.length
+  this.homePath = this.data[0].url;
 
-  this.pageIndex = this.getPageIndexFor( window.location.pathname );
+  console.log( 'Small(), HOME PATH: ', this.homePath );
 
+  this.pageIndex = this.getPageIndexFor( window.location.pathname );  
+  if( this.pageIndex !== 0 ){
+    // the CV  (/mittee/ page) will be shown after 1st project
+    // so we don't need it in the data list
+    this.data.shift();
+    this.pageIndex = this.getPageIndexFor( window.location.pathname );
+  }
   this.startPageIndex = this.pageIndex;
+
+  this.remainingPages = this.data.length
 
   this.showreelHasRun = false;
   this.project = new Project( this.shouldShowreel() );  
@@ -111,8 +120,8 @@ Small.prototype.shouldShowreel = function(){
     console.log( true, 'because: !document.referrer ')
     return true;
   }
-  if( F.slashEnd(window.location.pathname) === '/mmittee/' ){
-    console.log( true, 'because: /mmittee/ ')
+  if( F.slashBoth(window.location.pathname) === F.slashBoth( this.homePath ) ){
+    console.log( true, 'because:  ', F.slashBoth( this.homePath ) )
     return true;
   }
   console.log(there !== here, 'because there !== here evaluated that way' );
@@ -144,7 +153,6 @@ Small.prototype.deactivate = function(){
 /* interaction */
 Small.prototype.setupInteraction = function(){
   this.$interactionEle.addEventListener( 'pointerdown', ( e ) => {
-    console.log( 'DC SMALL event: pointerdown' );
     if( this.ended ){
       this._onEndInteraction();
       return;
@@ -165,7 +173,11 @@ Small.prototype.setupInteraction = function(){
   });
 };
 
-Small.prototype.projectEnd = function( backwards ){  
+Small.prototype.projectEnd = function( backwards ){
+  if( backwards && this.pageIndex === this.startPageIndex ){
+    console.log('projectEnd', 'backwards', 'on (or back on) first page loaded')
+    return;
+  }
   this.pageIndex = (backwards) ? this.pageIndex - 1 : this.pageIndex + 1;
   
   if( this.pageIndex >= this.data.length ){
@@ -175,7 +187,14 @@ Small.prototype.projectEnd = function( backwards ){
     this.pageIndex = this.data.length-1;    
   }
   
-  this.loader.load( F.slashStart( this.data[ this.pageIndex ].url ), false, { backwards: backwards } );
+  this.loader.load( 
+    F.slashStart( this.data[ this.pageIndex ].url ), 
+    false, 
+    { 
+      backwards: backwards,
+      shouldShowreel: this.pageIndex === this.startPageIndex
+    } 
+  );
   this.showLoader( backwards );
 };
 
@@ -259,14 +278,16 @@ Small.prototype.firstHistoryState = function(){
 }
 
 Small.prototype.renderPage = function( data, extra ){  
+  console.log( 'Small() renderPage() data: ', data, 'extra: ', extra );
   const backwards = !!extra.backwards;
+  const isFirstOneAgain = this.startPageIndex === this.pageIndex;
   document.title = data.title;
   document.documentElement.setAttribute('data-dc-pagetype', data.pagetype );
-  
-  const addShowreel = extra.shouldShowreel || this.startPageIndex === this.pageIndex;
+  console.log('renderPage: ', 'PAGE INDEX: ', this.pageIndex)
+  const addShowreel = extra.shouldShowreel;
   this.$mainContent.innerHTML = data.html;
   this.project.deactivate();
-  this.project = new Project( addShowreel, backwards ); 
+  this.project = new Project( addShowreel, backwards, isFirstOneAgain ); 
   this.project.activate();
   this.progress.init( this.project.slideIndex, this.project.items.length );
   const nextProjectTitle = this.getNextProjectTitle( addShowreel ); 
@@ -277,27 +298,25 @@ Small.prototype.renderPage = function( data, extra ){
 Small.prototype.setupProjectEvents = function(){
   this.project.onEnd = () => {
     this.projectEnd( false );
-  };
-  this.project.onNext = () => {
-    this.progress.next();
-  };
-  this.project.onPrev = () => {
-    this.progress.prev();
-  };
+  }; 
   this.project.onChange = () => {
     this.animations.cancelForwardHint();
     if( this.project.isCurrentlyOnCV( this.orientation.orientation ) ){
       history.pushState(
         {
           type: 'page', 
-          url: '/mmittee/',
+          url: F.slashBoth( this.homePath ),
           shouldShowreel: true
         }, 
         null, 
-        '/mmittee/'
+        F.slashBoth( this.homePath )
       );
     }
+    this.progress.setProgress( this.project.slideIndex );
+    this.progress.render();
+    console.log('Small(): project onChange')
     if( this.project.isOnGfxPlaceholder ){
+      console.log('this.project.isOnGfxPlaceholder', this.project.isOnGfxPlaceholder )
       this._onReenableFirstGfxHide();
     }
   }

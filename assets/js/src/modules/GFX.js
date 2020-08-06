@@ -38,7 +38,6 @@ GFX.prototype = {
     this.isPrevented = false;
   },
   hide: function( immediate ){
-    console.log( '-->> --.>GFX HIDEEEEEEe');
     if( this.unhidable ){
       return;
     }
@@ -62,7 +61,6 @@ GFX.prototype = {
     }
   },
   show: function( immediate ){
-    console.log( 'GFX SHOW()()()()!!');
     if( this.isPrevented ){
       this.hide();
       return false;
@@ -99,11 +97,9 @@ GFX.prototype = {
     let visibilityAPI = F.visibilityChangeCompat();
 
     window.addEventListener('wheel', () => {
-      console.log('GFX EVENT: wheel')
       this._onMove();
     }, {passive: true} );
     window.addEventListener('keydown', ( e ) => {    
-      console.log('GFX EVENT: keydown')
       if( 
         e.key === 'ArrowDown' || e.key === 'ArrowUp' 
         || e.key === 'ArrowLeft' || e.key === 'ArrowRight' 
@@ -112,7 +108,6 @@ GFX.prototype = {
       }      
     });
     window.addEventListener('pointermove', () => {
-      console.log('GFX EVENT: pointermove')
       if( this.ignoreFirstPointerMove ){
         this.ignoreFirstPointerMove = false;
       } else {
@@ -120,14 +115,12 @@ GFX.prototype = {
       }
     });
     window.addEventListener('pointerdown', () => {
-      console.log('GFX EVENT: pointerdown')
       this._onMove();
     });
     // window.addEventListener('click', () => {
     //   this._onMove();
     // });
     this.$gfx.addEventListener('touchmove', function (event) {
-      console.log('GFX EVENT: touchmove')
       if (event.targetTouches.length === 1) {
         event.preventDefault();
       }

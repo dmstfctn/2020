@@ -3,16 +3,22 @@ const F = require( './Functions.js' );
 
 const DC_INFO_CLASS = 'dc-info';
 
-const ProjectSmall = function( _includesCV, backwards ){
-  console.log( 'NEW ProjectSmal: _includesCV (shouldShowreel?):', _includesCV );
+const ProjectSmall = function( _includesCV, backwards, isFirstOneAgain ){
+  console.log( 'NEW ProjectSmall: _includesCV (shouldShowreel?):', _includesCV );
   this.includesCV = _includesCV || false;
   this.$wrapper = document.querySelector( '.dc-item' );  
   this.items = this.getItems();
+  console.log( 'NEW ProjectSmall: items:', this.items );
   this.minIndex = 0;
-  if( !this.includesCV && !backwards ){
+  if( !this.includesCV && !backwards && !isFirstOneAgain ){
     this.minIndex = 1;
   } 
-  this.slideIndex = (backwards) ? this.items.length - 1 : this.minIndex;
+  console.log('new ProjectSmall() includesCV: ', this.includesCV, ' backwards:', backwards, 'minINdex:', this.minIndex );
+  if( !isFirstOneAgain ){
+    this.slideIndex = (backwards) ? this.items.length - 1 : this.minIndex;
+  } else {
+    this.slideIndex = (backwards) ? this.items.length - 1 : this.minIndex + 1;
+  }
   
   console.log( 'new ProjectSmall() starting index: ', this.slideIndex );
 
@@ -25,6 +31,7 @@ const ProjectSmall = function( _includesCV, backwards ){
 
 ProjectSmall.prototype = {
   _onCantGoBack: function(){
+    this.isCurrentlyOnGfxPlaceholder();
     this.onCantGoBack();
   },
   onCantGoBack: function(){ /* ... override ... */ },
@@ -33,11 +40,7 @@ ProjectSmall.prototype = {
   },
   onEnd: function(){ /* ... override ... */ },
   _onChange: function(){
-    if( this.slideIndex === 0 ){
-      this.isOnGfxPlaceholder = true;
-    } else {
-      this.isOnGfxPlaceholder = false;
-    }
+    this.isCurrentlyOnGfxPlaceholder();
     this.onChange();
   },
   onChange: function(){ /* ... override ... */ },
@@ -54,6 +57,14 @@ ProjectSmall.prototype = {
   onPrev: function(){ /* ... override ... */ },
   deactivate: function(){
     /*noop*/
+  },
+  isCurrentlyOnGfxPlaceholder: function(){
+    if( this.slideIndex <= 0 ){
+      this.isOnGfxPlaceholder = true;
+    } else {
+      this.isOnGfxPlaceholder = false;
+    }
+    return this.isOnGfxPlaceholder;
   },
   isCurrentlyOnCV: function( orientation ){
     if( !this.items[ this.slideIndex ] ){
@@ -80,8 +91,7 @@ ProjectSmall.prototype = {
       const $dcInfo = document.querySelector( `.${DC_INFO_CLASS}`);
       const $dcInfoSections = document.querySelectorAll( `.${DC_INFO_CLASS} .dc-small-chunk` );
       result = result.concat( [$dcInfo].concat([... $dcInfoSections]) );
-    }    
-    console.log('ProjectSmall.js getItems(): result:', result );
+    }
     return result;
   },
   setNextProjectTitle: function( title ){
@@ -131,10 +141,15 @@ ProjectSmall.prototype = {
   },
   prev: function( orientation ){
     this.slideIndex--;
-    if( this.slideIndex < this.minIndex ){
+    if( this.slideIndex < this.minIndex ){      
       this._onCantGoBack();
       this.slideIndex = 0;
       return;
+    }
+    if( this.slideIndex === 0 ){
+      //gfx placeholder slide
+      this._onChange();
+      return;        
     }
     this.update( orientation );
     this._onPrev();
