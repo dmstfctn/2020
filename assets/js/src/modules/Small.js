@@ -21,7 +21,7 @@ const Small = function( _loops ){
 
   this.setupData();
 
-  this.project = new Project();
+  this.project = new Project( false, true );
   this.progress = new ProgressBar( this.project.items.length + 1 );
 
   this.cvScroller = new ScrollQuantiser( 
@@ -253,6 +253,7 @@ Small.prototype.setupProjectEvents = function(){
   }
 
   this.project.onGfx = () => {
+    this.progress.setProgress( this.project.slideIndex );
     this._onReenableFirstGfxHide();
   }
 

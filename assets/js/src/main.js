@@ -35,6 +35,7 @@ let DC = {
 };
 
 gfx.onFirstHide = function(){
+  console.log( 'GFX ON 1st HIDE');
   DC.small.firstGfxHide();
 }
 

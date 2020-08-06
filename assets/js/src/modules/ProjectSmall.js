@@ -51,7 +51,7 @@ ProjectSmall.prototype = {
   },
   onGfx: function(){ /* ... override ... */ },
   isCurrentlyOnGfxPlaceholder: function(){
-    if( this.slideIndex <= 0 ){
+    if( this.slideIndex <= 0 && this.minIndex === 0 ){
       this.isOnGfxPlaceholder = true;
       this._onGfx();
     } else {
@@ -197,14 +197,9 @@ ProjectSmall.prototype = {
     this.slideIndex--;
     if( this.slideIndex < this.minIndex ){      
       this._onCantGoBack();
-      this.slideIndex = 0;
       return;
     }
-    if( this.slideIndex === 0 ){
-      //gfx placeholder slide
-      this._onChange();
-      return;        
-    }
+
     this.update( orientation );
     this._onPrev();
     this._onChange();
