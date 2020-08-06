@@ -66,9 +66,12 @@
   }
   html[data-dc-pagetype="home"] .dc-info,
   .dc-info.active{
+    opacity: 1;
     display: block;
   }
   .dc-info{
+    opacity: 0;
+    z-index: 2;
     padding-top: 2.9rem;
     font-size: 1rem;       
   }
