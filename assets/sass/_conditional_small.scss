@@ -356,12 +356,15 @@
 
   .dc-mobile-bar{
     height: .3rem;
-    background: #00ffff;
+    background: #FF0000;
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
   }
+    html[data-dc-pagetype="focusgroup"] .dc-mobile-bar{
+      background: #FFFFFF;
+    }
 
   /* ios / notch overrides */
   .dc-item--info,
