@@ -64,6 +64,7 @@ Large.prototype.setupMenus = function(){
     if( p === 'info' ){
       this.cvScroller.recalculate();
     }
+    this.project.deactivate();
   }
 };
 

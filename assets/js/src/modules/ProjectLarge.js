@@ -35,6 +35,8 @@ ProjectLarge.prototype = {
     this.setupEvents();
   },
   deactivate: function(){
+    this.stopAllMedia();
+    this.closeWindow();
     this.$media.forEach( ( $m, index ) => {
       if( $m.classList.contains('info') ){ return; }      
       const e = this.eventHandlers.get( $m );
@@ -105,10 +107,14 @@ ProjectLarge.prototype = {
     }
   },
   closeWindow: function( index ){
-    const $nav = this.$nav[index];
-    this.extraWindow.close();
-    this.extraWindow = false;
-    $nav.classList.remove('playing');
+    if( this.extraWindow ){
+      this.extraWindow.close();
+      this.extraWindow = false;
+    }
+    if( index ){
+      const $nav = this.$nav[index];
+      $nav.classList.remove('playing');
+    }
   },
   openWindow: function( index ){
     const $nav = this.$nav[index];
