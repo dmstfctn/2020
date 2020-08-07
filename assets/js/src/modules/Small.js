@@ -124,6 +124,9 @@ Small.prototype.setupInteraction = function(){
       event.preventDefault();
     }
   });
+  document.addEventListener('gesturestart', function (e) {
+    e.preventDefault();
+});
 };
 
 Small.prototype.projectEnd = function( backwards ){
