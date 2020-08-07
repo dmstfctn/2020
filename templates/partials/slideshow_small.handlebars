@@ -36,7 +36,15 @@
     {{/dc_slidetype}}
     {{#dc_slidetype 'embed' this}}
       <li class="dc-media__embed{{#if @first}} active{{/if}}">
-        {{{content.portrait}}}
+         <div 
+          class="dc-embed{{#if content.portrait.embed }} embedded{{/if}}" 
+          data-embed-service="{{content.portrait.service}}"
+          data-embed-url="{{content.portrait.url}}"          
+        >
+          {{#if content.portrait.embed }}
+            {{{content.portrait.embed}}}
+          {{/if}}
+        </div>    
       </li>
     {{/dc_slidetype}}
     {{#dc_slidetype 'audio' this}}

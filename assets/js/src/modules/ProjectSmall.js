@@ -1,5 +1,6 @@
 const CFG = require('./Config.js' );
 const F = require( './Functions.js' );
+const Embed = require('./Embed.js');
 
 const DC_INFO_CLASS = 'dc-info';
 
@@ -69,6 +70,19 @@ ProjectSmall.prototype = {
     let isInfo = current.classList.contains( DC_INFO_CLASS );      
     return parentIsInfo || isInfo;
   },
+  getSlideContentType: function( $ele ){
+    if( $ele.classList.contains('dc-media__image') ){
+      return 'image';
+    } else if( $ele.classList.contains('dc-media__embed') ){
+      return 'embed';
+    } else if( $ele.classList.contains('dc-media__video') ){
+      return 'video';
+    } else if( $ele.classList.contains('dc-media__audio') ){
+      return 'audio';
+    } else {
+      return 'text';
+    }
+  },
   getProjectItems: function(){
     let result = [];
     if( !this.$wrapper ){  
@@ -79,7 +93,8 @@ ProjectSmall.prototype = {
       {
         type: 'standard',
         ele: $info,
-        parent: false
+        parent: false,
+        contentType: this.getSlideContentType( $info )
       }
     ];
     result = result.concat(
@@ -88,7 +103,8 @@ ProjectSmall.prototype = {
           return {
             type: 'chunk',
             ele: $ele,
-            parent: $info
+            parent: $info,
+            contentType: this.getSlideContentType( $ele )
           }
         })
     );
@@ -98,7 +114,8 @@ ProjectSmall.prototype = {
           return {
             type: 'standard',
             ele: $ele,
-            parent: false
+            parent: false,
+            contentType: this.getSlideContentType( $ele )
           }
         })
     );
@@ -111,14 +128,16 @@ ProjectSmall.prototype = {
     return [{
       type: 'standard',
       ele: $dcInfo,
-      parent: false
+      parent: false,
+      contentType: this.getSlideContentType( $dcInfo )
     }].concat(
       [... $dcInfoSections]
       .map( ($ele) => {
         return {
           type: 'chunk',
           ele: $ele,
-          parent: $dcInfo
+          parent: $dcInfo,
+          contentType: this.getSlideContentType( $ele )
         }
       })
     );
@@ -174,9 +193,15 @@ ProjectSmall.prototype = {
       let index = this.slideIndex + i;
       const slide = this.items[ index ];
       if( !slide ) continue;
-      if( slide.type === 'gfx' ) continue;
-      if( index === this.slideIndex ) continue;
-      F.loadSlideImage( slide.ele )
+      if( slide.contentType === 'image' ){
+        F.loadSlideImage( slide.ele )
+      } else if( slide.contentType === 'embed' ){
+        if( !slide.controller ){
+          slide.controller = new Embed( slide.ele );
+        }
+        slide.controller.prepare();
+      }
+
     } 
   },
   next: function(){
@@ -222,25 +247,33 @@ ProjectSmall.prototype = {
     this.preloadImages( 2 );
   },
   deactivateSlide: function( slide ){
-    const $slide = slide.ele;
-    if( $slide && $slide.classList.contains('dc-media__video') ){
-      const $video = $slide.querySelector('video');
+    if( slide.contentType === 'video'  ){
+      const $video = slide.ele.querySelector('video');
       $video.pause();
       $video.currentTime = 0;
+    } else if( slide.contentType === 'embed'  ){
+      if( !slide.controller ){
+        slide.controller = new Embed( slide.ele );
+      }
+      slide.controller.deactivate();
     }
   },
   activateSlide: function( slide ){
     const $slide = slide.ele;
-    if( $slide && $slide.classList.contains('dc-media__video') ){
+    if( slide.contentType === 'video' ){
       if( window.DC_GFX ) window.DC_GFX.preventAppearance();
-      let videoPlay = $slide.querySelector('video').play();
+      let videoPlay = slide.ele.querySelector('video').play();
       if( videoPlay ){
         videoPlay.catch( ( e ) => {
-          console.log('VIDEO CANT PLAY, go to next' );
-          console.log( e );
-          this.next();
+          console.log('VIDEO CANT PLAY.', e );
         });
       }
+    }  else if( slide.contentType === 'embed' ){
+      if( window.DC_GFX ) window.DC_GFX.preventAppearance();
+      if( !slide.controller ){
+        slide.controller = new Embed( slide.ele );
+      }
+      slide.controller.activate();
     } else {
       if( window.DC_GFX ) window.DC_GFX.enableAppearance();
     }

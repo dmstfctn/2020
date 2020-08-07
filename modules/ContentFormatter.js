@@ -1,8 +1,10 @@
 const fs = require('fs-extra');
+const URL = require('url').URL;
 const path = require('path');
 const Config = require('../Config.js');
 const H = require('./Helpers.js');
 const ImgSize = require('image-size');
+const JSDOM = require("jsdom").JSDOM;
 
 const createURLPath = ( name, section ) => {
   const slug = H.createSlug( name );  
@@ -28,6 +30,10 @@ const createURLPath = ( name, section ) => {
 
 const prepareFile = (  original, destinationPath, src ) => {
   if( typeof original === 'object' ){
+    if( 'originalPath' in original ){
+      //assume it's already been processed...
+      return original;
+    }
     const keys = Object.keys(original);
     let list = {};  
     Object.values(original).forEach( (value, index ) => {
@@ -90,6 +96,82 @@ const prepareImage = ( original, destinationPath, src, _prefix ) => {
   return prepared;
 }
 
+/*
+  prepareEmbed( original ):
+    takes the contents (original) of an .embed slide and configures.
+    contents might be:
+      - an embed code, 
+          in which case we figure out what service it is and
+          send the embed code straight out again with that attached
+      - a url, 
+          in which case we figure out what service it is and construct 
+          an object with config options
+    
+      returns:
+      {
+        original: original,
+        service: 'vimeo' // currently only vimeo supported...
+        url: the link either input, or parsed from embed code,
+        embed: the embed code (if it's there), otherwise: FALSE
+      }
+*/
+
+const prepareEmbed = ( original ) => {
+  if( typeof original === 'object' ){
+    if( 'service' in original ){
+      //assume it's already been processed...
+      return original;
+    }
+    const keys = Object.keys( original );
+    let list = {};  
+    Object.values(original).forEach( (value, index ) => {
+      list[ keys[index] ] = prepareEmbed( value );
+    });
+    return list;
+  }  
+  const serviceFromUrl = ( url ) => {
+    const services = [
+      {
+        name: 'vimeo',
+        identifier: 'vimeo.com'
+      }
+    ];
+    for( let i = 0; i < services.length; i++ ){
+      if( url.indexOf( services[i].identifier ) !== -1 ){
+        return services[i].name;
+      }
+    }
+    return false;
+  }
+  const prepFromUrl = ( url ) => {
+    prepared.url = url;
+    prepared.service = serviceFromUrl( url );
+    return prepared;
+  }
+  const prepFromEmbed = ( embed ) => {
+    const d = JSDOM.fragment( embed );
+    const iframe = d.querySelector('iframe');
+    const url = iframe.getAttribute('src');
+    prepared.embed = embed;
+    prepared.url = url;
+    prepared.service = serviceFromUrl( url );
+    return prepared;
+  }
+  let prepared = {
+    original: original,
+    service: false,
+    url: false,
+    embed: false
+  };
+  try{
+    let url = new URL(original);
+    return prepFromUrl( original );
+  } catch( e ){
+    // assume it's an embed code
+    return prepFromEmbed( original );
+  }
+}
+
 const prepareSlide = ( slide, pageName, slideshowName, section, addSectionToSrc ) => {
   const sectionToSrc = !!addSectionToSrc;
   const destinationPath = path.join( Config.paths.public, section, pageName, 'content', slideshowName );
@@ -107,7 +189,11 @@ const prepareSlide = ( slide, pageName, slideshowName, section, addSectionToSrc 
     // just move
     slide.content = prepareFile( slide.content, destinationPath, src );
     return slide;
-  }      
+  }
+  if( slide.type === 'embed'){    
+    slide.content = prepareEmbed( slide.content );
+    return slide;
+  }   
 
   return slide;
 }

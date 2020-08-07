@@ -77,7 +77,7 @@ const getSlideType = ( filename ) => {
   let ext = path.extname( filename );
   if( ext === '.md' ){
     return 'text';
-  } else if( ext === '.embed' ){    
+  } else if( ext === '.embed' ){   
     return 'embed';   
   } else if( ext === '.window' ){
     return  'window';
@@ -163,7 +163,7 @@ const constructSlide = ( filename, p, meta ) => {
     slide.content = markdown.render( fs.readFileSync( filePath ).toString() );
   } else if( slide.type === 'embed' ){
     // embed code in a text doc with .embed as an extension
-    slide.content = fs.readFileSync( filePath ).toString();
+    slide.content = fs.readFileSync( filePath ).toString();    
   } else if( slide.type === 'window'){
     // url in a text doc with .window as an extension
     // will appear in a new pop-out window

@@ -53,7 +53,15 @@
     {{/dc_slidetype}}
     {{#dc_slidetype 'embed' this}}
       <li class="dc-media__embed{{#if @first}} active{{/if}}">
-        {{{content.main}}}
+        <div 
+          class="dc-embed{{#if content.main.embed }} embedded{{/if}}" 
+          data-embed-service="{{content.main.service}}"
+          data-embed-url="{{content.main.url}}"          
+        >
+          {{#if content.main.embed }}
+            {{{content.main.embed}}}
+          {{/if}}
+        </div>        
       </li>
     {{/dc_slidetype}}
     {{#dc_slidetype 'window' this}}

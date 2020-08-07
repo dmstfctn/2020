@@ -148,7 +148,8 @@
         height: 100%;
         object-fit: cover;
       }
-      .dc-media--list video{
+      .dc-media--list video,
+      .dc-media--list iframe{
         width: 100vh;
         height: 100vw;
         object-fit: cover;
@@ -465,7 +466,8 @@
   .dc-info [data-dc-cv-priority="1"]{
     display: none;
   }
-  .dc-media--list video{
+  .dc-media--list video,
+  .dc-media--list iframe{
     width: 100vw;
     height: 100vh;
     object-fit: cover;
