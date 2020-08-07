@@ -2,6 +2,7 @@ const Orientation = function(){
   this.orientation = 'portrait';
   this.mqPortrait = window.matchMedia( '(orientation: portrait)' );
   this.mqLandscape = window.matchMedia( '(orientation: landscape)' );
+  this.sizeRootDelay = 100;
 }
 
 Orientation.prototype = {
@@ -53,7 +54,7 @@ Orientation.prototype = {
       document.querySelectorAll('html, body, .dc-mobile-nav').forEach( ( $e ) => {
         $e.style.height = '';
       });
-    }, 300 );
+    }, this.sizeRootDelay );
   },
   sizeRoot: function(){
     //fuck safari (ios)
@@ -75,7 +76,7 @@ Orientation.prototype = {
         }
       });
       this._onSizeRoot( window.innerWidth, window.innerHeight );
-    }, 300 );
+    }, this.sizeRootDelay );
   },
   _onSizeRoot: function( w, h ){
     this.onSizeRoot( w, h );

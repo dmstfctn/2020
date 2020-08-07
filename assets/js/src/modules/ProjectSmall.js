@@ -14,11 +14,18 @@ const ProjectSmall = function( backwards, hasGfx ){
     height: window.innerHeight,
     orientation: 'portrait'
   };
+  if( this.getProjectItems().length === 0 ){
+    this.type = 'cv';
+  } else {
+    this.type = 'project';
+  }
   this.loadPlaceholderImages();
   this.update();  
   if( backwards && this.items[ this.slideIndex ].ele ){
     F.loadSlideImage( this.items[ this.slideIndex ].ele )
   }
+  
+  if( this.type === 'project' ) this.cropInfoEvents();
 };
 
 ProjectSmall.prototype = {
@@ -54,6 +61,28 @@ ProjectSmall.prototype = {
     this.onGfx();
   },
   onGfx: function(){ /* ... override ... */ },
+  cropInfoEvents: function(){
+    if( this.type === 'project' ){
+      let $eventsWrapper = this.$wrapper.querySelector('.dc-item--cv');
+      let $events = $eventsWrapper.querySelectorAll('.dc-cv--entry, .dc-cv--title');
+      let lineH = $events[0].offsetHeight;
+      $events.forEach(( $ele ) => {
+        $ele.style.display = '';
+      });            
+      if( $eventsWrapper.offsetTop + $eventsWrapper.offsetHeight < window.innerHeight - lineH ){        
+        return;
+      }
+      let index = $events.length-1;
+      while( $eventsWrapper.offsetTop + $eventsWrapper.offsetHeight > window.innerHeight - lineH && index > 0 ){   
+        $events[index].style.display = 'none';
+        index--;
+        if( $events[index].classList.contains('dc-cv--title') ){
+          $events[index].style.display = 'none';
+          index--;
+        }
+      }
+    }
+  },
   setSizeForSlide: function( slide, w, h, orientation ){
     this.size.width = w;
     this.size.height = h;
@@ -79,6 +108,9 @@ ProjectSmall.prototype = {
     this.size.height = h;
     for( let index = 0; index <  this.items.length; index++ ){
       this.setSizeForSlideByIndex( index, w, h, orientation  );
+    }
+    if( this.type === 'project' ){
+      this.cropInfoEvents();
     }
   },
   isCurrentlyOnGfxPlaceholder: function(){
@@ -266,6 +298,7 @@ ProjectSmall.prototype = {
       slide.ele.classList.add( 'active' );
       if( slide.type === 'chunk' ){
         slide.parent.classList.add('active');
+        if( this.type === 'project' ) this.cropInfoEvents();
       }
       this.activateSlide( this.items[ this.slideIndex ] );
     }

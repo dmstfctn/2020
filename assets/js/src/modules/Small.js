@@ -20,6 +20,7 @@ const Small = function( _loops ){
   this.orientation = new Orientation();
   this.orientation.onSizeRoot = ( w, h ) => {
     this.project.setSize( w, h, this.orientation.orientation );
+    this.cvScroller.recalculate();
   }
   this.setupData();
 

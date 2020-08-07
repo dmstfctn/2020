@@ -71,6 +71,7 @@
   }
   .dc-info{
     opacity: 0;
+    display: block;
     z-index: 2;
     padding-top: 2.9rem;
     font-size: 1rem;       
@@ -274,6 +275,8 @@
     }
   
   .dc-cv.quantised-scroller .quantised-scroller--wrapper{
+    // can't be scrolled here
+    transform: none !important;
     &::after,
     &::before{
       display:none;
