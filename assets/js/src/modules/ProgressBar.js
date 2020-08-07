@@ -63,7 +63,8 @@ ProgressBar.prototype = {
     if( backwards ){
       this.index = this.length;
     } else {
-      this.index = 0;
+      //this.index = 0;
+      this.index = this.length;
     }    
     this.render();
   }
