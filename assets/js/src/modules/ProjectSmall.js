@@ -59,7 +59,7 @@ ProjectSmall.prototype = {
     }
     return this.isOnGfxPlaceholder;
   },
-  isCurrentlyOnCV: function( orientation ){
+  isCurrentlyOnCV: function(){
     if( !this.items[ this.slideIndex ] ){
       return false;
     }
@@ -179,32 +179,30 @@ ProjectSmall.prototype = {
       F.loadSlideImage( slide.ele )
     } 
   },
-  next: function( orientation ){
+  next: function(){
     this.slideIndex++;
-    // if( this.includesCV && this.isCurrentlyOnCV( orientation ) ){
-    //   document.body.parentElement.setAttribute('data-dc-pagetype', 'home');
-    // }
+
     // we've gone past the last slide for this part
     if( this.slideIndex >= this.items.length ){
       this._onEnd();
       return;
     }    
-    this.update( orientation );
+    this.update();
     this._onNext();
     this._onChange();    
   },
-  prev: function( orientation ){
+  prev: function(){
     this.slideIndex--;
     if( this.slideIndex < this.minIndex ){      
       this._onCantGoBack();
       return;
     }
 
-    this.update( orientation );
+    this.update();
     this._onPrev();
     this._onChange();
   },
-  update: function( orientation ){
+  update: function(){
     console.log('update()');
     console.log('slideImdex', this.slideIndex )
     const slide = this.items[ this.slideIndex ]
