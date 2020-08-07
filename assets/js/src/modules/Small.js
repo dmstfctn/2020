@@ -110,7 +110,6 @@ Small.prototype.deactivate = function(){
 /* interaction */
 Small.prototype.setupInteraction = function(){
   this.$interactionEle.addEventListener( 'pointerdown', ( e ) => {
-    console.log('--> small interaction')
     if(e.pageX >= window.innerWidth / 2){
       this.project.next( this.orientation.orientation );
     } else {
@@ -129,7 +128,6 @@ Small.prototype.setupInteraction = function(){
 
 Small.prototype.projectEnd = function( backwards ){
   if( backwards && this.pageIndex === this.startPageIndex ){
-    console.log('projectEnd', 'backwards', 'on (or back on) first page loaded')
     return;
   }
   this.pageIndex = (backwards) ? this.pageIndex - 1 : this.pageIndex + 1;
@@ -229,12 +227,11 @@ Small.prototype.firstHistoryState = function(){
 }
 
 Small.prototype.renderPage = function( data, extra ){  
-  console.log( 'Small() renderPage() data: ', data, 'extra: ', extra );
   const backwards = !!extra.backwards;
   const isFirstOneAgain = this.startPageIndex === this.pageIndex;
   document.title = data.title;
   document.documentElement.setAttribute('data-dc-pagetype', data.pagetype );
-  console.log('renderPage: ', 'PAGE INDEX: ', this.pageIndex)
+
   this.$mainContent.innerHTML = data.html;
   this.project.deactivate();
   this.project = new Project( backwards, isFirstOneAgain ); 
