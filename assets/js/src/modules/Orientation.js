@@ -74,13 +74,13 @@ Orientation.prototype = {
           $e.style.height = window.innerHeight + 'px'; 
         }
       });
-      this._onSizeRoot();
+      this._onSizeRoot( window.innerWidth, window.innerHeight );
     }, 300 );
   },
-  _onSizeRoot: function(){
-    this.onSizeRoot();
+  _onSizeRoot: function( w, h ){
+    this.onSizeRoot( w, h );
   },
-  onSizeRoot: function(){ /* ... override ... */ },
+  onSizeRoot: function( w, h ){ /* ... override ... */ },
   _onOrientationChange: function(){
     this.onOrientationChange();
   },

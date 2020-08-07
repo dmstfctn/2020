@@ -9,7 +9,11 @@ const ProjectSmall = function( backwards, hasGfx ){
   this.items = this.getItems();
   this.minIndex = (hasGfx) ? 0 : 1;
   this.slideIndex = (backwards) ? this.items.length - 1 : this.minIndex;
-
+  this.size = {
+    width: window.innerWidth,
+    height: window.innerHeight,
+    orientation: 'portrait'
+  };
   this.loadPlaceholderImages();
   this.update();  
   if( backwards && this.items[ this.slideIndex ].ele ){
@@ -50,6 +54,33 @@ ProjectSmall.prototype = {
     this.onGfx();
   },
   onGfx: function(){ /* ... override ... */ },
+  setSizeForSlide: function( slide, w, h, orientation ){
+    this.size.width = w;
+    this.size.height = h;
+    const contentType = slide.contentType;
+    const $slide = slide.ele;      
+    if( contentType === 'embed' ){
+      const $iframe = $slide.querySelector('iframe');
+      if( !$iframe ) return;
+      if( orientation === 'portrait' ){
+        $iframe.style.width = h + 'px';
+        $iframe.style.height = w + 'px';
+      } else {
+        $iframe.style.width = w + 'px';
+        $iframe.style.height = h + 'px';
+      }
+    }
+  },
+  setSizeForSlideByIndex: function( index, w, h, orientation ){
+    this.setSizeForSlide( this.items[index], w, h, orientation  );
+  },
+  setSize: function( w, h, orientation  ){
+    this.size.width = w;
+    this.size.height = h;
+    for( let index = 0; index <  this.items.length; index++ ){
+      this.setSizeForSlideByIndex( index, w, h, orientation  );
+    }
+  },
   isCurrentlyOnGfxPlaceholder: function(){
     if( this.slideIndex <= 0 && this.minIndex === 0 ){
       this.isOnGfxPlaceholder = true;
@@ -269,6 +300,7 @@ ProjectSmall.prototype = {
         slide.controller = new Embed( slide.ele );
       }
       slide.controller.activate();
+      this.setSizeForSlide( slide, this.size.width, this.size.height, this.size.orientation );
     } else {
       if( window.DC_GFX ) window.DC_GFX.enableAppearance();
     }

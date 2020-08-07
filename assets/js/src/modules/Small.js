@@ -18,7 +18,9 @@ const Small = function( _loops ){
   this.minLoadTime = 800;
   
   this.orientation = new Orientation();
-
+  this.orientation.onSizeRoot = ( w, h ) => {
+    this.project.setSize( w, h, this.orientation.orientation );
+  }
   this.setupData();
 
   this.project = new Project( false, true );
@@ -90,17 +92,13 @@ Small.prototype.activate = function(){
   this.setupLoader();
   this.cvScroller.activate();
   this.orientation.activate();
-  this.project.activate();
-  this.orientation.onOrientationChange = () => {
-    this.project.changeOrientation( this.orientation.orientation );
-  };
+  this.project.activate();  
 }
 
 Small.prototype.deactivate = function(){
   this.cancelLoader();
   this.cvScroller.deactivate();
   this.orientation.deactivate();
-  this.orientation.onOrientationChange = function(){};
   this.project.deactivate();
 }
 
@@ -108,9 +106,9 @@ Small.prototype.deactivate = function(){
 Small.prototype.setupInteraction = function(){
   this.$interactionEle.addEventListener( 'pointerdown', ( e ) => {
     if(e.pageX >= window.innerWidth / 2){
-      this.project.next( this.orientation.orientation );
+      this.project.next();
     } else {
-      this.project.prev( this.orientation.orientation );
+      this.project.prev();
     }
     if( this.project.isOnGfxPlaceholder ){
       e.stopPropagation();

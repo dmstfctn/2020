@@ -158,6 +158,9 @@
         top: 50%;
         left: 50%;
       }
+        .dc-media--list iframe{
+          object-position: left;
+        }
     .dc-media{
       width: 100%;
       height: 100%;
@@ -495,6 +498,7 @@
     top: 50%;
     left: 50%;
   }
+   
   &.dc-cv-hideon__mobile{
     display: none;
   }
