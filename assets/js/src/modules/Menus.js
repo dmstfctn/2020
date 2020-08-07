@@ -40,7 +40,7 @@ Menus.prototype = {
 
     $title.classList.add( 'active' );
     $menu.style.display = 'block';  
-
+console.log('showMenu(), pagetype: ', pagetype );
     // clear data-dc-homeactive attribute used to show correct menu on load
     document.querySelector('html').setAttribute('data-dc-homeactive', '');
     document.querySelector('html').setAttribute('data-dc-pagetype', pagetype );
