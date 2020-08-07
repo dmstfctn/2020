@@ -3,4 +3,10 @@ title: DEMONS
 description: "#blackmonday #1987 #algotrade #crashcore"
 ---
 
-_DEMONS_ replays the first stock market crash caused by algorithmic trading, occurred on october 19, 1987; responding to a set of strange and seemingly unconnected events unfolding at the time of market opening, the computers of institutional investors on the new york stock exchange executed a choreography of trades in an effort to protect the values of their portfolios against volatile market conditions; a domino effect was triggered as computers followed a herd trading logic, dictated by the analysis of each others’ trading patterns; DEMONS was performed on the 31st anniversary of the crash, using custom-software to translate historic new york stock exchange trading data from the day into sound; the piece explores volatility on 24/7/365 financial markets saturated with the noise of global events and imbued with algorithmic confirmation bias
+_DEMONS_ is an audiovisual performance replaying the first stock market crash to be caused by algorithmic trading, occurred on October 19, 1987 and known as Black Monday. The piece explores confirmation bias in algorithmic trading.
+
+On that day, responding to a set of strange and seemingly unconnected events unfolding at the time of market opening, the computers of institutional investors on the New York Stock Exchange (NYSE) executed a number of quick trades in order to protect the values of their portfolios against volatile market conditions.
+
+As algorithms followed a herd trading logic dictated by the technical analysis of each others’ trading patterns, a domino effect was triggered. Large sums were lost as the communications systems of the NYSE were overwhelemed by the amount of trading orders submitted by the algorithms, "demons of our own design".
+
+DEMONS was performed on the 31st anniversary of Black Monday, using custom-software to translate historic NYSE trading data from the day into sound.
