@@ -22,7 +22,7 @@ const Small = function( _loops ){
   this.setupData();
 
   this.project = new Project( false, true );
-  this.progress = new ProgressBar( this.project.items.length + 1 );
+  this.progress = new ProgressBar( this.project.items.length );
 
   this.cvScroller = new ScrollQuantiser( 
     document.querySelector('#info .dc-cv'), 
