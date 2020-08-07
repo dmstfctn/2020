@@ -12,6 +12,7 @@
 #   url: https://aksioma.org/               # only used if now is true
 #   image: offshore-matters.jpg
 #   related: Offshore Investigation Vehicle 
+#   hideon: mobile / desktop  # should if be hidden on a particular screen size?
 
 # optionally related can be a list, so -> 
 # related: 
@@ -117,6 +118,25 @@
 
 # ## 2020 ## focus group ############## #
 
+#### these 2 are related - one is visible       #
+#### on desktop, one on mobile                  #
+#### NOTE: when doing this the hideon: desktop  #
+####       should always go first (otherwise    #
+####       the layout gets messed up)           #
+
+- now: false
+  priority: 2
+  year: 2020
+  type: focus group
+  date: 
+  title: RAVENSBOURNE UNIVERSITY
+  situation: london
+  location: 
+  url: 
+  image: plane-of-theseus-ravensbourne.jpg
+  related: Plane of Theseus
+  hideon: desktop
+
 - now: false
   priority: 2
   year: 2020
@@ -128,6 +148,9 @@
   url: 
   image: plane-of-theseus-ravensbourne.jpg
   related: Plane of Theseus
+  hideon: mobile
+
+#### end 2 linked ###############################
 
 # ## 2020 ## focus group ############## #
 
@@ -296,6 +319,25 @@
 
 # ## 2019 ## focus group ############## #
 
+#### these 2 are related - one is visible       #
+#### on desktop, one on mobile                  #
+#### NOTE: when doing this the hideon: desktop  #
+####       should always go first (otherwise    #
+####       the layout gets messed up)           #
+
+- now: false
+  priority: 1
+  year: 2019
+  type: focus group
+  date: 
+  title: WEISENSEE HOCHSCHULE
+  situation: berlin
+  location: 
+  url: 
+  image: demystification-committee-weisensee.jpg
+  related: Plane of Theseus
+  hideon: desktop
+
 - now: false
   priority: 1
   year: 2019
@@ -307,6 +349,9 @@
   url: 
   image: demystification-committee-weisensee.jpg
   related: Plane of Theseus
+  hideon: mobile
+
+#### end 2 linked ###############################
 
 - now: false
   priority: 1
