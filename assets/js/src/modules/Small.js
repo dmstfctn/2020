@@ -48,8 +48,6 @@ Small.prototype.setupData = function(){
     this.homeIndex = this.pageIndex + 1;
   }
   this.startPageIndex = this.pageIndex;
-
-  console.log( 'setup Small data', 'currentIndex:', this.pageIndex, 'data:', this.data );
 }
 
 Small.prototype._onLoadingStart = function(){
@@ -69,7 +67,6 @@ Small.prototype._onEndInteraction = function(){
 Small.prototype.onEndInteraction = function(){ /* ... override ... */ };
 
 Small.prototype._onReenableFirstGfxHide = function(){
-  console.log('_onReenableFirstGfxHide');
   this.onReenableFirstGfxHide();
 }
 Small.prototype.onReenableFirstGfxHide = function(){ /* ... override ... */ };

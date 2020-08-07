@@ -47,7 +47,6 @@ ProjectSmall.prototype = {
     /*noop*/
   },
   _onGfx: function(){
-    console.log('ProjectSmall, onGfx()');
     this.onGfx();
   },
   onGfx: function(){ /* ... override ... */ },
@@ -172,7 +171,6 @@ ProjectSmall.prototype = {
   loadPlaceholderImages: function(){
     for( let index = 0; index <  this.items.length; index++ ){      
       const slide = this.items[ index ];
-      console.log('loadPlaceholderImages() iteration ', index, 'slide: ', slide );
       if( !slide ) continue;
       if( slide.type === 'gfx' ) continue;
       F.loadSlidePlaceholder( slide.ele );
@@ -228,15 +226,12 @@ ProjectSmall.prototype = {
     this._onChange();
   },
   update: function(){
-    console.log('update()');
-    console.log('slideImdex', this.slideIndex )
     const slide = this.items[ this.slideIndex ]
     this.deactivateAll();
     
     if( slide.type === 'gfx' ){
 
     } else {
-      console.log('ProjectSmall, update(), slideIndex: ', this.slideIndex );
       slide.ele.classList.add( 'active' );
       if( slide.type === 'chunk' ){
         slide.parent.classList.add('active');
