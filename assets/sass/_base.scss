@@ -47,6 +47,22 @@ html, body{
         line-height: 1;
         color: #FFFFFF;
       }
+      .dc-media--list .info & ,
+      .dc-media--list .dc-media__text &{
+        &::before{
+          display: none;
+        }
+        &::after{
+          content: '↗\FE0E';
+          position: relative;
+          font-size: 0.5em;
+          right: 0.05em;
+          bottom: 0.75em;
+          height: 1em;
+          line-height: 1;
+          color: #FFFFFF;
+        }
+      }
     }
 
     .dc-biglist--now .dc-external-link::before{
