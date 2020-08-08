@@ -138,11 +138,14 @@ html{
     columns: 3;
     column-gap: 1.8em;
     max-height: 100%;
-    column-fill: balance;
+    column-fill: balance-all;  
   }
   p{
     text-align: justify;
-    margin-bottom: 1.389em;    
+    margin-top: 1.389em;    
+    &:first-child{
+      margin-top: 0;
+    }
   }
   em{
     font-style: normal;
