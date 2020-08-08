@@ -50,6 +50,12 @@ const readYAML = ( path ) => {
   return yaml;
 }; 
 
+const replacePwithBR = ( text ) => {
+  return text.replace(/(<\/p>(\s*)<p>)+/g,'<br><br>')
+             .replace(/<p>+/g, '')
+             .replace(/<\/p>+/g, '');
+}
+
 const removeOrderFromFilename = ( filename ) => {
   return filename.replace(/(^[0-9]+\.)/gm, '' );
 };
@@ -161,6 +167,7 @@ const constructSlide = ( filename, p, meta ) => {
   } 
   if( slide.type === 'text' ){    
     slide.content = markdown.render( fs.readFileSync( filePath ).toString() );
+    //slide.content = replacePwithBR( slide.content );                
   } else if( slide.type === 'embed' ){
     // embed code in a text doc with .embed as an extension
     slide.content = fs.readFileSync( filePath ).toString();    
@@ -227,6 +234,8 @@ const readFolder = ( folderPath, cv ) => {
           let fm = frontmatter( fs.readFileSync( itemPath ));
           projectData.data = fm.data;
           projectData.info = markdown.render( fm.content );
+          // projectData.info = replacePwithBR(projectData.info);
+       
         } else {         
           const p = path.join( root, year, project, item );
           // find the meta file
@@ -265,6 +274,8 @@ const loadCV = ( file ) => {
 
 const renderMarkdownAndProcess = ( md ) => {  
   let rendered = markdown.render( md );
+
+  //rendered =  replacePwithBR( rendered );
 
   /* wrap @ symbols like so:
     <span class="dctxt--at">@</span>
