@@ -68,3 +68,8 @@ mqSmall.addListener( mqSmallHandler );
 mqSmallHandler( mqSmall );
 
 gfx.activate();
+
+
+if( F.isChrome() ){
+  document.querySelector('html').setAttribute('data-b', 'GC' );
+}

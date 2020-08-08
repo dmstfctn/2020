@@ -1,6 +1,16 @@
 const $html = document.querySelector('html');
 
 const Functions = {
+  isChrome: function(){
+    // i know, i know, but chrome's css column layout 
+    // is shit and as that's all this is being used to
+    // change, if it stops working or correctly detecting 
+    // it's really not the end of the world
+    // (stolen from is.js: https://github.com/arasatasaygin/is.js/blob/master/is.js)
+    const UA = (navigator && navigator.userAgent || '').toLowerCase();
+    const vendor = (navigator && navigator.vendor || '').toLowerCase();
+    return /google inc/.test(vendor) ? UA.match(/(?:chrome|crios)\/(\d+)/) : false;
+  },
   visibilityChangeCompat: function(){
     let hidden, visibilityChange; 
     if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and later support 
