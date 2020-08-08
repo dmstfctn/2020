@@ -1,15 +1,18 @@
-1.jpg:  
-  caption: NE2
-  alt: ALT one dot jpeg
-2.jpg:  
-  caption: NE3
-  alt: ALT two dot jpeg
-3.jpg:  
+Network-Ensemble-1.jpg:
+  caption: NE2, a phone-powered wifi sniffer able to translate data packets into sound
+  alt: ALT NE2, a phone-powered wifi sniffer able to translate data packets into sound
+Network-Ensemble-2.jpg:
+  caption: NE3, a wifi sniffer able to translate data packets into sound
+  alt: ALT NE3, a phone-powered wifi sniffer able to translate data packets into sound
+Network-Ensemble-3.jpg:
   caption: 
   alt: ALT three dot jpeg
-4.jpg:  
-  caption: Selected Network Studies, relesead by NUKFM
+Network-Ensemble-4.jpg:
+  caption: 
   alt: ALT four dot jpeg
-5.jpg:  
-  caption: Flash Demons, released by MILLE PLATEAUX
-  alt: ALT five dot jpeg
+Network-Ensemble-5.jpg:
+  caption: Flash Demons, released in 2019 by MILLE PLATEAUX 
+  alt: ALT Flash Demons, released in 2019 by MILLE PLATEAUX
+Network-Ensemble-6.jpg:
+  caption: Selected Network Studies, released in 2016 by NUKFM
+  alt: ALT Selected Network Studies, released in 2016 by NUKFM
