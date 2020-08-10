@@ -18,15 +18,15 @@ Embed.prototype = {
     clearTimeout( this.preactivateTimeout );
     if( this.service === 'vimeo' ){
       this.isPreactivating = true;
-      console.log('preactivate')
+      this.controller.setVolume( 0 );
       this.controller.play().then( () => {      
-        console.log('preactivate: playing');
         if(this.isPreactivating){
           clearTimeout( this.preactivateTimeout );
-          console.log('preactivate: ready to stop');
-          this.preactivateTimeout = setTimeout( () => {
-            console.log('preactivate: stopping');
-            this.controller.pause();
+          this.preactivateTimeout = setTimeout( () => {            
+            this.controller.setVolume( 1 );
+            if( !this.isActive ){             
+              this.controller.pause();
+            }
             if( typeof _callback === 'function' ){
               cb( true );
             };
@@ -47,7 +47,7 @@ Embed.prototype = {
           url: this.url,
           autoplay: false,
           controls: false,
-          autopause: true
+          autopause: false
         })
       }
     }
@@ -55,13 +55,12 @@ Embed.prototype = {
   prepare: function(){
     this.controller = this.createControllerForService();
     if( this.service === 'vimeo' ){
-      this.preactivate( () => {
-        this.controller.setCurrentTime(0);
-      });
+      this.preactivate();
     }
   },
   activate: function(){
     this.isPreactivating = false;
+    this.isActive = true;
     if( !this.controller ){
       this.controller = this.createControllerForService();
     }
@@ -70,8 +69,10 @@ Embed.prototype = {
     }
   },
   deactivate: function(){
+    this.isActive = false;    
     if(!this.controller) return;
     if( this.service === 'vimeo' ){
+      if( this.isPreactivating ) return;
       this.controller.setCurrentTime(0);
       this.controller.pause();
     }

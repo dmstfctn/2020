@@ -19,11 +19,9 @@ const ProjectSmall = function( backwards, hasGfx ){
   } else {
     this.type = 'project';
   }
-  this.loadPlaceholderImages();
-  this.update();  
-  if( backwards && this.items[ this.slideIndex ].ele ){
-    F.loadSlideImage( this.items[ this.slideIndex ].ele )
-  }
+  this.loadPlaceholderImages();  
+  this.update();
+  this.ifBackwards( backwards );
   
   if( this.type === 'project' ) this.cropInfoEvents();
 };
@@ -39,6 +37,7 @@ ProjectSmall.prototype = {
   },
   onEnd: function(){ /* ... override ... */ },
   _onChange: function(){
+    this.prepareEmbeds();
     this.isCurrentlyOnGfxPlaceholder();
     this.onChange();
   },
@@ -81,6 +80,12 @@ ProjectSmall.prototype = {
           index--;
         }
       }
+    }
+  },
+  ifBackwards: function( backwards ){
+    const slide = this.items[ this.slideIndex ];
+    if( backwards && slide.ele ){
+      this.activateSlide( slide );    
     }
   },
   setSizeForSlide: function( slide, w, h, orientation ){
@@ -236,8 +241,30 @@ ProjectSmall.prototype = {
       const slide = this.items[ index ];
       if( !slide ) continue;
       if( slide.type === 'gfx' ) continue;
-      F.loadSlidePlaceholder( slide.ele );
+      if( slide.contentType === 'image' ){
+        F.loadSlidePlaceholder( slide.ele );
+      }  
     }
+  },
+  prepareEmbeds: function(){
+    if( this.embedsPrepared ) return;
+    for( let index = 0; index <  this.items.length; index++ ){      
+      const slide = this.items[ index ];
+      if( !slide ) continue;
+      if( slide.type === 'gfx' ) continue;
+      if( slide.contentType === 'embed' ){        
+        this.prepareEmbed( slide );
+      }
+    }
+    this.embedsPrepared = true;
+  },
+  prepareEmbed: function( slide ){
+    if( slide.embedPrepared ) return;
+    slide.embedPrepared = true;
+    if( !slide.controller ){
+      slide.controller = new Embed( slide.ele );
+    }
+    slide.controller.prepare();    
   },
   deactivateAll: function(){
     this.items
@@ -247,14 +274,6 @@ ProjectSmall.prototype = {
         if( item.type === 'chunk' ) item.parent.classList.remove('active');
         this.deactivateSlide( item );
       });
-  },
-  prepareEmbed: function( slide ){
-    if( slide.embedPrepared ) return;
-    if( !slide.controller ){
-      slide.controller = new Embed( slide.ele );
-    }
-    slide.controller.prepare();
-    slide.embedPrepared = true;
   },
   preloadImages: function( _preloadCount ){
     let preloadCount = _preloadCount | 2;  
@@ -294,7 +313,7 @@ ProjectSmall.prototype = {
     this._onChange();
   },
   update: function(){
-    const slide = this.items[ this.slideIndex ]
+    const slide = this.items[ this.slideIndex ]    
     this.deactivateAll();
     
     if( slide.type === 'gfx' ){
@@ -329,7 +348,7 @@ ProjectSmall.prototype = {
       let videoPlay = slide.ele.querySelector('video').play();
       if( videoPlay ){
         videoPlay.catch( ( e ) => {
-          console.log('VIDEO CANT PLAY.', e );
+          //console.log('VIDEO CANT PLAY.', e );
         });
       }
     }  else if( slide.contentType === 'embed' ){
