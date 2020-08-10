@@ -223,7 +223,14 @@
   }
 
   .dc-item--header{
-    display: none;
+    z-index: 2;
+    padding-bottom: .6rem;
+    h1{
+      font-size: 1rem;
+    }
+    .dctxt--date{
+      display: none;
+    }
   }
 
   /* enable display of dissemination */
