@@ -113,10 +113,10 @@ GFX.prototype = {
       } else {
         this._onMove();
       }
-    });
+    }, {passive: true});
     window.addEventListener('pointerdown', () => {
       this._onMove();
-    });
+    }, {passive: true});
     // window.addEventListener('click', () => {
     //   this._onMove();
     // });

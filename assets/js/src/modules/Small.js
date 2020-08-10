@@ -114,7 +114,7 @@ Small.prototype.setupInteraction = function(){
     if( this.project.isOnGfxPlaceholder ){
       e.stopPropagation();
     }
-  });  
+  }, {passive: true} );  
   this.$interactionEle.addEventListener('touchmove', function (event) {
     if (event.targetTouches.length === 1) {
       event.preventDefault();
