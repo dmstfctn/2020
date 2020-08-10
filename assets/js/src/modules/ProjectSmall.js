@@ -23,7 +23,7 @@ const ProjectSmall = function( backwards, hasGfx ){
   this.update();
   this.ifBackwards( backwards );
   
-  if( this.type === 'project' ) this.cropInfoEvents();
+  //if( this.type === 'project' ) this.cropInfoEvents();
 };
 
 ProjectSmall.prototype = {
@@ -115,9 +115,9 @@ ProjectSmall.prototype = {
     for( let index = 0; index <  this.items.length; index++ ){
       this.setSizeForSlideByIndex( index, w, h, orientation  );
     }
-    if( this.type === 'project' ){
-      this.cropInfoEvents();
-    }
+    // if( this.type === 'project' ){
+    //   this.cropInfoEvents();
+    // }
   },
   isCurrentlyOnGfxPlaceholder: function(){
     if( this.slideIndex <= 0 && this.minIndex === 0 ){
@@ -323,7 +323,7 @@ ProjectSmall.prototype = {
       slide.ele.classList.add( 'active' );
       if( slide.type === 'chunk' ){
         slide.parent.classList.add('active');
-        if( this.type === 'project' ) this.cropInfoEvents();
+        //if( this.type === 'project' ) this.cropInfoEvents();
       }
       this.activateSlide( this.items[ this.slideIndex ] );
     }
