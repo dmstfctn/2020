@@ -5,7 +5,7 @@
   }
   html{
     //font-size: 9.5px;
-    font-size: 3vw;
+    font-size: 1.92vh;
     line-height: 1.2;
     position: relative;
     -webkit-text-size-adjust: none;
@@ -136,6 +136,27 @@
       .dc-item--info.active{
        // display: block;
       }
+
+    .dc-cv{
+      position: absolute;
+      top: 3rem;
+      background: #000000;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0 1rem;
+      padding-right: calc( env(safe-area-inset-right) + 1rem);
+      padding-left: calc( env(safe-area-inset-left) + 1rem);
+      box-sizing: border-box;
+      &.quantised-scroller{
+        position: absolute;
+      }
+    }
+    .dc-item__focusgroup .dc-cv{
+      background: #FF0000;
+      min-height: 100%;
+    }
+
     .dc-media--nav{
       display: none;
     }
@@ -209,9 +230,9 @@
   }
 
   html[data-dc-pagetype="focusgroup"]{ 
-    // .dc-item--cv .dctxt--date{
-    //   color: #FFFFFF;
-    // }
+    .dc-item--cv .dctxt--date{
+      color: #FFFFFF;
+    }
     .dc-sitenav a[href="/mmittee"] svg path{
       &[stroke]{
         stroke: #FFFFFF !important;
@@ -497,7 +518,7 @@
 
 @media (orientation: landscape) and (max-width: 900px){  
   html{
-    font-size: 3vh;
+    font-size: 3.36vh;
   }
   .dc-gfx{
     top: 0;
