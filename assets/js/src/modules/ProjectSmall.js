@@ -248,6 +248,14 @@ ProjectSmall.prototype = {
         this.deactivateSlide( item );
       });
   },
+  prepareEmbed: function( slide ){
+    if( slide.embedPrepared ) return;
+    if( !slide.controller ){
+      slide.controller = new Embed( slide.ele );
+    }
+    slide.controller.prepare();
+    slide.embedPrepared = true;
+  },
   preloadImages: function( _preloadCount ){
     let preloadCount = _preloadCount | 2;  
     for( let i = -preloadCount; i < 1 + preloadCount; i++ ){
@@ -257,10 +265,7 @@ ProjectSmall.prototype = {
       if( slide.contentType === 'image' ){
         F.loadSlideImage( slide.ele )
       } else if( slide.contentType === 'embed' ){
-        if( !slide.controller ){
-          slide.controller = new Embed( slide.ele );
-        }
-        slide.controller.prepare();
+        this.prepareEmbed( slide );
       }
 
     } 

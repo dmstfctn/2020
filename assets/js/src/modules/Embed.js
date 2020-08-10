@@ -9,9 +9,34 @@ const Embed = function( $slide ){
   this.url = this.$ele.getAttribute('data-embed-url');
   this.isEmbedded = this.$ele.classList.contains('embedded');
   this.controller = false;  
+  this.isPreactivating = false;
 }
 
-Embed.prototype = {
+Embed.prototype = {  
+  preactivate: function( _callback ){
+    const cb = _callback;
+    clearTimeout( this.preactivateTimeout );
+    if( this.service === 'vimeo' ){
+      this.isPreactivating = true;
+      console.log('preactivate')
+      this.controller.play().then( () => {      
+        console.log('preactivate: playing');
+        if(this.isPreactivating){
+          clearTimeout( this.preactivateTimeout );
+          console.log('preactivate: ready to stop');
+          this.preactivateTimeout = setTimeout( () => {
+            console.log('preactivate: stopping');
+            this.controller.pause();
+            if( typeof _callback === 'function' ){
+              cb( true );
+            };
+          }, 5)
+        }
+      });
+    } else {
+      _cb( false );
+    }
+  },
   createControllerForService: function(){
     if( this.controller ) return this.controller;
     if( this.service === 'vimeo' ){
@@ -29,8 +54,14 @@ Embed.prototype = {
   },
   prepare: function(){
     this.controller = this.createControllerForService();
+    if( this.service === 'vimeo' ){
+      this.preactivate( () => {
+        this.controller.setCurrentTime(0);
+      });
+    }
   },
   activate: function(){
+    this.isPreactivating = false;
     if( !this.controller ){
       this.controller = this.createControllerForService();
     }
