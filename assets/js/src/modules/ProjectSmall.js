@@ -60,10 +60,11 @@ ProjectSmall.prototype = {
     this.onGfx();
   },
   onGfx: function(){ /* ... override ... */ },
-  cropInfoEvents: function(){
+  cropInfoEvents: function(){    
     if( this.type === 'project' ){
       let $eventsWrapper = this.$wrapper.querySelector('.dc-item--cv');
       let $events = $eventsWrapper.querySelectorAll('.dc-cv--entry, .dc-cv--title');
+      if( $events.length < 1 ) return;
       let lineH = $events[0].offsetHeight;
       $events.forEach(( $ele ) => {
         $ele.style.display = '';
