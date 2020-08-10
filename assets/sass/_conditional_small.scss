@@ -209,9 +209,9 @@
   }
 
   html[data-dc-pagetype="focusgroup"]{ 
-    .dc-item--cv .dctxt--date{
-      color: #FFFFFF;
-    }
+    // .dc-item--cv .dctxt--date{
+    //   color: #FFFFFF;
+    // }
     .dc-sitenav a[href="/mmittee"] svg path{
       &[stroke]{
         stroke: #FFFFFF !important;
