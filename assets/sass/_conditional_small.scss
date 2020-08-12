@@ -565,7 +565,7 @@
 }
 
 
-@media (max-width: 900px) and (min-height: 600px){
+@media (orientation: portrait) and (max-width: 900px) and (min-height: 600px){
   html{
     font-size: 1.93vh;
   }
