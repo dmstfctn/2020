@@ -91,6 +91,10 @@ html{
         content: '';  
       }
     }
+
+    .dc-work--item--description{
+      font-size: 3.2rem;
+    }
     
 .dc-biglist--now{
   text-align: justify;
@@ -163,7 +167,7 @@ html[data-b="GC"]{
   }
 }
 .dc-media--list figcaption{
-  font-size: 0.8rem;
+  font-size: 0.8rem;  
 }
 
 
