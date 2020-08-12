@@ -34,6 +34,7 @@
   "scripts": {
     "develop": "node dev/develop.js",
     "build": "node build.js",
+    "upload": "sh dev/upload.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Demystification Committee",

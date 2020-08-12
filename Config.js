@@ -1,7 +1,12 @@
 const path = require('path');
 
+const UPLOAD = ( process.argv[2] === 'upload' );
+if( UPLOAD ) console.log('Config.js -> upload mode' );
+
 const url_root = 'mmittee';
-const public_root = path.join( __dirname, 'public' );
+const public_root = (UPLOAD) ?  
+                      path.join( __dirname, 'htdocs' )
+                      : path.join( __dirname, 'public' );
 
 let Config = {
   dev:{
@@ -9,7 +14,7 @@ let Config = {
   },
   debug: false,
   minify: false,
-  minifyHTML: true,
+  minifyHTML: false,
   resizeImages: true, 
   url_root: url_root,
   paths: {
@@ -25,6 +30,13 @@ Config.log = () => {
   if( Config.debug ){
     console.log.apply(null, arguments )
   }
+}
+
+if( UPLOAD ){
+  Config.debug = false;
+  Config.minify = true;
+  Config.minifyHTML = true;
+  Config.resizeImages = true;
 }
 
 module.exports = Config;
