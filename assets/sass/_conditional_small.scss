@@ -10,6 +10,12 @@
     position: relative;
     -webkit-text-size-adjust: none;
   }
+  .dc-cv--entry.dc-cv--entry__haslink > a::after,
+  .dc-cv--entry::after,
+  .dots,
+  .dc-dissemination--info::after{
+    letter-spacing: -0.01em;
+  }
   html,
   .dc-sitenav,
   .dc-info{
