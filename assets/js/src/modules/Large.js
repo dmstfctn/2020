@@ -37,6 +37,9 @@ const Large = function(){
 
 Large.prototype.setupLogo = function(){
   const version = Math.floor( Math.random() * 4 );
+  if( version === 2 ){
+    version = 1;
+  }
   document.querySelector('.dc-logo').setAttribute('data-dc-version', version );
 }
 
