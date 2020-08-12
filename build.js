@@ -172,6 +172,13 @@ fs.writeFileSync(
 
 /* move .htaccess into public */
 fs.copySync('htaccess', path.join(Config.paths.public_root, '.htaccess') );
+/* move the contents of the 'extra' folder into the public directory */
+const extra = fs.readdirSync( 'extra' );
+extra.forEach( ( item ) => {  
+  const src = path.join('extra', item );
+  const dest = path.join( Config.paths.public, item )
+  fs.copySync( src, dest );
+});
 
 
 /* write an index.html with link to /mmitte (or whatever url_root....) */
