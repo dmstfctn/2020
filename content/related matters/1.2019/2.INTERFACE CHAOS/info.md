@@ -9,4 +9,4 @@ In INTERFACE CHAOS, money and palm trees are each observed facing uncertainties 
 
 The short film follows the palm trees effort to mark the world with their unique fruit and money's effort to guard itself.
 
-INTERFACE CHAOS features an original soundtrack by SKY H1. Excerpts from it, alongside further information on upcoming screening are available on [INTERFACECHAOS.COM](http://interfacechaos.com/)
+INTERFACE CHAOS features an original soundtrack by SKY H1. Excerpts from it, alongside further information on upcoming screening are available on <a href="http://interfacechaos.com/" target="_blank">INTERFACECHAOS.COM</a>
