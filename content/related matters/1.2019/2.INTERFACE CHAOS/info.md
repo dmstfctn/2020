@@ -1,7 +1,7 @@
 ---
 title: Interface Chaos
 description: a short film about the survival of money
-link: https://interfacechaos.com
+#link: https://interfacechaos.com
 ---
 
 _INTERFACE CHAOS_ is the debut short film of the DEMYSTIFICATION COMMITTEE. It explores the search for survival of two entities coexisting in the archipelago of the Seychelles: money and a unique species of palm tree.
