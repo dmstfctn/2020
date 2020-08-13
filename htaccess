@@ -30,14 +30,14 @@ RewriteRule ^mmittee/open-offshore-roundtable-2017/?$ /mmittee/focus-groups/offs
 RewriteRule ^mmittee/offshore-roundtable/?$ /mmittee/focus-groups/offshore-roundtable/ [R=301,L]
 
 # OLD NOTES to CV
-RewriteRule ^mmittee/automated-landscapes-data-centers/?$ /mmittee/info/
-RewriteRule ^mmittee/capturing-the-face-of-finance/?$ /mmittee/info/
-RewriteRule ^mmittee/playing-to-lose/?$ /mmittee/info/
-RewriteRule ^mmittee/algorithms-and-financial-speculations/?$ /mmittee/info/
-RewriteRule ^mmittee/on-experimental-tools-from-an-interview-with-rizosfera-1/?$ /mmittee/info/
-RewriteRule ^mmittee/financial-speculation-on-the-beach/?$ /mmittee/info/
-RewriteRule ^mmittee/necropolis-now/?$ /mmittee/info/
-RewriteRule ^mmittee/profit-for-all/?$ /mmittee/info/
+RewriteRule ^mmittee/automated-landscapes-data-centers/?$ /mmittee/info/ [R=301,L]
+RewriteRule ^mmittee/capturing-the-face-of-finance/?$ /mmittee/info/ [R=301,L]
+RewriteRule ^mmittee/playing-to-lose/?$ /mmittee/info/ [R=301,L]
+RewriteRule ^mmittee/algorithms-and-financial-speculations/?$ /mmittee/info/ [R=301,L]
+RewriteRule ^mmittee/on-experimental-tools-from-an-interview-with-rizosfera-1/?$ /mmittee/info/ [R=301,L]
+RewriteRule ^mmittee/financial-speculation-on-the-beach/?$ /mmittee/info/ [R=301,L]
+RewriteRule ^mmittee/necropolis-now/?$ /mmittee/info/ [R=301,L]
+RewriteRule ^mmittee/profit-for-all/?$ /mmittee/info/ [R=301,L]
 
 # GENERAL REDIRECTS
 RewriteRule ^mmittee/ - [L]
