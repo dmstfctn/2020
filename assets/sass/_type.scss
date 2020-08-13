@@ -94,6 +94,11 @@ html{
 
     .dc-work--item--description{
       font-size: 3.2rem;
+      &:after{
+        content: '';
+        display: inline-block;
+        width: 100%;
+      }
     }
     
 .dc-biglist--now{
