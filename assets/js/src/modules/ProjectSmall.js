@@ -325,7 +325,7 @@ ProjectSmall.prototype = {
         slide.parent.classList.add('active');
         //if( this.type === 'project' ) this.cropInfoEvents();
       }
-      this.activateSlide( this.items[ this.slideIndex ] );
+      this.activateSlide( this.items[ this.slideIndex ] );      
     }
   
     this.preloadImages( 2 );
@@ -360,7 +360,14 @@ ProjectSmall.prototype = {
       slide.controller.activate();
       this.setSizeForSlide( slide, this.size.width, this.size.height, this.size.orientation );
     } else {
-      if( window.DC_GFX ) window.DC_GFX.enableAppearance();
+      if( window.DC_GFX ){ 
+        window.DC_GFX.enableAppearance();
+        if( slide.contentType === 'text'){
+          window.DC_GFX.increaseDelay( true );
+        } else {
+          window.DC_GFX.increaseDelay( false );
+        }
+      }
     }
   },
 };
