@@ -5,7 +5,7 @@ description: materialising offshore corporate finance
 
 _OFFSHORE ROUNDTABLE_ is a focus group engaging with the structures and practices of offshore corporate finance.
 
-The focus group is facilitated through collective mapping exercises, technical demonstrations of data scraping and database analysis tools, and guided exploration of offshore service providers’ offerings. 
+The focus group is facilitated through collective mapping exercises, technical demonstrations of data scraping and database analysis tools, and guided exploration of offshore service providers' offerings. 
 
 Sharing insider knowledge gathered through [field work](/mmittee/related-matters/offshore-investigation-vehicle/) previously carried out by the DEMYSTIFICATION COMMITTEE, the focus group aims to rematerialise the detached system of offshore corporate finance.
 

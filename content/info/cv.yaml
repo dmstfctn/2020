@@ -330,7 +330,7 @@
   year: 2019
   type: focus group
   date: 
-  title: WEISENSEE HOCHSCHULE
+  title: WEISSENSEE HOCHSCHULE
   situation: berlin
   location: 
   url: 
@@ -344,7 +344,7 @@
   type: focus group
   date: 
   title: MA VISUAL COMMUNICATION
-  situation: WEISENSEE HOCHSCHULE
+  situation: WEISSENSEE HOCHSCHULE
   location: berlin
   url: 
   image: demystification-committee-weisensee.jpg
@@ -475,14 +475,30 @@
   year: 2018
   type: streaming
   date: 
-  title: Automated Landscapes
-  situation: NIEUWE INSTITUUT
+  title: Automated Lands
+  situation: NEW INSTITUTE
   location: rotterdam
   url: https://vimeo.com/302821667
   image: 
   related: 
     - Offshore Investigation Vehicle
     - Flash
+  hideon: desktop
+
+- now: false
+  priority: 0
+  year: 2018
+  type: streaming
+  date: 
+  title: Automated Landscapes
+  situation: HET NIEUWE INSTITUUT
+  location: rotterdam
+  url: https://vimeo.com/302821667
+  image: 
+  related: 
+    - Offshore Investigation Vehicle
+    - Flash
+  hideon: mobile
 
 - now: false
   priority: 0
@@ -614,6 +630,7 @@
   url: 
   image: demystification-committee-design-museum-performance.jpg
   related: Flash
+  hideon: mobile
 
 - now: false
   priority: 0
@@ -684,8 +701,8 @@
   type: residency
   date: 
   title: Vilem Flusser Residency Program
-  situation: TRANSMEDIALE
-  location: berlin
+  situation: berlin
+  location: 
   url:
   image: vilem-flusser-artistic-residency.jpg
   related: 
@@ -711,11 +728,25 @@
   type: focus group
   date: 
   title: Vilem Flusser Residency Program
+  situation: berlin
+  location: 
+  url: 
+  image: demystification-committee-offshore-roundtable-transmediale.jpg
+  related: OFFSHORE ROUNDTABLE
+  hideon: desktop
+
+- now: false
+  priority: 2
+  year: 2017
+  type: focus group
+  date: 
+  title: Vilem Flusser Residency Program
   situation: PRETIUMOFFICES
   location: berlin
   url: 
   image: demystification-committee-offshore-roundtable-transmediale.jpg
   related: OFFSHORE ROUNDTABLE
+  hideon: mobile
 
 # ## 2017 ## dissemination ##### #
 - now: false
