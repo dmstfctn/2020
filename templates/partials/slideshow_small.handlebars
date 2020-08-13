@@ -2,29 +2,39 @@
   {{#each slideshow.slides}}  
     {{#dc_slidetype 'image' this}}
       <li class="dc-media__image">
-        <picture>
-          {{#if content.portrait.src}}
-          <source             
-            {{#if content.landscape.src}}media="(orientation: portrait)"{{/if}}
-            data-low-src="{{content.portrait.lowSrc}}"
-            data-srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw== 1w,
-                    {{content.portrait.src}} {{content.portrait.dimensions.width}}w"
-            data-sizes="(min-width: 900px) 1px, 
-                    100vw"
-          >
-          {{/if}}
-          {{#if content.landscape.src}}
-          <source 
-            {{#if content.portrait.src}}media="(orientation: landscape)"{{/if}}
-            data-low-src="{{content.landscape.lowSrc}}"
-            data-srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw== 1w,
-                    {{content.landscape.src}} {{content.landscape.dimensions.width}}w"
-            data-sizes="(min-width: 900px) 1px, 
-                    100vw"
-          >
-          {{/if}}
-          <img data-src="{{content.portrait.src}}" alt="{{meta.alt}}">
-        </picture>
+        <figure>
+          <picture>
+            {{#if content.portrait.src}}
+            <source             
+              {{#if content.landscape.src}}media="(orientation: portrait)"{{/if}}
+              data-low-src="{{content.portrait.lowSrc}}"
+              data-srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw== 1w,
+                      {{content.portrait.src}} {{content.portrait.dimensions.width}}w"
+              data-sizes="(min-width: 900px) 1px, 
+                      100vw"
+            >
+            {{/if}}
+            {{#if content.landscape.src}}
+            <source 
+              {{#if content.portrait.src}}media="(orientation: landscape)"{{/if}}
+              data-low-src="{{content.landscape.lowSrc}}"
+              data-srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw== 1w,
+                      {{content.landscape.src}} {{content.landscape.dimensions.width}}w"
+              data-sizes="(min-width: 900px) 1px, 
+                      100vw"
+            >
+            {{/if}}
+            <img 
+              data-src="{{content.portrait.src}}" 
+              alt="{{meta.alt}}"
+            >
+          </picture>
+          {{#if meta.caption}}
+          <figcaption>
+            {{meta.caption}}
+          </figcaption>
+        {{/if}}
+        </figure>
       </li>
     {{/dc_slidetype}}
     {{#dc_slidetype 'text' this}}

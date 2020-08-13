@@ -189,6 +189,26 @@
         .dc-media--list iframe{
           object-position: left;
         }
+      .dc-media__image figure{
+        width: 100%;
+        height: 100%;
+        figcaption{
+          color: #FF0000;
+          transform: none;
+          left: 3rem;
+          bottom: 2.45rem;
+          right: 3rem;
+          top: auto;
+          white-space: normal;
+          letter-spacing: -0.02em;
+          font-size: 1rem;
+        }
+      }
+
+      .dc-item__focusgroup .dc-media__image figure figcaption{
+        color: #FFFFFF;
+      }
+
     .dc-media{
       width: 100%;
       height: 100%;
@@ -207,6 +227,7 @@
     .dc-media__main{
       display: none;
     }
+    
     .dc-item--info{ 
       text-align: justify;
       p, ul, ol, blockquote, h1, h2, h3, h4{
