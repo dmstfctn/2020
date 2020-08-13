@@ -15,7 +15,7 @@
         {{/if}}
         class="dc-work--item {{#if this.is_external }} dc-external-link{{/if}}"
       >
-        <span class="dc-work--item--description">{{this.data.data.description}}</span>
+        <span class="dc-work--item--description"><span class="description-inner">{{this.data.data.description}}</span></span>
         {{~this.name~}}
       </a>
     {{/each}}
@@ -31,7 +31,7 @@
       <div class="dc-cv--name">{{now.title}}</div> 
       <span class="dots">..........................................................................................................................................................................................................................................</span>
       <div class="dc-cv--location">{{now.situation}}</div>
-      <span class="dc-work--item--description">{{now.description}}</span>
+      <span class="dc-work--item--description"><span class="description-inner">{{now.description}}</span></span>
     </div>
   </a>
   {{/if}}
