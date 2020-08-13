@@ -456,7 +456,7 @@ const createSmallSite = ( content ) => {
       let item = year.contents[j];
       if( !item.data.link ){
         site.pages.push({
-          year: yearNumeric - 0.5, //so that these go after focus groups
+          year: yearNumeric + 0.5, //so that these go before focus groups
           url: Config.url_root + '/' + createURLPath( item.name, 'related matters' ),
           title: item.name
         });
