@@ -13,4 +13,4 @@ _ECHO FX_ replays the night of the 2016 UK EU membership referendum vote through
 
 As the Pound subsequently collapsed amongst market disbelief, a number of London City traders with access to insider information pointing to a Leave win made millions from the Pound's collapse.
 
-ECHO FX was screened on the third birthday of the Referndum night, in June 2019, and performed live 24h before the UK left the EU, in January 2020.
+<span class="dc-hide-on-small-landscape">ECHO FX was screened on the third birthday of the Referndum night, in June 2019, and performed live 24h before the UK left the EU, in January 2020.</span>

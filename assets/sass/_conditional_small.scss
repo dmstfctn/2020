@@ -544,6 +544,12 @@
   }
 }
 
+@media (orientation: landscape) and (max-height: 320px){
+  .dc-hide-on-small-landscape{
+    display: none;
+  }
+}
+
 @media (orientation: landscape) and (max-width: 900px){  
   html{
     font-size: 3.36vh;

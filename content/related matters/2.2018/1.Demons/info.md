@@ -9,4 +9,4 @@ On that day, responding to a set of strange and seemingly unconnected events unf
 
 As algorithms followed a herd trading logic dictated by the technical analysis of each others' trading patterns, a domino effect was triggered. Large sums of money were lost as the communications systems of the NYSE were overwhelemed by the amount of trading orders submitted by the algorithms, "demons of our own design".
 
-DEMONS was performed on the 31st anniversary of Black Monday, using custom software to translate NYSE trading data from October 19, 1987 into sound.
+<span class="dc-hide-on-small-landscape">DEMONS was performed on the 31st anniversary of Black Monday, using custom software to translate NYSE trading data from October 19, 1987 into sound.</span>
