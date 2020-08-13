@@ -64,8 +64,9 @@ Embed.prototype = {
     if( !this.controller ){
       this.controller = this.createControllerForService();
     }
-    if( this.service === 'vimeo' ){
+    if( this.service === 'vimeo' ){      
       this.controller.play();
+      this.controller.setVolume( 1 );
     }
   },
   deactivate: function(){
