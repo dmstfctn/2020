@@ -97,40 +97,52 @@ GFX.prototype = {
     let visibilityAPI = F.visibilityChangeCompat();
 
     window.addEventListener('wheel', () => {
+      console.log('GFX event: wheel')
       this._onMove();
     }, {passive: true} );
     window.addEventListener('keydown', ( e ) => {    
+      console.log('GFX event: keydown')
       if( 
         e.key === 'ArrowDown' || e.key === 'ArrowUp' 
         || e.key === 'ArrowLeft' || e.key === 'ArrowRight' 
       ){
+        console.log('(keydown = arrow)')
         this._onMove();
       }      
     });
     window.addEventListener('pointermove', () => {
+      console.log('GFX event: pointermove')
       if( this.ignoreFirstPointerMove ){
+        console.log('(pointermove ignored)')
         this.ignoreFirstPointerMove = false;
       } else {
+        console.log('(pointermove accepted)')
         this._onMove();
       }
     }, {passive: true});
     window.addEventListener('pointerdown', () => {
+      console.log('GFX event: pointerdown')
       this._onMove();
     }, {passive: true});
     // window.addEventListener('click', () => {
     //   this._onMove();
     // });
     this.$gfx.addEventListener('touchmove', function (event) {
+      console.log('GFX event: touchmove')
       if (event.targetTouches.length === 1) {
+        console.log('(touchmove length === 1)')
         event.preventDefault();
       }
     });
     if( visibilityAPI.property ){
-      document.addEventListener( visibilityAPI.eventName, () => {              
+      document.addEventListener( visibilityAPI.eventName, () => {   
+        console.log('GFX event: visibility toggle')           
         if( document[ visibilityAPI.property ] ){ //is hidden    
+          console.log('(visibility: hidden)')
           clearTimeout( this.timeout );
           this.show( true ) //show, immediately
         } else { 
+          console.log('(visibility: visible)')
           /*is visible*/ 
           this.ignoreFirstPointerMove = true;
         }
