@@ -41,9 +41,10 @@
         image-rendering: crisp-edges;    
         top: 50%;
         position: relative;
-        &.loaded{
-          image-rendering: auto;
-        }
+      }
+      img.loaded,
+      .loaded img{
+        image-rendering: auto;
       }
       &.active{
         opacity: 1;
