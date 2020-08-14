@@ -36,7 +36,7 @@ const Large = function(){
 };
 
 Large.prototype.setupLogo = function(){
-  const version = Math.floor( Math.random() * 4 );
+  let version = Math.floor( Math.random() * 4 );
   if( version === 2 ){
     version = 1;
   }
