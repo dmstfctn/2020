@@ -79,7 +79,7 @@
   year: 2020
   type: interview
   date: 29.1
-  title: "DOC #5: INTERFACE CHAOS"
+  title: "INTERFACE CHAOS"
   situation: NERO
   location: 
   url: https://www.neroeditions.com/docs/interface-chaos/
@@ -416,6 +416,18 @@
   url: 
   image: demystification-committee-transmediale-show.jpg
   related: Offshore Investigation Vehicle
+
+- now: false
+  priority: 1
+  year: 2018
+  type: group show
+  date: 
+  title: DIGITAL DESIGN WEEKEND
+  situation: V&A
+  location: london
+  url: 
+  image: demystification-committee-v&a.jpg
+  related: Never stop stopping
 
 # ## 2018 ## screening ######## #
 # ## 2018 ## live ############## #
