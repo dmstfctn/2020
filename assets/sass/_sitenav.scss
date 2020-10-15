@@ -178,9 +178,6 @@
     letter-spacing: -0.061em;
     word-spacing: -0.023em;
     white-space: normal;    
-    &:before{
-      content: '...';        
-    }
     .description-inner{
       white-space: nowrap;
     }
