@@ -7,4 +7,4 @@ THE NETWORK ENSEMBLE is a noise project making use of wireless network data as c
 
 Executed by two human operators, the performances carried out under the moniker explore the activity of local wireless networks. <span class="dc-hide-on-small">Among other locations, THE NETWORK ENSEMBLE notably performed at the Design Museum in London, Onassis Stegi in Athens and SPEKTRUM in Berlin.</span>
 
-THE NETWORK ENSEMBLE debuted on the Italian label NUKFM in 2016. In 2019 the German label MILLE PLATEAUX relesead 'Flash Demons'.
+THE NETWORK ENSEMBLE debuted on the Italian label NUKFM in 2016. In 2019 the German label MILLE PLATEAUX released 'Flash Demons'.
