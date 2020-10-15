@@ -206,9 +206,7 @@
       color: #FFFFFF;
     }
     .dc-work--year .dc-work--items > *:only-child{
-      flex-grow: 2;
-      /* related to safari no justify last line fix*/
-      margin-bottom: -1em;
+      flex-grow: 2;      
     }    
     /* fix safari no justify last line */
     .dc-work--year .dc-work--items > *:only-child:after {
@@ -219,7 +217,7 @@
     /* and fix the issue this causes whereby the last item has a double height hover area */
     .dc-work--item{
       height: 1.142em;
-      overflow: hidden;
+      overflow: hidden;      
     }
 
 /* related matters */
