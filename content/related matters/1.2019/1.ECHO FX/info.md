@@ -1,6 +1,6 @@
 ---
 title: Project Title
-description: replicating disinformation on brexit night
+description: Replicating disinformation on brexit night
 ---
 
 <span class="dc-hide-on-small-landscape">230616 2200: as polls close in the UK referendum on EU membership, Nigel Farage, a former commodities broker and the global face of Leave EU, immediately concedes defeat.

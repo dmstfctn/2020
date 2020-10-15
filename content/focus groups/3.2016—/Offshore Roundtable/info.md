@@ -1,6 +1,6 @@
 ---
 title: Offshore Roundtable
-description: materialising offshore corporate finance
+description: Materialising offshore corporate finance
 ---
 
 _OFFSHORE ROUNDTABLE_ is a focus group engaging with the structures and practices of offshore corporate finance.

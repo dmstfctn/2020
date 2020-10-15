@@ -1,6 +1,6 @@
 ---
 title: Interface Chaos
-description: a short film about the survival of money
+description: A short film about the survival of money
 #link: https://interfacechaos.com
 ---
 

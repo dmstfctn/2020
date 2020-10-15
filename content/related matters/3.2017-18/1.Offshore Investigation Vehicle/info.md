@@ -1,6 +1,6 @@
 ---
 title: Offshore Investigation Vehicle
-description: a corporate structure to explore tax havens
+description: A corporate structure to explore tax havens
 ---
 
 The _OFFSHORE INVESTIGATION VEHICLE_ was an international corporate structure set up to model offshore corporate financial practices and grasp their inner workings by engaging directly with tax havens.

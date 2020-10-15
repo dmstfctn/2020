@@ -1,6 +1,6 @@
 ---
 title: Never Stop Stopping
-description: discussing trader/market relationships (s/D)
+description: Discussing trader/market relationships (s/D)
 ---
 
 _NEVER STOP STOPPING_ is a focus group on the figure of the trader and its relationship to financial stock markets. The focus group aims to demystify the myth of the market-driving trader, analysing how it is constructed. 

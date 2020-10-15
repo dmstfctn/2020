@@ -1,6 +1,6 @@
 ---
 title: The Network Ensemble
-description: a noise sound project using network data
+description: A noise sound project using network data
 ---
 
 THE NETWORK ENSEMBLE is a noise project making use of wireless network data as creative medium. The project consists of both machines able to translate data captured from wireless networks into sound and desktop software able to further modulate the sound for live performance.

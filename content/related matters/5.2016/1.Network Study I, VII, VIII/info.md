@@ -1,6 +1,6 @@
 ---
 title: Network Study I, VII, VIII
-description: surveying urban wireless network infrastructure
+description: Surveying urban wireless network infrastructure
 ---
 
 _NETWORK STUDY I, VII, VIII_ is a set of three audiovisual pieces exploring urban network infrastructure. Each piece reproduces the activity of wireless networks by translating captured data into sound, textual information, pictograms and warping satellite imagery.

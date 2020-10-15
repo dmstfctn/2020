@@ -1,6 +1,6 @@
 ---
 title: Plane of Theseus
-description: exploring virtualisation and financialisation
+description: Exploring virtualisation and financialisation
 ---
 
 _PLANE OF THESEUS_ is a focus group taking Boeing's 737 MAX crisis, culminating in the 2019 grounding of the plane, as a starting point to discuss system thinking, software virtualisation and financialisation.
