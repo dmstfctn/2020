@@ -424,7 +424,7 @@
         }
       .dc-mobile-nav::after{
         opacity: 0;
-        transition: opacity 1s ease-in-out;
+        transition: opacity .5s ease-in;
         //transform: translateX(50%);
         background: linear-gradient(90deg, rgba(255,0,0,0) 50%, rgba(255,0,0,0.7) 100%);
       }
@@ -432,12 +432,13 @@
         background: linear-gradient(90deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.7) 100%);
       }
     
-      .dc-mobile-nav.no-further::before{
+      .dc-mobile-nav.interact-back::before{
         opacity: 1;
         transition: opacity 0s linear;
       }
-      .dc-mobile-nav.go-further::after{            
+      .dc-mobile-nav.interact-forward::after{            
         opacity: 1;
+        transition: opacity 0s linear;
       }
       html[data-dc-pagetype="focusgroup"] .dc-mobile-nav.opaque{
         background: #FF0000;

@@ -105,10 +105,14 @@ Small.prototype.deactivate = function(){
 
 /* interaction */
 Small.prototype.setupInteraction = function(){
+  this.interactTimeouts = {};
+
   this.$interactionEle.addEventListener( 'pointerdown', ( e ) => {
     if(e.pageX >= window.innerWidth / 2){
+      this.showInteraction( 'forward' );
       this.project.next();
     } else {
+      this.showInteraction( 'back' );
       this.project.prev();
     }
     if( this.project.isOnGfxPlaceholder ){
@@ -124,6 +128,14 @@ Small.prototype.setupInteraction = function(){
     e.preventDefault();
 });
 };
+
+Small.prototype.showInteraction = function( type ){
+  clearTimeout( this.interactTimeouts[ type ] );
+  this.$interactionEle.classList.add('interact-' + type );
+  this.interactTimeouts[ type ] = setTimeout( () => {
+    this.$interactionEle.classList.remove('interact-' + type );
+  }, 100)
+}
 
 Small.prototype.projectEnd = function( backwards ){
   if( backwards && this.pageIndex === this.startPageIndex ){
