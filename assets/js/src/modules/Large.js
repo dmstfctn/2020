@@ -138,7 +138,7 @@ Large.prototype.initScrollQuantiser = function(){
     document.querySelector('#info .dc-cv'), 
     document.querySelectorAll('#info .dc-cv--entry'),
     0.4, //speed,
-    1 // no. of lines to cut off bottom 
+    0 // no. of lines to cut off bottom 
   );
 
   const $cvScrollerContents = document.querySelectorAll('#info .quantised-scroller--wrapper dl > *');

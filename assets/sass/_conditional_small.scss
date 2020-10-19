@@ -156,6 +156,9 @@
       box-sizing: border-box;
       &.quantised-scroller{
         position: absolute;
+        .further-hint{
+          display: none;
+        }
       }
     }
     .dc-item__focusgroup .dc-cv{

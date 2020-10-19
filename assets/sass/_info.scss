@@ -2,7 +2,7 @@
   padding: 0 $dc_site_padding_right .3rem $dc_site_padding_left;
   overflow: hidden;
   //padding-bottom: 2.6em;    
-  padding-top: 2.6rem;
+  padding-top: 3.3rem;
   z-index: 1;
   position: absolute;
   top: 0;
@@ -22,9 +22,10 @@
 
 .dc-bio{  
   background:#000;
-  padding-bottom: 1.429em; 
+  padding-bottom: 1.3rem; 
   position: relative;
   z-index: 1;
+  line-height: 1.25em;
 }
   .dc-bio a[href^="mailto"],
   .dc-bio a[href="https://twitter.com/dmstfctn"],
@@ -48,21 +49,24 @@
     touch-action: none;
     .quantised-scroller--wrapper{
       overflow: hidden;
-      position: relative;
-      &:after{
-        content: '↓';
-        position: absolute;
-        bottom: 0;
-        background:#000000;
-        left: 0;
-        right: 0;
-        display: block;
-        text-align: center;
-      }     
+      position: relative;       
     }
-    &.has-scrolled .quantised-scroller--wrapper{
+    .further-hint{
+      &:after{             
+        content: '↓';
+      }
+      position: relative;
+      top: -1.55rem;
+      background:#000000;
+      left: 0;
+      right: 0;
+      display: block;
+      text-align: center;
+    }   
+    &.has-scrolled{
       &:after,
-      &:before{
+      &:before,
+      .scroll-further{
         display: none;
       }
     }

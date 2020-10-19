@@ -26,12 +26,13 @@ const ScrollQuantiser = function( _$ele, _$lines, _speed, _cutBottomLines, _prev
   this.hasScrolled = false;
   this.init();
   this.measure();
+  this.render();
 }
 
 ScrollQuantiser.prototype = {
   init: function(){
     this.$wrapper = this.$ele.querySelector('.quantised-scroller--wrapper');
-    if( !this.$wrapper ){      
+    if( !this.$wrapper ){     
       this.$wrapper = document.createElement('div');
       this.$wrapper.classList.add('quantised-scroller--wrapper');
       this.$ele.appendChild( this.$wrapper );
@@ -41,6 +42,10 @@ ScrollQuantiser.prototype = {
       return;
     }
     this.$ele.classList.add( 'quantised-scroller' );
+    this.$furtherhint = document.createElement('div');
+    this.$furtherhint.classList.add('further-hint')
+    this.$ele.appendChild( this.$furtherhint );
+
     this.$ele.addEventListener( 'wheel', (e) => {
       if( this.preventInput ){ return; }
       this._onScroll( e.deltaY );
