@@ -50,14 +50,14 @@
       overflow: hidden;
       position: relative;
       &:after{
-        content: '...continued';
+        content: '↓';
         position: absolute;
         bottom: 0;
         background:#000000;
         left: 0;
         right: 0;
         display: block;
-        text-align: right;
+        text-align: center;
       }     
     }
     &.has-scrolled .quantised-scroller--wrapper{
