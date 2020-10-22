@@ -157,6 +157,9 @@ html{
       width: 30%;
       width: calc( 33.33% - 1.2em );
     }
+    p{
+      margin-bottom: 0;
+    }
     p:after{
       content: "";
       display: inline-block;
