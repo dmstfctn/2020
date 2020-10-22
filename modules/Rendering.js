@@ -88,7 +88,7 @@ const renderPage = ( pageData, index, partnerPages, rendered ) => {
     pagetype: pageData.pagetype,
     navigation: rendered.navigation,
     content: rendered_project,
-    info: rendered.info,
+    track_record: rendered.track_record,
     small_site: rendered.small_site
   };
   
