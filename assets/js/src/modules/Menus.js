@@ -53,6 +53,9 @@ console.log('showMenu(), pagetype: ', pagetype );
   },
   setupTitleLink: function( $title ){
     $title.addEventListener( 'click', (e) => {
+      if( window.innerWidth < CFG.BREAKPOINT ){
+        return;
+      }
       e.preventDefault();
       let target = $title.getAttribute( 'data-dc-localtarget' );
       let $menu = document.querySelector( target );          

@@ -52,8 +52,13 @@
       position: relative;       
     }
     .further-hint{
-      &:after{             
-        content: '↓';
+      &:after{       
+        content: '';      
+        width: 1rem;
+        height: 1rem;
+        display: inline-block;
+        background-image: url('../svg/arrow-down.svg');
+        background-size: contain;
       }
       position: relative;
       top: -1.55rem;
@@ -66,7 +71,7 @@
     &.has-scrolled{
       &:after,
       &:before,
-      .scroll-further{
+      .further-hint{
         display: none;
       }
     }

@@ -1,5 +1,6 @@
 ---
 title: Offshore Investigation Vehicle
+titleJustified: Offshore Investigation Vehicle
 description: A corporate structure to explore tax havens
 ---
 

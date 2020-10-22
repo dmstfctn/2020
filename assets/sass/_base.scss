@@ -38,29 +38,41 @@ html, body{
       padding-right: 0.5em;      
       line-height: inherit;
       &::before{
-        content: '↗\FE0E';
+        content: '';
+        background-image: url('../svg/arrow.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
         position: absolute;
-        font-size: 0.5em;
-        right: 0.05em;
-        bottom: 0.75em;
-        height: 1em;
+        font-size: 0.5em;        
+        right: 0;
+        bottom: 0.85em;
+        width: 0.9em;
+        height: 0.9em;
         line-height: 1;
-        color: #FFFFFF;
+        display: block;
+        filter: invert(100%);
       }
       .dc-media--list .info & ,
       .dc-media--list .dc-media__text &{
+        padding-right: 0.5em;
         &::before{
           display: none;
         }
         &::after{
-          content: '↗\FE0E';
+          content: '';
+          background-image: url('../svg/arrow.svg');
+          background-size: contain;
+          background-repeat: no-repeat;
+          display: inline-block;
           position: relative;
           font-size: 0.5em;
-          right: 0.05em;
-          bottom: 0.75em;
-          height: 1em;
+          right: 0;
+          bottom: 0.45em;
+          margin-left: 0.05em;
+          width: 1em;
+          height: 0.98em;
           line-height: 1;
-          color: #FFFFFF;
+          filter: invert(100%);
         }
       }
     }
