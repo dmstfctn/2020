@@ -155,8 +155,11 @@ ProjectLarge.prototype = {
   },
   loadImages: function(){
     clearTimeout(this.loadRestOfImagesTimeout);
+    if( !this.$media[0] ) return;
+    
     F.loadSlideImage( this.$media[0] );
     this.loadRestOfImagesTimeout = setTimeout( () => {
+      console.log( [ ... this.$media].slice(1) );
       F.loadSlideImages( [ ... this.$media].slice(1) ); 
     }, 2500 );    
   },
