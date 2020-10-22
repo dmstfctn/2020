@@ -2,7 +2,7 @@ const CFG = require('./Config.js' );
 const F = require( './Functions.js' );
 const Embed = require('./Embed.js');
 
-const DC_INFO_CLASS = 'dc-info';
+const DC_INFO_CLASS = 'dc-track-record';
 
 const ProjectSmall = function( backwards, hasGfx ){
   this.$wrapper = document.querySelector( '.dc-item' );  

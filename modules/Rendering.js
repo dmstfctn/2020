@@ -111,8 +111,8 @@ const renderPage = ( pageData, index, partnerPages, rendered ) => {
 };
 
 const moveCvContent = ( cv ) => {  
-  const cvContentDestination = path.join( Config.paths.public, 'info', 'content' );
-  const newSrcPath = path.join( 'info', 'content' );
+  const cvContentDestination = path.join( Config.paths.public, 'track-record', 'content' );
+  const newSrcPath = path.join( 'track-record', 'content' );
   /* ensure the destination exists */
   fs.mkdirSync( cvContentDestination, {recursive: true} );
   cv.forEach( ( year ) => {
@@ -131,9 +131,9 @@ const moveCvContent = ( cv ) => {
   });
 }
 
-const renderInfo = ( data ) => {
+const renderTrackRecord = ( data ) => {
   moveCvContent( data.contents.cv );
-  return Templates.info( data );
+  return Templates.track_record( data );
 }
 
 const renderSmall = ( small ) => {
@@ -144,6 +144,6 @@ const renderSmall = ( small ) => {
 
 module.exports = {
   renderPage,
-  renderInfo,
+  renderTrackRecord,
   renderSmall
 }

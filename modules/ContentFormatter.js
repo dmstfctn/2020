@@ -347,8 +347,8 @@ const createFocusGroups = ( focus_groups ) => {
 const createDissemination = ( dissemination ) => {
   const section_name = 'dissemination';
   const section_slug =  H.createSlug( 'Dissemination' );
-  const destinationPath = path.join( Config.paths.public, 'info', 'content' );
-  const src = path.join( 'info', 'content' );
+  const destinationPath = path.join( Config.paths.public, 'track-record', 'content' );
+  const src = path.join( 'track-record', 'content' );
   for( let i in dissemination ){    
     dissemination[i].image = prepareImage( dissemination[i].image, destinationPath, src );    
   }
@@ -364,8 +364,8 @@ const createDissemination = ( dissemination ) => {
 
 const structureCV = ( cv ) => {
   /* paths / src for moving images */
-  const destinationPath = path.join( Config.paths.public, 'info', 'content' );
-  const src =  path.join( 'info', 'content' );
+  const destinationPath = path.join( Config.paths.public, 'track-record', 'content' );
+  const src =  path.join( 'track-record', 'content' );
 
   let structure = [];
   const years = cv.entries
@@ -407,15 +407,15 @@ const structureCV = ( cv ) => {
   return structure;
 }
 
-const createInfo = ( bio, cv ) => {
-  const section_name = 'info';
-  const section_slug = H.createSlug( 'Info' );
+const createTrackRecord = ( bio, cv ) => {
+  const section_name = 'track record';
+  const section_slug = H.createSlug( 'Track Record' );
 
   return {
     name: section_name,
     slug: section_slug,
-    template: 'list_info',
-    url: createURLPath( 'Info', '' ),
+    template: 'list_track-record',
+    url: createURLPath( 'Track Record', '' ),
     contents: {
       bio: bio,
       cv: structureCV( cv )
@@ -491,7 +491,7 @@ module.exports = {
   createRelatedMatters, 
   createFocusGroups, 
   createDissemination,
-  createInfo,
+  createTrackRecord,
   createPageList,
   createSmallSite
 };
