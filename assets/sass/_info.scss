@@ -71,7 +71,7 @@
     &.has-scrolled{
       &:after,
       &:before,
-      .scroll-further{
+      .further-hint{
         display: none;
       }
     }
