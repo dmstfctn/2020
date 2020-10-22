@@ -74,9 +74,11 @@ const Functions = {
       }
     }
   },
-  loadSlideImages: function( $slides ){
+  loadSlideImages: function( $slides, _delay ){
     $slides.forEach(( $m, mediaIndex ) => {
-      Functions.loadSlideImage( $m );
+      setTimeout(function(){
+        Functions.loadSlideImage( $m );
+      }, mediaIndex * _delay );      
     });
   },
   slashStart: ( str ) => {
