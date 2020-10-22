@@ -40,14 +40,20 @@ ProjectLarge.prototype = {
     this.$media.forEach( ( $m, index ) => {
       if( $m.classList.contains('info') ){ return; }      
       const e = this.eventHandlers.get( $m );
-      $m.removeEventListener( e.event, e.handler );
+      if( e ){
+        $m.removeEventListener( e.event, e.handler );
+      }
     });
     this.$nav.forEach(( $n, index ) => {
       const e = this.eventHandlers.get( $n );
-      $n.removeEventListener( e.event, e.handler );
+      if( e ){
+        $n.removeEventListener( e.event, e.handler );
+      }
     });
     const windowEvent = this.eventHandlers.get( window );
-    window.removeEventListener( windowEvent.event, windowEvent.handler );
+    if( windowEvent ){
+      window.removeEventListener( windowEvent.event, windowEvent.handler );
+    }
   },
   _onChangeSlide: function( $slide, $nav ){
     if( $slide.classList.contains('info') || $slide.classList.contains('dc-media__text')){
