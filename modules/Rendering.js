@@ -25,6 +25,27 @@ const createLowResAndSave = (imagePath, savePath) => {
     });
 };
 
+const createHalfResAndSave = (imagePath, savePath) => { 
+  if( !Config.resizeImages ){
+    fs.copyFileSync( imagePath, savePath );
+    return;
+  } 
+  sharp( imagePath )
+    .resize( 1500, 1500, {
+      fit: sharp.fit.inside,
+      withoutEnlargement: true
+    })
+    .jpeg({
+      quality: 50,
+      progressive: true,
+      force: false //if it's a png, keep it as a png
+    })
+    .toFile( savePath )
+    .catch( err => {
+      Config.log( 'Error with Image in CreateHalfResAndSave() in Rendering.js ', err );
+    });
+};
+
 const moveSlideshowContent = ( slideshows ) => {
   for( let name in slideshows){
     let slideshow = slideshows[ name ];
@@ -36,7 +57,8 @@ const moveSlideshowContent = ( slideshows ) => {
           fs.mkdirSync( path.dirname(content[i].newPath), {recursive: true} );
           /* copy the file */
           fs.copyFileSync( content[i].originalPath, content[i].newPath );
-          if( slide.type === 'image' ){         
+          if( slide.type === 'image' ){      
+            createHalfResAndSave( content[i].originalPath, content[i].halfPath )   
             createLowResAndSave( content[i].originalPath, content[i].lowPath );          
           }        
         }        

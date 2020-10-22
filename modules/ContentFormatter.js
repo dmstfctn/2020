@@ -83,12 +83,15 @@ const prepareImage = ( original, destinationPath, src, _prefix ) => {
   const filename = path.basename( original );
   const outFilename = ( prefix ) ? prefix + '.' + filename : filename;
   const lowFilename = 'tiny.' + outFilename;  
+  const halfFilename = 'half.' + outFilename;
   const prepared = {
     originalPath: original,
     newPath: path.join( destinationPath, outFilename ),
     src: path.join( src, outFilename ),
     lowPath: path.join( destinationPath, lowFilename ),
     lowSrc: path.join( src, lowFilename ),
+    halfPath: path.join( destinationPath, halfFilename ),
+    halfSrc: path.join( src, halfFilename ),
     isImage: true,
     processed: false,
     dimensions: ImgSize( original )
