@@ -221,6 +221,10 @@ const readFolder = ( folderPath, cv ) => {
       const relatedCv = getProjectCvItems( name, cv );
       let projectData = {
         name: name,
+        title: {
+          normal: name,
+          justified: name
+        },
         slideshows: {},
         data: {},
         info: '',
@@ -237,8 +241,11 @@ const readFolder = ( folderPath, cv ) => {
             content: markdown.render( renderMarkdownPrecolumns(fm.content) ),
             hasPreColumns: markdownHasPreColumns( fm.content )
           };
-          // projectData.info = replacePwithBR(projectData.info);
-       
+          projectData.title = {
+            normal: fm.data.title || name,
+            justified: fm.data.titleJustified || fm.data.title || name
+          }  
+                
         } else {         
           const p = path.join( root, year, project, item );
           // find the meta file

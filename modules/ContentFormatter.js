@@ -272,6 +272,7 @@ const createRelatedMatters = ( related_matters, cv ) => {
       sub_item.cv = structureCV( sub_item.cv );
       line.contents.push({
         name: sub_item.name,
+        title: sub_item.title,
         date: item.name,
         pagetype: 'relatedmatter',        
         slug: H.createSlug( sub_item.name ),
@@ -321,6 +322,7 @@ const createFocusGroups = ( focus_groups ) => {
         contents: [
           {
             name: sub_item.name,
+            title: sub_item.title,
             date: item.name,
             pagetype: 'focusgroup',
             slug: H.createSlug( sub_item.name ),
