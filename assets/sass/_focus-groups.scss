@@ -73,7 +73,7 @@ html[data-dc-pagetype="focusgroup"]{
   .dc-external-link::before,
   a[href^="mailto:"]::before,
   a[href^="http"]::before{
-    color: #000000;
+    filter: none;
   }
   .dc-item--header{
     color: #FFFFFF;
