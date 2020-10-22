@@ -406,18 +406,6 @@
   related: Network Study (I, VII, VIII)
 
 - now: false
-  priority: 0
-  year: 2018
-  type: group show
-  date: 
-  title: transmediale face value
-  situation: HKW
-  location: berlin
-  url: 
-  image: demystification-committee-transmediale-show.jpg
-  related: Offshore Investigation Vehicle
-
-- now: false
   priority: 1
   year: 2018
   type: group show
@@ -511,6 +499,18 @@
     - Offshore Investigation Vehicle
     - Flash
   hideon: mobile
+
+- now: false
+  priority: 0
+  year: 2018
+  type: streaming
+  date: 
+  title: transmediale face value
+  situation: HKW
+  location: berlin
+  url: https://youtu.be/IZCHoLp4U70?t=2260
+  image: 
+  related: Offshore Investigation Vehicle
 
 - now: false
   priority: 0
