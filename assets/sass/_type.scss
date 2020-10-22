@@ -149,9 +149,30 @@ html{
     max-height: 100%;
     column-fill: balance-all;  
   }
+  .text.text__hascol{
+    columns: initial;
+    display: flex;
+    justify-content: space-between;
+    .dc-col{
+      width: 30%;
+      width: calc( 33.33% - 1.2em );
+    }
+    p:after{
+      content: "";
+      display: inline-block;
+      width: 100%;
+    }
+    .dc-col:last-child p:last-child{
+      text-align-last: auto;
+      &:after{
+        display: inline;
+      }
+    }
+  }
   p{
     break-inside: unset;
     text-align: justify;
+    text-align-last: justify;
     margin-bottom: 1.389em;
   }
   em{

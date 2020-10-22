@@ -91,8 +91,8 @@
     {{/dc_slidetype}}       
   {{/each}}
   <li class="info">
-    <div class="text">
-      {{{page.info}}}
+    <div class="text{{#if page.info.hasPreColumns }} text__hascol{{/if}}">
+      {{{page.info.content}}}
     </div>
   </li>
 </ol>
