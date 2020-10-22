@@ -76,9 +76,13 @@ const Functions = {
   },
   loadSlideImages: function( $slides, _delay ){
     $slides.forEach(( $m, mediaIndex ) => {
-      setTimeout(function(){
+      if( _delay ){
+        setTimeout(function(){
+          Functions.loadSlideImage( $m );
+        }, mediaIndex * _delay );      
+      } else {
         Functions.loadSlideImage( $m );
-      }, mediaIndex * _delay );      
+      }
     });
   },
   slashStart: ( str ) => {
