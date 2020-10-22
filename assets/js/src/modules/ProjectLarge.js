@@ -154,7 +154,11 @@ ProjectLarge.prototype = {
     }
   },
   loadImages: function(){
-    F.loadSlideImages( this.$media ); 
+    clearTimeout(this.loadRestOfImagesTimeout);
+    F.loadSlideImage( this.$media[0] );
+    this.loadRestOfImagesTimeout = setTimeout( () => {
+      F.loadSlideImages( this.$media.slice(1) ); 
+    }, 2500 );    
   },
   deactivateSlide: function( index ){
     const $slide = this.$media[index];
