@@ -159,7 +159,7 @@ ProjectLarge.prototype = {
     
     F.loadSlideImage( this.$media[0] );
     this.loadRestOfImagesTimeout = setTimeout( () => {
-      F.loadSlideImages( [ ... this.$media].slice(1), 100 ); 
+      F.loadSlideImages( [ ... this.$media].slice(1), 50 ); 
     }, 200 );    
   },
   deactivateSlide: function( index ){
