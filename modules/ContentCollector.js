@@ -233,7 +233,10 @@ const readFolder = ( folderPath, cv ) => {
           // contains some config & the description
           let fm = frontmatter( fs.readFileSync( itemPath ));
           projectData.data = fm.data;
-          projectData.info = markdown.render( fm.content );
+          projectData.info = {
+            content: markdown.render( renderMarkdownPrecolumns(fm.content) ),
+            hasPreColumns: markdownHasPreColumns( fm.content )
+          };
           // projectData.info = replacePwithBR(projectData.info);
        
         } else {         
@@ -271,6 +274,21 @@ const loadCV = ( file ) => {
     entries: YAML.parse( cvYaml.toString() )
   };
 }
+
+const renderMarkdownPrecolumns = ( md ) => {
+  if( markdownHasPreColumns(md) ){
+    let col = '<div class="dc-col">\n\n' 
+    col += md.replace(/<COLBREAK>/g, '\n\n</div><div class="dc-col">\n\n' ) 
+    col += '\n\n</div>';
+    return col;
+  } else {
+    return md;
+  }
+}
+
+const markdownHasPreColumns = ( md ) => {
+  return md.indexOf('<COLBREAK>') !== -1;
+};
 
 const renderMarkdownAndProcess = ( md ) => {  
   let rendered = markdown.render( md );
