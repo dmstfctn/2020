@@ -239,6 +239,7 @@ const readFolder = ( folderPath, cv ) => {
           projectData.data = fm.data;
           projectData.info = {
             content: markdown.render( renderMarkdownPrecolumns(fm.content) ),
+            contentNoColumns: markdown.render( removePrecolumns( fm.content) ),
             hasPreColumns: markdownHasPreColumns( fm.content )
           };
           projectData.title = {
@@ -280,6 +281,14 @@ const loadCV = ( file ) => {
   return {
     entries: YAML.parse( cvYaml.toString() )
   };
+}
+
+const removePrecolumns = ( md ) => {
+  if( markdownHasPreColumns(md) ){
+    return md.replace( /\s*?<COLBREAK>\s*/g, ' ' );
+  } else {
+    return md;
+  }
 }
 
 const renderMarkdownPrecolumns = ( md ) => {
