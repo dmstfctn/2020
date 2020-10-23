@@ -86,6 +86,20 @@
   image:
   related: Interface Chaos
 
+- now: false
+  priority: 0
+  year: 2020
+  type: interview
+  date: 19.10
+  title: "CHASING ILLICIT MONEY"
+  situation: NEW YORK TIMES
+  location: 
+  url: https://www.nytimes.com/2020/10/19/business/puerto-rico-euro-pacific-investigation.html
+  image:
+  related:
+    - Offshore Investigation Vehicle
+    - Offshore SS18
+
 # ## 2020 ## screening ######## #
 - now: false
   priority: 0
@@ -150,21 +164,17 @@
   related: Plane of Theseus
   hideon: mobile
 
-#### end 2 linked ###############################
-
-# ## 2020 ## focus group ############## #
-
-# ## - now: false
-  # ## priority: 1
-  # ## year: 2020
-  # ## type: release
-  # ## date: 
-  # ## title: RHYTHM, CHAOS AND NONPULSED MAN
-  # ## situation: LA DELEUZIANA
-  # ## location:
-  # ## url: https://rizosfera.net/en/prodotto/nukfmusb010/
-  # ## image: 
-  # ## related: 
+- now: false
+  priority: 1
+  year: 2020
+  type: release
+  date: 
+  title: RHYTHM, CHAOS AND NONPULSED MAN
+  situation: LA DELEUZIANA
+  location:
+  url: https://www.roughtrade.com/gb/various/la-deleuziana-10-rhythm-chaos-and-nonpulsed-man
+  image: 
+  related: Network Ensemble
 
 # ############################## #
 # ############################## #
