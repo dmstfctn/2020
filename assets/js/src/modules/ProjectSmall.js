@@ -90,19 +90,20 @@ ProjectSmall.prototype = {
     }
   },
   setSizeForSlide: function( slide, w, h, orientation ){
-    this.size.width = w;
-    this.size.height = h;
+    this.size.width = w || this.size.width;
+    this.size.height = h || this.size.height;
+    this.size.orientation = orientation || this.size.orientation;
     const contentType = slide.contentType;
     const $slide = slide.ele;      
     if( contentType === 'embed' ){
       const $iframe = $slide.querySelector('iframe');
       if( !$iframe ) return;
-      if( orientation === 'portrait' ){
-        $iframe.style.width = h + 'px';
-        $iframe.style.height = w + 'px';
+      if( this.size.orientation === 'portrait' ){
+        $iframe.style.width = this.size.height + 'px';
+        $iframe.style.height = this.size.width + 'px';
       } else {
-        $iframe.style.width = w + 'px';
-        $iframe.style.height = h + 'px';
+        $iframe.style.width = this.size.width + 'px';
+        $iframe.style.height = this.size.height + 'px';
       }
     }
   },
@@ -110,10 +111,11 @@ ProjectSmall.prototype = {
     this.setSizeForSlide( this.items[index], w, h, orientation  );
   },
   setSize: function( w, h, orientation  ){
-    this.size.width = w;
-    this.size.height = h;
+    this.size.width = w || this.size.width;
+    this.size.height = h || this.size.height;
+    this.size.orientation = orientation || this.size.orientation;
     for( let index = 0; index <  this.items.length; index++ ){
-      this.setSizeForSlideByIndex( index, w, h, orientation  );
+      this.setSizeForSlideByIndex( index, this,size.width, this.size.height, this.size.orientation  );
     }
     // if( this.type === 'project' ){
     //   this.cropInfoEvents();
@@ -327,6 +329,8 @@ ProjectSmall.prototype = {
       }
       this.activateSlide( this.items[ this.slideIndex ] );      
     }
+
+    this.setSizeForSlide( slide );
   
     this.preloadImages( 2 );
   },
