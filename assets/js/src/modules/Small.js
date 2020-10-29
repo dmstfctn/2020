@@ -163,7 +163,7 @@ Small.prototype.projectEnd = function( backwards ){
   
   this.showLoader( backwards );
 
-  if( this.data[this.pageIndex].url === 'mmittee/' ){  
+  if( this.data[this.pageIndex].url === 'mmittee/' && !backwards ){  
     this._onReenableFirstGfxHide();
   }
 
