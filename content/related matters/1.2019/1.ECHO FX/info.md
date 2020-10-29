@@ -3,11 +3,11 @@ title: ECHO FX
 titleJustified: ECHO FX
 description: Replicating disinformation on Brexit night
 ---
-<span class="dc-hide-on-small-landscape">230616 2200: as polls close in the UK referendum on EU membership, Nigel Farage, former commodities broker and face of Leave EU, concedes&#8196;defeat.</span>
+<span class="dc-hide-on-small-landscape">230616 2200: as polls close in the UK referendum on EU membership, Nigel Farage, a former commodities broker and the face of Leave EU, concedes defeat.</span>
 
-<span class="dc-hide-on-small-landscape">230616 2252: in a Foreign Exchange market imbued with Remain sentiment, the network effect of Farage's concession pushes the £ to a 6 month high.</span> 
+<span class="dc-hide-on-small-landscape">230616 2252: in a Foreign Exchange market imbued with Remain sentiment, the network effect of Farage's concession pushes the £ to a six months high.</span> 
 
-<span class="dc-hide-on-small-landscape">240616 0528: the £ reaches its lowest point in 30 years,&#8196;losing&#8196;12%&#8196;of&#8196;its&#8196;value</span>
+<span class="dc-hide-on-small-landscape">240616 0528: the £ reaches its lowest point in 30 years,&#8199;losing&#8199;12%&#8199;of&#8199;its&#8199;value&#8199;against&#8199;the&#8199;$.</span>
 <COLBREAK>
 _ECHO FX_ replays the night of the 2016 United Kingdom E<span class="dc-hide-on-large">uropean </span>U<span class="dc-hide-on-large">nion</span> membership referendum through the echoes&#8199;of&#8199;disinformation&#8199;spread&#8199;on&#8199;social&#8199;media.
 
