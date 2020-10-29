@@ -1,5 +1,5 @@
 ---
-title: Network Study I, VII, VIII
+title: Network Study I, VII & VIII
 titleJustified: Network Study I, Ⅶ & Ⅷ
 description: Surveying urban wireless network infrastructure
 ---
@@ -10,4 +10,4 @@ NETWORK STUDY I explores the London Internet Exchange (LINX) area of the London 
 
 NETWORK STUDY VII explores an area of Vatican City housing the Governorate's Department of Telecommunication and the Vatican Radio; having supported Marconi research into radio transmissions in the 1930s, the Vatican was an early adopter of a stable shortwave transmission system. <span class="dc-hide-on-small-landscape">Ever since,<COLBREAK>the Vatican maintains a rich infrastructure of networks for the telecommunications and radio propaganda.</span>
 
-NETWORK STUDY VIII focuses on the US Embassy in Rome, housed in close proximity to the administrative buildings of the Italian government.<span class="dc-hide-on-small-landscape"> As seen on NSA documents leaked by Edward Snowden, the embassy's roof allegedly features a surveillance system to target nearby communications via equipment hid behind "false architectural features".</span>
+NETWORK STUDY VIII focuses on the US Embassy in Rome, housed in close proximity to the administrative buildings of the Italian government.<span class="dc-hide-on-small-landscape"> As seen on NSA documents leaked by Edward Snowden, the embassy's roof allegedly features a surveillance system to target nearby communications via equipment hid behind "false architectural features."</span>
