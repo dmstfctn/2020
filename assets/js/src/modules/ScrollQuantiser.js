@@ -143,7 +143,6 @@ ScrollQuantiser.prototype = {
     this.lineH = Math.round(this.$line.getBoundingClientRect().height * 100) / 100;
     this.height.original = this.$ele.getBoundingClientRect().height;    
     this.visibleLineCount = Math.floor( (this.height.original - (this.lineH * this.cutBottomLines)) /  this.lineH );
-    console.log('CV CUT: visibleLineCount = ', this.visibleLineCount );
     this.height.quantised = this.visibleLineCount * this.lineH;
     let scrollableQuantised = Math.round(this.$scrollable.getBoundingClientRect().height / this.lineH) * this.lineH;    
     this.maxScroll =  Math.ceil( scrollableQuantised - this.height.quantised );
