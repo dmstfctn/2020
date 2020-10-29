@@ -13,6 +13,7 @@ const GFX = function(){
   this.increaseDelay( false );
   this.unhidable = false;
   this.isPrevented = false;
+  this.visible = true;
 }
 
 GFX.prototype = {
@@ -38,7 +39,7 @@ GFX.prototype = {
     this.isPrevented = false;
   },
   hide: function( immediate ){
-    if( this.unhidable ){
+    if( this.unhidable || this.visible === false ){
       return;
     }
     if( immediate ){
@@ -56,6 +57,8 @@ GFX.prototype = {
       this._onFirstHide();
     }
     this.firstUserHide = false;
+    this._onHide();
+    this.visible = false;
     if( immediate ){
       this.enableAnimation();
     }
@@ -73,6 +76,7 @@ GFX.prototype = {
     this.$gfx.classList.add('visible');
     this.$nav_logo.classList.add('hidden');
     this.$nav_logo.classList.remove('visible');
+    this.visible = true;
     if( immediate ){
       setTimeout(() => {
         this.enableAnimation();
@@ -165,7 +169,11 @@ GFX.prototype = {
   _onFirstHide: function(){
     this.onFirstHide();
   },
-  onFirstHide: function(){ /* ... override ... */ }
+  onFirstHide: function(){ /* ... override ... */ },
+  _onHide: function(){
+    this.onHide();
+  },
+  onHide: function(){ /* ... override ... */ }
 };
 
 module.exports = GFX;

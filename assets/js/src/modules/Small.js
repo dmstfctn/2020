@@ -31,7 +31,7 @@ const Small = function( _loops ){
     document.querySelector('#info .dc-cv'), 
     document.querySelectorAll('#info .dc-cv--entry'),
     0.4, //speed,
-    0, //bottom lines to cut
+    3, //bottom lines to cut
     true // prevent input / interaction being initialised
   );
   this.cvScroller.recalculate();
@@ -107,14 +107,22 @@ Small.prototype.deactivate = function(){
 Small.prototype.setupInteraction = function(){
   this.interactTimeouts = {};
 
-  this.$interactionEle.addEventListener( 'pointerdown', ( e ) => {
+  this.$interactionEle.addEventListener('pointerdown', (e) => {
     if(e.pageX >= window.innerWidth / 2){
       this.showInteraction( 'forward' );
-      this.project.next();
     } else {
       this.showInteraction( 'back' );
+    }
+  })
+
+  this.$interactionEle.addEventListener( 'pointerup', ( e ) => {
+    if(e.pageX >= window.innerWidth / 2){      
+      this.project.next();
+    } else {      
       this.project.prev();
     }
+    this.hideInteraction( 'forward' );
+    this.hideInteraction( 'back' );
     if( this.project.isOnGfxPlaceholder ){
       e.stopPropagation();
     }
@@ -132,9 +140,12 @@ Small.prototype.setupInteraction = function(){
 Small.prototype.showInteraction = function( type ){
   clearTimeout( this.interactTimeouts[ type ] );
   this.$interactionEle.classList.add('interact-' + type );
+}
+Small.prototype.hideInteraction = function( type ){
+  clearTimeout( this.interactTimeouts[ type ] );
   this.interactTimeouts[ type ] = setTimeout( () => {
     this.$interactionEle.classList.remove('interact-' + type );
-  }, 100)
+  }, 50)
 }
 
 Small.prototype.projectEnd = function( backwards ){
@@ -150,6 +161,12 @@ Small.prototype.projectEnd = function( backwards ){
     this.pageIndex = this.data.length-1;    
   }
   
+  this.showLoader( backwards );
+
+  if( this.data[this.pageIndex].url === 'mmittee/' ){  
+    this._onReenableFirstGfxHide();
+  }
+
   this.loader.load( 
     F.slashStart( this.data[ this.pageIndex ].url ), 
     false, 
@@ -157,7 +174,7 @@ Small.prototype.projectEnd = function( backwards ){
       backwards: backwards
     } 
   );
-  this.showLoader( backwards );
+  
 };
 
 Small.prototype.showLoader = function( backwards ){
