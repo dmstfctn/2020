@@ -285,7 +285,7 @@ const loadCV = ( file ) => {
 
 const removePrecolumns = ( md ) => {
   if( markdownHasPreColumns(md) ){
-    return md.replace( /\s*?<COLBREAK>\s*/g, ' ' );
+    return md.replace( /(\n*?)(<COLBREAK>)(\n*?)/g, '$1$3' );
   } else {
     return md;
   }
