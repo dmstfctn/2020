@@ -69,7 +69,18 @@
       </li>
     {{/dc_slidetype}}
     {{#dc_slidetype 'window' this}}
-      <li class="dc-media__window{{#if @first}} active{{/if}}" data-content="{{content.main}}">        
+      <li 
+        class="dc-media__window{{#if @first}} active{{/if}}"
+        {{#if content.main.content }}
+          data-content="{{content.main.content}}"
+        {{/if}}
+        {{#if content.main.config.url }}
+          data-url="{{content.main.config.url}}"
+        {{/if}}
+        {{#if content.main.config.windowScale }}
+          data-window-scale="{{content.main.config.windowScale}}"
+        {{/if}}
+      >        
       </li>
     {{/dc_slidetype}}
     {{#dc_slidetype 'audio' this}}
@@ -109,7 +120,13 @@
       <li class="dc-media__playable dc-media__embed{{#if @first}} active{{/if}}">play</li>
     {{/dc_slidetype}}
     {{#dc_slidetype 'window' this}}
-      <li class="dc-media__openable dc-media__window{{#if @first}} active{{/if}}">watch</li>
+      <li 
+        class="dc-media__openable dc-media__window{{#if @first}} active{{/if}}" 
+        {{#if content.main.config.url }}
+          data-name="{{content.main.name}}"
+        {{/if}}>
+          {{content.main.name}}
+        </li>
     {{/dc_slidetype}}
     {{#dc_slidetype 'audio' this}}
       <li class="dc-media__playable dc-media__audio{{#if @first}} active{{/if}}">play</li>

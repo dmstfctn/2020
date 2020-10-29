@@ -126,17 +126,22 @@ ProjectLarge.prototype = {
     const $nav = this.$nav[index];
     const $slide = this.$media[index];  
     const html = $slide.getAttribute('data-content');
-    const w = (window.innerWidth / 2.3 < window.screen.availWidth / 3) 
-                ? window.screen.availWidth / 2.3 
-                : window.innerWidth / 2.3;
+    const url = $slide.getAttribute('data-url');
+    const widthScale = ($slide.getAttribute('data-window-scale')) 
+                          ? 1 / parseFloat( $slide.getAttribute('data-window-scale') ) 
+                          : 2.3;
+    const w = (window.innerWidth / widthScale < window.screen.availWidth / widthScale ) 
+                ? window.screen.availWidth / widthScale 
+                : window.innerWidth / widthScale;
     const h = ( w / 16 ) * 9;    
     if( this.extraWindow ){
       this.extraWindow.destroy()
     }
 
     this.extraWindow = new PopOutWindow( 
+      (url) ? 'url' : 'html',
       this.title, 
-      html, 
+      (html) ? html : url,
       {
         width: w,
         height: h

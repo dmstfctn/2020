@@ -99,6 +99,63 @@ const prepareImage = ( original, destinationPath, src, _prefix ) => {
   return prepared;
 }
 
+/* prepareWindow( original ):
+  takes the contents (original) of a .window slide and configures
+  contents might be:
+    - an object,
+      in which case we read the config object
+    - text/html,
+      in which case we create a config object around this as content
+
+    returns:
+    {
+      original: original,
+      content: the text/html OR false,
+      url: the url OR false,
+      config: the config object OR false
+    }
+*/
+
+const prepareWindow = ( original ) => {
+  if( typeof original === 'object' ){
+    if( 'config' in original ){
+      //assume it's already been processed...
+      return original;
+    }
+    if( 'url' in original ){
+      // let it go ahead
+    } else {
+      const keys = Object.keys( original );
+      let list = {};  
+      Object.values(original).forEach( (value, index ) => {
+        list[ keys[index] ] = prepareWindow( value );
+      });
+      return list;
+    }
+  }  
+  const prepFromUrl = ( config ) => { 
+    prepared.config = config;
+    return prepared;
+  }
+  const prepFromHTML = ( html ) => {
+    prepared.content = html;
+    return prepared;
+  }
+  let prepared = {
+    original: original,
+    content: false,    
+    config: false,
+    name: original.name
+  };
+  try{    
+    let url = new URL(original.url);
+    return prepFromUrl( original );
+  } catch( e ){
+    // assume it's an embed code
+    return prepFromHTML( original );
+  }
+}
+
 /*
   prepareEmbed( original ):
     takes the contents (original) of an .embed slide and configures.
@@ -195,6 +252,10 @@ const prepareSlide = ( slide, pageName, slideshowName, section, addSectionToSrc 
   }
   if( slide.type === 'embed'){    
     slide.content = prepareEmbed( slide.content );
+    return slide;
+  }   
+  if( slide.type === 'window'){    
+    slide.content = prepareWindow( slide.content );
     return slide;
   }   
 

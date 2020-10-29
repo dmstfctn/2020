@@ -81,4 +81,12 @@
   &.playing::before{
     content: 'stop';
   }
+  &[data-name]{
+    &::before{
+      content: attr(data-name);
+    }
+    &.playing::before{
+      content: 'close';
+    }
+  }
 }

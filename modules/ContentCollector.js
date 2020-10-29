@@ -173,8 +173,15 @@ const constructSlide = ( filename, p, meta ) => {
     slide.content = fs.readFileSync( filePath ).toString();    
   } else if( slide.type === 'window'){
     // url in a text doc with .window as an extension
-    // will appear in a new pop-out window
-    slide.content = fs.readFileSync( filePath ).toString();
+    // will appear in a new pop-out window    
+    const yaml = readYAML( filePath );
+    if( typeof yaml === 'object' ){
+      slide.content = yaml;
+      slide.content.name = removeOrderFromFilename( path.basename( filePath, path.extname(filePath) ) );
+    } else {
+      slide.content = fs.readFileSync( filePath ).toString();
+      slide.content.name = 'watch';
+    }
   } else if( slide.type === 'audio' ){
     slide.content = filePath;
   } else if( slide.type === 'video' ){

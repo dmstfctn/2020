@@ -1,8 +1,13 @@
-const PopOutWindow = function( title, contents, _config ){
+const PopOutWindow = function( type, title, contents_or_url, _config ){
   this.config = this.configure( _config );
   this.title = title;  
-  this.html = this.createHTML( title, contents );
-  this.url = this.createURL( this.html );
+  this.type = type || 'html';
+  if( type === 'url' ){
+    this.url = contents_or_url;
+  } else {
+    this.html = this.createHTML( title, contents_or_url );  
+    this.url = this.createURL( this.html );    
+  }
 };
 
 PopOutWindow.prototype = {
@@ -33,20 +38,31 @@ PopOutWindow.prototype = {
       this.title,      
       `width=${w},height=${h},screenX=${x},screenY=${y}`
     );
-    this.window.addEventListener('load', () => {
-      this.window.addEventListener('unload', () => {        
-        this._onClose();
-      });      
-    });
 
-    clearInterval(this.titleChangeInterval);
-    this.titleChangeInterval = setInterval( () => {
-      if( this.window.document.title === this.title ){
-        this.window.document.title = 'DEMYSTIFICATION COMMITTEE';
-      } else {
-        this.window.document.title = this.title;
-      }
-    }, 1600 )
+    if( this.type === 'url' ){
+      clearInterval(this.checkWindowOpenInterval);
+      this.checkWindowOpenInterval = setInterval(() => {
+        if( this.window.closed ){
+          clearInterval(this.checkWindowOpenInterval);
+          this._onClose();
+        }
+      }, 500 );
+    } else {
+      this.window.addEventListener('load', () => {
+        this.window.addEventListener('unload', () => {        
+          this._onClose();
+        });      
+      });
+
+      clearInterval(this.titleChangeInterval);
+      this.titleChangeInterval = setInterval( () => {
+        if( this.window.document.title === this.title ){
+          this.window.document.title = 'DEMYSTIFICATION COMMITTEE';
+        } else {
+          this.window.document.title = this.title;
+        }
+      }, 1600 )
+    }
   },
   close: function(){
     clearInterval(this.titleChangeInterval);
@@ -54,7 +70,9 @@ PopOutWindow.prototype = {
   },
   destroy: function(){
     this.close(); 
-    URL.revokeObjectURL( this.url );
+    if( this.type !== 'url' ){
+      URL.revokeObjectURL( this.url );
+    }
   },
   createURL: function( html ){
     return URL.createObjectURL(
