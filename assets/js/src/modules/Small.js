@@ -107,7 +107,7 @@ Small.prototype.deactivate = function(){
 Small.prototype.setupInteraction = function(){
   this.interactTimeouts = {};
 
-  this.$interactionEle.addEventListener( 'pointerdown', ( e ) => {
+  this.$interactionEle.addEventListener( 'pointerup', ( e ) => {
     if(e.pageX >= window.innerWidth / 2){
       this.showInteraction( 'forward' );
       this.project.next();
@@ -150,6 +150,12 @@ Small.prototype.projectEnd = function( backwards ){
     this.pageIndex = this.data.length-1;    
   }
   
+  this.showLoader( backwards );
+
+  if( this.data[this.pageIndex].url === 'mmittee/' ){  
+    this._onReenableFirstGfxHide();
+  }
+
   this.loader.load( 
     F.slashStart( this.data[ this.pageIndex ].url ), 
     false, 
@@ -157,7 +163,7 @@ Small.prototype.projectEnd = function( backwards ){
       backwards: backwards
     } 
   );
-  this.showLoader( backwards );
+  
 };
 
 Small.prototype.showLoader = function( backwards ){
