@@ -9,3 +9,5 @@ echo "PUSHING TO GANDI"
 git push gandi live
 echo "PUTTING SITE LIVE"
 ssh 1451555@git.dc2.gpaas.net deploy demystification.co.git live
+echo "SWITCHING TO MASTER BRANCH"
+git checkout master
