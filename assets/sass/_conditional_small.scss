@@ -273,6 +273,10 @@
     }
   }
 
+  .dc-sitenav a[data-dc-localtarget="#related-matters"] svg{
+    transform: translateX(-50%) translateZ(0) translateY(-34%) scale(0.3);
+  }
+
   .dc-item--header{
     z-index: 2;
     padding-bottom: .9rem;
