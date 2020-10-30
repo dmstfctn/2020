@@ -115,7 +115,7 @@ ProjectSmall.prototype = {
     this.size.height = h || this.size.height;
     this.size.orientation = orientation || this.size.orientation;
     for( let index = 0; index <  this.items.length; index++ ){
-      this.setSizeForSlideByIndex( index, this,size.width, this.size.height, this.size.orientation  );
+      this.setSizeForSlideByIndex( index, this.size.width, this.size.height, this.size.orientation  );
     }
     // if( this.type === 'project' ){
     //   this.cropInfoEvents();
