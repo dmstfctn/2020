@@ -39,28 +39,32 @@ GFX.prototype = {
     this.isPrevented = false;
   },
   hide: function( immediate ){
-    if( this.unhidable || this.visible === false ){
+    if( this.unhidable ){
       return;
     }
-    if( immediate ){
-      this.disableAnimation();
-    }
-    this.$gfx.classList.add('hidden');
-    this.$gfx.classList.remove('visible');
-    this.$nav_logo.classList.remove('hidden');
-    this.$nav_logo.classList.add('visible');
+
     clearTimeout( this.timeout );
     this.timeout = setTimeout( () => {
       this.show( true );
     }, this.useShowDelay );
-    if( this.firstUserHide ){
-      this._onFirstHide();
-    }
-    this.firstUserHide = false;
-    this._onHide();
-    this.visible = false;
-    if( immediate ){
-      this.enableAnimation();
+
+    if( this.visible ){
+      if( immediate ){
+        this.disableAnimation();
+      }
+      this.$gfx.classList.add('hidden');
+      this.$gfx.classList.remove('visible');
+      this.$nav_logo.classList.remove('hidden');
+      this.$nav_logo.classList.add('visible');    
+      if( this.firstUserHide ){
+        this._onFirstHide();
+      }
+      this.firstUserHide = false;
+      this._onHide();
+      this.visible = false;
+      if( immediate ){
+        this.enableAnimation();
+      }
     }
   },
   show: function( immediate ){
