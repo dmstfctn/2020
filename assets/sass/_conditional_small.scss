@@ -425,23 +425,23 @@
       pointer-events: none;
     }
       .dc-mobile-nav::before{
-        transform: translateX(-15%);
-        background: linear-gradient(90deg, rgba(255, 0, 0, 0.7) 0%, rgba(255,0,0,0) 50%);
+        transform: translateX(-23%);
+        background: linear-gradient(90deg, rgba(255, 0, 0, 0.5) 0%, rgba(255,0,0,0) 50%);
         opacity: 0;
         transition: opacity .35s ease-in;      
       }
         html[data-dc-pagetype="focusgroup"] .dc-mobile-nav::before{
-          background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%);
+          background: linear-gradient(90deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 50%);
         }
       .dc-mobile-nav::after{
         opacity: 0;
         transition: opacity .35s ease-in;
         //transform: translateX(50%);
-        transform: translateX(15%);
-        background: linear-gradient(90deg, rgba(255,0,0,0) 50%, rgba(255,0,0,0.7) 100%);
+        transform: translateX(23%);
+        background: linear-gradient(90deg, rgba(255,0,0,0) 50%, rgba(255,0,0,0.5) 100%);
       }
       html[data-dc-pagetype="focusgroup"] .dc-mobile-nav::after{
-        background: linear-gradient(90deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.7) 100%);
+        background: linear-gradient(90deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.5) 100%);
       }
     
       .dc-mobile-nav.interact-back::before{
