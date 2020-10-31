@@ -1,13 +1,15 @@
 const CFG = require('./Config.js' );
 const F = require( './Functions.js' );
 const Embed = require('./Embed.js');
+const { has } = require('markdown-it/lib/common/utils');
 
 const DC_INFO_CLASS = 'dc-info';
 
 const ProjectSmall = function( backwards, hasGfx ){
   this.$wrapper = document.querySelector( '.dc-item' );  
   this.items = this.getItems();
-  this.minIndex = (hasGfx) ? 0 : 1;
+  this.hasGfx = hasGfx;
+  this.minIndex = (hasGfx) ? 0 : 1;  
   this.slideIndex = (backwards) ? this.items.length - 1 : this.minIndex;
   this.size = {
     width: window.innerWidth,
@@ -293,8 +295,7 @@ ProjectSmall.prototype = {
     } 
   },
   next: function(){
-    this.slideIndex++;
-
+    this.slideIndex++;    
     // we've gone past the last slide for this part
     if( this.slideIndex >= this.items.length ){
       this._onEnd();
@@ -306,7 +307,8 @@ ProjectSmall.prototype = {
   },
   prev: function(){
     this.slideIndex--;
-    if( this.slideIndex < this.minIndex ){      
+    if( this.slideIndex < this.minIndex ){     
+      this.slideIndex = this.minIndex;
       this._onCantGoBack();
       return;
     }
@@ -328,6 +330,10 @@ ProjectSmall.prototype = {
         //if( this.type === 'project' ) this.cropInfoEvents();
       }
       this.activateSlide( this.items[ this.slideIndex ] );      
+    }
+
+    if( this.slideIndex > 1 && this.hasGfx ){
+      this.minIndex = 1;
     }
 
     this.setSizeForSlide( slide );

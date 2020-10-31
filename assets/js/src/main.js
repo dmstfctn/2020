@@ -37,12 +37,12 @@ let DC = {
 gfx.onFirstHide = function(){
   // console.log( 'GFX ON 1st HIDE');
   DC.small.firstGfxHide();
-  DC.small.showInteraction( 'forward' );
-  DC.small.hideInteraction( 'forward' );
+  // DC.small.showInteraction( 'forward' );
+  // DC.small.hideInteraction( 'forward' );
 }
 
 DC.small.onReenableFirstGfxHide = function(){
-  gfx.reenableFirstHide();
+  //gfx.reenableFirstHide();
 }
 
 window.DC = DC;
