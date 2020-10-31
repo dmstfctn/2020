@@ -169,17 +169,7 @@ ProjectSmall.prototype = {
         contentType: this.getSlideContentType( $info )
       }
     ];
-    result = result.concat(
-      [...this.$wrapper.querySelectorAll('.dc-item--info .dc-small-chunk')]
-        .map( ($ele) => {
-          return {
-            type: 'chunk',
-            ele: $ele,
-            parent: $info,
-            contentType: this.getSlideContentType( $ele )
-          }
-        })
-    );
+   
     result = result.concat(
       [...this.$wrapper.querySelectorAll( '.dc-media__small .dc-media--list li' )]
         .map( ($ele) => {
@@ -187,6 +177,18 @@ ProjectSmall.prototype = {
             type: 'standard',
             ele: $ele,
             parent: false,
+            contentType: this.getSlideContentType( $ele )
+          }
+        })
+    );
+
+    result = result.concat(
+      [...this.$wrapper.querySelectorAll('.dc-item--info .dc-small-chunk')]
+        .map( ($ele) => {
+          return {
+            type: 'chunk',
+            ele: $ele,
+            parent: $info,
             contentType: this.getSlideContentType( $ele )
           }
         })
