@@ -410,6 +410,7 @@
     z-index: 50;
     display: block;
     overflow: hidden;
+    touch-action: none;
   }
     .dc-mobile-nav::before,
     .dc-mobile-nav::after{
@@ -487,6 +488,7 @@
     transform: translateX(-50%) translateY(-50%) rotate(-90deg);
     z-index: 60;
     pointer-events: all;
+    touch-action: none;
     svg{
       pointer-events: none;
       #phone-blur,
