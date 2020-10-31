@@ -1,3 +1,5 @@
+import 'pepjs'
+
 const F = require('./Functions.js');
 const PopOutWindow = require('./PopOutWindow.js');
 
@@ -122,7 +124,7 @@ GFX.prototype = {
         this._onMove();
       }
     }, {passive: true});
-    window.addEventListener('pointerdown', () => {
+    window.addEventListener('pointerup', () => {
       this._onMove();
     }, {passive: true});
     // window.addEventListener('click', () => {
