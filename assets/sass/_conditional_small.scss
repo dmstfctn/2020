@@ -6,7 +6,7 @@
   html{
     //font-size: 9.5px;
     font-size: 2.1vh;
-    line-height: 1.2;
+    line-height: 1.3;
     position: relative;
     -webkit-text-size-adjust: none;
   }
@@ -82,7 +82,7 @@
     opacity: 0;
     display: block;
     z-index: 2;
-    padding-top: 3.5rem;
+    padding-top: 4rem;
     font-size: 1rem;          
     padding-bottom: 0.7rem;
   }
@@ -128,7 +128,7 @@
       width: 100%;
       height: 100%;
       padding: 1rem;
-      padding-top: 3.5rem;
+      padding-top: 4rem;
       padding-bottom: 2.7rem;
       background: #000000;
       z-index: 1;
@@ -168,7 +168,7 @@
     }
     .dc-item--info{
       .dc-cv{
-        padding-top: 3.5rem;
+        padding-top: 4rem;
         padding-bottom: 2.7rem;
         padding-right: 1rem;
         padding-left: 1rem;
@@ -309,7 +309,6 @@
 
   /* enable display of dissemination */
   .dc-cv{
-    line-height: 1;
     overflow: auto;
   }
   .dc-cv--title__dissemination{
