@@ -54,7 +54,7 @@ html, body{
       }
       .dc-media--list .info & ,
       .dc-media--list .dc-media__text &{
-        padding-right: 0.5em;
+        padding-right: 0;
         &::before{
           display: none;
         }
