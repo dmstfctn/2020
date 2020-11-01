@@ -3,6 +3,8 @@ const F = require( './Functions.js' );
 const Embed = require('./Embed.js');
 const { has } = require('markdown-it/lib/common/utils');
 
+const ScrollQuantiser = require( './ScrollQuantiser.js' );
+
 const DC_INFO_CLASS = 'dc-info';
 
 const ProjectSmall = function( backwards, hasGfx ){
@@ -20,11 +22,21 @@ const ProjectSmall = function( backwards, hasGfx ){
     this.type = 'cv';
   } else {
     this.type = 'project';
+    this.cvScroller = new ScrollQuantiser( 
+      this.$wrapper.querySelector('.dc-cv'), 
+      this.$wrapper.querySelectorAll('.dc-cv--entry'),
+      0.4, //speed,
+      6, //bottom lines to cut
+      true // prevent input / interaction being initialised
+    );
+    this.cvScroller.recalculate();
   }
   this.loadPlaceholderImages();  
   this.update();
   this.ifBackwards( backwards );
   
+  
+
   //if( this.type === 'project' ) this.cropInfoEvents();
 };
 
@@ -118,6 +130,9 @@ ProjectSmall.prototype = {
     this.size.orientation = orientation || this.size.orientation;
     for( let index = 0; index <  this.items.length; index++ ){
       this.setSizeForSlideByIndex( index, this.size.width, this.size.height, this.size.orientation  );
+    }
+    if( this.type === 'project' ){
+      this.cvScroller.recalculate();
     }
     // if( this.type === 'project' ){
     //   this.cropInfoEvents();

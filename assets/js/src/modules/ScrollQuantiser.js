@@ -100,11 +100,12 @@ ScrollQuantiser.prototype = {
       this.scroll.original = this.maxScroll;
     }
     this.firstVisibleLineIndex = Math.floor(this.scroll.original / this.lineH);
-    this.scroll.quantised = this.firstVisibleLineIndex * this.lineH;
-
-    this.minVisLine = this.firstVisibleLineIndex;
+    if( this.firstVisibleLineIndex < 0 ){
+      this.firstVisibleLineIndex = 0;
+    }
+    this.scroll.quantised = this.firstVisibleLineIndex * this.lineH;  
+    this.minVisLine = this.firstVisibleLineIndex;    
     this.maxVisLine = this.firstVisibleLineIndex + this.visibleLineCount;
-    
   },
   render: function(){
     if( this.scroll.quantised === this.pScroll.quantised && this.hasScrolled ){
@@ -115,12 +116,21 @@ ScrollQuantiser.prototype = {
       this.$ele.classList.add('has-scrolled');
     }
     this.$wrapper.style.height = this.height.quantised + 'px';
-    this.$scrollable.style.transform = `translateY(${ -this.scroll.quantised }px)`;   
+    if( this.preventInput === false ){
+      this.$scrollable.style.transform = `translateY(${ -this.scroll.quantised }px)`;   
+    }
+    let lineIndex = 0;
     this.$lines.forEach( ( $ele, index ) => {
-      if( index < this.minVisLine || index > this.maxVisLine ){
-        $ele.classList.add('quantised-scroller--hidden');
-      } else {
-        $ele.classList.remove('quantised-scroller--hidden');
+      const eleStyle = window.getComputedStyle( $ele );
+      const display = eleStyle.getPropertyValue('display');
+
+      if( display !== 'none' ){
+        if( lineIndex < this.minVisLine || lineIndex > this.maxVisLine ){
+          $ele.classList.add('quantised-scroller--hidden');
+        } else {
+          $ele.classList.remove('quantised-scroller--hidden');
+        }
+        lineIndex++;
       }
     });
   },
@@ -142,7 +152,7 @@ ScrollQuantiser.prototype = {
   measure: function(){    
     this.lineH = Math.round(this.$line.getBoundingClientRect().height * 100) / 100;
     this.height.original = this.$ele.getBoundingClientRect().height;    
-    this.visibleLineCount = Math.floor( (this.height.original - (this.lineH * this.cutBottomLines)) /  this.lineH );
+    this.visibleLineCount = Math.floor( (this.height.original - (this.lineH * this.cutBottomLines)) /  this.lineH );    
     this.height.quantised = this.visibleLineCount * this.lineH;
     let scrollableQuantised = Math.round(this.$scrollable.getBoundingClientRect().height / this.lineH) * this.lineH;    
     this.maxScroll =  Math.ceil( scrollableQuantised - this.height.quantised );
