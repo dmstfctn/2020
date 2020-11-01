@@ -53,12 +53,26 @@
   year: 2020
   type: live
   date: 29.1
+  title: CTM x TRANSMEDIALE
+  situation: BERGHAIN
+  location: berlin
+  url: 
+  image: echo-fx-berghain.jpg
+  related: ECHO FX
+  hideon: desktop
+
+- now: false
+  priority: 0
+  year: 2020
+  type: live
+  date: 29.1
   title: CTM 2020 x TRANSMEDIALE
   situation: BERGHAIN
   location: berlin
   url: 
   image: echo-fx-berghain.jpg
   related: ECHO FX
+  hideon: mobile
 
 # ## 2020 ## solo ############## #
 - now: false
@@ -177,6 +191,7 @@
   url: https://www.roughtrade.com/gb/various/la-deleuziana-10-rhythm-chaos-and-nonpulsed-man
   image: 
   related: Network Ensemble
+  hideon: mobile
 
 # ############################## #
 # ############################## #
@@ -386,12 +401,26 @@
   year: 2018
   type: group show
   date: 
+  title: Istanbul Design BIENNIAL
+  situation: ARTER
+  location: istanbul
+  url: 
+  image: offshore-ss18-istanbul-design-biennale.jpg
+  related: OFFSHORE SS18
+  hideon: desktop
+
+- now: false
+  priority: 0
+  year: 2018
+  type: group show
+  date: 
   title: 4<sup>th</sup> Istanbul Design BIENNIAL
   situation: ARTER
   location: istanbul
   url: 
   image: offshore-ss18-istanbul-design-biennale.jpg
   related: OFFSHORE SS18
+  hideon: mobile
 
 - now: false
   priority: 0
