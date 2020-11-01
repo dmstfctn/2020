@@ -255,14 +255,13 @@ Small.prototype.firstHistoryState = function(){
 }
 
 Small.prototype.renderPage = function( data, extra ){  
-  const backwards = !!extra.backwards;
-  const isFirstOneAgain = this.startPageIndex === this.pageIndex;
+  const backwards = !!extra.backwards;  
   document.title = data.title;
   document.documentElement.setAttribute('data-dc-pagetype', data.pagetype );
 
   this.$mainContent.innerHTML = data.html;
   this.project.deactivate();
-  this.project = new Project( backwards, isFirstOneAgain ); 
+  this.project = new Project( backwards, false ); 
   this.project.activate();
   this.progress.init( this.project.slideIndex, this.project.items.length );
   this.setupProjectEvents();  
