@@ -160,6 +160,7 @@ ProjectSmall.prototype = {
     if( !this.$wrapper ){  
       return result;
     }
+    // project info
     const $info = this.$wrapper.querySelector('.dc-item--info')
     result = [
       {
@@ -170,6 +171,7 @@ ProjectSmall.prototype = {
       }
     ];
    
+    //images/content
     result = result.concat(
       [...this.$wrapper.querySelectorAll( '.dc-media__small .dc-media--list li' )]
         .map( ($ele) => {
@@ -181,7 +183,8 @@ ProjectSmall.prototype = {
           }
         })
     );
-
+    
+    //related cv entries
     result = result.concat(
       [...this.$wrapper.querySelectorAll('.dc-item--info .dc-small-chunk')]
         .map( ($ele) => {
