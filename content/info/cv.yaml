@@ -40,14 +40,42 @@
   date: 1.6
   title: INTERFACE CHAOS LIVE
   situation: CAFE OTO
+  location:
+  url: https://www.cafeoto.co.uk/events/interface-chaos-live-january-2021/
+  image: 
+  related: Interface Chaos
+  hideon: desktop
+
+- now: next
+  description: Screening with a live soundtrack by SKY H1
+  priority: 0
+  year: 2021
+  type: live
+  date: 1.6
+  title: INTERFACE CHAOS LIVE
+  situation: CAFE OTO
   location: london
   url: https://www.cafeoto.co.uk/events/interface-chaos-live-january-2021/
   image: 
   related: Interface Chaos
+  hideon: mobile
 
 # ########## 2020 ########## #
 
 # ## 2020 ## live ############## #
+- now: false
+  priority: 0
+  year: 2020
+  type: live
+  date: 29.1
+  title: CTM x TRANSMEDIALE
+  situation: BERGHAIN
+  location: berlin
+  url: 
+  image: echo-fx-berghain.jpg
+  related: ECHO FX
+  hideon: desktop
+
 - now: false
   priority: 0
   year: 2020
@@ -59,6 +87,7 @@
   url: 
   image: echo-fx-berghain.jpg
   related: ECHO FX
+  hideon: mobile
 
 # ## 2020 ## solo ############## #
 - now: false
@@ -71,7 +100,9 @@
   location: ljubljana
   url: 
   image: offshore-matters-aksioma.jpg
-  related: Offshore Investigation Vehicle
+  related:
+    - Offshore Investigation Vehicle
+    - Offshore SS18
 
 # ## 2020 ## dissemination ##### #
 - now: false
@@ -175,6 +206,7 @@
   url: https://www.roughtrade.com/gb/various/la-deleuziana-10-rhythm-chaos-and-nonpulsed-man
   image: 
   related: Network Ensemble
+  hideon: mobile
 
 # ############################## #
 # ############################## #
@@ -384,12 +416,26 @@
   year: 2018
   type: group show
   date: 
+  title: Istanbul Design BIENNIAL
+  situation: ARTER
+  location: istanbul
+  url: 
+  image: offshore-ss18-istanbul-design-biennale.jpg
+  related: OFFSHORE SS18
+  hideon: desktop
+
+- now: false
+  priority: 0
+  year: 2018
+  type: group show
+  date: 
   title: 4<sup>th</sup> Istanbul Design BIENNIAL
   situation: ARTER
   location: istanbul
   url: 
   image: offshore-ss18-istanbul-design-biennale.jpg
   related: OFFSHORE SS18
+  hideon: mobile
 
 - now: false
   priority: 0
@@ -442,7 +488,7 @@
   related: Demons
 
 - now: false
-  priority: 2
+  priority: 0
   year: 2018
   type: live
   date: 
@@ -451,7 +497,9 @@
   location: berlin
   url: 
   image: demystification-committee-transmediale-performance.jpg
-  related: Offshore Investigation Vehicle
+  related:
+    - Offshore Investigation Vehicle
+    - Offshore SS18
 
 - now: false
   priority: 0
@@ -507,6 +555,7 @@
   image: 
   related: 
     - Offshore Investigation Vehicle
+    - Offshore SS18
     - Flash
   hideon: mobile
 
@@ -521,6 +570,7 @@
   url: https://youtu.be/IZCHoLp4U70?t=2260
   image: 
   related: Offshore Investigation Vehicle
+  hideon: mobile
 
 - now: false
   priority: 0
@@ -573,6 +623,7 @@
   url: 
   image: demystification-committee-transmediale-talk.jpg
   related: Offshore Investigation Vehicle
+  hideon: mobile
 
 # ## 2018 ## dissemination ##### #
 - now: false
@@ -587,6 +638,7 @@
   image:
   related:
     - Offshore Investigation Vehicle
+    - Offshore SS18
     - The Network Ensemble
 
 - now: false
@@ -611,7 +663,9 @@
   location: 
   url: https://demystification.co/mmittee/toe/The_Offshore_Economist.pdf
   image:
-  related: Offshore Investigation Vehicle
+  related:
+    - Offshore Investigation Vehicle
+    - Offshore SS18
 
 # ## 2018 ## focus group ####### #
 - now: false
@@ -625,7 +679,7 @@
   url: 
   image: demystification-committee-somerset-house.jpg
   related: OFFSHORE ROUNDTABLE
-
+  
 
 # ## 2017 ###################### #
 # ## 2017 ## live ############## #
@@ -742,7 +796,10 @@
   location: london
   url: 
   image: demystification-committee-offshore-roundtable.jpg
-  related: OFFSHORE ROUNDTABLE
+  related:
+    - OFFSHORE ROUNDTABLE
+    - Offshore SS18
+    - Offshore Investigation Vehicle
 
 - now: false
   priority: 2
