@@ -85,13 +85,13 @@
     {{/dc_slidetype}}
     {{#dc_slidetype 'audio' this}}
       <li class="dc-media__audio{{#if @first}} active{{/if}}">
-        <audio src="{{content.main.src}}"></audio>
+        <audio data-src="{{content.main.src}}"></audio>
       </li>
     {{/dc_slidetype}}
     {{#dc_slidetype 'video' this}}
       <li class="dc-media__video{{#if @first}} active{{/if}}">
         <figure>
-          <video src="{{content.main.src}}"></video>
+          <video data-src="{{content.main.src}}"></video>
           {{#if meta.caption}}
           <figcaption>
             {{meta.caption}}

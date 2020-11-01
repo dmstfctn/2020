@@ -52,6 +52,9 @@ const Functions = {
   },
   loadSlideImage: function( $slide ){
     const $img = $slide.querySelector('img');
+    if( !$img ){
+      return;
+    }
     const $picture = $slide.querySelector('picture');
     const $top = ($picture) ? $picture : $img;
     const type = ($picture) ? 'picture' : 'img';

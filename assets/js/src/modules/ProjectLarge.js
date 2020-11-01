@@ -32,6 +32,7 @@ const ProjectLarge = function(){
 ProjectLarge.prototype = {
   activate: function(){
     this.loadImages();
+    this.loadMedia();
     this.setupEvents();
   },
   deactivate: function(){
@@ -163,6 +164,15 @@ ProjectLarge.prototype = {
     } else {
       this.openWindow( index );
     }
+  },
+  loadMedia: function(){
+    this.$media.forEach( ( $m ) => {
+      const $mEle = $m.querySelector('video') || $m.querySelector('audio');
+      if( $mEle ){
+        const src = $mEle.getAttribute('data-src');
+        $mEle.setAttribute('src', src );
+      }
+    })
   },
   loadImages: function(){
     clearTimeout(this.loadRestOfImagesTimeout);
