@@ -13,8 +13,8 @@ let Config = {
     local_port: 8080
   },
   debug: false,
-  minify: false,
-  minifyHTML: false,
+  minify: true,
+  minifyHTML: true,
   resizeImages: true, 
   url_root: url_root,
   paths: {
