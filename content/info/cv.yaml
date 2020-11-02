@@ -40,11 +40,11 @@
   date: 1.6
   title: INTERFACE CHAOS LIVE
   situation: CAFE OTO
-  location: london
+  location:
   url: https://www.cafeoto.co.uk/events/interface-chaos-live-january-2021/
   image: 
   related: Interface Chaos
-  hideon: mobile
+  hideon: desktop
 
 - now: next
   description: Screening with a live soundtrack by SKY H1
@@ -54,11 +54,11 @@
   date: 1.6
   title: INTERFACE CHAOS LIVE
   situation: CAFE OTO
-  location:
+  location: london
   url: https://www.cafeoto.co.uk/events/interface-chaos-live-january-2021/
   image: 
   related: Interface Chaos
-  hideon: desktop
+  hideon: mobile
 
 # ########## 2020 ########## #
 

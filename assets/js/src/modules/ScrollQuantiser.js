@@ -1,8 +1,22 @@
+const isEleDisplayNone = function( $ele ){
+  const eleStyle = window.getComputedStyle( $ele );
+  const display = eleStyle.getPropertyValue('display');
+  return display === 'none';
+}
+
 const ScrollQuantiser = function( _$ele, _$lines, _speed, _cutBottomLines, _preventInput ){
   this.$ele = _$ele;
   this.$scrollable = this.$ele.querySelector(':first-child');
   this.$lines = _$lines;
   this.$line = this.$lines[0]; 
+  if( isEleDisplayNone( this.$line ) ){
+    for( let i = 0; i < this.$lines.length; i++ ){
+      if( !isEleDisplayNone( this.$lines[i] ) ){
+        this.$line = this.$lines[i];
+        break;
+      }
+    }
+  }
   this.speed = _speed || 1;
   this.cutBottomLines = _cutBottomLines || 0;
   this.preventInput = _preventInput || false;
@@ -121,15 +135,20 @@ ScrollQuantiser.prototype = {
     }
     let lineIndex = 0;
     this.$lines.forEach( ( $ele, index ) => {
-      const eleStyle = window.getComputedStyle( $ele );
-      const display = eleStyle.getPropertyValue('display');
-
-      if( display !== 'none' ){
+      if( isEleDisplayNone( $ele ) === false ){
         if( lineIndex < this.minVisLine || lineIndex > this.maxVisLine ){
           $ele.classList.add('quantised-scroller--hidden');
         } else {
           $ele.classList.remove('quantised-scroller--hidden');
         }
+        lineIndex++;
+      }
+
+      if( 
+        this.preventInput && 
+        $ele.previousSibling.tagName === 'DT' 
+        && $ele.previousSibling.classList.contains('dc-cv--title__includesyear')
+      ){
         lineIndex++;
       }
     });
