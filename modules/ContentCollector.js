@@ -65,12 +65,18 @@ const getProjectCvItems = ( title, cv ) => {
   let relatedCv = cv.entries.filter( function( entry ){
     if( Array.isArray( entry.related ) ){
       for( let i = 0; i < entry.related.length; i++ ){
-        if( H.createSlug( entry.related[i] ) === slug ){
+        if( 
+          H.createSlug( entry.related[i] ) === slug 
+          && entry.hideon !== 'mobile'
+        ){
           return true;
         }
       }
     } else if( typeof entry.related === 'string' ){
-      if( H.createSlug( entry.related ) === slug ){
+      if( 
+        H.createSlug( entry.related ) === slug 
+        && entry.hideon !== 'mobile'
+      ){        
         return true;
       }
     }
