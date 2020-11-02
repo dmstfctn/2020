@@ -4,7 +4,7 @@ titleJustified: Network Study I, Ⅶ & Ⅷ
 description: Surveying urban wireless network infrastructure
 ---
 
-_NETWORK STUDY I, VII, VIII_ is a set of three audiovisual pieces exploring urban network infrastructure. Each piece reproduces the activity of wireless networks by translating captured data into sound, textual information, pictograms and warping satellite&#8196;imagery.
+_NETWORK STUDY I, VII & VIII_ is a set of three audiovisual pieces exploring urban network infrastructure. Each piece reproduces the activity of wireless networks by translating captured data into sound, textual information, pictograms and warping satellite&#8196;imagery.
 
 NETWORK STUDY I explores the London Internet Exchange (LINX) area of the London Docklands, inhabited by buildings with imposing grey exteriors, surrounded by metal fencing and security cameras,<COLBREAK>where 600 operators connect to exchange traffic.<span class="dc-hide-on-small-landscape"> In its proximity is Canary Wharf, a key European financial hub, thriving on the network performance and&#8196;scalability&#8196;offered&#8196;by&#8196;LINX&#8196;services.</span>
 
