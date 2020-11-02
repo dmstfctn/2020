@@ -1,5 +1,14 @@
+@font-face{
+  font-family: "DC-MAIN";
+  src: url("../fonts/dc-main-subset.woff") format("woff");
+}
+@font-face{
+  font-family: "DC-BIG";
+  src: url("../fonts/dc-big-subset.woff") format("woff");
+}
+
 html{
-  font-family: adobe-myungjo-std, serif;
+  font-family: "DC-MAIN", adobe-myungjo-std, serif;
   font-style: normal;
   font-weight: 500;      
   font-size: 16px;
@@ -34,7 +43,7 @@ html{
 }
 
 .dctxt--date{    
-  font-family: antique-olive-nord, sans-serif;
+  font-family: "DC-BIG", antique-olive-nord, sans-serif;
   font-style: italic;
   font-weight: 400;
   line-height: 1em;
@@ -69,7 +78,7 @@ html{
 
   .dc-work--year h2{
     font-size: 3.3rem;
-    font-family: antique-olive-nord, sans-serif;
+    font-family: "DC-BIG", antique-olive-nord, sans-serif;
     font-style: italic;
     font-weight: 400;
     line-height: 1;
