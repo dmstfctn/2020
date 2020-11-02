@@ -31,7 +31,7 @@ const Small = function( _loops ){
     document.querySelector('#info .dc-cv'), 
     document.querySelectorAll('#info .dc-cv--entry'),
     0.4, //speed,
-    1, //bottom lines to cut
+    0, //bottom lines to cut
     true // prevent input / interaction being initialised
   );
   this.cvScroller.recalculate();
