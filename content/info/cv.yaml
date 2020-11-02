@@ -372,7 +372,7 @@
   year: 2019
   type: focus group
   date: 
-  title: WEISSENSEE HOCHSCHULE
+  title: WEISSENSEE KUNSTHOCHSCHULE
   situation: berlin
   location: 
   url: 
@@ -386,7 +386,7 @@
   type: focus group
   date: 
   title: MA VISUAL COMMUNICATION
-  situation: WEISSENSEE HOCHSCHULE
+  situation: WEISSENSEE KUNSTHOCHSCHULE
   location: berlin
   url: 
   image: demystification-committee-weisensee.jpg
@@ -879,11 +879,25 @@
   type: screening
   date: 
   title: DELEUZE STUDIES
-  situation: ROMA TRE UNIVERISTY
+  situation: ROMA TRE UNIVERSITY
   location: rome
   url: 
   image: demystification-committee-deleuze-studies.jpg
   related: Network Study (I, VII, VIII)
+  hideon: desktop
+
+- now: false
+  priority: 2
+  year: 2016
+  type: screening
+  date: 
+  title: DELEUZE STUDIES
+  situation: TRE UNIVERSITY
+  location: rome
+  url: 
+  image: demystification-committee-deleuze-studies.jpg
+  related: Network Study (I, VII, VIII)
+  hideon: mobile
 
 # ## 2016 ## dissemination ##### #
 - now: false
