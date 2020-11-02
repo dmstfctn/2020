@@ -264,6 +264,7 @@ Small.prototype.renderPage = function( data, extra ){
   this.project = new Project( backwards, false ); 
   this.project.activate();
   this.progress.init( this.project.slideIndex, this.project.items.length );
+  this.orientation.sizeRoot()
   this.setupProjectEvents();  
 }
 
