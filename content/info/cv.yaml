@@ -131,18 +131,6 @@
     - Offshore Investigation Vehicle
     - Offshore SS18
 
-# ## 2020 ## screening ######## #
-- now: false
-  priority: 0
-  year: 2020
-  type: screening
-  date: 
-  title: INTERFACE CHAOS
-  situation: FORUM STADTPARK
-  location: graz
-  url: 
-  image: interface-chaos-graz.JPG
-  related: Interface Chaos
 
   # ## 2020 ## talk ############## #
 
@@ -160,6 +148,18 @@
     - Offshore Investigation Vehicle
     - Offshore SS18
 
+# ## 2020 ## screening ######## #
+- now: false
+  priority: 0
+  year: 2020
+  type: screening
+  date: 
+  title: INTERFACE CHAOS
+  situation: FORUM STADTPARK
+  location: graz
+  url: 
+  image: interface-chaos-graz.JPG
+  related: Interface Chaos
 
 # ## 2020 ## focus group ############## #
 
@@ -488,6 +488,19 @@
   related: Demons
 
 - now: false
+  priority: 1
+  year: 2018
+  type: live
+  date: 
+  title: Alt-Age
+  situation: DESIGN MUSEUM
+  location: london
+  url: 
+  image: demystification-committee-design-museum-performance.jpg
+  related: Flash
+  hideon: mobile
+
+- now: false
   priority: 0
   year: 2018
   type: live
@@ -589,6 +602,21 @@
 - now: false
   priority: 1
   year: 2018
+  type: streaming
+  date: 
+  title: "Algorithmic Superstructures"
+  situation: SERPENTINE
+  location:
+  url: https://www.serpentinegalleries.org/art-and-ideas/on-work-episode-8-algorithmic-superstructures/
+  image: 
+  related:
+    - Flash
+    - Demons
+    - Network Ensemble
+
+- now: false
+  priority: 1
+  year: 2018
   type: talk
   date: 
   title: Alt-Age
@@ -642,9 +670,23 @@
     - The Network Ensemble
 
 - now: false
+  priority: 1
+  year: 2018
+  type: interview
+  date: 
+  title: Staying Alive
+  situation: WE MAKE MONEY NOT ART
+  location: 
+  url: https://we-make-money-not-art.com/staying-alive-a-wunderkammer-of-disaster-solutions/
+  image:
+  related:
+    - Offshore Investigation Vehicle
+    - Offshore SS18
+
+- now: false
   priority: 0
   year: 2018
-  type: writing
+  type: publication
   date: 
   title: A DAY IN THE LIFE OF
   situation: SCHLOSS-POST
@@ -656,7 +698,7 @@
 - now: false
   priority: 1
   year: 2018
-  type: writing
+  type: publication
   date: 
   title: THE OFFSHORE ECONOMIST
   situation: RIZOSFERA
@@ -679,7 +721,7 @@
   url: 
   image: demystification-committee-somerset-house.jpg
   related: OFFSHORE ROUNDTABLE
-  
+
 
 # ## 2017 ###################### #
 # ## 2017 ## live ############## #
@@ -694,19 +736,6 @@
   url:
   image: demystification-committee-non-performance.jpg
   related: The Network Ensemble
-
-- now: false
-  priority: 1
-  year: 2018
-  type: live
-  date: 
-  title: Alt-Age
-  situation: DESIGN MUSEUM
-  location: london
-  url: 
-  image: demystification-committee-design-museum-performance.jpg
-  related: Flash
-  hideon: mobile
 
 - now: false
   priority: 0
