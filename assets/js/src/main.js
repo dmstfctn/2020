@@ -71,6 +71,7 @@ mqSmallHandler( mqSmall );
 
 gfx.activate();
 
+window.runTypeDependentLayout();
 
 if( F.isChrome() ){
   document.querySelector('html').setAttribute('data-b', 'GC' );
