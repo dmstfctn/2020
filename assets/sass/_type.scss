@@ -1,5 +1,10 @@
+@font-face{
+  font-family: "DC-MAIN";
+  src: url("../fonts/dc-main-subset.woff") format("woff");
+}
+
 html{
-  font-family: adobe-myungjo-std, serif;
+  font-family: "DC-MAIN", adobe-myungjo-std, serif;
   font-style: normal;
   font-weight: 500;      
   font-size: 16px;
