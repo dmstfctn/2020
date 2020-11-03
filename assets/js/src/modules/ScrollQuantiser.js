@@ -138,8 +138,14 @@ ScrollQuantiser.prototype = {
       if( isEleDisplayNone( $ele ) === false ){
         if( lineIndex < this.minVisLine || lineIndex > this.maxVisLine ){
           $ele.classList.add('quantised-scroller--hidden');
+          if(  $ele.previousSibling.tagName === 'DT' ){
+            $ele.previousSibling.classList.add('quantised-scroller--hidden');
+          }
         } else {
           $ele.classList.remove('quantised-scroller--hidden');
+          if(  $ele.previousSibling.tagName === 'DT' ){
+            $ele.previousSibling.classList.remove('quantised-scroller--hidden');
+          }
         }
         lineIndex++;
       }

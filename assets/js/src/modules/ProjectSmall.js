@@ -26,7 +26,7 @@ const ProjectSmall = function( backwards, hasGfx ){
       this.$wrapper.querySelector('.dc-cv'), 
       this.$wrapper.querySelectorAll('.dc-cv--entry'),
       0.4, //speed,
-      6, //bottom lines to cut
+      4, //bottom lines to cut
       true // prevent input / interaction being initialised
     );
     this.cvScroller.recalculate();
