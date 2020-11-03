@@ -1,6 +1,6 @@
 ---
 title: FLASH
-description: "#crashcore #spoofing #may6 #algotrade"
+description: "#crashcore #algotrading #spoofing #may6"
 ---
 
 _FLASH_ is a sonic reenactment of one of the fastest stock market crashes in history, occurred on May 6, 2010 and known as Flash Crash.
