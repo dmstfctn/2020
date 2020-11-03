@@ -97,7 +97,7 @@
     }    
       .dc-hide-on-small{
         display: none;
-      }
+      }      
 
   .dc-small-chunk{
     opacity: 0;
@@ -579,6 +579,12 @@
 @media (orientation: landscape) and (max-height: 439px){
   .dc-hide-on-small-landscape{
     display: none;
+  }
+}
+
+@media (orientation: portrait) and (max-width: 900px){
+  .dc-hide-on-small-portrait{
+    display: none;     
   }
 }
 
