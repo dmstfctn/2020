@@ -352,7 +352,7 @@ ProjectSmall.prototype = {
       this.activateSlide( this.items[ this.slideIndex ] );      
     }
 
-    if( this.slideIndex > 1 && this.hasGfx ){
+    if( this.slideIndex > 0 && this.hasGfx ){
       this.minIndex = 1;
     }
 
