@@ -288,6 +288,10 @@ ProjectSmall.prototype = {
     slide.embedPrepared = true;
     if( !slide.controller ){
       slide.controller = new Embed( slide.ele );
+      slide.controller.onEnded = () =>{
+        console.log( 'VIDEO END (SLIDE)')
+        this.next();
+      }
     }
     slide.controller.prepare();    
   },
@@ -367,7 +371,7 @@ ProjectSmall.prototype = {
       $video.currentTime = 0;
     } else if( slide.contentType === 'embed'  ){
       if( !slide.controller ){
-        slide.controller = new Embed( slide.ele );
+        this.prepareEmbed( slide );
       }
       slide.controller.deactivate();
     }
@@ -385,7 +389,7 @@ ProjectSmall.prototype = {
     }  else if( slide.contentType === 'embed' ){
       if( window.DC_GFX ) window.DC_GFX.preventAppearance();
       if( !slide.controller ){
-        slide.controller = new Embed( slide.ele );
+        this.prepareEmbed( slide );
       }
       slide.controller.activate();
       this.setSizeForSlide( slide, this.size.width, this.size.height, this.size.orientation );

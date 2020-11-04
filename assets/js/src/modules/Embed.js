@@ -24,7 +24,8 @@ Embed.prototype = {
           clearTimeout( this.preactivateTimeout );
           this.preactivateTimeout = setTimeout( () => {            
             this.controller.setVolume( 1 );
-            if( !this.isActive ){             
+            if( !this.isActive ){     
+              this.controller.setCurrentTime(0);        
               this.controller.pause();
             }
             if( typeof _callback === 'function' ){
@@ -55,6 +56,10 @@ Embed.prototype = {
   prepare: function(){
     this.controller = this.createControllerForService();
     if( this.service === 'vimeo' ){
+      this.controller.on('ended', (data) => {
+        console.log('VIDEOEND (VIMEO)')
+        this._onEnded();
+      });
       this.preactivate();
     }
   },
@@ -73,11 +78,14 @@ Embed.prototype = {
     this.isActive = false;    
     if(!this.controller) return;
     if( this.service === 'vimeo' ){
-      if( this.isPreactivating ) return;
-      this.controller.setCurrentTime(0);
+      if( this.isPreactivating ) return;      
       this.controller.pause();
     }
-  }
+  },
+  _onEnded: function(){
+    this.onEnded();
+  },
+  onEnded: function(){ /* ... override ... */ }
 }
 
 module.exports = Embed;
