@@ -245,7 +245,11 @@ const readFolder = ( folderPath, cv ) => {
         name: name,
         slug: H.createSlug( name ),
         title: {
+<<<<<<< HEAD
           normal: name,
+=======
+          normal: tokeniseString(name),
+>>>>>>> f37d6ffe8810927477e5c54cca8c490d64b6f124
           justified: tokeniseString(name)
         },
         slideshows: {},
