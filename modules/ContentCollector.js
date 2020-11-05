@@ -56,6 +56,15 @@ const replacePwithBR = ( text ) => {
              .replace(/<\/p>+/g, '');
 }
 
+const tokeniseString = ( text ) => {
+  const arr = text.split('');
+  let result = '';
+  for( let i = 0; i < arr.length; i++ ){
+    result += `<span data-char="${ arr[i].charCodeAt(0) }">${arr[i]}</span>`;
+  }
+  return result;
+}
+
 const removeOrderFromFilename = ( filename ) => {
   return filename.replace(/(^[0-9]+\.)/gm, '' );
 };
@@ -234,9 +243,10 @@ const readFolder = ( folderPath, cv ) => {
       const relatedCv = getProjectCvItems( name, cv );
       let projectData = {
         name: name,
+        slug: H.createSlug( name ),
         title: {
           normal: name,
-          justified: name
+          justified: tokeniseString(name)
         },
         slideshows: {},
         data: {},
@@ -255,11 +265,18 @@ const readFolder = ( folderPath, cv ) => {
             contentNoColumns: markdown.render( removePrecolumns( fm.content) ),
             hasPreColumns: markdownHasPreColumns( fm.content )
           };
-          projectData.title = {
-            normal: fm.data.title || name,
-            justified: fm.data.titleJustified || fm.data.title || name
-          }  
-                
+          if( fm.data.title ){
+            projectData.title.normal = fm.data.title;
+          } else {
+            projectData.title.normal = name;
+          }
+          if( fm.data.titleJustified ){
+            projectData.title.justified = tokeniseString( fm.data.titleJustified );
+          } else if( fm.data.title ){
+            projectData.title.justified = tokeniseString( fm.data.title );
+          } else {
+            projectData.title.justified = tokeniseString( name );
+          }            
         } else {         
           const p = path.join( root, year, project, item );
           // find the meta file
