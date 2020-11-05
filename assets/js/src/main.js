@@ -76,3 +76,6 @@ window.runTypeDependentLayout();
 if( F.isChrome() ){
   document.querySelector('html').setAttribute('data-b', 'GC' );
 }
+if( F.isFirefox() ){
+  document.querySelector('html').setAttribute('data-b', 'FF' );
+}

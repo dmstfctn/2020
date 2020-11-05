@@ -11,6 +11,12 @@ const Functions = {
     const vendor = (navigator && navigator.vendor || '').toLowerCase();
     return /google inc/.test(vendor) ? UA.match(/(?:chrome|crios)\/(\d+)/) : false;
   },
+  isFirefox: function(){
+    // see above...
+    // this is being used to add margin to the right of the VII glyph
+    const UA = (navigator && navigator.userAgent || '').toLowerCase();
+    return UA.match(/(?:firefox|fxios)\/(\d+)/) ? true : false;
+  },
   visibilityChangeCompat: function(){
     let hidden, visibilityChange; 
     if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and later support 
