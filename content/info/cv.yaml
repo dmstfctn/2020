@@ -196,7 +196,20 @@
   hideon: mobile
 
 - now: false
-  priority: 1
+  priority: 0
+  year: 2020
+  type: release
+  date: 
+  title: RHYTHM, CHAOS & NONPULSED MAN
+  situation: LA DELEUZIANA
+  location:
+  url: 
+  image: 
+  related: The Network Ensemble
+  hideon: desktop
+
+- now: false
+  priority: 2
   year: 2020
   type: release
   date: 
@@ -205,7 +218,7 @@
   location:
   url: https://www.roughtrade.com/gb/various/la-deleuziana-10-rhythm-chaos-and-nonpulsed-man
   image: 
-  related: Network Ensemble
+  related: The Network Ensemble
   hideon: mobile
 
 # ############################## #
