@@ -63,6 +63,10 @@ ProjectSmall.prototype = {
     this.onNext();
   },
   onNext: function(){ /* ... override ... */ },
+  _onAutoNext: function(){ 
+    this.onAutoNext();
+  },
+  onAutoNext: function(){ /* ... override ... */ },
   _onPrev: function(){
     this.onPrev();
   },
@@ -289,8 +293,8 @@ ProjectSmall.prototype = {
     if( !slide.controller ){
       slide.controller = new Embed( slide.ele );
       slide.controller.onEnded = () =>{
-        console.log( 'VIDEO END (SLIDE)')
         this.next();
+        this._onAutoNext();
       }
     }
     slide.controller.prepare();    

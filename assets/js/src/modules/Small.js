@@ -141,11 +141,12 @@ Small.prototype.showInteraction = function( type ){
   clearTimeout( this.interactTimeouts[ type ] );
   this.$interactionEle.classList.add('interact-' + type );
 }
-Small.prototype.hideInteraction = function( type ){
+Small.prototype.hideInteraction = function( type, _additionalTime ){
+  const additionalTime = _additionalTime || 0;
   clearTimeout( this.interactTimeouts[ type ] );
   this.interactTimeouts[ type ] = setTimeout( () => {
     this.$interactionEle.classList.remove('interact-' + type );
-  }, 50)
+  }, 50 + additionalTime );
 }
 
 Small.prototype.projectEnd = function( backwards ){
@@ -284,6 +285,10 @@ Small.prototype.setupProjectEvents = function(){
 
   this.project.onCantGoBack = () => {
     this.projectEnd( true );
+  };
+  this.project.onAutoNext = () => {
+    this.showInteraction( 'forward' );
+    this.hideInteraction( 'forward', 250  );
   };
 }
 
