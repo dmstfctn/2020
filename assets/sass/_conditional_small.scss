@@ -155,9 +155,7 @@
       bottom: 0;
       left: 0;
       right: 0;
-      padding: 0rem;
-      padding-right: calc( env(safe-area-inset-right) );
-      padding-left: calc( env(safe-area-inset-left) );
+      padding: 0rem;      
       box-sizing: border-box;
       &.quantised-scroller{
         position: absolute;
