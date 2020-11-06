@@ -38,6 +38,7 @@ const Small = function( _loops ){
 
   this.setupProjectEvents();
   this.setupInteraction();
+  this.orientation.sizeRoot();
 };
 
 Small.prototype.setupData = function(){

@@ -2,7 +2,7 @@ const Orientation = function(){
   this.orientation = 'portrait';
   this.mqPortrait = window.matchMedia( '(orientation: portrait)' );
   this.mqLandscape = window.matchMedia( '(orientation: landscape)' );
-  this.sizeRootDelay = 100;
+  this.sizeRootDelay = 250;
 }
 
 Orientation.prototype = {

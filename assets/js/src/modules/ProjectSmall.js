@@ -364,8 +364,9 @@ ProjectSmall.prototype = {
       this.minIndex = 1;
     }
 
+    document.body.scrollTop = 0;
     this.setSizeForSlide( slide );
-  
+    
     this.preloadImages( 2 );
   },
   deactivateSlide: function( slide ){
