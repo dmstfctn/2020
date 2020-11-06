@@ -4,9 +4,9 @@ titleJustified: ECHO FX
 description: Replicating disinformation on Brexit night
 ---
 
-<span class="dc-hide-on-large dc-hide-on-small-portrait">ECHO FX replays the night of the 2016 UK EU membership referendum through the echoes of disinformation spread on social media.</span><span class="dc-hide-on-small-landscape">230616 2200: as polls close in the UK referendum on EU membership, Nigel Farage, a former commodities broker and the face of Leave EU, concedes defeat.
+<span class="dc-hide-on-large dc-hide-on-small-portrait">ECHO FX replays the night of the 2016 UK EU membership referendum through the echoes of disinformation spread on social media.</span><span class="dc-hide-on-small-landscape">230616 2200: as polls close in the UK referendum on EU membership, Nigel Farage, a former commodities broker and the face of Leave EU, concedes defeat.</span><span class="dc-hide-on-small-landscape">
 
-230616 2252: in a Foreign Exchange market imbued with Remain sentiment, the network effect of Farage's concession pushes the £ to a six month high.
+230616 2252: in a Foreign Exchange market imbued with Remain sentiment, the network effect of Farage's concession pushes the £ to a six month high.</span><span class="dc-hide-on-small-landscape">
 
 240616 0528: the £ reaches its lowest point in 30 years,&#8199;losing&#8199;12%&#8199;of&#8199;its&#8199;value&#8199;against&#8199;the&#8199;$.</span><COLBREAK>
 

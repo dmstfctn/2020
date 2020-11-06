@@ -196,7 +196,7 @@
   hideon: mobile
 
 - now: false
-  priority: 0
+  priority: 2
   year: 2020
   type: release
   date: 
@@ -209,7 +209,7 @@
   hideon: desktop
 
 - now: false
-  priority: 2
+  priority: 0
   year: 2020
   type: release
   date: 
