@@ -57,7 +57,6 @@ Embed.prototype = {
     this.controller = this.createControllerForService();
     if( this.service === 'vimeo' ){
       this.controller.on('ended', (data) => {
-        console.log('VIDEOEND (VIMEO)')
         this._onEnded();
       });
       this.preactivate();
