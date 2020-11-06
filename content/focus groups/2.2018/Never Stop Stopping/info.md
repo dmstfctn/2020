@@ -4,10 +4,8 @@ titleJustified: Never Stop   Stopping
 description: Discussing trader/Market relationships (s/D)
 ---
 
-_NEVER STOP STOPPING_ is a focus group on the figure of the trader and its relationship to financial stock markets. The focus group aims to demystify the myth of the market-driving trader, analysing how it is constructed. 
+_NEVER STOP STOPPING_ is a focus group on the figure of the trader and its relationship to stock markets. The focus group aims to deconstruct the myth of the trader as an operator in control of the stock market, and the myth of the market as a machine&#8196;intended&#8196;to&#8196;be&#8196;driven.
 <COLBREAK>
-Framing money as an autonomous device able to create its own survival circuits, the focus groups discusses the financial stock market as one such dominating circuit, repositioning the trader as a passive actuator bowing to the intensities of the market.
+Framing money instead as an autonomous device able to create its own survival circuits, the focus groups discusses the stock market as one such circuit, in this case dominant, repositioning the trader as a passive actuator (sub) bowing to the intensities of the market (DOM).
 <COLBREAK>
-This sub/DOM relationship is explored through the collective watching and discussing of self-educational trading&#8196;material.
-
-<span class="dc-hide-on-small">NEVER STOP STOPPING was first held as part of the MA Graphic Media Design at London College of Communication in 2018.</span>
+This relationship is explored through the collective watching of autodidactic trading material and discussing of trading interfaces. <span class="dc-hide-on-small">NEVER STOP STOPPING was first held as part of the MA Graphic Media Design at London College of Communication in 2018.</span>
