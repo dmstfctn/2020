@@ -13,6 +13,8 @@ const HTMLO = require('./modules/HtmlOptimise.js');
 
 const Assets = require('./modules/AssetProcessor.js');
 
+const _BUILD_INFO = (new Date()).toString()
+
 /* delete the public directory */
 if( 
   Config.paths.public_root.indexOf(__dirname) !== -1 // check that the root is in this dir
@@ -72,7 +74,8 @@ let renderHome = {
   navigation: rendered_navigation,
   content: null,
   info: rendered_info,
-  small_site: rendered_small_site
+  small_site: rendered_small_site,
+  _build_info: _BUILD_INFO
 };
 fs.mkdirSync( homeFragP, {recursive: true });
 fs.writeFileSync( 
@@ -126,7 +129,8 @@ let renderHomeFocusGroups = {
   navigation: rendered_navigation,
   content: null,
   info: rendered_info,
-  small_site: rendered_small_site
+  small_site: rendered_small_site,
+  _build_info: _BUILD_INFO
 };
 fs.mkdirSync( focusGroupsFragP, {recursive: true });
 fs.writeFileSync( 
@@ -153,7 +157,8 @@ let renderHomeInfo = {
   navigation: rendered_navigation,
   content: null,
   info: rendered_info,
-  small_site: rendered_small_site
+  small_site: rendered_small_site,  
+  _build_info: _BUILD_INFO
 };
 fs.mkdirSync( homeInfoFragP, {recursive: true });
 fs.writeFileSync( 
