@@ -17,8 +17,10 @@
                         3000px"
             {{#if meta.size}}
             style="height: {{meta.size}}"
-            {{/if}}            
-          >
+            {{/if}}  
+            width="{{content.main.dimensions.width}}"
+            height="{{content.main.dimensions.height}}"
+          >          
         {{else}}
           <img 
             src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="             
@@ -34,6 +36,8 @@
             {{#if meta.size}}
             style="height: {{meta.size}}"
             {{/if}}
+            width="{{content.main.dimensions.width}}"
+            height="{{content.main.dimensions.height}}"
           >
         {{/if}}
         {{#if meta.caption}}
