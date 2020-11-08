@@ -45,7 +45,7 @@ Assets.svgToTemplate(
 
 const relatedMatters = Formatter.createRelatedMatters( Content.related_matters, Content.cv );
 const focusGroups = Formatter.createFocusGroups( Content.focus_groups );
-const infoSection = Formatter.createInfo( Content.bio, Content.cv );
+const trackRecord = Formatter.createTrackRecord( Content.bio, Content.cv );
 
 const smallSiteData = Formatter.createSmallSite( Content );
 
@@ -58,13 +58,13 @@ const navigation = [
 /* render the template for the navigation, for use in other pages */
 const rendered_navigation = Templates.navigation( {navigation: navigation} );
 /* render the cv/bio for use on the home page */
-const rendered_info = Rendering.renderInfo( infoSection );
+const rendered_track_record = Rendering.renderTrackRecord( trackRecord );
 
 /* turn small site into JSON for printing to script ele */
 const rendered_small_site = Rendering.renderSmall( smallSiteData ); 
 
 
-/* home page / info page*/
+/* home page / track record page*/
 let homePath = Config.paths.public;
 let homeFragP = path.join( homePath, 'fragment' );
 let renderHome = {
@@ -72,8 +72,8 @@ let renderHome = {
   pagetype: 'home',
   homeactive: 'related-matters',
   navigation: rendered_navigation,
-  content: null,
-  info: rendered_info,
+  content: null,  
+  track_record: rendered_track_record,
   small_site: rendered_small_site,
   _build_info: _BUILD_INFO
 };
@@ -101,7 +101,7 @@ relatedMattersPages.forEach( ( pageData, index ) => {
   const rendered = {
     navigation: rendered_navigation,
     small_site: rendered_small_site,
-    info: rendered_info
+    track_record: rendered_track_record
   };
 
   Rendering.renderPage( pageData, index, relatedMattersPages, rendered );
@@ -113,7 +113,7 @@ focusGroupsPages.forEach( ( pageData, index ) => {
   const rendered = {
     navigation: rendered_navigation,
     small_site: rendered_small_site,
-    info: rendered_info
+    track_record: rendered_track_record
   };
 
   Rendering.renderPage( pageData, index, focusGroupsPages, rendered );
@@ -128,7 +128,7 @@ let renderHomeFocusGroups = {
   homeactive: 'focus-groups',
   navigation: rendered_navigation,
   content: null,
-  info: rendered_info,
+  track_record: rendered_track_record,
   small_site: rendered_small_site,
   _build_info: _BUILD_INFO
 };
@@ -147,32 +147,32 @@ fs.writeFileSync(
   (Config.minifyHTML) ? HTMLO(Templates.main( renderHomeFocusGroups )) : Templates.main( renderHomeFocusGroups )
 );
 
-/* Info 'home' at /mmittee/info/ */
-let homeInfoPath = path.join( Config.paths.public, infoSection.slug );
-let homeInfoFragP = path.join( homeInfoPath, 'fragment' );
-let renderHomeInfo = {
+/* Track Record 'home' at /mmittee/track-record/ */
+let homeTrackRecordPath = path.join( Config.paths.public, trackRecord.slug );
+let homeTrackRecordFragP = path.join( homeTrackRecordPath, 'fragment' );
+let renderHomeTrackRecord = {
   title: 'Home',
   pagetype: 'home',
-  homeactive: 'info',
+  homeactive: 'track-record',
   navigation: rendered_navigation,
   content: null,
-  info: rendered_info,
-  small_site: rendered_small_site,  
+  track_record: rendered_track_record,
+  small_site: rendered_small_site,
   _build_info: _BUILD_INFO
 };
-fs.mkdirSync( homeInfoFragP, {recursive: true });
+fs.mkdirSync( homeTrackRecordFragP, {recursive: true });
 fs.writeFileSync( 
-  path.join( homeInfoFragP, 'index.json' ), 
+  path.join( homeTrackRecordFragP, 'index.json' ), 
   JSON.stringify({
     isPage: true,
-    title: renderHomeInfo.title,
-    pagetype: renderHomeInfo.pagetype,
+    title: renderHomeTrackRecord.title,
+    pagetype: renderHomeTrackRecord.pagetype,
     html: '' 
   })
 );
 fs.writeFileSync( 
-  path.join( homeInfoPath, 'index.html' ),  
-  (Config.minifyHTML) ? HTMLO(Templates.main( renderHomeInfo )) : Templates.main( renderHomeInfo )
+  path.join( homeTrackRecordPath, 'index.html' ),  
+  (Config.minifyHTML) ? HTMLO(Templates.main( renderHomeTrackRecord )) : Templates.main( renderHomeTrackRecord )
 );
 
 /* move .htaccess into public */

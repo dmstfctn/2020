@@ -5,7 +5,7 @@ const { has } = require('markdown-it/lib/common/utils');
 
 const ScrollQuantiser = require( './ScrollQuantiser.js' );
 
-const DC_INFO_CLASS = 'dc-info';
+const DC_INFO_CLASS = 'dc-track-record';
 
 const ProjectSmall = function( backwards, hasGfx ){
   this.$wrapper = document.querySelector( '.dc-item' );  

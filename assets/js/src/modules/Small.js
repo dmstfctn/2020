@@ -28,8 +28,8 @@ const Small = function( _loops ){
   this.progress = new ProgressBar( this.project.items.length );
 
   this.cvScroller = new ScrollQuantiser( 
-    document.querySelector('#info .dc-cv'), 
-    document.querySelectorAll('#info .dc-cv--entry'),
+    document.querySelector('#track-record .dc-cv'), 
+    document.querySelectorAll('#track-record .dc-cv--entry'),
     0.4, //speed,
     0, //bottom lines to cut
     true // prevent input / interaction being initialised

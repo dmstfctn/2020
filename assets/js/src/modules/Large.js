@@ -64,7 +64,7 @@ Large.prototype.setupMenus = function(){
     if( this.vcList[ p ] ){
       this.vcList[ p ].run();
     }
-    if( p === 'info' ){
+    if( p === 'track-record' ){
       this.cvScroller.recalculate();
     }
     this.project.deactivate();
@@ -135,13 +135,13 @@ Large.prototype.firstHistoryState = function(){
 
 Large.prototype.initScrollQuantiser = function(){
   this.cvScroller = new ScrollQuantiser( 
-    document.querySelector('#info .dc-cv'), 
-    document.querySelectorAll('#info .dc-cv--entry'),
+    document.querySelector('#track-record .dc-cv'), 
+    document.querySelectorAll('#track-record .dc-cv--entry'),
     0.4, //speed,
     0 // no. of lines to cut off bottom 
   );
 
-  const $cvScrollerContents = document.querySelectorAll('#info .quantised-scroller--wrapper dl > *');
+  const $cvScrollerContents = document.querySelectorAll('#track-record .quantised-scroller--wrapper dl > *');
   let scrollerTitles = [];
   let entriesWithImages = [];
   let entryIndex = 0;

@@ -363,7 +363,7 @@ const cvToDissemination = function( cv, contentPath ){
   for( i in cv.entries ){
     let entry = cv.entries[i]
     if( entry.image && entry.image !== "" ){
-      entry.image = path.join( contentPath, 'info', 'images', entry.image );
+      entry.image = path.join( contentPath, 'track-record', 'images', entry.image );
     }
     if( entry.type === 'dissemination' ){
       dissemination.push( entry );
@@ -373,10 +373,10 @@ const cvToDissemination = function( cv, contentPath ){
 };
 
 const ContentCollector = function( contentPath ){
-  const cv = loadCV( path.join( contentPath, 'info', 'cv.yaml' ) );
+  const cv = loadCV( path.join( contentPath, 'track-record', 'cv.yaml' ) );
   const dissemination = cvToDissemination( cv, contentPath );
   return {
-    bio: renderMarkdownAndProcess( fs.readFileSync( path.join( contentPath, 'info', 'bio.md' ) ).toString() ),
+    bio: renderMarkdownAndProcess( fs.readFileSync( path.join( contentPath, 'track-record', 'bio.md' ) ).toString() ),
     cv: cv,
     dissemination: dissemination,
     related_matters: readFolder( path.join( contentPath, 'related matters'), cv ),
