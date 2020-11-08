@@ -1,3 +1,5 @@
+const normWheel = require('normalize-wheel');
+
 const isEleDisplayNone = function( $ele ){
   const eleStyle = window.getComputedStyle( $ele );
   const display = eleStyle.getPropertyValue('display');
@@ -62,7 +64,8 @@ ScrollQuantiser.prototype = {
 
     this.$ele.addEventListener( 'wheel', (e) => {
       if( this.preventInput ){ return; }
-      this._onScroll( e.deltaY );
+      const w = normWheel( e );
+      this._onScroll( w.pixelY );
     }, {passive: true} );
 
     this.$ele.addEventListener( 'touchstart', (e) => {
@@ -75,8 +78,8 @@ ScrollQuantiser.prototype = {
       for( let i = 0; i < e.changedTouches.length; i++ ){
         let touch = e.changedTouches[i];
         if( touch.identifier === this.touchID ){          
-          let deltaY = this.pTouch.pageY - touch.pageY;
-          this._onScroll( deltaY );
+          let deltaY = this.pTouch.pageY - touch.pageY;          
+          this._onScroll( deltaY );          
           this.pTouch = touch;
         }
       }
@@ -87,7 +90,7 @@ ScrollQuantiser.prototype = {
         let touch = e.changedTouches[i];
         if( touch.identifier === this.touchID ){
           let deltaY = this.pTouch.pageY - touch.pageY;
-          this._onScroll( deltaY );
+          this._onScroll( deltaY );          
           this.pTouch = null;
           this.touchID = null;
         }
