@@ -200,8 +200,8 @@
   year: 2020
   type: release
   date: 
-  title: RHYTHM, CHAOS, NONPULSED MAN
-  situation: LA DELEUZIANA
+  title: RHYTHM, CHAOS & NONPULSED MAN
+  situation: LD10
   location:
   url: 
   image: 
@@ -429,7 +429,7 @@
   year: 2018
   type: group show
   date: 
-  title: Istanbul Design BIENNIAL
+  title: 4<sup>th</sup> Design Biennial
   situation: ARTER
   location: istanbul
   url: 
@@ -456,7 +456,7 @@
   type: group show
   date: 
   title: Projected.Capital
-  situation: ROEHRS & BOETSCH
+  situation: ROEHRS&BOETSCH
   location: zurich
   url: 
   image: project-capital.jpg
@@ -533,11 +533,25 @@
   type: live
   date: 
   title: Borderline Festival
+  situation: ONASSIS
+  location: athens
+  url: 
+  image: demystification-committee-spektrum-onassis-stegi-borderline-festival.jpg
+  related: The Network Ensemble
+  hideon: desktop
+
+- now: false
+  priority: 0
+  year: 2018
+  type: live
+  date: 
+  title: Borderline Festival
   situation: ONASSIS STEGI
   location: athens
   url: 
   image: demystification-committee-spektrum-onassis-stegi-borderline-festival.jpg
   related: The Network Ensemble
+  hideon: mobile
 
 # ## 2018 ## talk ############## #
 - now: false
@@ -617,8 +631,8 @@
   year: 2018
   type: streaming
   date: 
-  title: "Algorithmic Superstructures"
-  situation: SERPENTINE
+  title: "On work"
+  situation: SERPENTINE GALLERIES
   location:
   url: https://www.serpentinegalleries.org/art-and-ideas/on-work-episode-8-algorithmic-superstructures/
   image: 
@@ -626,6 +640,23 @@
     - Flash
     - Demons
     - Network Ensemble
+  hideon: desktop
+
+- now: false
+  priority: 1
+  year: 2018
+  type: streaming
+  date: 
+  title: "Algorithmic Superstructures"
+  situation: SERPENTINE GALLERIES
+  location:
+  url: https://www.serpentinegalleries.org/art-and-ideas/on-work-episode-8-algorithmic-superstructures/
+  image: 
+  related:
+    - Flash
+    - Demons
+    - Network Ensemble
+  hideon: mobile
 
 - now: false
   priority: 1
@@ -892,7 +923,7 @@
   type: screening
   date: 
   title: DELEUZE STUDIES
-  situation: ROMA TRE UNIVERSITY
+  situation: TRE UNIVERSITY
   location: rome
   url: 
   image: demystification-committee-deleuze-studies.jpg
@@ -905,7 +936,7 @@
   type: screening
   date: 
   title: DELEUZE STUDIES
-  situation: TRE UNIVERSITY
+  situation: ROMA TRE UNIVERSITY
   location: rome
   url: 
   image: demystification-committee-deleuze-studies.jpg
