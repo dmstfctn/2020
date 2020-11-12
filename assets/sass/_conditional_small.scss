@@ -641,3 +641,11 @@
     font-size: 3.6vw;
   }
 }
+
+
+@media (orientation: portrait) and (max-width: 900px) and (min-height: 600px) and (min-width: 720px){
+  // intended for portrait tablets i.e. ipad
+  html{
+    font-size: 3vw;
+  }
+}
