@@ -41,6 +41,12 @@ const ProjectSmall = function( backwards, hasGfx ){
 };
 
 ProjectSmall.prototype = {
+  activate: function(){
+    this.preloadImages( 2 );
+  },
+  deactivate: function(){
+    this.deactivateAll();
+  },
   _onCantGoBack: function(){
     this.isCurrentlyOnGfxPlaceholder();
     this.onCantGoBack();
@@ -56,9 +62,6 @@ ProjectSmall.prototype = {
     this.onChange();
   },
   onChange: function(){ /* ... override ... */ },
-  activate: function(){
-    this.preloadImages( 2 );
-  },
   _onNext: function(){
     this.onNext();
   },
@@ -71,9 +74,6 @@ ProjectSmall.prototype = {
     this.onPrev();
   },
   onPrev: function(){ /* ... override ... */ },
-  deactivate: function(){
-    /*noop*/
-  },
   _onGfx: function(){
     this.onGfx();
   },
