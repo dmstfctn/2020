@@ -6,7 +6,7 @@ description: Replicating disinformation on Brexit night
 
 <span class="dc-hide-on-large dc-hide-on-small-portrait">
 
-ECHO FX replays the night of the 2016 UK EU membership referendum through the echoes of disinformation spread on social media.
+ECHO FX replays the night of the 2016 UK EU membership referendum through the echoes of disinformation spread on social media by Nigel Farage, in an apparent effort to short the £.
 
 </span>
 <span class="dc-hide-on-small-landscape">
@@ -26,11 +26,11 @@ ECHO FX replays the night of the 2016 UK EU membership referendum through the ec
 </span><COLBREAK>
 <span class="dc-hide-on-small-landscape">
 
-_ECHO FX_ replays the night of the 2016 United Kingdom E<span class="dc-hide-on-large">uropean </span>U<span class="dc-hide-on-large">nion</span> membership referendum through the echoes&#8199;of&#8199;disinformation&#8199;spread&#8199;on&#8199;social&#8199;media.
+ECHO FX replays the night of the 2016 United Kingdom E<span class="dc-hide-on-large">uropean </span>U<span class="dc-hide-on-large">nion</span> membership referendum through the echoes of disinformation spread on social media by Nigel Farage, in an apparent effort to short the £.
 
 </span>
 
-Suggesting a Remain win, those echoes manipulated market sentiment in order to inflate the value of the £, seemingly setting it up for a "pump and dump", a form of trading fraud aimed at boosting the value of an&#8196;asset&#8196;through&#8196;misleading&#8196;statements. <COLBREAK>As the £ subsequently crashed amongst market disbelief, a number of London City traders with access to insider information pointing to a Leave win&#8196;made&#8196;millions&#8196;from&#8196;the&#8196;£&#8196;collapse.
+Suggesting a Remain win, those echoes manipulated market sentiment in order to inflate the value of the £, seemingly setting it up for a "pump and dump", a form of trading fraud aimed at boosting the value of an&#8196;asset&#8196;through&#8196;misleading&#8196;statements. <COLBREAK><span class="dc-hide-on-large dc-hide-on-small-portrait"><br><br></span>As the £ subsequently crashed amongst market disbelief, a number of London City traders with access to insider information pointing to a Leave win&#8196;made&#8196;millions&#8196;from&#8196;the&#8196;£&#8196;collapse.
 
 <span class="dc-hide-on-small">
 
