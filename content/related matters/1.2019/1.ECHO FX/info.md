@@ -11,7 +11,7 @@ ECHO FX replays the night of the 2016 UK EU membership referendum through the ec
 </span>
 <span class="dc-hide-on-small-landscape">
 
-230616 2200: as polls close in the UK referendum on EU membership, Nigel Farage, a former commodities broker and the face of Leave EU, concedes defeat.
+230616 2200: as polls close in the UK referendum on EU membership, Nigel Farage, a former commodities broker and the face of Leave EU, concedes&#8196;defeat.
 
 </span>
 <span class="dc-hide-on-small-landscape">
@@ -30,7 +30,7 @@ _ECHO FX_ replays the night of the 2016 United Kingdom E<span class="dc-hide-on-
 
 </span>
 
-Suggesting a Remain win, those echoes manipulated market sentiment in order to inflate the value of the £, seemingly setting it up for a "pump and dump", a form of trading fraud aimed at boosting the value of an&#8196;asset&#8196;through&#8196;misleading&#8196;statements. <COLBREAK>As the £ subsequently crashed amongst market disbelief, a number of London City traders with access to insider information pointing to a Leave win made&#8196;millions&#8196;from&#8196;the&#8196;£&#8196;collapse.
+Suggesting a Remain win, those echoes manipulated market sentiment in order to inflate the value of the £, seemingly setting it up for a "pump and dump", a form of trading fraud aimed at boosting the value of an&#8196;asset&#8196;through&#8196;misleading&#8196;statements. <COLBREAK>As the £ subsequently crashed amongst market disbelief, a number of London City traders with access to insider information pointing to a Leave win&#8196;made&#8196;millions&#8196;from&#8196;the&#8196;£&#8196;collapse.
 
 <span class="dc-hide-on-small">
 

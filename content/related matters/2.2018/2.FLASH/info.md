@@ -5,7 +5,7 @@ description: "#crashcore #algotrading #spoofing #may6"
 
 _FLASH_ is a sonic reenactment of one of the fastest stock market crashes in history, which occurred on May&#8196;6,&#8196;known&#8196;as&#8196;the&#8196;Flash&#8196;Crash.
 
-As a set of strange events took place globally, from uncertain election outcomes to street demonstrations against European austerity policies, commentators searched for a meaningful narrative to the stock market accident. Speculations continued until 2015,<COLBREAK> when a London trader was arrested and extradited to the US to be investigated on market manipulation charges.
+As a set of strange events took place globally, from uncertain election outcomes to street demonstrations against European austerity policies, commentators searched for a meaningful narrative to the stock market accident. Speculations continued&#8196;until&#8196;2015,<COLBREAK> when a London trader was arrested and extradited to the US to be investigated on market manipulation charges.
 
 Accused of inflating the financial market to profit from its chaos, the trader admitted to the use of software hacked to enable "spoofing", a tactic used to alter the perceived supply and demand of a commodity on the stock&#8196;market&#8196;in&#8196;order&#8196;to&#8196;affect&#8196;its&#8196;value.
 <COLBREAK>
