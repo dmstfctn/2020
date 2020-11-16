@@ -8,6 +8,23 @@
   }
 }
 
+@media (min-width: 901px) and (max-aspect-ratio: 10.7/7){
+  .dc-media__image figure figcaption{
+    transform: rotate(-90deg) translateY(-100%);
+    right: 0;
+    background: #000000;
+    box-sizing: border-box;
+    width: 100vmax;
+    text-align: left;
+    height: 1.2em;
+    line-height: 1;
+    padding-top: .2em;
+  }
+  html[data-dc-pagetype="focusgroup"] .dc-media__image figure figcaption{
+    background: red;
+  }
+}
+
 .dc-line-break-large{
   display: block;
 }
