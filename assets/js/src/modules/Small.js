@@ -42,13 +42,14 @@ const Small = function( _loops ){
 };
 
 Small.prototype.setupData = function(){
+  const pathname = ( F.slashBoth(window.location.pathname) === '/mmittee/focus-groups/' ) ? '/mmittee/' : window.location.pathname;
   this.data = window.DCSMALL.pages;  
   this.homePath = this.data[0].url;
   this.homeIndex = 0;
-  this.pageIndex = this.getPageIndexFor( window.location.pathname );
+  this.pageIndex = this.getPageIndexFor( pathname );
   if( this.pageIndex !== 0 ){
     this.data.splice( this.pageIndex, 0, this.data.shift() );
-    this.pageIndex = this.getPageIndexFor( window.location.pathname );
+    this.pageIndex = this.getPageIndexFor( pathname );
     this.homeIndex = this.pageIndex + 1;
   }
   this.startPageIndex = this.pageIndex;
