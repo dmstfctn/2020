@@ -1,5 +1,4 @@
-html[data-dc-homeactive="focus-groups"],
-html[data-dc-pagetype="focusgroup"]{
+@mixin focus-group-pagetype (){
   background: #FF0000;
   .dc-sitenav{
     color: #000000;
@@ -59,6 +58,16 @@ html[data-dc-pagetype="focusgroup"]{
       }
     }
   }
+}
+
+
+html[data-dc-homeactive="focus-groups"]{
+  @media (min-width: 901px){
+    @include focus-group-pagetype();
+  }
+}
+html[data-dc-pagetype="focusgroup"]{
+  @include focus-group-pagetype();
 }
 
 html[data-dc-pagetype="focusgroup"]{
