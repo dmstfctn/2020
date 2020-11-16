@@ -36,7 +36,7 @@ PopOutWindow.prototype = {
     this.window = window.open(       
       this.url,
       this.title,      
-      `width=${w},height=${h},screenX=${x},screenY=${y}`
+      `width=${w},height=${h},screenX=${x},screenY=${y},location=on`
     );
 
     if( this.type === 'url' ){
@@ -48,7 +48,9 @@ PopOutWindow.prototype = {
         }
       }, 500 );
     } else {
-      this.window.addEventListener('load', () => {
+      this.window.addEventListener('load', () => {   
+        const ownChrome = this.window.outerHeight - this.window.innerHeight;     
+        this.window.resizeTo(w,h+ownChrome);
         this.window.addEventListener('unload', () => {        
           this._onClose();
         });      
