@@ -10,15 +10,19 @@
 
 @media (min-width: 901px) and (max-aspect-ratio: 107/70){
   .dc-media__image figure figcaption{
-    transform: rotate(-90deg) translateY(-100%);
-    right: 0;
+    transform: rotate(-90deg) translateX(100%);
+    right: -1px;
     background: #000000;
     box-sizing: border-box;
-    width: 100vmax;
-    text-align: left;
+    width: 82vh;
+    text-align: center;
     height: 1.2em;
     line-height: 1;
     padding-top: .2em;
+    left: auto;
+    top: auto;
+    bottom: 0;
+    transform-origin: right bottom;
   }
   html[data-dc-pagetype="focusgroup"] .dc-media__image figure figcaption{
     background: red;
