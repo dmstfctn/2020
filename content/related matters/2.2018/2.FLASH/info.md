@@ -3,7 +3,7 @@ title: FLASH
 description: "#crashcore #algotrading #spoofing #may6"
 ---
 
-_FLASH_ is a sonic reenactment of one of the fastest stock market crashes in history, which occurred on May&#8196;6,&#8196;known&#8196;as&#8196;the&#8196;Flash&#8196;Crash.
+FLASH is a sonic reenactment of one of the fastest stock market crashes in history, which occurred on May&#8196;6,&#8196;2010,&#8196;known&#8196;as&#8196;Flash&#8196;Crash.
 
 As a set of strange events took place globally, from uncertain election outcomes to street demonstrations against European austerity policies, commentators searched for a meaningful narrative to the stock market accident. Speculations continued&#8196;until&#8196;2015,<COLBREAK> when a London trader was arrested and extradited to the US to be investigated on market manipulation charges.
 

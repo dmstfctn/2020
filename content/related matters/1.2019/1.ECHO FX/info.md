@@ -1,7 +1,7 @@
 ---
 title: ECHO FX
 titleJustified: ECHO FX
-description: Replicating disinformation on Brexit night
+description: 230616 2200, Nigel Farage concedes deafeat
 ---
 
 <span class="dc-hide-on-large dc-hide-on-small-portrait">
