@@ -25,13 +25,13 @@ const createLowResAndSave = (imagePath, savePath) => {
     });
 };
 
-const createHalfResAndSave = (imagePath, savePath) => { 
-  if( !Config.resizeImages ){
+const createIntermediaryResAndSave = (imagePath, savePath, cfg ) => { 
+  if( !cfg || !Config.resizeImages ){
     fs.copyFileSync( imagePath, savePath );
     return;
   } 
   sharp( imagePath )
-    .resize( 2000, 2000, {
+    .resize( cfg.sizeMax, cfg.sizeMax, {
       fit: sharp.fit.inside,
       withoutEnlargement: true
     })
@@ -74,7 +74,13 @@ const moveSlideshowContent = ( slideshows ) => {
           fs.mkdirSync( path.dirname(content[i].newPath), {recursive: true} );
           
           if( slide.type === 'image' ){      
-            createHalfResAndSave( content[i].originalPath, content[i].halfPath );
+            for( name in Config.imgResizing ){
+              createIntermediaryResAndSave( 
+                content[i].originalPath, 
+                content[i].halfPath, 
+                Config.imgResizing[name] 
+              );
+            }
             createLowResAndSave( content[i].originalPath, content[i].lowPath );     
             //createOptimisedFullResAndSave( content[i].originalPath, content[i].newPath );    
             fs.copyFileSync( content[i].originalPath, content[i].newPath );
