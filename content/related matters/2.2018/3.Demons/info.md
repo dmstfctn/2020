@@ -1,6 +1,6 @@
 ---
 title: DEMONS
-description: "#blackmonday #1987 #confirmationbias #algo"
+description: "#blackmonday #1987 #confirmationbias"
 ---
 
 DEMONS is an audiovisual performance exploring confirmation bias in algorithmic trading. It replays Black Monday, October 19, 1987, the first stock market crash in which algorithmic trading was implicated.
