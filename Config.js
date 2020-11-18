@@ -16,6 +16,12 @@ let Config = {
   minify: true,
   minifyHTML: true,
   resizeImages: true, 
+  imgResizing: {
+    'half': {
+      name: 'half',
+      sizeMax: 2100,
+    }
+  },
   url_root: url_root,
   paths: {
     public_root: public_root,

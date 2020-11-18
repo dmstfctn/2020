@@ -25,18 +25,35 @@ const createLowResAndSave = (imagePath, savePath) => {
     });
 };
 
-const createHalfResAndSave = (imagePath, savePath) => { 
+const createIntermediaryResAndSave = (imagePath, savePath, cfg ) => { 
+  if( !cfg || !Config.resizeImages ){
+    fs.copyFileSync( imagePath, savePath );
+    return;
+  } 
+  sharp( imagePath )
+    .resize( cfg.sizeMax, cfg.sizeMax, {
+      fit: sharp.fit.inside,
+      withoutEnlargement: true
+    })
+    .jpeg({
+      quality: 80,
+      progressive: true,
+      force: false //if it's a png, keep it as a png
+    })
+    .toFile( savePath )
+    .catch( err => {
+      Config.log( 'Error with Image in CreateHalfResAndSave() in Rendering.js ', err );
+    });
+};
+
+createOptimisedFullResAndSave = (imagePath, savePath) => { 
   if( !Config.resizeImages ){
     fs.copyFileSync( imagePath, savePath );
     return;
   } 
   sharp( imagePath )
-    .resize( 1500, 1500, {
-      fit: sharp.fit.inside,
-      withoutEnlargement: true
-    })
     .jpeg({
-      quality: 50,
+      quality: 90,
       progressive: true,
       force: false //if it's a png, keep it as a png
     })
@@ -55,12 +72,22 @@ const moveSlideshowContent = ( slideshows ) => {
         for( i in content ){
           /* endure the destination exists */        
           fs.mkdirSync( path.dirname(content[i].newPath), {recursive: true} );
-          /* copy the file */
-          fs.copyFileSync( content[i].originalPath, content[i].newPath );
+          
           if( slide.type === 'image' ){      
-            createHalfResAndSave( content[i].originalPath, content[i].halfPath )   
-            createLowResAndSave( content[i].originalPath, content[i].lowPath );          
-          }        
+            for( name in Config.imgResizing ){
+              createIntermediaryResAndSave( 
+                content[i].originalPath, 
+                content[i].halfPath, 
+                Config.imgResizing[name] 
+              );
+            }
+            createLowResAndSave( content[i].originalPath, content[i].lowPath );     
+            //createOptimisedFullResAndSave( content[i].originalPath, content[i].newPath );    
+            fs.copyFileSync( content[i].originalPath, content[i].newPath );
+          } else {
+            /* copy the file */
+            fs.copyFileSync( content[i].originalPath, content[i].newPath );
+          }
         }        
       }
     });
