@@ -4,7 +4,7 @@ titleJustified: Offshore Investigation Vehicle
 description: A corporate structure to explore tax havens
 ---
 
-The OFFSHORE INVESTIGATION VEHICLE was an international corporate structure set up to model corporate financial practices observed in tax havens. The work engage directly with tax havens to&#8196;grasp&#8196;their&#8196;inner&#8196;workings.
+The OFFSHORE INVESTIGATION VEHICLE was an international corporate structure set up to model corporate financial practices observed in tax havens. The work engages directly with tax havens to&#8196;grasp&#8196;their&#8196;inner&#8196;workings.
 
 The OFFSHORE INVESTIGATION VEHICLE consisted of Empire Management Limited, a UK private limited company directed by members of the<COLBREAK> DEMYSTIFICATION COMMITTEE; Invest. One Limited, a Seychelles International Business Company directed by a nominee; and a corporate bank account, held by Invest. One Limited with Euro Pacific&#8196;Bank,&#8196;in&#8196;Puerto&#8196;Rico.
 

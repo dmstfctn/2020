@@ -451,16 +451,19 @@
   hideon: mobile
 
 - now: false
-  priority: 0
+  priority: 2
   year: 2018
   type: group show
   date: 
-  title: Projected.Capital
-  situation: ROEHRS & BOETSCH
-  location: zurich
+  title: transmediale face value
+  situation: HKW
+  location: berlin
   url: 
-  image: project-capital.jpg
+  image: demystification-committee-transmediale.jpg
   related: 
+    - Offshore Investigation Vehicle
+    - Offshore SS18
+  hideon: mobile
 
 - now: false
   priority: 0
@@ -473,6 +476,18 @@
   url: 
   image: demystification-committee-fotomuseum-winterthur.jpg
   related: Network Study (I, VII, VIII)
+
+- now: false
+  priority: 0
+  year: 2018
+  type: group show
+  date: 
+  title: Projected.Capital
+  situation: ROEHRS & BOETSCH
+  location: zurich
+  url: 
+  image: project-capital.jpg
+  related: 
 
 - now: false
   priority: 1
@@ -683,19 +698,6 @@
   related: 
     - Offshore Investigation Vehicle
     - Flash
-
-- now: false
-  priority: 2
-  year: 2018
-  type: talk
-  date: 
-  title: transmediale face value
-  situation: HKW
-  location: berlin
-  url: 
-  image: demystification-committee-transmediale-talk.jpg
-  related: Offshore Investigation Vehicle
-  hideon: mobile
 
 # ## 2018 ## dissemination ##### #
 - now: false
