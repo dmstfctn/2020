@@ -10,19 +10,17 @@
 
 @media (min-width: 901px) and (max-aspect-ratio: 107/70){
   .dc-media__image figure figcaption{
-    transform: rotate(-90deg) translateX(100%);
     right: -1px;
-    background: #000000;
-    box-sizing: border-box;
-    width: 84vh;
-    text-align: center;
-    height: 1.2em;
-    line-height: 1;
-    padding-top: .2em;
     left: auto;
-    top: auto;
-    bottom: 0;
-    transform-origin: right bottom;
+    background: #000000;
+    span{
+      right: auto;
+      bottom: auto;;
+      left: 50%;
+      top: 50%;
+      transform-origin: center;
+      transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+    }
   }
   html[data-dc-pagetype="focusgroup"] .dc-media__image figure figcaption{
     background: red;

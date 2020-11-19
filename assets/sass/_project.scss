@@ -75,11 +75,18 @@
     figcaption{
       position: absolute;
       left: 100%;
-      top: 100%;
+      top: 0;
       text-align: center;
       white-space: nowrap;
-      transform-origin: top left;
-      transform: rotate(-90deg);
+      width: 1.7em;
+      height: 100%;
+      span{
+        position: absolute;
+        left: 100%;
+        bottom: 0;
+        transform-origin: bottom left;
+        transform: rotate(-90deg);
+      }
     }
   }
   img{
