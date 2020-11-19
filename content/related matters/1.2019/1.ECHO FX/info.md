@@ -1,7 +1,7 @@
 ---
 title: ECHO FX
 titleJustified: ECHO FX
-description: 230616 2200, Nigel Farage concedes deafeat
+description: 230616 2200, Nigel Farage concedes defeat
 ---
 
 <span class="dc-hide-on-large dc-hide-on-small-portrait">
