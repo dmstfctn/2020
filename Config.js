@@ -20,6 +20,7 @@ let Config = {
     'half': {
       name: 'half',
       sizeMax: 2100,
+      quality: 70
     }
   },
   url_root: url_root,

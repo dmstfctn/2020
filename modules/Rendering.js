@@ -30,17 +30,30 @@ const createIntermediaryResAndSave = (imagePath, savePath, cfg ) => {
     fs.copyFileSync( imagePath, savePath );
     return;
   } 
+
+  if( path.extname(imagePath) === '.png' ){
+    fs.copyFileSync( imagePath, savePath );
+    return;
+  }
+  const filename = path.basename( imagePath );
+  const inSize = fs.statSync( imagePath ).size;
   sharp( imagePath )
     .resize( cfg.sizeMax, cfg.sizeMax, {
       fit: sharp.fit.inside,
       withoutEnlargement: true
     })
     .jpeg({
-      quality: 80,
-      progressive: true,
+      quality: cfg.quality,
+      progressive: false,
       force: false //if it's a png, keep it as a png
     })
     .toFile( savePath )
+    .then( ( info ) => {      
+      if( info.size > inSize ){
+        //console.log('RESIZED ' + filename + ' was larger. Keeping original.' )        
+        fs.copyFileSync( imagePath, savePath );
+      }
+    })
     .catch( err => {
       Config.log( 'Error with Image in CreateHalfResAndSave() in Rendering.js ', err );
     });
