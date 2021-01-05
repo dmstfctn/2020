@@ -309,6 +309,19 @@
   year: 2019
   type: screening
   date: 
+  title: PORTO DESIGN BIENNIAL
+  situation: CAMPO 24 DE AGOSTO
+  location: porto
+  url: 
+  image: chaos-of-interfaces-porto-biennale-screening.jpg
+  related: Interface Chaos
+  hideon: mobile
+
+- now: false
+  priority: 0
+  year: 2019
+  type: screening
+  date: 
   title: INTERFACE CHAOS
   situation: TRUST
   location: berlin
