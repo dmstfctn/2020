@@ -28,10 +28,12 @@
   <a href="{{now.url}}" class="dc-external-link" target="_blank" rel="noopener">
     <h2 class="dctxt--date dc-cv--now">{{now.label}}</h2><!--
   --><div class="dc-cv--entry dc-work--item">
-      <div class="dc-cv--name">{{now.title}}</div> 
-      <span class="dots">..........................................................................................................................................................................................................................................</span>
-      <div class="dc-cv--location">{{now.situation}}</div>
-      <span class="dc-work--item--description"><span class="description-inner">{{now.description}}</span></span>
+      <span class="dc-cv--linewrap dc-cv--linewrap__hasdescription">
+        <div class="dc-cv--name">{{now.title}}</div> 
+        <span class="dots">..........................................................................................................................................................................................................................................</span>
+        <div class="dc-cv--location">{{now.situation}}</div>
+        <span class="dc-work--item--description dc-cv--description"><span class="description-inner">{{{now.description}}}</span></span>
+      </span>
     </div>
   </a>
   {{/if}}
