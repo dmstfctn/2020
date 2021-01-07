@@ -121,7 +121,7 @@
   related: Interface Chaos
 
 - now: false
-  longdescription: Investigative journalism about offshore banking, touching on OFFSHORE SS18
+  longdescription: Investigative journalism on offshore banking, touching on OFFSHORE SS18
   priority: 0
   year: 2020
   type: interview
@@ -139,6 +139,7 @@
   # ## 2020 ## talk ############## #
 
 - now: false
+  longdescription: A panel on artistic explorations of tax havens, led by an investigative journalist
   priority: 0
   year: 2020
   type: streaming
@@ -213,6 +214,7 @@
   hideon: desktop
 
 - now: false
+  longdescription: Text, music and images on Deleuze and Guattari's concepts of chaos and rhythm
   priority: 0
   year: 2020
   type: release
@@ -377,6 +379,7 @@
 
 # ## 2019 ## dissemination ##### #
 - now: false
+  longdescription: Audiovisual genealogy of financial algorithmic collapse, released as a custom USB
   priority: 0
   year: 2019
   type: release
@@ -589,6 +592,7 @@
 
 # ## 2018 ## talk ############## #
 - now: false
+  longdescription: On the sonification of stock market crashes, a panel on trading and algorithms
   priority: 0
   year: 2018
   type: streaming
@@ -618,6 +622,7 @@
   hideon: desktop
 
 - now: false
+  longdescription: On infrastructures and geographies of avoidance, from data centres to tax havens
   priority: 0
   year: 2018
   type: streaming
@@ -634,6 +639,7 @@
   hideon: mobile
 
 - now: false
+  longdescription: On ways and means of making offshore and other financial processes visible
   priority: 0
   year: 2018
   type: streaming
@@ -660,7 +666,7 @@
     - Offshore Investigation Vehicle
     - OFFSHORE SS18
 
-- now: false
+- now: false  
   priority: 1
   year: 2018
   type: streaming
@@ -677,6 +683,7 @@
   hideon: desktop
 
 - now: false
+  longdescription: "#algotrading #crashcore #spoofing #flashcrash #may62010 #soundon"
   priority: 1
   year: 2018
   type: streaming
@@ -720,6 +727,7 @@
 
 # ## 2018 ## dissemination ##### #
 - now: false
+  longdescription: An interview on recent and future work of the Demystification Committee
   priority: 0
   year: 2018
   type: interview
@@ -735,6 +743,7 @@
     - The Network Ensemble
 
 - now: false
+  longdescription: "A review of OFFSHORE SS18 (2018) at the 4th Istanbul Design Biennale"
   priority: 1
   year: 2018
   type: interview
@@ -749,6 +758,7 @@
     - Offshore SS18
 
 - now: false
+  longdescription: "Reviewing OFFSHORE INVESTIGATION VEHICLE (2017-18) at transmediale"
   priority: 1
   year: 2018
   type: interview
@@ -764,6 +774,7 @@
   hideon: mobile
 
 - now: false
+  longdescription: Fictional tales of a (real) puppet, director of an offshore company
   priority: 0
   year: 2018
   type: publication
@@ -776,6 +787,7 @@
   related: OFFSHORE SS18
 
 - now: false
+  longdescription: Fiction, poetry, legalese and a shifting layout for a publication on offshore finance
   priority: 1
   year: 2018
   type: publication
@@ -938,6 +950,7 @@
 
 # ## 2017 ## dissemination ##### #
 - now: false
+  longdescription: Audiovisual experiments with wireless networks, released as an SD card
   priority: 0
   year: 2017
   type: release
@@ -981,6 +994,7 @@
 
 # ## 2016 ## dissemination ##### #
 - now: false
+  longdescription: A dub-noise remix of a 1975 speech by Felix Guattari on "informatics machines"
   priority: 2
   year: 2016
   type: release
