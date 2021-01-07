@@ -269,7 +269,9 @@
   location: porto
   url: 
   image: chaos-of-interfaces-porto-biennale.jpg
-  related: Interface Chaos
+  related: 
+    - Interface Chaos
+    - A Chaos of Interfaces
 
 - now: false
   priority: 0
