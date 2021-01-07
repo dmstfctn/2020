@@ -195,6 +195,13 @@
       color: #FF0000;
     }
 
+    .dc-biglist--now .dc-work--item--description{
+      background: transparent;
+    }
+    .dc-biglist--now .dc-cv--linewrap::after{
+      display: none;
+    }
+
   
 
   .dc-work--year .dc-work--items{
