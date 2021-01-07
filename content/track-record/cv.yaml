@@ -34,8 +34,7 @@
 # ########## 2021 ########## #
 # ## YEAR ## live ##############
 - now: next
-  description: Film screening feat. live soundtrack by SKY H1
-  longdescription: A screening of INTERFACE CHAOS accompanied by SKY H1's live soundtrack
+  description: Film screening feat. live soundtrack by SKY H1 
   priority: 0
   year: 2021
   type: live
@@ -50,6 +49,7 @@
 
 - now: next
   description: Screening with a live soundtrack by SKY H1
+  longdescription: A screening of INTERFACE CHAOS accompanied by SKY H1's live soundtrack
   priority: 0
   year: 2021
   type: live
