@@ -271,9 +271,7 @@
   location: porto
   url: 
   image: chaos-of-interfaces-porto-biennale.jpg
-  related: 
-    - Interface Chaos
-    - A Chaos of Interfaces
+  related: A Chaos of Interfaces
 
 - now: false
   priority: 0
@@ -322,7 +320,9 @@
   location: porto
   url: 
   image: chaos-of-interfaces-porto-biennale-screening.jpg
-  related: Interface Chaos
+  related: 
+    - Interface Chaos
+    - A Chaos of Interfaces
   hideon: mobile
 
 - now: false
@@ -375,7 +375,7 @@
   location: porto
   url: 
   image: demystification-committee-residency.jpg
-  related: 
+  related: A Chaos of Interfaces
 
 # ## 2019 ## dissemination ##### #
 - now: false
@@ -653,7 +653,7 @@
   hideon: mobile
 
 - now: false
-  longdescription: A talk on offshore investigative w-i-p, part of a panel on play in art and finance
+  longdescription: A talk on offshore investigative w—i—p, part of a panel on play in art and finance
   priority: 0
   year: 2018
   type: streaming
@@ -744,7 +744,7 @@
     - The Network Ensemble
 
 - now: false
-  longdescription: "A review of OFFSHORE SS18 (2018), exhibited at the 4 Istanbul Design Biennale"
+  longdescription: "A review of OFFSHORE SS18 (2018), part of the 4<sup>th</sup> Istanbul Design Biennale"
   priority: 1
   year: 2018
   type: interview
