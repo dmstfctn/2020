@@ -35,6 +35,7 @@
 # ## YEAR ## live ##############
 - now: next
   description: Film screening feat. live soundtrack by SKY H1
+  longdescription: A screening of INTERFACE CHAOS accompanied by SKY H1's live soundtrack
   priority: 0
   year: 2021
   type: live
@@ -107,7 +108,7 @@
 
 # ## 2020 ## dissemination ##### #
 - now: false
-  longdescription: this is the cv caption for NERO - INTERFACE CHAOS
+  longdescription: An interview on the themes of INTERFACE CHAOS (2019), including excerpts
   priority: 0
   year: 2020
   type: interview
@@ -120,6 +121,7 @@
   related: Interface Chaos
 
 - now: false
+  longdescription: Investigative journalism about offshore banking, touching on OFFSHORE SS18
   priority: 0
   year: 2020
   type: interview
