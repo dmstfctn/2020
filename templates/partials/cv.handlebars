@@ -19,20 +19,25 @@
       <!-- entries. entry: {{title}} -->
       <dd class="dc-cv--entry{{#if now}} dc-cv--now{{/if}} dc-cv-type__{{type}}{{#if image}}{{#unless now}} dc-list-hoverimg{{/unless}}{{/if}}{{#if url}} dc-cv--entry__haslink{{/if}}{{#if hideon}} dc-cv-hideon__{{hideon}}{{/if}}" data-dc-cv-priority="{{priority}}">
         {{#if url}}<a href="{{url}}" class="dc-external-link" target="_blank" rel="noopener">{{/if}}
-          <div class="dc-cv--name">{{{title}}}</div>
-          <div class="dc-cv--location">{{{situation}}}{{~#if location~}}, {{/if}}{{{location}}}</div>
-          {{#if now}}
-          <span class="dots">..........................................................................................................................................................................................................................................</span>
-          {{/if}}
-          {{#unless now}}
-          {{#if image}}
-            <img 
-              src=""
-              data-low-src="{{dc_urlpath image.lowSrc}}" 
-              data-src="{{dc_urlpath image.src}}"
-            >
-          {{/if}}       
-          {{/unless}}       
+          <span class="dc-cv--linewrap{{#if longdescription}} dc-cv--linewrap__hasdescription{{/if}}">
+            <div class="dc-cv--name">{{{title}}}</div>
+            <div class="dc-cv--location">{{{situation}}}{{~#if location~}}, {{/if}}{{{location}}}</div>
+            {{#if now}}
+            <span class="dots">..........................................................................................................................................................................................................................................</span>
+            {{/if}}
+            {{#unless now}}
+            {{#if image}}
+              <img
+                src=""
+                data-low-src="{{dc_urlpath image.lowSrc}}" 
+                data-src="{{dc_urlpath image.src}}"
+              >
+            {{/if}}   
+            {{/unless}}          
+            {{#if longdescription}}
+              <span class="dc-cv--description">{{longdescription}}</span>
+            {{/if}}
+          </span>         
         {{#if url}}</a>{{/if}}
       </dd>
       {{/each}}

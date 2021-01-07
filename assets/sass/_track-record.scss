@@ -106,30 +106,65 @@
   }
 
   .dc-cv--entry{    
-    text-align: justify;
-    text-align-last: justify;
     padding: 0;
     margin: 0;
-    width: 72%;    
-    display: flex;
-    justify-content: space-between;
-    float: right;
-    overflow: hidden;
+    width: 72%;   
+    float: right;    
+    overflow: hidden;    
     position: relative;
-    white-space: nowrap;
   }
     .dc-cv-hideon__mobile{
-      display: flex;
+      display: block;
     }
     .dc-cv-hideon__desktop{
       display: none;
     }
     
-  .dc-cv--entry > a{
+  .dc-cv--entry .dc-external-link{
+    display: block;
+    &::before{
+      top: 0.6rem;
+    }
+  }
+
+  .dc-cv--linewrap{
+    text-align: justify;
+    text-align-last: justify;
     flex-grow: 2;
     display: flex;
     justify-content: space-between;
-  }    
+    justify-content: space-between;
+    position: relative;
+    white-space: nowrap;
+  }      
+    .dc-cv--description{
+      display: none;
+      position: absolute;
+      text-align: justify;
+      text-align-last: justify;
+      white-space: normal;
+      width: 100%;
+      top: 0;
+      left: 0;
+      &::after{
+        content: '';
+        display: inline-block;
+        width: 100%;
+      }
+    }
+
+    .dc-cv--linewrap.dc-cv--linewrap__hasdescription:hover{ 
+      & > * {
+        opacity: 0;
+      }
+      &::after{
+        display: none;
+      }
+      .dc-cv--description{
+        opacity: 1;
+        display: block;
+      }
+    }
 
   .dc-cv .dctxt--date{
     color: #FF0000;
@@ -196,3 +231,5 @@
       margin-left: 4.4rem;
     }
   }
+
+  
