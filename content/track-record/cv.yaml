@@ -57,7 +57,7 @@
   title: INTERFACE CHAOS LIVE
   situation: CAFE OTO
   location: london
-  url: https://www.cafeoto.co.uk/events/interface-chaos-live-january-2021/
+  url: https://www.cafeoto.co.uk/events/interface-chaos-live-june-2021/
   image: 
   related: Interface Chaos
   hideon: mobile
@@ -592,7 +592,7 @@
 
 # ## 2018 ## talk ############## #
 - now: false
-  longdescription: On the sonification of stock market crashes, a panel on trading and algorithms
+  longdescription: On the sonification of stock market crashes, part of a panel on algotrading
   priority: 0
   year: 2018
   type: streaming
@@ -653,6 +653,7 @@
   hideon: mobile
 
 - now: false
+  longdescription: A talk on offshore investigative w-i-p, part of a panel on play in art and finance
   priority: 0
   year: 2018
   type: streaming
@@ -683,7 +684,7 @@
   hideon: desktop
 
 - now: false
-  longdescription: "#algotrading #crashcore #spoofing #flashcrash #may62010 #soundon"
+  longdescription: "#algotrading #crashcore #spoofing #flashcrash #may62010 #podcast"
   priority: 1
   year: 2018
   type: streaming
@@ -743,7 +744,7 @@
     - The Network Ensemble
 
 - now: false
-  longdescription: "A review of OFFSHORE SS18 (2018) at the 4th Istanbul Design Biennale"
+  longdescription: "A review of OFFSHORE SS18 (2018), exhibited at the 4 Istanbul Design Biennale"
   priority: 1
   year: 2018
   type: interview
@@ -758,7 +759,7 @@
     - Offshore SS18
 
 - now: false
-  longdescription: "Reviewing OFFSHORE INVESTIGATION VEHICLE (2017-18) at transmediale"
+  longdescription: "Reviewing OFFSHORE INVESTIGATION VEHICLE (2017—18) at transmediale"
   priority: 1
   year: 2018
   type: interview
@@ -774,7 +775,7 @@
   hideon: mobile
 
 - now: false
-  longdescription: Fictional tales of a (real) puppet, director of an offshore company
+  longdescription: Fictional tales of a real puppet, directing a Seychelles International Business Company
   priority: 0
   year: 2018
   type: publication
@@ -994,7 +995,7 @@
 
 # ## 2016 ## dissemination ##### #
 - now: false
-  longdescription: A dub-noise remix of a 1975 speech by Felix Guattari on "informatics machines"
+  longdescription: Remixing a 1975 speech by Felix Guattari on the advent of informatics machines
   priority: 2
   year: 2016
   type: release
