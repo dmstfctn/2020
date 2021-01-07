@@ -2,7 +2,8 @@
 
 # - now: true
 #   description:          # only used if it's the 'now' item on the home page
-#   priority: 0           #controls what's shown if there's not space on phone
+#   longdescription:      # longer caption, used on the CV
+#   priority: 0           # controls what's shown if there's not space on phone
 #   year: 2020
 #   type: solo / group / live / screening / talk / dissemination
 #   date: 23.3–
@@ -106,6 +107,7 @@
 
 # ## 2020 ## dissemination ##### #
 - now: false
+  longdescription: this is the cv caption for NERO - INTERFACE CHAOS
   priority: 0
   year: 2020
   type: interview
