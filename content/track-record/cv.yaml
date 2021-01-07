@@ -743,6 +743,21 @@
     - Offshore SS18
 
 - now: false
+  priority: 1
+  year: 2018
+  type: interview
+  date: 
+  title: What Audre Lorde's language of self care can teach
+  situation: FRIEZE
+  location: 
+  url: https://www.frieze.com/article/what-audre-lordes-language-self-care-can-teach-us-after-metoo
+  image:
+  related:
+    - Offshore Investigation Vehicle
+    - Offshore SS18
+  hideon: mobile
+
+- now: false
   priority: 0
   year: 2018
   type: publication

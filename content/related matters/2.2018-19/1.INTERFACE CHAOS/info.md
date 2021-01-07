@@ -1,6 +1,5 @@
 ---
 title: Interface Chaos
-titleJustified: Interface Chaos
 description: A short film about the survival of money
 #link: https://interfacechaos.com
 ---
