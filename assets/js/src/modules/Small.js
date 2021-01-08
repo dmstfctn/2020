@@ -1,5 +1,7 @@
 import 'pepjs'
 
+const Hammer = require('hammerjs');
+
 const CFG = require('./Config.js' );
 const F = require( './Functions.js' );
 
@@ -108,17 +110,88 @@ Small.prototype.deactivate = function(){
 /* interaction */
 Small.prototype.setupInteraction = function(){
   this.interactTimeouts = {};
+  this.$zoomEle = document.querySelector('.dc-zoomable-wrap');
+  this.zoomTimeout = null;
+  this.hammertime = new Hammer(this.$interactionEle, {
+    domEvents: false,
+    touchAction: 'manipulation'
+  });
+   
+  this.hammertime.get('pinch').set({ enable: true });
 
-  this.$interactionEle.addEventListener('pointerdown', (e) => {
-    if(e.pageX >= window.innerWidth / 2){
-      this.showInteraction( 'forward' );
-    } else {
-      this.showInteraction( 'back' );
-    }
+  this.scale = 1;
+  this.translate = {
+    x: 0,
+    y: 0
+  };
+  this.pinchPoint = {
+    x: 0,
+    y: 0
+  };
+  this.pScale = 1;
+  const minScale = 1;
+  const maxScale = 4;
+
+  const update = () => {
+    // const x = (window.innerWidth - this.pinchPoint.x * (this.scale-1)) + this.translate.x;    
+    // const y = (window.innerHeight - this.pinchPoint.y * (this.scale-1)) + this.translate.y;
+    const x = (-1 * this.pinchPoint.x) + this.translate.x;
+    const y = (-1 * this.pinchPoint.y) + this.translate.y;
+    const scale = this.scale;
+    const originX = (this.pinchPoint.x/window.innerWidth) * 100;
+    const originY = (this.pinchPoint.y/window.innerHeight) * 100;
+    this.$zoomEle.style.transformOrigin = originX + '% ' + originY + '%'; 
+    this.$zoomEle.style.transform = 'translateX('+ x +'px) translateY('+ y +'px) scale(' + scale + ')';
+  }
+
+  this.hammertime.on('pinchstart', (e) => {
+    console.log('PINCHSTART')
+    this.hideInteraction( 'forward' );
+    this.hideInteraction( 'back' );
+    this.pinchPoint.x = e.center.x;
+    this.pinchPoint.y = e.center.y;    
+    this.translate.x = this.pinchPoint.x;
+    this.translate.y = this.pinchPoint.y;
+  });
+
+  this.hammertime.on('pinchin pinchout', (e) => {  
+    console.log('PINCH IN/OUT: ', e );  
+    this.translate.x = e.center.x;
+    this.translate.y = e.center.y;
+    this.scale = Math.max( minScale, Math.min(this.pScale * (e.scale), maxScale));      
+    update();
+  });
+
+  this.hammertime.on('pinchmove', (e) => {
+    console.log('PINCHMOVE', e );
+    this.translate.x = e.center.x;
+    this.translate.y = e.center.y;        
+    update();
   })
 
-  this.$interactionEle.addEventListener( 'pointerup', ( e ) => {
-    if(e.pageX >= window.innerWidth / 2){      
+  this.hammertime.on('pinchend pinchcancel', (e) => { 
+    console.log('PINCHEND/CANCEL')
+    this.zoomTimeout = setTimeout( () => {
+      this.pScale = this.scale;
+      this.scale = minScale;
+      this.pScale = minScale;
+      this.translate.x = 0;
+      this.translate.y = 0;
+      this.pinchPoint.x = 0;
+      this.pinchPoint.y = 0;
+      this.$zoomEle.style.transition = 'transform .1s ease-out';
+      this.$zoomEle.style.transform = 'translateX(0px) translateY(0px) scale(' + minScale + ')';
+      setTimeout( () => {
+        this.$zoomEle.style.transformOrigin = 'center center';
+        this.$zoomEle.style.transition = '';
+      }, 100 );
+    }, 100 );
+    this.hideInteraction( 'forward' );
+    this.hideInteraction( 'back' );
+  });
+
+  this.hammertime.on('tap pressup', (e) => {    
+    if(e.center.x >= window.innerWidth / 2){      
       this.project.next();
     } else {      
       this.project.prev();
@@ -128,7 +201,20 @@ Small.prototype.setupInteraction = function(){
     if( this.project.isOnGfxPlaceholder ){
       e.stopPropagation();
     }
-  }, {passive: true} );  
+  });
+
+  this.$interactionEle.addEventListener('pointerdown', (e) => {
+    if(e.pageX >= window.innerWidth / 2){
+      this.showInteraction( 'forward' );
+    } else {
+      this.showInteraction( 'back' );
+    }
+  });
+  this.$interactionEle.addEventListener('pointerup', (e) => {
+    this.hideInteraction( 'forward' );
+    this.hideInteraction( 'back' );
+  });
+
   this.$interactionEle.addEventListener('touchmove', function (event) {
     if (event.targetTouches.length === 1) {
       event.preventDefault();
@@ -136,7 +222,8 @@ Small.prototype.setupInteraction = function(){
   });
   document.addEventListener('gesturestart', function (e) {
     e.preventDefault();
-});
+  });
+
 };
 
 Small.prototype.showInteraction = function( type ){

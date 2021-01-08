@@ -10,6 +10,13 @@
     position: relative;
     -webkit-text-size-adjust: none;
   }
+
+  /* ZOOM */
+  .dc-zoomable-wrap{
+    position: absolute;
+    top: 0;
+  }
+
   .dc-cv--entry.dc-cv--entry__haslink > a::after,
   .dc-cv--entry::after,
   .dots,
@@ -429,7 +436,7 @@
     z-index: 50;
     display: block;
     overflow: hidden;
-    touch-action: none;
+    touch-action: manipulation;
   }
     .dc-mobile-nav::before,
     .dc-mobile-nav::after{
