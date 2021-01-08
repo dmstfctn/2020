@@ -116,7 +116,8 @@ Small.prototype.setupInteraction = function(){
     domEvents: false,
     touchAction: 'manipulation'
   });
-   
+
+  this.hammertime.get('press').set({ time: 10 });
   this.hammertime.get('pinch').set({ enable: true });
 
   this.scale = 1;
@@ -133,8 +134,6 @@ Small.prototype.setupInteraction = function(){
   const maxScale = 4;
 
   const update = () => {
-    // const x = (window.innerWidth - this.pinchPoint.x * (this.scale-1)) + this.translate.x;    
-    // const y = (window.innerHeight - this.pinchPoint.y * (this.scale-1)) + this.translate.y;
     const x = (-1 * this.pinchPoint.x) + this.translate.x;
     const y = (-1 * this.pinchPoint.y) + this.translate.y;
     const scale = this.scale;
@@ -145,7 +144,6 @@ Small.prototype.setupInteraction = function(){
   }
 
   this.hammertime.on('pinchstart', (e) => {
-    console.log('PINCHSTART')
     this.hideInteraction( 'forward' );
     this.hideInteraction( 'back' );
     this.pinchPoint.x = e.center.x;
@@ -155,7 +153,6 @@ Small.prototype.setupInteraction = function(){
   });
 
   this.hammertime.on('pinchin pinchout', (e) => {  
-    console.log('PINCH IN/OUT: ', e );  
     this.translate.x = e.center.x;
     this.translate.y = e.center.y;
     this.scale = Math.max( minScale, Math.min(this.pScale * (e.scale), maxScale));      
@@ -163,14 +160,12 @@ Small.prototype.setupInteraction = function(){
   });
 
   this.hammertime.on('pinchmove', (e) => {
-    console.log('PINCHMOVE', e );
     this.translate.x = e.center.x;
     this.translate.y = e.center.y;        
     update();
   })
 
   this.hammertime.on('pinchend pinchcancel', (e) => { 
-    console.log('PINCHEND/CANCEL')
     this.zoomTimeout = setTimeout( () => {
       this.pScale = this.scale;
       this.scale = minScale;
@@ -203,17 +198,25 @@ Small.prototype.setupInteraction = function(){
     }
   });
 
-  this.$interactionEle.addEventListener('pointerdown', (e) => {
-    if(e.pageX >= window.innerWidth / 2){
+  this.hammertime.on('press', (e) => { 
+    if(e.center.x >= window.innerWidth / 2){      
       this.showInteraction( 'forward' );
-    } else {
+    } else {      
       this.showInteraction( 'back' );
     }
   });
-  this.$interactionEle.addEventListener('pointerup', (e) => {
-    this.hideInteraction( 'forward' );
-    this.hideInteraction( 'back' );
-  });
+
+  // this.$interactionEle.addEventListener('pointerdown', (e) => {
+  //   if(e.pageX >= window.innerWidth / 2){
+  //     this.showInteraction( 'forward' );
+  //   } else {
+  //     this.showInteraction( 'back' );
+  //   }
+  // });
+  // this.$interactionEle.addEventListener('pointerup', (e) => {
+  //   this.hideInteraction( 'forward' );
+  //   this.hideInteraction( 'back' );
+  // });
 
   this.$interactionEle.addEventListener('touchmove', function (event) {
     if (event.targetTouches.length === 1) {
@@ -223,6 +226,14 @@ Small.prototype.setupInteraction = function(){
   document.addEventListener('gesturestart', function (e) {
     e.preventDefault();
   });
+  document.addEventListener('touchstart', function(e){
+    console.log(e.target.classList.contains('dc-mobile-home-link'));
+    if( e.target.classList.contains('dc-mobile-home-link') === false ){
+      e.preventDefault();
+    } else {
+      console.log('home link!');
+    }
+  }, {passive: false});
 
 };
 

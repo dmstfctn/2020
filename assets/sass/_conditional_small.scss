@@ -498,6 +498,18 @@
       background: #FFFFFF;
     }
 
+  .dc-mobile-home-link{
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 3.2rem;
+    width: 4.5rem;
+    //background: rgba(0,255,0,0.5);
+    z-index: 60;
+    display: block;
+  }
+
   /* ios / notch overrides */
   .dc-item--info,
   .dc-track-record{
@@ -512,7 +524,7 @@
     height: 100vw;
     transform-origin: center;
     transform: translateX(-50%) translateY(-50%) rotate(-90deg);
-    z-index: 60;
+    z-index: 70;
     pointer-events: all;
     touch-action: none;
     svg{
