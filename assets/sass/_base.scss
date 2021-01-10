@@ -175,22 +175,11 @@ html, body{
   padding-left: .1em;
 }
 
-    // .dc-dissemination--info:before{
-  //   position: absolute;    
-  //   content: '';
-  //   border-bottom: .1em dotted;
-  //   bottom: 0.17em;
-  //   left: 2rem;
-  //   right: 2rem;
-  // }
-// .dc-dissemination--name,
-// .dc-dissemination--location{
-//   background: #000000;
-//   z-index: 1;
-// } 
-//   .dc-dissemination--name{
-//     padding-right: .2em;
-//   }
-//   .dc-dissemination--location{
-//     padding-left: .2em;
-//   }
+
+/* ZOOM */
+.dc-zoomable-wrap{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}

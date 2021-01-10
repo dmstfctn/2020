@@ -32,17 +32,20 @@
   <script defer src="{{dc_urlpath '/assets/js/dist/main.js' }}"></script>
 </head>
 <body>
-  {{{ navigation }}}
-  <div class="dc-main-content">
-    {{{ content }}}
+  <div class="dc-zoomable-wrap">
+    {{{ navigation }}}
+    <div class="dc-main-content">
+      {{{ content }}}
+    </div>
+    {{{ track_record }}}
   </div>
-  {{{ track_record }}}
-  <div class="dc-gfx" touch-action="auto">
+  <div class="dc-gfx" touch-action="none">
     {{> svg_GFX }}
   </div>
   <div class="dc-mobile-nav" touch-action="none">
     <div class="dc-mobile-bar"></div>
   </div>
+  <a href="{{dc_urlpath '/'}}" class="dc-mobile-home-link"></a>
   {{{ small_site }}}  
   <script>
     console.log('BUILD INFO:\n\n', '{{~_build_info~}}');

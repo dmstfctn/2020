@@ -10,6 +10,13 @@
     position: relative;
     -webkit-text-size-adjust: none;
   }
+
+  /* ZOOM */
+  .dc-zoomable-wrap{
+    position: absolute;
+    top: 0;
+  }
+
   .dc-cv--entry.dc-cv--entry__haslink > a::after,
   .dc-cv--entry::after,
   .dots,
@@ -429,7 +436,7 @@
     z-index: 50;
     display: block;
     overflow: hidden;
-    touch-action: none;
+    touch-action: manipulation;
   }
     .dc-mobile-nav::before,
     .dc-mobile-nav::after{
@@ -491,6 +498,18 @@
       background: #FFFFFF;
     }
 
+  .dc-mobile-home-link{
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 3.2rem;
+    width: 4.5rem;
+    //background: rgba(0,255,0,0.5);
+    z-index: 60;
+    display: block;
+  }
+
   /* ios / notch overrides */
   .dc-item--info,
   .dc-track-record{
@@ -505,7 +524,7 @@
     height: 100vw;
     transform-origin: center;
     transform: translateX(-50%) translateY(-50%) rotate(-90deg);
-    z-index: 60;
+    z-index: 70;
     pointer-events: all;
     touch-action: none;
     svg{
