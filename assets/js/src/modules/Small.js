@@ -116,9 +116,12 @@ Small.prototype.setupInteraction = function(){
     domEvents: false,
     touchAction: 'manipulation'
   });
-
+  
+  this.hammertime.get('pan').set({ direction: Hammer.DIRECTION_ALL });
   this.hammertime.get('press').set({ time: 10 });
   this.hammertime.get('pinch').set({ enable: true });
+  this.hammertime.get('pan').requireFailure(this.hammertime.get('pinch'));
+  this.hammertime.get('pinch').dropRequireFailure(this.hammertime.get('pan'));
 
   this.scale = 1;
   this.translate = {
@@ -142,7 +145,7 @@ Small.prototype.setupInteraction = function(){
     this.$zoomEle.style.transformOrigin = originX + '% ' + originY + '%'; 
     this.$zoomEle.style.transform = 'translateX('+ x +'px) translateY('+ y +'px) scale(' + scale + ')';
   }
-
+  let isZoom = false
   this.hammertime.on('pinchstart', (e) => {
     this.hideInteraction( 'forward' );
     this.hideInteraction( 'back' );
@@ -150,19 +153,26 @@ Small.prototype.setupInteraction = function(){
     this.pinchPoint.y = e.center.y;    
     this.translate.x = this.pinchPoint.x;
     this.translate.y = this.pinchPoint.y;
+    isZoom = true;
   });
 
-  this.hammertime.on('pinchin pinchout', (e) => {  
+  this.hammertime.on('pinchin pinchout', (e) => {
+    this.hideInteraction( 'forward' );
+    this.hideInteraction( 'back' );
     this.translate.x = e.center.x;
     this.translate.y = e.center.y;
     this.scale = Math.max( minScale, Math.min(this.pScale * (e.scale), maxScale));      
     update();
+    isZoom = true;
   });
 
   this.hammertime.on('pinchmove', (e) => {
+    this.hideInteraction( 'forward' );
+    this.hideInteraction( 'back' );
     this.translate.x = e.center.x;
     this.translate.y = e.center.y;        
     update();
+    isZoom = true;
   })
 
   this.hammertime.on('pinchend pinchcancel', (e) => { 
@@ -179,13 +189,15 @@ Small.prototype.setupInteraction = function(){
       setTimeout( () => {
         this.$zoomEle.style.transformOrigin = 'center center';
         this.$zoomEle.style.transition = '';
+        isZoom = false;
       }, 100 );
     }, 100 );
     this.hideInteraction( 'forward' );
     this.hideInteraction( 'back' );
   });
 
-  this.hammertime.on('tap pressup', (e) => {    
+  this.hammertime.on('tap pressup panend', (e) => {    
+    if( isZoom ){ return }
     if(e.center.x >= window.innerWidth / 2){      
       this.project.next();
     } else {      
@@ -206,6 +218,7 @@ Small.prototype.setupInteraction = function(){
     }
   });
 
+
   // this.$interactionEle.addEventListener('pointerdown', (e) => {
   //   if(e.pageX >= window.innerWidth / 2){
   //     this.showInteraction( 'forward' );
@@ -213,10 +226,10 @@ Small.prototype.setupInteraction = function(){
   //     this.showInteraction( 'back' );
   //   }
   // });
-  // this.$interactionEle.addEventListener('pointerup', (e) => {
-  //   this.hideInteraction( 'forward' );
-  //   this.hideInteraction( 'back' );
-  // });
+  this.$interactionEle.addEventListener('pointerup', (e) => {
+    this.hideInteraction( 'forward' );
+    this.hideInteraction( 'back' );
+  });
 
   this.$interactionEle.addEventListener('touchmove', function (event) {
     if (event.targetTouches.length === 1) {
@@ -227,7 +240,6 @@ Small.prototype.setupInteraction = function(){
     e.preventDefault();
   });
   document.addEventListener('touchstart', function(e){
-    console.log(e.target.classList.contains('dc-mobile-home-link'));
     if( e.target.classList.contains('dc-mobile-home-link') === false ){
       e.preventDefault();
     } else {
