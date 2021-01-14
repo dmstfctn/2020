@@ -564,32 +564,6 @@
     - Offshore Investigation Vehicle
     - Offshore SS18
 
-- now: false
-  priority: 0
-  year: 2018
-  type: live
-  date: 
-  title: Borderline Festival
-  situation: ONASSIS
-  location: athens
-  url: 
-  image: demystification-committee-spektrum-onassis-stegi-borderline-festival.jpg
-  related: The Network Ensemble
-  hideon: desktop
-
-- now: false
-  priority: 0
-  year: 2018
-  type: live
-  date: 
-  title: Borderline Festival
-  situation: ONASSIS STEGI
-  location: athens
-  url: 
-  image: demystification-committee-spektrum-onassis-stegi-borderline-festival.jpg
-  related: The Network Ensemble
-  hideon: mobile
-
 # ## 2018 ## talk ############## #
 - now: false
   longdescription: On the sonification of stock market crashes, part of a panel on algotrading
@@ -636,6 +610,33 @@
     - Offshore Investigation Vehicle
     - Offshore SS18
     - Flash
+  hideon: mobile
+
+- now: false
+  priority: 0
+  year: 2018
+  type: streaming
+  date: 
+  title: Borderline Festival
+  situation: ONASSIS
+  location: athens
+  url: 
+  image: demystification-committee-spektrum-onassis-stegi-borderline-festival.jpg
+  related: The Network Ensemble
+  hideon: desktop
+
+- now: false
+  longdescription: '"Approach from West India Quay, see what corpses sprouted on the Isle of Dead"'
+  priority: 0
+  year: 2018
+  type: streaming
+  date: 
+  title: Borderline Festival
+  situation: ONASSIS STEGI
+  location: athens
+  url: https://youtu.be/2N871QqErpg?t=1037
+  image: 
+  related: The Network Ensemble
   hideon: mobile
 
 - now: false
@@ -778,7 +779,7 @@
   longdescription: Fictional tales of a real puppet, directing a Seychelles International Business Company
   priority: 0
   year: 2018
-  type: publication
+  type: release
   date: 
   title: A DAY IN THE LIFE OF
   situation: SCHLOSS-POST
@@ -791,7 +792,7 @@
   longdescription: Fiction, poetry, legalese and a shifting layout for a publication on offshore finance
   priority: 1
   year: 2018
-  type: publication
+  type: release
   date: 
   title: THE OFFSHORE ECONOMIST
   situation: RIZOSFERA
