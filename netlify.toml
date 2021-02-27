@@ -150,3 +150,14 @@
   to = "/mmittee/info/"
   status = 301
   force = false
+
+
+############################################
+# GENERAL REDIRECTS TO /MMITTEE EVERYWHERE #
+############################################
+
+[[redirects]]
+  from = "/*"
+  to = "/mmittee/:splat"
+  status = 301
+  force = true
