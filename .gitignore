@@ -3,5 +3,4 @@ node_modules
 public/**/*
 htdocs/**/*
 data.json
-assets/fonts/*
 !assets/fonts/.gitkeep
