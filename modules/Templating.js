@@ -2,7 +2,7 @@ const fs = require('fs-extra');
 const path = require('path');
 
 const SvgOptimise = require('./SvgOptimise.js');
-const Handlebars = require('Handlebars');
+const Handlebars = require('handlebars');
 
 const Config = require('../Config.js');
 
