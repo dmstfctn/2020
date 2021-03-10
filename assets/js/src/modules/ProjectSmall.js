@@ -1,7 +1,6 @@
 const CFG = require('./Config.js' );
 const F = require( './Functions.js' );
 const Embed = require('./Embed.js');
-const { has } = require('markdown-it/lib/common/utils');
 
 const ScrollQuantiser = require( './ScrollQuantiser.js' );
 
