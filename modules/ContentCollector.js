@@ -290,8 +290,12 @@ const readFolder = ( folderPath, cv ) => {
           if( item === 'main' ){
             // the main slideshow (large / desktop site)
             slideshow = constructSlideshow( [item], path.join( root, year, project), meta );
-          } else if( item === 'small' ){            
-            slideshow = constructSlideshow( files, p, meta );
+          } else if( item === 'small' ){
+            slideshow = constructSlideshow(
+              files.sort().reverse(),
+              p,
+              meta
+            );
           } else {
             return;
           }
