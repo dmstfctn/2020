@@ -1,4 +1,14 @@
 ##############################
+# OLD PROJECTS PAGE to HOME  #
+##############################
+
+[[redirects]]
+  from = "/mmittee/projects/"
+  to = "/mmittee/"
+  status = 301
+  force = false
+
+##############################
 # OLD PROJECT to NEW PROJECT #
 ##############################
 
@@ -112,42 +122,42 @@
 
 [[redirects]]
   from = "/mmittee/automated-landscapes-data-centers/"
-  to = "/mmittee/info/"
+  to = "/mmittee/track-record/"
   status = 301
   force = false
 [[redirects]]
   from = "/mmittee/capturing-the-face-of-finance/"
-  to = "/mmittee/info/"
+  to = "/mmittee/track-record/"
   status = 301
   force = false
 [[redirects]]
   from = "/mmittee/playing-to-lose/"
-  to = "/mmittee/info/"
+  to = "/mmittee/track-record/"
   status = 301
   force = false
 [[redirects]]
   from = "/mmittee/algorithms-and-financial-speculations/"
-  to = "/mmittee/info/"
+  to = "/mmittee/track-record/"
   status = 301
   force = false
 [[redirects]]
   from = "/mmittee/on-experimental-tools-from-an-interview-with-rizosfera-1/"
-  to = "/mmittee/info/"
+  to = "/mmittee/track-record/"
   status = 301
   force = false
 [[redirects]]
   from = "/mmittee/financial-speculation-on-the-beach/"
-  to = "/mmittee/info/"
+  to = "/mmittee/track-record/"
   status = 301
   force = false
 [[redirects]]
   from = "/mmittee/necropolis-now/"
-  to = "/mmittee/info/"
+  to = "/mmittee/track-record/"
   status = 301
   force = false
 [[redirects]]
   from = "/mmittee/profit-for-all/"
-  to = "/mmittee/info/"
+  to = "/mmittee/track-record/"
   status = 301
   force = false
 
