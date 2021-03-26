@@ -171,3 +171,13 @@
   to = "/mmittee/:splat"
   status = 301
   force = true
+
+
+############################################
+# OTHER STUFF                              #
+############################################
+[[redirects]]
+  from = "/mmittee/links/ica-image-behaviour-21"
+  to = "/mmittee/links/ica-image-behaviour-21/"
+  status = 301
+  force = true
