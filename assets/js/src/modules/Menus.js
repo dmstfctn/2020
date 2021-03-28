@@ -34,11 +34,10 @@ Menus.prototype = {
     this.showMenu( $link, $menu );
   },
   showMenu: function( $title, $menu ){
-    console.log($title, $menu)
-    if( !$title ){
+    if( typeof $title === 'null' ){
       $title = document.querySelector('.dc-sitenav__main [data-dc-localtarget="#related-matters"]' );
     }
-    if( !$menu ){
+    if( typeof $menu === 'null' ){
       $menu = document.querySelector( '#relatedmatters' );
     }
     const pagetype = $menu.getAttribute('data-pagetype');
