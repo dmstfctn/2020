@@ -167,10 +167,16 @@
 ############################################
 
 [[redirects]]
+  from = "/mmittee/*"
+  to = "/mmittee/"
+  status = 200
+
+[[redirects]]
   from = "/*"
   to = "/mmittee/:splat"
   status = 301
   force = true
+
 
 
 ############################################
