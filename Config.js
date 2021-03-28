@@ -13,7 +13,7 @@ let Config = {
     local_port: 8080
   },
   debug: false,
-  minify: false,
+  minify: true,
   minifyHTML: true,
   resizeImages: true, 
   imgResizing: {
