@@ -170,7 +170,6 @@
   from = "/mmittee/*"
   to = "/mmittee/"
   status = 200
-  force = true
 
 [[redirects]]
   from = "/*"
