@@ -38,7 +38,7 @@ Menus.prototype = {
       $title = document.querySelector('.dc-sitenav__main [data-dc-localtarget="#related-matters"]' );
     } 
     if( $menu === null ){
-      $menu = document.querySelector( '#relatedmatters' );
+      $menu = document.querySelector( '#related-matters' );
     }
     const pagetype = $menu.getAttribute('data-pagetype');
     const id = $menu.id;    
@@ -46,7 +46,8 @@ Menus.prototype = {
 
     $title.classList.add( 'active' );
     $menu.style.display = 'block';  
-console.log('showMenu(), pagetype: ', pagetype );
+    //console.log('showMenu(), pagetype: ', pagetype );
+    
     // clear data-dc-homeactive attribute used to show correct menu on load
     document.querySelector('html').setAttribute('data-dc-homeactive', '');
     document.querySelector('html').setAttribute('data-dc-pagetype', pagetype );
