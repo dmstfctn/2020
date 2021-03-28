@@ -34,6 +34,7 @@ Menus.prototype = {
     this.showMenu( $link, $menu );
   },
   showMenu: function( $title, $menu ){
+    console.log($title, $menu)
     if( !$title ){
       $title = document.querySelector('.dc-sitenav__main [data-dc-localtarget="#related-matters"]' );
     }
