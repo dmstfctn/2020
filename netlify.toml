@@ -167,6 +167,11 @@
 ############################################
 
 [[redirects]]
+  from = "/mmittee/*"
+  to = "/mmittee/"
+  status = 200
+
+[[redirects]]
   from = "/MMITTEE"
   to = "/mmittee/"
   status = 200
