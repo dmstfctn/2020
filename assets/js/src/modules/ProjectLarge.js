@@ -131,10 +131,18 @@ ProjectLarge.prototype = {
     const widthScale = ($slide.getAttribute('data-window-scale')) 
                           ? 1 / parseFloat( $slide.getAttribute('data-window-scale') ) 
                           : 2.3;
-    const w = (window.innerWidth / widthScale < window.screen.availWidth / widthScale ) 
+    let w = (window.innerWidth / widthScale < window.screen.availWidth / widthScale ) 
                 ? window.screen.availWidth / widthScale 
                 : window.innerWidth / widthScale;
-    const h = ( w / 16 ) * 9;    
+    let h = ( w / 16 ) * 9;
+    
+    if( !url && !!html ){
+      if( html.indexOf('player.vimeo.com/video/530496254') > -1 ){
+        h = window.screen.availHeight - 175;
+        w = h * (470/1200);
+      }
+    }
+
     if( this.extraWindow ){
       this.extraWindow.destroy()
     }
