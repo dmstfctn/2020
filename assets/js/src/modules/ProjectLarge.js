@@ -139,7 +139,7 @@ ProjectLarge.prototype = {
     if( !url && !!html ){
       if( html.indexOf('player.vimeo.com/video/530496254') > -1 ){
         h = window.screen.availHeight - 175;
-        w = h * (470/1200);
+        w = h * (475/1200);
       }
     }
 
