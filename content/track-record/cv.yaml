@@ -38,7 +38,7 @@
   priority: 0
   year: 2021
   type: live
-  date: 6.2
+  date: 9.28
   title: INTERFACE CHAOS LIVE
   situation: CAFE OTO
   location:
@@ -53,7 +53,7 @@
   priority: 0
   year: 2021
   type: live
-  date: 6.2
+  date: 9.28
   title: INTERFACE CHAOS LIVE
   situation: CAFE OTO
   location: london
@@ -797,7 +797,7 @@
   title: THE OFFSHORE ECONOMIST
   situation: RIZOSFERA
   location: 
-  url: https://rizosfera.art/ebook/the-offshore-economist/
+  url: https://demystification.co/mmittee/toe/The_Offshore_Economist.pdf
   image:
   related:
     - Offshore Investigation Vehicle
