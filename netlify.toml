@@ -161,6 +161,12 @@
   status = 301
   force = false
 
+##### Link on: https://schloss-post.com/a-day-in-the-life-of/
+[[redirects]]
+  from = "/mmittee/the-offshore-economist"
+  to = "/mmittee/toe/The_Offshore_Economist.pdf"
+  status = 301
+  force = true
 
 ############################################
 # GENERAL REDIRECTS TO /MMITTEE EVERYWHERE #
@@ -195,12 +201,5 @@
 [[redirects]]
   from = "/mmittee/links/ica-image-behaviour-21"
   to = "/mmittee/links/ica-image-behaviour-21/"
-  status = 301
-  force = true
-
-##### Link on: https://schloss-post.com/a-day-in-the-life-of/
-[[redirects]]
-  from = "/mmittee/the-offshore-economist"
-  to = "/mmittee/toe/The_Offshore_Economist.pdf"
   status = 301
   force = true
