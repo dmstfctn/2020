@@ -34,6 +34,6 @@ Suggesting a Remain win, those echoes manipulated market sentiment in order to i
 
 <span class="dc-hide-on-small">
 
-ECHO FX was screened on the third anniversary of the referendum vote night, in June 2019, and performed live 24 hours before the United Kingdom left the European Union, in January 2020.
+ECHO FX was screened on the third anniversary of the referendum vote night, in June 2019, and performed live 48 hours before the United Kingdom left the European Union, in January 2020.
 
 </span>
