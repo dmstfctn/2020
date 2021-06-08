@@ -5,13 +5,12 @@ description: 230616 2200, Nigel Farage concedes defeat
 ---
 
 <span class="dc-hide-on-large dc-hide-on-small-portrait">
-ECHO FX replays the night of the 2016 UK EU membership referendum through the echoes of disinformation spread on social media by Nigel Farage.</span>
+ECHO FX replays the night of the 2016 Brexit referendum through the echoes of misleading information spread on social media.</span>
 <span class="dc-hide-on-small-landscape">
-230616 2200: as polls close in the UK referendum on EU membership, Nigel Farage, a former commodities broker and the face of Leave EU, concedes&#8196;defeat.<br><br>230616 2252: in a Foreign Exchange driven by a Remain sentiment, the network effect of Farage's concession pushes the Pound to a six month high.<br><br>240616 0528: the Pound reaches its lowest point in 30 years, losing 12% of its value against the Dollar.<BR>
-<span class="dc-hide-on-large"><br></span>
+230616 2200: as polls close on Brexit referendum night, Nigel Farage, a former commodities broker and the face of Leave EU, concedes&#8196;defeat.<br><br>230616 2252: in a Foreign Exchange market driven by a Remain sentiment, the network effect of Farage's concession pushes the Pound to a six month high.<br><br>240616 0528: the Pound reaches its lowest point in 30 years, losing 12% of its value against the Dollar.<COLBREAK>
 
-ECHO FX replays the night of the 2016 United Kingdom E<span class="dc-hide-on-large">uropean </span>U<span class="dc-hide-on-large">nion</span> membership referendum through the echoes of disinformation spread on social media by Nigel Farage.</span>
+ECHO FX replays the night of the 2016 Brexit referendum through the echoes of misleading information&#8196;spread&#8196;on&#8196;social&#8196;media.</span>
 
-Suggesting a Remain win, those echoes shaped market sentiment and contributed to inflate the value of the Pound before, amongst market disbelief, the result of the referendum became apparent. As the Pound crashed, a number of London City traders with access to pollster information pointing to a Leave win made millions from shorting it.
+Triggered by a prefectly timed concession, those echoes contributed to inflate the value of the Pound market, before the outcome of the referendum became apparent. As the Pound crashed, a number of London City traders with access to private polls pointing&#8196;to&#8196;a&#8196;Leave&#8196;win&#8196;made&#8196;millions&#8196;from&#8196;shorting&#8196;it.<COLBREAK>
 
 <span class="dc-hide-on-small">ECHO FX was screened on the third anniversary week of the referendum night, in June 2019, and performed 48 hours before the United Kingdom left the European Union, in January 2020.</span>
