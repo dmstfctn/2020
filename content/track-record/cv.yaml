@@ -960,50 +960,9 @@
   title: SELECTED NETWORK STUDIES
   situation: NUKFM
   location: 
-  url: https://networkensemble.bandcamp.com/album/selected-network-studies
+  url: https://networkensemble.bandcamp.com/
   image:
   related:
     - The Network Ensemble
     - Network Study (I, VII, VIII)
 
-# ## 2016 ###################### #
-# ## 2016 ## screening ############## #
-- now: false
-  priority: 2
-  year: 2016
-  type: screening
-  date: 
-  title: DELEUZE STUDIES
-  situation: TRE UNIVERSITY
-  location: rome
-  url: 
-  image: demystification-committee-deleuze-studies.jpg
-  related: Network Study (I, VII, VIII)
-  hideon: desktop
-
-- now: false
-  priority: 2
-  year: 2016
-  type: screening
-  date: 
-  title: DELEUZE STUDIES
-  situation: ROMA TRE UNIVERSITY
-  location: rome
-  url: 
-  image: demystification-committee-deleuze-studies.jpg
-  related: Network Study (I, VII, VIII)
-  hideon: mobile
-
-# ## 2016 ## dissemination ##### #
-- now: false
-  longdescription: Remixing a 1975 speech by Felix Guattari on the advent of informatics machines
-  priority: 2
-  year: 2016
-  type: release
-  date: 
-  title: CHAOS VARIATION I
-  situation: NUKFM
-  location: 
-  url: https://networkensemble.bandcamp.com/album/chaos-variation-i
-  image:
-  related: The Network Ensemble
