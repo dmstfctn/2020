@@ -34,7 +34,35 @@
 # ########## 2021 ########## #
 # ## YEAR ## live ##############
 - now: next
-  description: Film screening feat. live soundtrack by SKY H1 
+  description: Live streamings on the fifth Brexit anniversary
+  priority: 0
+  year: 2021
+  type: streaming
+  date: 6.23
+  title: ECHO FX
+  situation: KRISIS PUBLISHING
+  location:
+  url: https://stream.demystification.co/
+  image: 
+  related: ECHO FX
+  hideon: desktop
+
+- now: next
+  longdescription: Live streamings on the fifth Brexit anniversary and release announcement
+  priority: 0
+  year: 2021
+  type: streaming
+  date: 6.23
+  title: ECHO FX
+  situation: KRISIS PUBLISHING
+  location:
+  url: https://stream.demystification.co/
+  image: 
+  related: ECHO FX
+  hideon: mobile
+
+- now: next
+  description: 
   priority: 0
   year: 2021
   type: live
