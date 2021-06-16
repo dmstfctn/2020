@@ -85,6 +85,9 @@
 
   .dc-cv--now{
     color: #FF0000;
+    .dc-cv--type svg path{
+      fill: #FF0000;
+    }
   }
   .dc-cv--title,
   .dc-cv--entry{
