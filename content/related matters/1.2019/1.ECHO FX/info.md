@@ -13,4 +13,5 @@ ECHO FX replays the night of the 2016 Brexit referendum through the echoes of mi
 
 Triggered by a prefectly timed concession, those echoes contributed to inflate the value of the Pound market, before the outcome of the referendum became apparent. As the Pound crashed, a number of London City traders with access to private polls pointing&#8196;to&#8196;a&#8196;Leave&#8196;win&#8196;made&#8196;millions&#8196;from&#8196;shorting&#8196;it.<COLBREAK>
 
-<span class="dc-hide-on-small">ECHO FX was screened on the third anniversary week of the referendum night, in June 2019, and performed 48 hours before the United Kingdom left the European Union, in January 2020.</span>
+<span class="dc-hide-on-small">ECHO FX was screened on the third anniversary week of the referendum night, in June 2019, and performed 48 hours before the United Kingdom left the European Union, in January 2020.<br><br>In June 2021, ECHO FX was streamed on <a href="https://stream.demystification.co/" target="_blank">stream.demystification.co</a> in collaboration with Italian label Krisis Publishing, announcing their release of ECHO FX in fall 2021, alongside a printed publication.</span>
+

@@ -34,35 +34,7 @@
 # ########## 2021 ########## #
 # ## YEAR ## live ##############
 - now: next
-  description: A live performance about Brexit ForEx markets
-  priority: 0
-  year: 2021
-  type: streaming
-  date: "6.30"
-  title: ECHO FX
-  situation: KRISIS PUBLISHING
-  location:
-  url: https://stream.demystification.co/
-  image: 
-  related: ECHO FX
-  hideon: desktop
-
-- now: next
-  longdescription: A live performance about Brexit ForEx markets and upcoming release
-  priority: 0
-  year: 2021
-  type: streaming
-  date: "6.30"
-  title: ECHO FX
-  situation: KRISIS PUBLISHING
-  location:
-  url: https://stream.demystification.co/
-  image: 
-  related: ECHO FX
-  hideon: mobile
-
-- now: next
-  description: 
+  description: Screening with a live soundtrack by SKY H1
   priority: 0
   year: 2021
   type: live
@@ -88,6 +60,36 @@
   url: https://www.cafeoto.co.uk/events/interface-chaos-live-june-2021/
   image: 
   related: Interface Chaos
+  hideon: mobile
+
+# ########## 2021 ########## #
+
+- now: false
+  description: A live performance about Brexit ForEx markets
+  priority: 0
+  year: 2021
+  type: streaming
+  date: "6.30"
+  title: ECHO FX
+  situation: KRISIS PUBLISHING
+  location:
+  url: https://stream.demystification.co/
+  image: 
+  related: ECHO FX
+  hideon: desktop
+
+- now: false
+  longdescription: A live performance about Brexit ForEx markets and upcoming release
+  priority: 0
+  year: 2021
+  type: streaming
+  date: "6.30"
+  title: ECHO FX
+  situation: KRISIS PUBLISHING
+  location:
+  url: https://stream.demystification.co/
+  image: 
+  related: ECHO FX
   hideon: mobile
 
 # ########## 2020 ########## #
